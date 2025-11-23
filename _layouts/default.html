@@ -7,274 +7,226 @@
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700&family=Syncopate:wght@400;700&display=swap" rel="stylesheet">
 
     <style>
         :root {
-            --bg: #050505;
+            --bg: #000000;
             --fg: #ffffff;
-            --accent: #3b82f6; /* Electric Blue */
-            --accent-glow: rgba(59, 130, 246, 0.4);
-            --surface: #111111;
-            --border: #333333;
-            --grain-opacity: 0.07;
+            --accent: #7000ff; /* Ultra Violet */
+            --accent-light: #bc85ff;
+            --surface: #0a0a0a;
+            --border: #222;
+            --grid-color: rgba(255, 255, 255, 0.03);
         }
 
         * { box-sizing: border-box; }
-
-        html {
-            scroll-behavior: smooth;
-        }
 
         body {
             margin: 0;
             background-color: var(--bg);
             color: var(--fg);
-            font-family: 'Inter', sans-serif;
-            overflow-x: hidden;
+            font-family: 'Space Grotesk', sans-serif;
             font-size: 16px;
             line-height: 1.6;
+            overflow-x: hidden;
         }
 
-        /* --- NOISE TEXTURE OVERLAY (Premium Feel) --- */
-        body::before {
-            content: "";
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-            opacity: var(--grain-opacity);
-            pointer-events: none;
-            z-index: 9999;
-            mix-blend-mode: overlay;
-        }
-
-        /* --- AMBIENT GLOW --- */
-        .ambient-light {
+        /* --- BACKGROUND MESH --- */
+        .bg-mesh {
             position: fixed;
-            width: 600px; height: 600px;
-            background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
-            top: -200px; right: -200px;
-            border-radius: 50%;
-            z-index: -1;
-            animation: float 10s ease-in-out infinite;
-            opacity: 0.6;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: 
+                linear-gradient(var(--grid-color) 1px, transparent 1px),
+                linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
+            background-size: 60px 60px;
+            z-index: -2;
+            mask-image: radial-gradient(circle at 50% 50%, black 40%, transparent 80%);
         }
 
-        @keyframes float {
-            0% { transform: translate(0, 0); }
-            50% { transform: translate(-50px, 50px); }
-            100% { transform: translate(0, 0); }
+        /* --- SPLIT LAYOUT --- */
+        .layout-wrapper {
+            display: flex;
+            min-height: 100vh;
         }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
+        /* LEFT SIDE (FIXED IDENTITY) */
+        .identity-panel {
+            width: 40%;
+            height: 100vh;
+            position: sticky;
+            top: 0;
+            padding: 4rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            border-right: 1px solid var(--border);
+            background: rgba(0,0,0,0.5);
+            backdrop-filter: blur(10px);
+        }
+
+        /* RIGHT SIDE (SCROLLABLE DATA) */
+        .data-panel {
+            width: 60%;
+            padding: 4rem;
         }
 
         /* --- TYPOGRAPHY --- */
-        h1, h2, h3, .mono {
-            font-family: 'Space Grotesk', sans-serif;
-            margin-top: 0;
-        }
-
         h1 {
-            font-size: clamp(3rem, 8vw, 6rem);
+            font-family: 'Syncopate', sans-serif;
             font-weight: 700;
-            line-height: 0.9;
-            letter-spacing: -0.03em;
-            margin-bottom: 2rem;
-            background: linear-gradient(to right, #fff, #aaa);
+            font-size: clamp(2.5rem, 4vw, 4rem);
+            line-height: 1.1;
+            margin: 0 0 1rem 0;
+            text-transform: uppercase;
+            letter-spacing: -2px;
+            background: linear-gradient(to right, #fff, var(--accent-light));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
-        h2 {
-            font-size: 2.5rem;
-            letter-spacing: -0.02em;
+        .role-title {
+            font-family: 'Space Grotesk', monospace;
+            font-size: 1.2rem;
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 2px;
             margin-bottom: 2rem;
-            border-left: 4px solid var(--accent);
-            padding-left: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .role-title::before {
+            content: ''; width: 10px; height: 10px; background: var(--accent);
+            display: inline-block; box-shadow: 0 0 15px var(--accent);
+            animation: pulse 2s infinite;
+        }
+
+        h2 {
+            font-family: 'Syncopate', sans-serif;
+            font-size: 1.5rem;
+            text-transform: uppercase;
+            margin: 4rem 0 2rem 0;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        h2 span.index {
+            font-family: 'Space Grotesk';
+            font-size: 0.9rem;
+            color: var(--accent);
         }
 
         a { color: inherit; text-decoration: none; transition: 0.3s; }
         
-        /* --- UI COMPONENTS --- */
-        
-        /* The Grid Layout for Experience */
-        .grid-section {
-            display: grid;
-            grid-template-columns: 1fr 2fr;
-            gap: 4rem;
-            margin-bottom: 6rem;
-            border-top: 1px solid var(--border);
-            padding-top: 4rem;
-        }
+        /* --- COMPONENTS --- */
 
-        .sticky-header {
-            position: sticky;
-            top: 4rem;
-            align-self: start;
+        /* Contact Links */
+        .social-stack {
+            display: flex; flex-direction: column; gap: 0.5rem;
+            font-family: 'Space Grotesk'; text-transform: uppercase; font-size: 0.9rem;
         }
+        .social-link {
+            display: flex; align-items: center; gap: 10px;
+            color: #666; padding: 0.5rem 0; transition: 0.3s;
+        }
+        .social-link:hover { color: #fff; transform: translateX(10px); }
+        .social-link::before { content: '→'; opacity: 0; transition: 0.3s; }
+        .social-link:hover::before { opacity: 1; color: var(--accent); }
 
-        .sticky-header h3 {
-            font-size: 1.5rem;
-            color: var(--accent);
-            margin-bottom: 0.5rem;
-        }
-
-        /* Cards */
-        .job-item {
-            margin-bottom: 4rem;
-            position: relative;
-        }
-        .job-item:last-child { margin-bottom: 0; }
-
-        .job-role {
-            font-size: 1.8rem;
-            font-weight: 500;
-            margin-bottom: 0.5rem;
-            color: #fff;
-        }
-        .job-meta {
-            font-family: 'Space Grotesk', monospace;
-            font-size: 0.9rem;
-            color: #888;
-            margin-bottom: 1.5rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            display: flex;
-            gap: 1rem;
-            align-items: center;
-        }
-        .job-meta span {
-            background: #1a1a1a;
-            padding: 4px 8px;
-            border-radius: 4px;
-            border: 1px solid #333;
-        }
-
-        .job-details li {
-            margin-bottom: 0.8rem;
-            color: #ccc;
-            position: relative;
-            padding-left: 1.5rem;
-        }
-        .job-details li::before {
-            content: "→";
-            position: absolute;
-            left: 0;
-            color: var(--accent);
-        }
-
-        /* Skill Tags - Minimalist Chips */
-        .skill-wrapper {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-        .skill-tag {
-            font-family: 'Space Grotesk', sans-serif;
-            font-weight: 500;
+        /* Experience Cards */
+        .xp-item {
             background: var(--surface);
             border: 1px solid var(--border);
-            padding: 0.5rem 1rem;
-            border-radius: 100px;
-            transition: 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-            cursor: default;
-        }
-        .skill-tag:hover {
-            border-color: var(--accent);
-            background: var(--accent);
-            color: #000;
-            transform: translateY(-3px) scale(1.05);
-            box-shadow: 0 10px 20px -5px var(--accent-glow);
-        }
-
-        /* --- HERO BADGE --- */
-        .status-pill {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 8px 16px;
-            background: rgba(59, 130, 246, 0.1);
-            border: 1px solid var(--accent);
-            border-radius: 100px;
-            color: var(--accent);
-            font-family: 'Space Grotesk', monospace;
-            font-size: 0.8rem;
-            letter-spacing: 1px;
-            text-transform: uppercase;
+            padding: 2rem;
             margin-bottom: 2rem;
-            animation: pulse-border 2s infinite;
+            transition: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+            overflow: hidden;
         }
-        .status-dot {
-            width: 8px; height: 8px;
-            background: var(--accent);
-            border-radius: 50%;
-            box-shadow: 0 0 10px var(--accent);
+        .xp-item:hover {
+            border-color: var(--accent);
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px -10px rgba(112, 0, 255, 0.15);
+        }
+        .xp-header {
+            display: flex; justify-content: space-between; align-items: baseline;
+            margin-bottom: 1rem; flex-wrap: wrap; gap: 1rem;
+        }
+        .xp-role { font-size: 1.4rem; font-weight: 700; color: #fff; }
+        .xp-meta { font-family: monospace; color: #666; font-size: 0.85rem; }
+        
+        .xp-list { margin: 0; padding: 0; list-style: none; color: #aaa; }
+        .xp-list li { margin-bottom: 0.8rem; position: relative; padding-left: 1.5rem; }
+        .xp-list li::before { 
+            content: '+'; position: absolute; left: 0; color: var(--accent); 
         }
 
-        @keyframes pulse-border {
-            0% { box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.4); }
-            70% { box-shadow: 0 0 0 10px rgba(59, 130, 246, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(59, 130, 246, 0); }
+        /* Skill Grid */
+        .skill-grid {
+            display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 1rem;
+        }
+        .skill-box {
+            border: 1px solid var(--border);
+            padding: 1rem;
+            text-align: center;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: 0.3s;
+            cursor: default;
+            background: linear-gradient(45deg, transparent 50%, rgba(112,0,255,0.05) 100%);
+        }
+        .skill-box:hover {
+            border-color: #fff;
+            background: #fff;
+            color: #000;
         }
 
-        /* --- CTA BUTTON --- */
-        .download-btn {
-            display: inline-flex;
-            justify-content: center;
-            align-items: center;
+        /* --- DOWNLOAD BUTTON (The Statement Piece) --- */
+        .dl-btn {
+            display: block;
             width: 100%;
             padding: 1.5rem;
             background: #fff;
             color: #000;
-            font-family: 'Space Grotesk', sans-serif;
+            font-family: 'Syncopate', sans-serif;
             font-weight: 700;
-            font-size: 1.2rem;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            text-align: center;
             border: none;
             cursor: pointer;
-            transition: transform 0.2s, box-shadow 0.2s;
+            transition: 0.4s;
+            margin-top: 2rem;
             position: relative;
             overflow: hidden;
         }
-        .download-btn:hover {
-            transform: scale(1.01);
-            box-shadow: 0 0 30px rgba(255,255,255,0.3);
+        .dl-btn:hover {
+            background: var(--accent);
+            color: #fff;
+            letter-spacing: 2px;
         }
-        .download-btn::after {
-            content: "↗";
-            margin-left: 10px;
-            font-size: 1.4rem;
-            transition: transform 0.2s;
-        }
-        .download-btn:hover::after {
-            transform: translate(5px, -5px);
+        .dl-btn::after {
+            content: " [PDF]"; opacity: 0.5; font-size: 0.8em;
         }
 
-        /* Footer */
-        footer {
-            border-top: 1px solid var(--border);
-            padding: 3rem 0;
-            margin-top: 4rem;
-            color: #666;
-            font-size: 0.9rem;
-            display: flex;
-            justify-content: space-between;
-        }
+        /* Animations */
+        @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.3; } 100% { opacity: 1; } }
 
-        @media (max-width: 768px) {
-            .grid-section { grid-template-columns: 1fr; gap: 2rem; }
-            .sticky-header { position: static; margin-bottom: 1rem; }
-            h1 { font-size: 3rem; }
+        /* Responsive */
+        @media (max-width: 900px) {
+            .layout-wrapper { flex-direction: column; }
+            .identity-panel, .data-panel { width: 100%; height: auto; position: relative; }
+            .identity-panel { padding: 3rem 1.5rem; border-right: none; border-bottom: 1px solid var(--border); }
+            .data-panel { padding: 2rem 1.5rem; }
+            h1 { font-size: 2.5rem; }
         }
     </style>
 </head>
 <body>
-    <div class="ambient-light"></div>
-    <div class="container">
+    <div class="bg-mesh"></div>
+    <div class="layout-wrapper">
         {{ content }}
     </div>
 </body>
