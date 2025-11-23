@@ -123,10 +123,10 @@
 
       .role-title {
         font-family: 'Space Grotesk', monospace;
-        font-size: 1.2rem;
+        font-size: 1.1rem;
         color: #888;
         text-transform: uppercase;
-        letter-spacing: 2px;
+        letter-spacing: 1px;
         margin-bottom: 2rem;
         display: flex;
         align-items: center;
@@ -134,8 +134,8 @@
       }
       .role-title::before {
         content: '';
-        width: 10px;
-        height: 10px;
+        width: 8px;
+        height: 8px;
         background: var(--accent);
         display: inline-block;
         box-shadow: 0 0 15px var(--accent);
@@ -365,26 +365,22 @@
     "en" %} {% if lang == 'hu' %} {% assign t_skills = "Készségek" %} {% assign
     t_exp = "Tapasztalat" %} {% assign t_pubs = "Publikációk" %} {% assign
     t_awards = "Díjak" %} {% assign t_dl = "Önéletrajz Letöltése" %} {% assign
-    t_req = "Hozzáférés Kérése" %} {% assign t_role = "Senior Full-Stack
-    Fejlesztő" %} {% assign t_be = "Backend – Java / Spring Boot" %} {% assign
-    t_fe = "Frontend – Angular / TypeScript" %} {% elsif lang == 'de' %} {%
-    assign t_skills = "Fähigkeiten" %} {% assign t_exp = "Erfahrung" %} {%
-    assign t_pubs = "Publikationen" %} {% assign t_awards = "Auszeichnungen" %}
-    {% assign t_dl = "Lebenslauf Herunterladen" %} {% assign t_req = "Zugriff
-    Anfordern" %} {% assign t_role = "Senior Full-Stack Entwickler" %} {% assign
-    t_be = "Backend – Java / Spring Boot" %} {% assign t_fe = "Frontend –
-    Angular / TypeScript" %} {% else %} {% assign t_skills = "Skills" %} {%
-    assign t_exp = "Timeline" %} {% assign t_pubs = "Publications" %} {% assign
-    t_awards = "Awards" %} {% assign t_dl = "Download CV" %} {% assign t_req =
-    "Request Access" %} {% assign t_role = "Senior Full-Stack Engineer" %} {%
-    assign t_be = "Backend – Java / Spring Boot" %} {% assign t_fe = "Frontend –
-    Angular / TypeScript" %} {% endif %}
+    t_req = "Hozzáférés Kérése" %} {% assign t_be = "Backend / Mag" %} {% assign
+    t_fe = "Frontend / UI" %} {% elsif lang == 'de' %} {% assign t_skills =
+    "Fähigkeiten" %} {% assign t_exp = "Erfahrung" %} {% assign t_pubs =
+    "Publikationen" %} {% assign t_awards = "Auszeichnungen" %} {% assign t_dl =
+    "Lebenslauf Herunterladen" %} {% assign t_req = "Zugriff Anfordern" %} {%
+    assign t_be = "Backend / Kern" %} {% assign t_fe = "Frontend / UI" %} {%
+    else %} {% assign t_skills = "Skills" %} {% assign t_exp = "Timeline" %} {%
+    assign t_pubs = "Publications" %} {% assign t_awards = "Awards" %} {% assign
+    t_dl = "Download CV" %} {% assign t_req = "Request Access" %} {% assign t_be
+    = "Backend / Core" %} {% assign t_fe = "Frontend / UI" %} {% endif %}
 
     <div class="bg-mesh"></div>
     <div class="layout-wrapper">
       <div class="identity-panel">
         <div>
-          <div class="role-title">{{ t_role }}</div>
+          <div class="role-title">{{ cv.title[lang] }}</div>
           <h1>{{ cv.name[lang] }}</h1>
           <p style="color: #888; margin-top: 1.5rem; max-width: 400px">
             {{ cv.summary[lang] }}
