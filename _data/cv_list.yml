@@ -1,0 +1,6 @@
+cvs:
+  - name: 'CV (EN, default)'
+    url: 'https://example.com/cv_en.pdf'
+    lang: 'en'
+    theme: 'default'
+    updated: '2025-11-23'
