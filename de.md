@@ -1,6 +1,6 @@
 ---
 layout: default
 title: 'Portfolio'
-lang: en
-permalink: /
+lang: de
+permalink: /de/
 ---
