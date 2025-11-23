@@ -2,246 +2,223 @@
 <html lang="en">
 <head>
     <meta charset="utf-8" />
-    <title>{{ page.title }} // {{ site.title }}</title>
+    <title>{{ page.title }} | {{ site.title }}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Orbitron:wght@400;700;900&family=Rajdhani:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Outfit:wght@400;700;800&display=swap" rel="stylesheet">
 
     <style>
         :root {
-            --bg-dark: #030507;
-            --panel-bg: rgba(10, 15, 20, 0.85);
-            --neon-cyan: #00f3ff;
-            --neon-cyan-dim: rgba(0, 243, 255, 0.2);
-            --neon-pink: #ff0055;
-            --neon-gold: #ffd700;
-            --text-main: #e0e6ed;
+            /* Modern Dark Palette */
+            --bg-deep: #020617;
+            --bg-gradient: radial-gradient(circle at 50% 0%, #1e1b4b 0%, #020617 60%);
+            --accent-primary: #6366f1; /* Indigo */
+            --accent-secondary: #ec4899; /* Pink */
+            --accent-glow: rgba(99, 102, 241, 0.5);
+            --glass-bg: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --text-main: #f8fafc;
             --text-muted: #94a3b8;
-            --grid-color: rgba(0, 243, 255, 0.08);
         }
 
         * { box-sizing: border-box; }
 
         body {
             margin: 0;
-            background-color: var(--bg-dark);
-            font-family: 'Rajdhani', sans-serif;
+            background-color: var(--bg-deep);
+            background-image: var(--bg-gradient);
+            background-attachment: fixed;
+            font-family: 'Inter', sans-serif;
             color: var(--text-main);
+            line-height: 1.7;
             overflow-x: hidden;
-            font-size: 18px;
-            line-height: 1.6;
+            min-height: 100vh;
         }
 
-        /* --- 3D MOVING GRID BACKGROUND --- */
-        .cyber-grid {
+        /* Subtle ambient background animation */
+        body::before {
+            content: '';
             position: fixed;
-            top: 0; left: 0; width: 100vw; height: 100vh;
-            background: 
-                linear-gradient(transparent 0%, rgba(0, 243, 255, 0.05) 1%, transparent 2%),
-                linear-gradient(90deg, transparent 0%, rgba(0, 243, 255, 0.05) 1%, transparent 2%);
-            background-size: 50px 50px;
-            transform: perspective(500px) rotateX(60deg) translateY(-100px) scale(2);
-            animation: grid-move 20s linear infinite;
-            z-index: -2;
-            pointer-events: none;
-        }
-        
-        @keyframes grid-move {
-            0% { background-position: 0 0; }
-            100% { background-position: 0 50px; }
-        }
-
-        /* Vignette & Scanlines */
-        body::after {
-            content: "";
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: radial-gradient(circle, transparent 60%, #000 100%);
-            pointer-events: none;
+            top: -50%; left: -50%;
+            width: 200%; height: 200%;
+            background: radial-gradient(circle at center, rgba(99, 102, 241, 0.08) 0%, transparent 50%);
+            animation: pulse-bg 15s ease-in-out infinite alternate;
             z-index: -1;
+            pointer-events: none;
         }
 
-        /* LAYOUT */
+        @keyframes pulse-bg {
+            0% { transform: scale(1); opacity: 0.5; }
+            100% { transform: scale(1.2); opacity: 0.8; }
+        }
+
         .container {
-            max-width: 1000px;
+            max-width: 900px;
             margin: 0 auto;
-            padding: 4rem 2rem;
-            position: relative;
-            z-index: 1;
+            padding: 4rem 1.5rem;
         }
 
-        /* TYPOGRAPHY */
+        /* --- TYPOGRAPHY --- */
         h1, h2, h3 {
-            font-family: 'Orbitron', sans-serif;
-            text-transform: uppercase;
-            letter-spacing: 2px;
+            font-family: 'Outfit', sans-serif;
+            color: #fff;
             margin-top: 0;
         }
 
         h1 {
-            font-size: 4rem;
-            line-height: 1;
-            background: linear-gradient(to right, #fff, var(--neon-cyan));
+            font-size: 3.5rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            background: linear-gradient(135deg, #fff 0%, #94a3b8 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            text-shadow: 0 0 20px var(--neon-cyan-dim);
             margin-bottom: 0.5rem;
         }
 
         h2 {
             font-size: 1.5rem;
-            color: var(--neon-cyan);
-            border-bottom: 1px solid var(--neon-cyan);
-            padding-bottom: 0.5rem;
             margin-top: 4rem;
+            margin-bottom: 1.5rem;
             display: flex;
             align-items: center;
-        }
-        h2::before {
-            content: ">>";
-            margin-right: 10px;
-            color: var(--neon-pink);
-        }
-
-        a { color: var(--neon-cyan); text-decoration: none; transition: 0.3s; }
-        a:hover { color: #fff; text-shadow: 0 0 10px var(--neon-cyan); }
-
-        /* --- UI COMPONENTS --- */
-
-        /* 1. MAIN TERMINAL PANEL */
-        .hud-panel {
-            background: var(--panel-bg);
-            border: 1px solid var(--neon-cyan-dim);
-            backdrop-filter: blur(5px);
-            padding: 2rem;
-            position: relative;
-            box-shadow: 0 0 30px rgba(0,0,0,0.5);
-            clip-path: polygon(
-                0 0, 
-                100% 0, 
-                100% calc(100% - 20px), 
-                calc(100% - 20px) 100%, 
-                0 100%
-            );
-            margin-bottom: 2rem;
+            gap: 1rem;
         }
         
-        /* Decorative corner markers */
-        .hud-panel::before {
-            content: ""; position: absolute; top: 0; left: 0;
-            width: 10px; height: 10px;
-            border-top: 2px solid var(--neon-cyan);
-            border-left: 2px solid var(--neon-cyan);
-        }
-        .hud-panel::after {
-            content: ""; position: absolute; bottom: 0; right: 0;
-            width: 20px; height: 20px;
-            border-bottom: 2px solid var(--neon-cyan);
-            border-right: 2px solid var(--neon-cyan);
+        h2::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, var(--glass-border), transparent);
         }
 
-        /* 2. EXPERIENCE CARDS */
-        .job-card {
-            border-left: 3px solid var(--neon-pink);
-            background: linear-gradient(90deg, rgba(255, 0, 85, 0.05) 0%, transparent 100%);
-            padding: 1.5rem;
-            margin-bottom: 2rem;
-            transition: 0.3s;
+        a { color: var(--accent-primary); text-decoration: none; transition: 0.2s; }
+        a:hover { color: var(--accent-secondary); }
+
+        /* --- CARDS (Glassmorphism) --- */
+        .glass-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
-        .job-card:hover {
-            border-left-color: var(--neon-cyan);
-            background: linear-gradient(90deg, rgba(0, 243, 255, 0.05) 0%, transparent 100%);
-            transform: translateX(10px);
+
+        .glass-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px -10px rgba(0,0,0,0.5);
+            border-color: rgba(255,255,255,0.15);
         }
-        .job-title {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.4rem;
-            color: #fff;
-        }
-        .job-meta {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.85rem;
-            color: var(--text-muted);
+
+        /* --- HEADER BADGE --- */
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 12px;
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid rgba(16, 185, 129, 0.2);
+            border-radius: 999px;
+            color: #34d399;
+            font-size: 0.8rem;
+            font-weight: 600;
             margin-bottom: 1rem;
             text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .status-dot {
+            width: 8px; height: 8px;
+            background: #34d399;
+            border-radius: 50%;
+            box-shadow: 0 0 10px #34d399;
+            animation: blink 2s infinite;
         }
 
-        /* 3. SKILL CHIPS */
-        .skill-grid {
-            display: flex; flex-wrap: wrap; gap: 12px;
+        /* --- TIMELINE (Experience) --- */
+        .timeline-item {
+            position: relative;
+            padding-left: 1.5rem;
+            border-left: 2px solid var(--glass-border);
+            margin-bottom: 2.5rem;
         }
-        .skill-chip {
-            background: #0f172a;
-            border: 1px solid #334155;
-            color: var(--neon-cyan);
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -6px; top: 0;
+            width: 10px; height: 10px;
+            background: var(--bg-deep);
+            border: 2px solid var(--accent-primary);
+            border-radius: 50%;
+        }
+        .timeline-role { font-size: 1.25rem; font-weight: 700; color: #fff; margin-bottom: 0.2rem; }
+        .timeline-meta { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1rem; font-family: 'Inter', monospace; }
+        
+        /* --- SKILL PILLS --- */
+        .pill-grid { display: flex; flex-wrap: wrap; gap: 10px; }
+        .pill {
+            background: rgba(255,255,255,0.05);
             padding: 6px 14px;
-            font-family: 'JetBrains Mono', monospace;
+            border-radius: 8px;
             font-size: 0.9rem;
+            color: var(--text-main);
+            border: 1px solid transparent;
+            transition: 0.3s;
+        }
+        .pill:hover {
+            background: rgba(255,255,255,0.1);
+            border-color: var(--accent-primary);
+            box-shadow: 0 0 15px var(--accent-glow);
+        }
+
+        /* --- ACTION BUTTON (CTA) --- */
+        .cta-button {
+            display: block;
+            width: 100%;
+            text-align: center;
+            background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
+            color: #fff;
+            padding: 1.2rem;
+            border-radius: 12px;
+            font-weight: 700;
+            font-family: 'Outfit', sans-serif;
             text-transform: uppercase;
             letter-spacing: 1px;
             transition: 0.3s;
-        }
-        .skill-chip:hover {
-            border-color: var(--neon-cyan);
-            background: var(--neon-cyan-dim);
-            color: #fff;
-            box-shadow: 0 0 15px var(--neon-cyan-dim);
-        }
-
-        /* 4. GLITCH BUTTON (DOWNLOAD) */
-        .mega-btn {
-            display: block;
-            width: 100%;
-            padding: 1.5rem;
-            margin-top: 2rem;
-            background: var(--neon-cyan-dim);
-            border: 1px solid var(--neon-cyan);
-            color: #fff;
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.2rem;
-            font-weight: 900;
-            text-align: center;
-            text-transform: uppercase;
-            letter-spacing: 4px;
-            cursor: pointer;
-            transition: 0.3s;
             position: relative;
             overflow: hidden;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 20px rgba(99, 102, 241, 0.4);
         }
-        .mega-btn:hover {
-            background: var(--neon-cyan);
-            color: #000;
-            box-shadow: 0 0 40px var(--neon-cyan);
-        }
-        .mega-btn::before {
-            content: "PDF_SECURE_LINK";
-            position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.8), transparent);
-            transition: 0.5s;
-        }
-        .mega-btn:hover::before {
-            left: 100%;
+        
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(99, 102, 241, 0.6);
         }
 
-        /* Code snippet style */
-        code {
-            background: rgba(0,0,0,0.5);
-            padding: 2px 6px;
-            border-radius: 4px;
-            color: var(--neon-gold);
-            font-family: 'JetBrains Mono', monospace;
+        .cta-button:hover::after {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%;
+            width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            animation: shine 0.5s;
         }
 
-        /* Responsive */
-        @media (max-width: 768px) {
+        @keyframes shine { 100% { left: 100%; } }
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+
+        @media (max-width: 600px) {
             h1 { font-size: 2.5rem; }
             .container { padding: 2rem 1rem; }
         }
     </style>
 </head>
 <body>
-    <div class="cyber-grid"></div>
     <div class="container">
         {{ content }}
     </div>
