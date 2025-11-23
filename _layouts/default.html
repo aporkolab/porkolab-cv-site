@@ -7,56 +7,71 @@
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Orbitron:wght@400;700;900&family=Rajdhani:wght@400;600;700&display=swap" rel="stylesheet">
 
     <style>
         :root {
-            --bg-color: #050505;
-            --terminal-bg: #0a0f14;
+            --bg-dark: #030507;
+            --panel-bg: rgba(10, 15, 20, 0.85);
             --neon-cyan: #00f3ff;
+            --neon-cyan-dim: rgba(0, 243, 255, 0.2);
             --neon-pink: #ff0055;
-            --neon-green: #0aff00;
-            --text-main: #e0e0e0;
-            --text-dim: #6b7280;
-            --grid-color: rgba(0, 243, 255, 0.05);
+            --neon-gold: #ffd700;
+            --text-main: #e0e6ed;
+            --text-muted: #94a3b8;
+            --grid-color: rgba(0, 243, 255, 0.08);
         }
 
         * { box-sizing: border-box; }
 
         body {
-            font-family: 'JetBrains Mono', monospace;
             margin: 0;
-            background-color: var(--bg-color);
-            background-image: 
-                linear-gradient(var(--grid-color) 1px, transparent 1px),
-                linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
-            background-size: 40px 40px;
+            background-color: var(--bg-dark);
+            font-family: 'Rajdhani', sans-serif;
             color: var(--text-main);
             overflow-x: hidden;
+            font-size: 18px;
             line-height: 1.6;
         }
 
-        /* CRT Scanline Effect Overlay */
-        body::after {
-            content: " ";
-            display: block;
-            position: absolute;
-            top: 0; left: 0; bottom: 0; right: 0;
-            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
-            z-index: 9999;
-            background-size: 100% 2px, 3px 100%;
+        /* --- 3D MOVING GRID BACKGROUND --- */
+        .cyber-grid {
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background: 
+                linear-gradient(transparent 0%, rgba(0, 243, 255, 0.05) 1%, transparent 2%),
+                linear-gradient(90deg, transparent 0%, rgba(0, 243, 255, 0.05) 1%, transparent 2%);
+            background-size: 50px 50px;
+            transform: perspective(500px) rotateX(60deg) translateY(-100px) scale(2);
+            animation: grid-move 20s linear infinite;
+            z-index: -2;
             pointer-events: none;
         }
+        
+        @keyframes grid-move {
+            0% { background-position: 0 0; }
+            100% { background-position: 0 50px; }
+        }
 
+        /* Vignette & Scanlines */
+        body::after {
+            content: "";
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle, transparent 60%, #000 100%);
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        /* LAYOUT */
         .container {
-            max-width: 900px;
+            max-width: 1000px;
             margin: 0 auto;
-            padding: 4rem 1.5rem;
+            padding: 4rem 2rem;
             position: relative;
             z-index: 1;
         }
 
-        /* Typography */
+        /* TYPOGRAPHY */
         h1, h2, h3 {
             font-family: 'Orbitron', sans-serif;
             text-transform: uppercase;
@@ -65,179 +80,168 @@
         }
 
         h1 {
-            font-size: 3.5rem;
-            color: var(--neon-cyan);
-            text-shadow: 0 0 10px var(--neon-cyan);
+            font-size: 4rem;
+            line-height: 1;
+            background: linear-gradient(to right, #fff, var(--neon-cyan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 20px var(--neon-cyan-dim);
             margin-bottom: 0.5rem;
         }
 
         h2 {
-            font-size: 1.8rem;
-            border-bottom: 2px solid var(--neon-pink);
+            font-size: 1.5rem;
+            color: var(--neon-cyan);
+            border-bottom: 1px solid var(--neon-cyan);
             padding-bottom: 0.5rem;
             margin-top: 4rem;
-            margin-bottom: 2rem;
-            color: #fff;
-            display: inline-block;
-            text-shadow: 0 0 5px var(--neon-pink);
+            display: flex;
+            align-items: center;
+        }
+        h2::before {
+            content: ">>";
+            margin-right: 10px;
+            color: var(--neon-pink);
         }
 
         a { color: var(--neon-cyan); text-decoration: none; transition: 0.3s; }
-        a:hover { color: var(--neon-green); text-shadow: 0 0 8px var(--neon-green); }
+        a:hover { color: #fff; text-shadow: 0 0 10px var(--neon-cyan); }
 
-        /* Terminal Header Box */
-        .terminal-box {
-            background: rgba(10, 15, 20, 0.9);
-            border: 1px solid var(--neon-cyan);
+        /* --- UI COMPONENTS --- */
+
+        /* 1. MAIN TERMINAL PANEL */
+        .hud-panel {
+            background: var(--panel-bg);
+            border: 1px solid var(--neon-cyan-dim);
+            backdrop-filter: blur(5px);
             padding: 2rem;
             position: relative;
-            box-shadow: 0 0 20px rgba(0, 243, 255, 0.1);
-            margin-bottom: 3rem;
+            box-shadow: 0 0 30px rgba(0,0,0,0.5);
+            clip-path: polygon(
+                0 0, 
+                100% 0, 
+                100% calc(100% - 20px), 
+                calc(100% - 20px) 100%, 
+                0 100%
+            );
+            margin-bottom: 2rem;
         }
         
-        /* Corner Brackets */
-        .terminal-box::before, .terminal-box::after {
-            content: ''; position: absolute; width: 20px; height: 20px;
-            border: 2px solid var(--neon-cyan); transition: 0.3s;
+        /* Decorative corner markers */
+        .hud-panel::before {
+            content: ""; position: absolute; top: 0; left: 0;
+            width: 10px; height: 10px;
+            border-top: 2px solid var(--neon-cyan);
+            border-left: 2px solid var(--neon-cyan);
         }
-        .terminal-box::before { top: -2px; left: -2px; border-right: 0; border-bottom: 0; }
-        .terminal-box::after { bottom: -2px; right: -2px; border-left: 0; border-top: 0; }
-
-        .role-badge {
-            background: var(--neon-pink);
-            color: #000;
-            font-weight: bold;
-            padding: 2px 8px;
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            display: inline-block;
-            margin-bottom: 1rem;
-            box-shadow: 0 0 10px var(--neon-pink);
+        .hud-panel::after {
+            content: ""; position: absolute; bottom: 0; right: 0;
+            width: 20px; height: 20px;
+            border-bottom: 2px solid var(--neon-cyan);
+            border-right: 2px solid var(--neon-cyan);
         }
 
-        /* Experience Cards (Cyber Panels) */
-        .xp-card {
-            background: linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0) 100%);
-            border-left: 4px solid var(--neon-green);
+        /* 2. EXPERIENCE CARDS */
+        .job-card {
+            border-left: 3px solid var(--neon-pink);
+            background: linear-gradient(90deg, rgba(255, 0, 85, 0.05) 0%, transparent 100%);
             padding: 1.5rem;
             margin-bottom: 2rem;
-            position: relative;
-            transition: transform 0.2s;
+            transition: 0.3s;
         }
-        .xp-card:hover {
+        .job-card:hover {
+            border-left-color: var(--neon-cyan);
+            background: linear-gradient(90deg, rgba(0, 243, 255, 0.05) 0%, transparent 100%);
             transform: translateX(10px);
-            background: rgba(255, 255, 255, 0.05);
         }
-        .xp-role {
-            color: var(--neon-green);
-            font-size: 1.2rem;
-            font-weight: bold;
-            margin-bottom: 0.2rem;
-        }
-        .xp-meta {
-            font-size: 0.85rem;
-            color: var(--text-dim);
-            margin-bottom: 1rem;
+        .job-title {
             font-family: 'Orbitron', sans-serif;
+            font-size: 1.4rem;
+            color: #fff;
+        }
+        .job-meta {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+            text-transform: uppercase;
         }
 
-        /* Skill Tags (Chipsets) */
-        .skill-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
+        /* 3. SKILL CHIPS */
+        .skill-grid {
+            display: flex; flex-wrap: wrap; gap: 12px;
         }
-        .tech-tag {
-            background: rgba(0, 243, 255, 0.1);
-            border: 1px solid var(--neon-cyan);
+        .skill-chip {
+            background: #0f172a;
+            border: 1px solid #334155;
             color: var(--neon-cyan);
-            padding: 5px 12px;
-            font-size: 0.85rem;
+            padding: 6px 14px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
             text-transform: uppercase;
-            cursor: crosshair;
+            letter-spacing: 1px;
+            transition: 0.3s;
+        }
+        .skill-chip:hover {
+            border-color: var(--neon-cyan);
+            background: var(--neon-cyan-dim);
+            color: #fff;
+            box-shadow: 0 0 15px var(--neon-cyan-dim);
+        }
+
+        /* 4. GLITCH BUTTON (DOWNLOAD) */
+        .mega-btn {
+            display: block;
+            width: 100%;
+            padding: 1.5rem;
+            margin-top: 2rem;
+            background: var(--neon-cyan-dim);
+            border: 1px solid var(--neon-cyan);
+            color: #fff;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 900;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            cursor: pointer;
+            transition: 0.3s;
             position: relative;
             overflow: hidden;
         }
-        .tech-tag:hover {
+        .mega-btn:hover {
             background: var(--neon-cyan);
             color: #000;
-            box-shadow: 0 0 15px var(--neon-cyan);
+            box-shadow: 0 0 40px var(--neon-cyan);
+        }
+        .mega-btn::before {
+            content: "PDF_SECURE_LINK";
+            position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.8), transparent);
+            transition: 0.5s;
+        }
+        .mega-btn:hover::before {
+            left: 100%;
         }
 
-        /* Glitch Effect Class */
-        .glitch {
-            position: relative;
-        }
-        .glitch::before, .glitch::after {
-            content: attr(data-text);
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-        }
-        .glitch::before {
-            left: 2px; text-shadow: -1px 0 red; clip: rect(44px, 450px, 56px, 0);
-            animation: glitch-anim-1 2s infinite linear alternate-reverse;
-        }
-        .glitch::after {
-            left: -2px; text-shadow: -1px 0 blue; clip: rect(44px, 450px, 56px, 0);
-            animation: glitch-anim-2 2s infinite linear alternate-reverse;
+        /* Code snippet style */
+        code {
+            background: rgba(0,0,0,0.5);
+            padding: 2px 6px;
+            border-radius: 4px;
+            color: var(--neon-gold);
+            font-family: 'JetBrains Mono', monospace;
         }
 
-        /* Download Button (Cyber Button) */
-        .cyber-btn {
-            display: block;
-            width: 100%;
-            text-align: center;
-            background: transparent;
-            color: var(--neon-pink);
-            border: 2px solid var(--neon-pink);
-            padding: 1.5rem;
-            font-family: 'Orbitron', sans-serif;
-            font-weight: 900;
-            text-transform: uppercase;
-            font-size: 1.2rem;
-            letter-spacing: 3px;
-            position: relative;
-            transition: 0.3s;
-            clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
-        }
-        .cyber-btn:hover {
-            background: var(--neon-pink);
-            color: #000;
-            box-shadow: 0 0 30px var(--neon-pink);
-            text-shadow: none;
-        }
-
-        /* Animations */
-        @keyframes glitch-anim-1 {
-            0% { clip: rect(30px, 9999px, 10px, 0); }
-            20% { clip: rect(80px, 9999px, 90px, 0); }
-            40% { clip: rect(10px, 9999px, 60px, 0); }
-            60% { clip: rect(50px, 9999px, 20px, 0); }
-            80% { clip: rect(20px, 9999px, 80px, 0); }
-            100% { clip: rect(90px, 9999px, 30px, 0); }
-        }
-        @keyframes glitch-anim-2 {
-            0% { clip: rect(10px, 9999px, 80px, 0); }
-            20% { clip: rect(90px, 9999px, 10px, 0); }
-            40% { clip: rect(30px, 9999px, 50px, 0); }
-            60% { clip: rect(70px, 9999px, 20px, 0); }
-            80% { clip: rect(20px, 9999px, 60px, 0); }
-            100% { clip: rect(50px, 9999px, 40px, 0); }
-        }
-
-        /* Scrollbar */
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #000; }
-        ::-webkit-scrollbar-thumb { background: var(--neon-cyan); }
-        ::-webkit-scrollbar-thumb:hover { background: var(--neon-green); }
-
-        @media (max-width: 600px) {
-            h1 { font-size: 2rem; }
-            .terminal-box { padding: 1rem; }
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5rem; }
+            .container { padding: 2rem 1rem; }
         }
     </style>
 </head>
 <body>
+    <div class="cyber-grid"></div>
     <div class="container">
         {{ content }}
     </div>
