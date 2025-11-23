@@ -2,70 +2,239 @@
 <html lang="en">
 <head>
     <meta charset="utf-8" />
-    <title>{{ page.title }} - {{ site.title }}</title>
+    <title>{{ page.title }} // {{ site.title }}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+
     <style>
         :root {
-            --bg: #0f172a;
-            --card: #1e293b;
-            --text: #e2e8f0;
-            --muted: #94a3b8;
-            --accent: #38bdf8;
+            --bg-color: #050505;
+            --terminal-bg: #0a0f14;
+            --neon-cyan: #00f3ff;
+            --neon-pink: #ff0055;
+            --neon-green: #0aff00;
+            --text-main: #e0e0e0;
+            --text-dim: #6b7280;
+            --grid-color: rgba(0, 243, 255, 0.05);
         }
+
+        * { box-sizing: border-box; }
+
         body {
-            font-family: 'Inter', sans-serif;
+            font-family: 'JetBrains Mono', monospace;
             margin: 0;
-            background: var(--bg);
-            color: var(--text);
+            background-color: var(--bg-color);
+            background-image: 
+                linear-gradient(var(--grid-color) 1px, transparent 1px),
+                linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
+            background-size: 40px 40px;
+            color: var(--text-main);
+            overflow-x: hidden;
             line-height: 1.6;
         }
+
+        /* CRT Scanline Effect Overlay */
+        body::after {
+            content: " ";
+            display: block;
+            position: absolute;
+            top: 0; left: 0; bottom: 0; right: 0;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+            z-index: 9999;
+            background-size: 100% 2px, 3px 100%;
+            pointer-events: none;
+        }
+
         .container {
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
-            padding: 2rem 1rem;
+            padding: 4rem 1.5rem;
+            position: relative;
+            z-index: 1;
         }
-        header {
-            text-align: center;
-            margin-bottom: 3rem;
-            border-bottom: 1px solid #334155;
-            padding-bottom: 2rem;
+
+        /* Typography */
+        h1, h2, h3 {
+            font-family: 'Orbitron', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-top: 0;
         }
-        h1 { font-size: 2.5rem; margin: 0; color: #fff; }
-        h2 { color: var(--accent); margin-top: 2.5rem; font-size: 1.5rem; border-bottom: 1px solid #334155; padding-bottom: 0.5rem; }
-        h3 { font-size: 1.2rem; margin-bottom: 0.2rem; color: #fff; }
-        .subtitle { color: var(--muted); font-size: 1.1rem; margin-top: 0.5rem; }
-        .meta { color: var(--muted); font-size: 0.9rem; margin-bottom: 1rem; }
-        .card {
-            background: var(--card);
-            padding: 1.5rem;
-            border-radius: 8px;
-            margin-bottom: 1.5rem;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-        }
-        .tag {
-            display: inline-block;
-            background: #334155;
-            padding: 0.2rem 0.6rem;
-            border-radius: 4px;
-            font-size: 0.85rem;
-            margin-right: 0.5rem;
+
+        h1 {
+            font-size: 3.5rem;
+            color: var(--neon-cyan);
+            text-shadow: 0 0 10px var(--neon-cyan);
             margin-bottom: 0.5rem;
         }
-        a { color: var(--accent); text-decoration: none; }
-        a:hover { text-decoration: underline; }
-        .download-btn {
+
+        h2 {
+            font-size: 1.8rem;
+            border-bottom: 2px solid var(--neon-pink);
+            padding-bottom: 0.5rem;
+            margin-top: 4rem;
+            margin-bottom: 2rem;
+            color: #fff;
             display: inline-block;
-            background: var(--accent);
-            color: #0f172a;
-            padding: 0.5rem 1rem;
-            border-radius: 6px;
-            font-weight: bold;
-            margin-top: 1rem;
+            text-shadow: 0 0 5px var(--neon-pink);
         }
-        .download-btn:hover { background: #0ea5e9; text-decoration: none; }
+
+        a { color: var(--neon-cyan); text-decoration: none; transition: 0.3s; }
+        a:hover { color: var(--neon-green); text-shadow: 0 0 8px var(--neon-green); }
+
+        /* Terminal Header Box */
+        .terminal-box {
+            background: rgba(10, 15, 20, 0.9);
+            border: 1px solid var(--neon-cyan);
+            padding: 2rem;
+            position: relative;
+            box-shadow: 0 0 20px rgba(0, 243, 255, 0.1);
+            margin-bottom: 3rem;
+        }
+        
+        /* Corner Brackets */
+        .terminal-box::before, .terminal-box::after {
+            content: ''; position: absolute; width: 20px; height: 20px;
+            border: 2px solid var(--neon-cyan); transition: 0.3s;
+        }
+        .terminal-box::before { top: -2px; left: -2px; border-right: 0; border-bottom: 0; }
+        .terminal-box::after { bottom: -2px; right: -2px; border-left: 0; border-top: 0; }
+
+        .role-badge {
+            background: var(--neon-pink);
+            color: #000;
+            font-weight: bold;
+            padding: 2px 8px;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: inline-block;
+            margin-bottom: 1rem;
+            box-shadow: 0 0 10px var(--neon-pink);
+        }
+
+        /* Experience Cards (Cyber Panels) */
+        .xp-card {
+            background: linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0) 100%);
+            border-left: 4px solid var(--neon-green);
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            position: relative;
+            transition: transform 0.2s;
+        }
+        .xp-card:hover {
+            transform: translateX(10px);
+            background: rgba(255, 255, 255, 0.05);
+        }
+        .xp-role {
+            color: var(--neon-green);
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 0.2rem;
+        }
+        .xp-meta {
+            font-size: 0.85rem;
+            color: var(--text-dim);
+            margin-bottom: 1rem;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        /* Skill Tags (Chipsets) */
+        .skill-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .tech-tag {
+            background: rgba(0, 243, 255, 0.1);
+            border: 1px solid var(--neon-cyan);
+            color: var(--neon-cyan);
+            padding: 5px 12px;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            cursor: crosshair;
+            position: relative;
+            overflow: hidden;
+        }
+        .tech-tag:hover {
+            background: var(--neon-cyan);
+            color: #000;
+            box-shadow: 0 0 15px var(--neon-cyan);
+        }
+
+        /* Glitch Effect Class */
+        .glitch {
+            position: relative;
+        }
+        .glitch::before, .glitch::after {
+            content: attr(data-text);
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+        }
+        .glitch::before {
+            left: 2px; text-shadow: -1px 0 red; clip: rect(44px, 450px, 56px, 0);
+            animation: glitch-anim-1 2s infinite linear alternate-reverse;
+        }
+        .glitch::after {
+            left: -2px; text-shadow: -1px 0 blue; clip: rect(44px, 450px, 56px, 0);
+            animation: glitch-anim-2 2s infinite linear alternate-reverse;
+        }
+
+        /* Download Button (Cyber Button) */
+        .cyber-btn {
+            display: block;
+            width: 100%;
+            text-align: center;
+            background: transparent;
+            color: var(--neon-pink);
+            border: 2px solid var(--neon-pink);
+            padding: 1.5rem;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 900;
+            text-transform: uppercase;
+            font-size: 1.2rem;
+            letter-spacing: 3px;
+            position: relative;
+            transition: 0.3s;
+            clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
+        }
+        .cyber-btn:hover {
+            background: var(--neon-pink);
+            color: #000;
+            box-shadow: 0 0 30px var(--neon-pink);
+            text-shadow: none;
+        }
+
+        /* Animations */
+        @keyframes glitch-anim-1 {
+            0% { clip: rect(30px, 9999px, 10px, 0); }
+            20% { clip: rect(80px, 9999px, 90px, 0); }
+            40% { clip: rect(10px, 9999px, 60px, 0); }
+            60% { clip: rect(50px, 9999px, 20px, 0); }
+            80% { clip: rect(20px, 9999px, 80px, 0); }
+            100% { clip: rect(90px, 9999px, 30px, 0); }
+        }
+        @keyframes glitch-anim-2 {
+            0% { clip: rect(10px, 9999px, 80px, 0); }
+            20% { clip: rect(90px, 9999px, 10px, 0); }
+            40% { clip: rect(30px, 9999px, 50px, 0); }
+            60% { clip: rect(70px, 9999px, 20px, 0); }
+            80% { clip: rect(20px, 9999px, 60px, 0); }
+            100% { clip: rect(50px, 9999px, 40px, 0); }
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #000; }
+        ::-webkit-scrollbar-thumb { background: var(--neon-cyan); }
+        ::-webkit-scrollbar-thumb:hover { background: var(--neon-green); }
+
+        @media (max-width: 600px) {
+            h1 { font-size: 2rem; }
+            .terminal-box { padding: 1rem; }
+        }
     </style>
 </head>
 <body>
