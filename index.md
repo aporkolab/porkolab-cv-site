@@ -1,46 +1,55 @@
 ---
 layout: default
-title: "SYSTEM::ROOT"
+title: "INTERFACE::V.2.0"
 ---
 
 {% assign cv = site.data.cv_data %}
 
-<div class="terminal-box">
-    <div class="role-badge">SYS_ADMIN // LEVEL 99</div>
-    <h1 class="glitch" data-text="{{ cv.name.en }}">{{ cv.name.en }}</h1>
-    <div style="color: var(--neon-green); font-family: 'Orbitron'; letter-spacing: 1px;">
-        > {{ cv.title.en }} <span style="animation: blink 1s infinite;">_</span>
-    </div>
-
-    <div style="margin-top: 2rem; border-top: 1px dashed #333; padding-top: 1rem; font-size: 0.9rem;">
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px;">
+<div class="hud-panel">
+    <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap;">
+        <div>
+            <div style="color: var(--neon-pink); font-family: 'JetBrains Mono'; font-size: 0.8rem; margin-bottom: 5px;">
+                ID: {{ cv.name.en | upcase | replace: " ", "_" }} // STATUS: ONLINE
+            </div>
+            <h1>{{ cv.name.en }}</h1>
+            <div style="font-size: 1.2rem; color: var(--text-muted); margin-top: 0.5rem;">
+                > {{ cv.title.en }} <span class="blink">_</span>
+            </div>
+        </div>
+        
+        <div style="text-align: right; font-family: 'JetBrains Mono'; font-size: 0.9rem; margin-top: 1rem;">
             {% if cv.contact.website %}
-            <div>LINK_UPLINK: <a href="{{ cv.contact.website }}" target="_blank">SECURE_CONNECTION</a></div>
+            <div><a href="{{ cv.contact.website }}">WEB::UPLINK</a></div>
             {% endif %}
             {% if cv.contact.github %}
-            <div>CODE_REPO: <a href="{{ cv.contact.github }}" target="_blank">GITHUB::ACCESS</a></div>
+            <div><a href="{{ cv.contact.github }}">GIT::REPO</a></div>
             {% endif %}
-            <div>LOC_DATA: <span style="color: #fff">{{ cv.contact.location.en }}</span></div>
+            {% if cv.contact.linkedin %}
+            <div><a href="{{ cv.contact.linkedin }}">NET::LINKEDIN</a></div>
+            {% endif %}
+            <div style="color: var(--neon-cyan); margin-top: 5px;">LOC::{{ cv.contact.location.en | upcase }}</div>
         </div>
     </div>
 </div>
 
 <section>
-    <h2>// SYSTEM_OVERVIEW</h2>
-    <p style="border-left: 2px solid var(--neon-pink); padding-left: 1rem; color: #ccc;">
+    <h2>SYSTEM_DIAGNOSTIC</h2>
+    <p style="font-size: 1.1rem; color: #fff; border-left: 4px solid var(--neon-cyan); padding-left: 1.5rem; margin-left: 0;">
         {{ cv.summary.en }}
     </p>
 </section>
 
 <section>
-    <h2>// INSTALLED_MODULES</h2>
+    <h2>ACTIVE_PROTOCOLS</h2>
     
     {% if cv.skills.backend %}
     <div style="margin-bottom: 1.5rem;">
-        <div style="color: var(--text-dim); margin-bottom: 0.5rem; font-size: 0.8rem;">[ BACKEND_PROTOCOLS ]</div>
-        <div class="skill-container">
+        <div style="font-family: 'Orbitron'; color: var(--text-muted); font-size: 0.8rem; margin-bottom: 0.5rem;">
+            [ BACKEND_ARCHITECTURE ]
+        </div>
+        <div class="skill-grid">
             {% for s in cv.skills.backend %} 
-                <div class="tech-tag">{{ s }}</div> 
+                <div class="skill-chip">{{ s }}</div> 
             {% endfor %}
         </div>
     </div>
@@ -48,21 +57,25 @@ title: "SYSTEM::ROOT"
 
     {% if cv.skills.frontend %}
     <div style="margin-bottom: 1.5rem;">
-        <div style="color: var(--text-dim); margin-bottom: 0.5rem; font-size: 0.8rem;">[ FRONTEND_INTERFACE ]</div>
-        <div class="skill-container">
+        <div style="font-family: 'Orbitron'; color: var(--text-muted); font-size: 0.8rem; margin-bottom: 0.5rem;">
+            [ FRONTEND_VISUALS ]
+        </div>
+        <div class="skill-grid">
             {% for s in cv.skills.frontend %} 
-                <div class="tech-tag">{{ s }}</div> 
+                <div class="skill-chip">{{ s }}</div> 
             {% endfor %}
         </div>
     </div>
     {% endif %}
-
+    
     {% if cv.skills.tools %}
     <div>
-        <div style="color: var(--text-dim); margin-bottom: 0.5rem; font-size: 0.8rem;">[ TOOLS_&_DEPLOYMENT ]</div>
-        <div class="skill-container">
+        <div style="font-family: 'Orbitron'; color: var(--text-muted); font-size: 0.8rem; margin-bottom: 0.5rem;">
+            [ DEPLOYMENT_TOOLS ]
+        </div>
+        <div class="skill-grid">
             {% for s in cv.skills.tools %} 
-                <div class="tech-tag">{{ s }}</div> 
+                <div class="skill-chip">{{ s }}</div> 
             {% endfor %}
         </div>
     </div>
@@ -70,17 +83,17 @@ title: "SYSTEM::ROOT"
 </section>
 
 <section>
-    <h2>// RUNTIME_LOGS</h2>
+    <h2>MISSION_LOGS</h2>
     {% for exp in cv.experience %}
-    <div class="xp-card">
-        <div class="xp-role">{{ exp.role.en }}</div>
-        <div class="xp-meta">
-            {{ exp.company }} // {{ exp.period }} // <span style="color: var(--neon-cyan)">{{ exp.location.en }}</span>
+    <div class="job-card">
+        <div class="job-title">{{ exp.role.en }}</div>
+        <div class="job-meta">
+            {{ exp.company }}  //  {{ exp.period }}  //  <span style="color: var(--neon-cyan)">{{ exp.location.en }}</span>
         </div>
         <ul style="list-style: none; padding: 0; margin: 0;">
             {% for item in exp.details.en %}
-                <li style="margin-bottom: 0.5rem; position: relative; padding-left: 1.5rem;">
-                    <span style="position: absolute; left: 0; color: var(--neon-green);">></span>
+                <li style="margin-bottom: 0.8rem; padding-left: 1.5rem; position: relative;">
+                    <span style="position: absolute; left: 0; color: var(--neon-pink);">>></span>
                     {{ item }}
                 </li>
             {% endfor %}
@@ -91,31 +104,39 @@ title: "SYSTEM::ROOT"
 
 {% if cv.publications %}
 <section>
-    <h2>// DATA_SHARDS</h2>
-    <div style="display: grid; gap: 1rem;">
+    <h2>DATA_ARCHIVES</h2>
     {% for pub in cv.publications %}
-        <div style="border: 1px solid #333; padding: 1rem; background: rgba(255,255,255,0.02);">
-            <strong style="color: #fff; display: block; margin-bottom: 0.2rem;">{{ pub.title }}</strong>
-            <div style="font-size: 0.85rem; color: var(--text-dim);">
-                YEAR: {{ pub.year }} | TYPE: {{ pub.type }}
-            </div>
+    <div style="border: 1px solid #333; padding: 1rem; margin-bottom: 1rem; background: rgba(0,0,0,0.3);">
+        <strong style="color: #fff; font-family: 'Orbitron'">{{ pub.title }}</strong>
+        <div style="font-family: 'JetBrains Mono'; font-size: 0.8rem; color: var(--text-muted); margin-top: 5px;">
+            REL: {{ pub.year }} | CLASS: {{ pub.type }}
         </div>
-    {% endfor %}
     </div>
+    {% endfor %}
 </section>
 {% endif %}
 
-<section style="margin-top: 5rem; text-align: center;">
-    {% for item in site.data.cv_list.cvs limit:1 %}
-    <a href="{{ item.url }}" class="cyber-btn" target="_blank">
-        INITIATE_DOWNLOAD_SEQUENCE [PDF]
-    </a>
-    <div style="margin-top: 1rem; font-family: 'Orbitron'; color: var(--text-dim); font-size: 0.8rem;">
-        LAST_UPDATED: {{ item.updated }} // SECURE_HASH_MATCH
-    </div>
-    {% endfor %}
+<section style="margin-top: 4rem; margin-bottom: 4rem;">
+    {% assign latest_cv = site.data.cv_list.cvs | first %}
+    
+    {% if latest_cv %}
+        <a href="{{ latest_cv.url }}" class="mega-btn" target="_blank">
+            DOWNLOAD_FULL_INTEL [PDF]
+        </a>
+        <div style="text-align: center; font-family: 'JetBrains Mono'; color: var(--text-muted); margin-top: 10px; font-size: 0.8rem;">
+            LATEST_BUILD: {{ latest_cv.updated }} // VERIFIED
+        </div>
+    {% else %}
+        <a href="mailto:{{ cv.contact.email }}" class="mega-btn">
+            REQUEST_SECURE_CHANNEL [EMAIL]
+        </a>
+        <div style="text-align: center; font-family: 'JetBrains Mono'; color: var(--text-muted); margin-top: 10px; font-size: 0.8rem;">
+            PDF_ARCHIVE_OFFLINE // MANUAL_OVERRIDE_REQUIRED
+        </div>
+    {% endif %}
 </section>
 
 <style>
-@keyframes blink { 50% { opacity: 0; } }
+.blink { animation: blink-anim 1s infinite; }
+@keyframes blink-anim { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
 </style>
