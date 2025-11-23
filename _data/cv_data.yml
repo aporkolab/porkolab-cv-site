@@ -9,26 +9,26 @@ contact:
   phone: +36 30 000 0000
   website: https://aporkolab.com
 experience:
-  - company: Telekom
-    details:
-      de:
-        - Entwarf und implementierte Java/Spring-Mikroservices.
-        - Verbesserte Entwickler-Workflows und CI/CD-Pipelines.
-      en:
-        - Designed and implemented Java/Spring-based microservices.
-        - Improved developer workflows and CI/CD pipelines.
-      hu:
-        - Java/Spring alapú mikroszervizeket terveztem és implementáltam.
-        - Fejlesztői workflow-kat és CI/CD pipeline-okat fejlesztettem.
-    location:
-      de: Budapest, Ungarn
-      en: Budapest, Hungary
-      hu: Budapest, Magyarország
-    period: 2023 – present
-    role:
-      de: Senior Full-Stack Engineer
-      en: Senior Full-Stack Engineer
-      hu: Senior full stack fejlesztő
+- company: Telekom
+  details:
+    de:
+    - Entwarf und implementierte Java/Spring-Mikroservices.
+    - Verbesserte Entwickler-Workflows und CI/CD-Pipelines.
+    en:
+    - Designed and implemented Java/Spring-based microservices.
+    - Improved developer workflows and CI/CD pipelines.
+    hu:
+    - Java/Spring alapú mikroszervizeket terveztem és implementáltam.
+    - Fejlesztői workflow-kat és CI/CD pipeline-okat fejlesztettem.
+  location:
+    de: Budapest, Ungarn
+    en: Budapest, Hungary
+    hu: Budapest, Magyarország
+  period: 2023 – present
+  role:
+    de: Senior Full-Stack Engineer
+    en: Senior Full-Stack Engineer
+    hu: Szenior full stack fejlesztő
 headings:
   experience:
     de: Berufserfahrung
@@ -47,28 +47,25 @@ name:
   en: Adam Porkolab
   hu: Porkoláb Ádám
 public_blacklist:
-  - email
-  - phone
-  - address
-  - location
-  - linkedin
+- email
+- phone
+- address
+- location
+- linkedin
 summary:
-  de:
-    'Senior Full-Stack Engineer mit Erfahrung in narrativen Systemen und spekulativer
+  de: 'Senior Full-Stack Engineer mit Erfahrung in narrativen Systemen und spekulativer
     Fiktion.
 
     '
-  en:
-    'Senior full-stack engineer with a background in narrative systems and speculative
+  en: 'Senior full-stack engineer with a background in narrative systems and speculative
     fiction.
 
     '
-  hu:
-    'Senior full stack fejlesztő, narratív rendszerek és spekulatív fikció területén
+  hu: 'Szenior full stack fejlesztő, narratív rendszerek és spekulatív fikció területén
     szerzett tapasztalattal.
 
     '
 title:
   de: Senior Full-Stack Engineer und Science-Fiction-Autor
   en: Senior Full-Stack Engineer & Speculative-Fiction Author
-  hu: Senior full stack fejlesztő és sci-fi író
+  hu: Szenior full stack fejlesztő és sci-fi író
