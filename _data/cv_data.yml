@@ -6,9 +6,9 @@ contact:
   phone: null
   website: https://aporkolab.com
 downloads:
-  de: https://pub-c677684c572248f4ae32cfb9fc6b6972.r2.dev/cv_public_de_default_20251124_190906.pdf
-  en: https://pub-c677684c572248f4ae32cfb9fc6b6972.r2.dev/cv_public_en_default_20251124_190855.pdf
-  hu: https://pub-c677684c572248f4ae32cfb9fc6b6972.r2.dev/cv_public_hu_default_20251124_190901.pdf
+  de: https://pub-c677684c572248f4ae32cfb9fc6b6972.r2.dev/cv_public_de_default_20251124_193818.pdf
+  en: https://pub-c677684c572248f4ae32cfb9fc6b6972.r2.dev/cv_public_en_default_20251124_193807.pdf
+  hu: https://pub-c677684c572248f4ae32cfb9fc6b6972.r2.dev/cv_public_hu_default_20251124_193813.pdf
 education:
 - degree:
     de: Dr. phil. in Linguistik (Summa Cum Laude)
@@ -30,6 +30,17 @@ education:
     hu: Intenzív képzés Java backend, frontend és számítástechnikai alapok területén.
   institution: Training 360 / StudiCore / OKTÁV
   year: 2019 – 2022
+- degree:
+    de: BA & MA in Ungarisch- und Geschichtslehramt (Mit Auszeichnung)
+    en: BA & MA in Hungarian and History Teaching (with Distinction)
+    hu: Magyartanár és Történelemtanár BA és MA (Kitűnő minősítéssel)
+  details:
+    de: Doppeltes Lehramtsstudium, mit Auszeichnung abgeschlossen.
+    en: Dual major program, completed with distinction.
+    hu: Kettős tanári szak, kitűnő minősítéssel.
+  institution: University of Pécs
+  period: 2007–2012
+  year: 2007 – 2012
 experience:
 - company: Deutsche Telekom
   details:
@@ -138,9 +149,9 @@ experience:
     hu: Pécs, Magyarország
   period: 2007 – 2020
   role:
-    de: Wissenschaftlicher Mitarbeiter & Dozent
-    en: Assistant Lecturer & PhD Researcher
-    hu: Doktorandusz óraadó és kutató
+    de: Uni-student, Wissenschaftlicher Mitarbeiter & Dozent
+    en: University Student, Assistant Lecturer & PhD Researcher
+    hu: Egyetemista, doktorandusz óraadó és kutató
 headings:
   awards:
     de: Auszeichnungen
@@ -282,11 +293,11 @@ summary:
   hu: 'Szenior full stack mérnök (Java/Spring & Angular) nyelvészeti PhD-vel. Dokumentálatlan
     legacy rendszerek stabilizálására, tiszta és kiszámítható architektúrák tervezésére,
     valamint async-first, teljesen távoli munkavégzésre specializálódom. Fókusz: API-tervezés,
-    karbantarthatóság és pontos technikai kommunikáció — nincs whiteboard-feladvány,
-    nincs élő kódolós show.
+    karbantarthatóság és pontos technikai kommunikáció — nem veszek részt whiteboard-teszteken,
+    és nem vállalok live codingot a kiválasztás folyamán.
 
     '
 title:
-  de: Senior Full-Stack Engineer & Computerlinguist
-  en: Senior Full-Stack Engineer & Computational Linguist
-  hu: Szenior full stack mérnök és számítógépes nyelvész
+  de: Senior Full-Stack Engineer & Digitallinguist
+  en: Senior Full-Stack Engineer & Digital Linguist
+  hu: Szenior full stack mérnök és digitális nyelvész
