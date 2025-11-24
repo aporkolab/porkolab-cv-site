@@ -5,6 +5,10 @@ contact:
   location: null
   phone: null
   website: https://aporkolab.com
+downloads:
+  de: https://pub-c677684c572248f4ae32cfb9fc6b6972.r2.dev/cv_public_de_default_20251124_190906.pdf
+  en: https://pub-c677684c572248f4ae32cfb9fc6b6972.r2.dev/cv_public_en_default_20251124_190855.pdf
+  hu: https://pub-c677684c572248f4ae32cfb9fc6b6972.r2.dev/cv_public_hu_default_20251124_190901.pdf
 education:
 - degree:
     de: Dr. phil. in Linguistik (Summa Cum Laude)
