@@ -101,6 +101,7 @@
         border-right: 1px solid var(--border);
         background: rgba(0, 0, 0, 0.5);
         backdrop-filter: blur(10px);
+        overflow-y: auto; 
       }
 
       .data-panel {
@@ -218,7 +219,7 @@
         gap: 1rem;
       }
       .xp-role {
-        font-size: 1.4rem;
+        font-size: 1.2rem;
         font-weight: 700;
         color: #fff;
       }
@@ -299,6 +300,30 @@
         font-size: 0.8em;
       }
 
+      /* Interest Grid */
+      .interest-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+      }
+      @media (max-width: 600px) {
+        .interest-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+      .interest-item h3 {
+        font-family: 'Space Grotesk';
+        font-size: 1rem;
+        color: #fff;
+        margin: 0 0 0.5rem 0;
+        text-transform: uppercase;
+      }
+      .interest-item p {
+        font-size: 0.9rem;
+        color: #888;
+        margin: 0;
+      }
+
       @keyframes pulse {
         0% {
           opacity: 1;
@@ -361,20 +386,40 @@
       >
     </div>
 
-    {% assign cv = site.data.cv_data %} {% assign lang = page.lang | default:
-    "en" %} {% if lang == 'hu' %} {% assign t_skills = "Készségek" %} {% assign
-    t_exp = "Tapasztalat" %} {% assign t_pubs = "Publikációk" %} {% assign
-    t_awards = "Díjak" %} {% assign t_dl = "Önéletrajz Letöltése" %} {% assign
-    t_req = "Hozzáférés Kérése" %} {% assign t_be = "Backend / Mag" %} {% assign
-    t_fe = "Frontend / UI" %} {% elsif lang == 'de' %} {% assign t_skills =
-    "Fähigkeiten" %} {% assign t_exp = "Erfahrung" %} {% assign t_pubs =
-    "Publikationen" %} {% assign t_awards = "Auszeichnungen" %} {% assign t_dl =
-    "Lebenslauf Herunterladen" %} {% assign t_req = "Zugriff Anfordern" %} {%
-    assign t_be = "Backend / Kern" %} {% assign t_fe = "Frontend / UI" %} {%
-    else %} {% assign t_skills = "Skills" %} {% assign t_exp = "Timeline" %} {%
-    assign t_pubs = "Publications" %} {% assign t_awards = "Awards" %} {% assign
-    t_dl = "Download CV" %} {% assign t_req = "Request Access" %} {% assign t_be
-    = "Backend / Core" %} {% assign t_fe = "Frontend / UI" %} {% endif %}
+    {% assign cv = site.data.cv_data %}
+    {% assign lang = page.lang | default: "en" %}
+
+    {% if lang == 'hu' %}
+      {% assign t_skills = "Készségek" %}
+      {% assign t_exp = "Tapasztalat" %}
+      {% assign t_edu = "Tanulmányok" %}
+      {% assign t_pubs = "Publikációk" %}
+      {% assign t_awards = "Díjak" %}
+      {% assign t_lang = "Nyelvek" %}
+      {% assign t_int = "Érdeklődés" %}
+      {% assign t_dl = "Önéletrajz Letöltése" %}
+      {% assign t_req = "Hozzáférés Kérése" %}
+    {% elsif lang == 'de' %}
+      {% assign t_skills = "Fähigkeiten" %}
+      {% assign t_exp = "Erfahrung" %}
+      {% assign t_edu = "Ausbildung" %}
+      {% assign t_pubs = "Publikationen" %}
+      {% assign t_awards = "Auszeichnungen" %}
+      {% assign t_lang = "Sprachen" %}
+      {% assign t_int = "Interessen" %}
+      {% assign t_dl = "Lebenslauf Herunterladen" %}
+      {% assign t_req = "Zugriff Anfordern" %}
+    {% else %}
+      {% assign t_skills = "Skills" %}
+      {% assign t_exp = "Experience" %}
+      {% assign t_edu = "Education" %}
+      {% assign t_pubs = "Publications" %}
+      {% assign t_awards = "Awards" %}
+      {% assign t_lang = "Languages" %}
+      {% assign t_int = "Interests" %}
+      {% assign t_dl = "Download CV" %}
+      {% assign t_req = "Request Access" %}
+    {% endif %}
 
     <div class="bg-mesh"></div>
     <div class="layout-wrapper">
@@ -390,54 +435,35 @@
         <div style="margin-top: 3rem">
           <div class="social-stack">
             {% if cv.contact.website %}
-            <a
-              href="{{ cv.contact.website }}"
-              class="social-link"
-              target="_blank"
-              >Portfolio / Web</a
-            >
-            {% endif %} {% if cv.contact.github %}
-            <a
-              href="{{ cv.contact.github }}"
-              class="social-link"
-              target="_blank"
-              >GitHub / Code</a
-            >
-            {% endif %} {% if cv.contact.linkedin %}
-            <a
-              href="{{ cv.contact.linkedin }}"
-              class="social-link"
-              target="_blank"
-              >LinkedIn / Connect</a
-            >
+            <a href="{{ cv.contact.website }}" class="social-link" target="_blank">Portfolio / Web</a>
+            {% endif %}
+            {% if cv.contact.github %}
+            <a href="{{ cv.contact.github }}" class="social-link" target="_blank">GitHub / Code</a>
+            {% endif %}
+            {% if cv.contact.linkedin %}
+            <a href="{{ cv.contact.linkedin }}" class="social-link" target="_blank">LinkedIn / Connect</a>
             {% endif %}
             <div class="social-link" style="cursor: default; color: #444">
               {{ cv.contact.location[lang] }}
             </div>
           </div>
 
-          {% assign latest_cv = site.data.cv_list.cvs | first %} {% if latest_cv
-          %}
+          {% assign lang_cvs = site.data.cv_list.cvs | where: "lang", lang %}
+          {% assign latest_cv = lang_cvs | first %}
+          
+          {% unless latest_cv %}
+            {% assign latest_cv = site.data.cv_list.cvs | first %}
+          {% endunless %}
+
+          {% if latest_cv %}
           <a href="{{ latest_cv.url }}" class="dl-btn" target="_blank">
             {{ t_dl }}
           </a>
-          <div
-            style="
-              margin-top: 10px;
-              font-size: 0.7rem;
-              color: #444;
-              font-family: monospace;
-              text-align: center;
-            "
-          >
-            VERSION: {{ latest_cv.updated }}
+          <div style="margin-top: 10px; font-size: 0.7rem; color: #444; font-family: monospace; text-align: center;">
+            VERSION: {{ latest_cv.updated }} | {{ latest_cv.lang | upcase }}
           </div>
           {% else %}
-          <a
-            href="mailto:{{ cv.contact.email }}"
-            class="dl-btn"
-            style="opacity: 0.8"
-          >
+          <a href="mailto:{{ cv.contact.email }}" class="dl-btn" style="opacity: 0.8">
             {{ t_req }}
           </a>
           {% endif %}
@@ -445,48 +471,21 @@
       </div>
 
       <div class="data-panel">
-       <section>
+        
+        <section>
           <h2>{{ t_skills }} <span class="index">01</span></h2>
-
-          {% if cv.skills.backend %}
-          <div style="margin-bottom: 2rem">
-            <div
-              style="
-                color: #666;
-                font-size: 0.8rem;
-                margin-bottom: 1rem;
-                text-transform: uppercase;
-              "
-            >
-              {{ t_be }}
+          {% for category in cv.skills %}
+            <div style="margin-bottom: 2rem">
+              <div style="color: #666; font-size: 0.8rem; margin-bottom: 1rem; text-transform: uppercase;">
+                {{ category[0] | replace: "_", " " | capitalize }}
+              </div>
+              <div class="skill-grid">
+                {% for s in category[1] %}
+                <div class="skill-box">{{ s[lang] }}</div>
+                {% endfor %}
+              </div>
             </div>
-            <div class="skill-grid">
-              {% for s in cv.skills.backend %}
-              <div class="skill-box">{{ s[lang] }}</div>
-              {% endfor %}
-            </div>
-          </div>
-          {% endif %} 
-          
-          {% if cv.skills.frontend %}
-          <div>
-            <div
-              style="
-                color: #666;
-                font-size: 0.8rem;
-                margin-bottom: 1rem;
-                text-transform: uppercase;
-              "
-            >
-              {{ t_fe }}
-            </div>
-            <div class="skill-grid">
-              {% for s in cv.skills.frontend %}
-              <div class="skill-box">{{ s[lang] }}</div>
-              {% endfor %}
-            </div>
-          </div>
-          {% endif %}
+          {% endfor %}
         </section>
 
         <section>
@@ -496,8 +495,7 @@
             <div class="xp-header">
               <div class="xp-role">{{ exp.role[lang] }}</div>
               <div class="xp-meta">
-                <span style="color: var(--accent)">{{ exp.company }}</span> / {{
-                exp.period }}
+                <span style="color: var(--accent)">{{ exp.company }}</span> / {{ exp.period }}
               </div>
             </div>
             <ul class="xp-list">
@@ -509,9 +507,53 @@
           {% endfor %}
         </section>
 
+        {% if cv.education %}
+        <section>
+          <h2>{{ t_edu }} <span class="index">03</span></h2>
+          {% for edu in cv.education %}
+          <div class="xp-item" style="border-left: 2px solid var(--accent);">
+            <div class="xp-header">
+              <div class="xp-role">{{ edu.degree[lang] }}</div>
+              <div class="xp-meta">
+                {{ edu.institution }} / {{ edu.year }}
+              </div>
+            </div>
+            <p style="color: #888; margin: 0;">{{ edu.details[lang] }}</p>
+          </div>
+          {% endfor %}
+        </section>
+        {% endif %}
+
+        <section>
+          <h2>{{ t_lang }} & {{ t_int }} <span class="index">04</span></h2>
+          
+          {% if cv.languages %}
+          <div style="margin-bottom: 2rem;">
+             <div style="color: #fff; font-weight: 700; margin-bottom: 1rem">{{ t_lang }}</div>
+             <div class="skill-grid">
+                {% for lan in cv.languages %}
+                  <div class="skill-box" style="border-color: var(--accent);">{{ lan.name[lang] }}</div>
+                {% endfor %}
+             </div>
+          </div>
+          {% endif %}
+
+          {% if cv.interests %}
+          <div style="color: #fff; font-weight: 700; margin-bottom: 1rem; margin-top: 2rem;">{{ t_int }}</div>
+          <div class="interest-grid">
+            {% for int in cv.interests %}
+            <div class="interest-item">
+              <h3>{{ int.name[lang] }}</h3>
+              <p>{{ int.description[lang] }}</p>
+            </div>
+            {% endfor %}
+          </div>
+          {% endif %}
+        </section>
+
         {% if cv.publications or cv.awards %}
         <section>
-          <h2>Achievements <span class="index">03</span></h2>
+          <h2>Achievements <span class="index">05</span></h2>
 
           {% if cv.publications %}
           <div style="margin-bottom: 2rem">
@@ -519,39 +561,23 @@
               {{ t_pubs }}
             </div>
             {% for pub in cv.publications %}
-            <div
-              style="
-                border-bottom: 1px solid var(--border);
-                padding: 1rem 0;
-                display: flex;
-                justify-content: space-between;
-              "
-            >
+            <div style="border-bottom: 1px solid var(--border); padding: 1rem 0; display: flex; justify-content: space-between;">
               <span style="color: #ccc">{{ pub.title }}</span>
-              <span style="color: #666; font-family: monospace"
-                >{{ pub.year }}</span
-              >
+              <span style="color: #666; font-family: monospace">{{ pub.year }}</span>
             </div>
             {% endfor %}
           </div>
-          {% endif %} {% if cv.awards %}
+          {% endif %} 
+          
+          {% if cv.awards %}
           <div>
             <div style="color: #fff; font-weight: 700; margin-bottom: 1rem">
               {{ t_awards }}
             </div>
             {% for award in cv.awards %}
-            <div
-              style="
-                border-bottom: 1px solid var(--border);
-                padding: 1rem 0;
-                display: flex;
-                justify-content: space-between;
-              "
-            >
+            <div style="border-bottom: 1px solid var(--border); padding: 1rem 0; display: flex; justify-content: space-between;">
               <span style="color: #ccc">{{ award.name }}</span>
-              <span style="color: #666; font-family: monospace"
-                >{{ award.year }}</span
-              >
+              <span style="color: #666; font-family: monospace">{{ award.year }}</span>
             </div>
             {% endfor %}
           </div>
@@ -559,18 +585,9 @@
         </section>
         {% endif %}
 
-        <footer
-          style="
-            margin-top: 6rem;
-            padding-top: 2rem;
-            border-top: 1px solid var(--border);
-            color: #444;
-            font-size: 0.8rem;
-          "
-        >
+        <footer style="margin-top: 6rem; padding-top: 2rem; border-top: 1px solid var(--border); color: #444; font-size: 0.8rem;">
           System Status: <span style="color: var(--accent)">OPTIMAL</span><br />
-          © {{ "now" | date: "%Y" }} {{ cv.name[lang] }} //
-          PORKOLAB_PERSONA_DELTA
+          © {{ "now" | date: "%Y" }} {{ cv.name[lang] }} // PORKOLAB_PERSONA_DELTA
         </footer>
       </div>
     </div>
