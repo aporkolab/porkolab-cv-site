@@ -1,59 +1,211 @@
 contact:
-  email: you@example.com
+  email: null
   github: https://github.com/APorkolab
-  linkedin: https://linkedin.com/in/aporkolab
-  location:
-    de: Ungarn
-    en: Hungary
-    hu: Magyarország
-  phone: +36 30 000 0000
+  linkedin: null
+  location: null
+  phone: null
   website: https://aporkolab.com
+education:
+- degree:
+    de: Dr. phil. in Linguistik (Summa Cum Laude)
+    en: PhD in Linguistics (Summa Cum Laude)
+    hu: Nyelvészet PhD (Summa Cum Laude)
+  details:
+    de: Schwerpunkt Strukturanalyse und kognitive Systeme.
+    en: Focus on structural analysis and cognitive systems.
+    hu: Fókuszban a strukturális analízis és kognitív rendszerek.
+  institution: University of Pécs
+  year: 2013 – 2018
+- degree:
+    de: Zertifizierungen für Softwaretechnik
+    en: Professional Software Engineering Certifications
+    hu: Szoftverfejlesztői képesítések
+  details:
+    de: Intensivtraining in Java-Backend, Frontend und Informatik-Grundlagen.
+    en: Intensive training in Java Backend, Frontend, and Computer Science fundamentals.
+    hu: Intenzív képzés Java backend, frontend és számítástechnikai alapok területén.
+  institution: Training 360 / StudiCore / OKTÁV
+  year: 2019 – 2022
 experience:
-- company: Telekom
+- company: Deutsche Telekom
   details:
     de:
-    - Entwarf und implementierte Java/Spring-Mikroservices.
-    - Verbesserte Entwickler-Workflows und CI/CD-Pipelines.
+    - Übernahme der vollen Verantwortung für undokumentierte Legacy-Module unter hohem
+      Druck.
+    - Leitung architektonischer Refactoring-Entscheidungen mit Fokus auf langfristige
+      Wartbarkeit.
+    - Steuerung der asynchronen Zusammenarbeit in internationalen Teams.
     en:
-    - Designed and implemented Java/Spring-based microservices.
-    - Improved developer workflows and CI/CD pipelines.
+    - Took full ownership of undocumented legacy modules under high-pressure conditions.
+    - Led architectural refactoring decisions with a focus on long-term maintainability.
+    - Managed async collaboration across international teams (Germany-Hungary).
     hu:
-    - Java/Spring alapú mikroszervizeket terveztem és implementáltam.
-    - Fejlesztői workflow-kat és CI/CD pipeline-okat fejlesztettem.
+    - Dokumentálatlan legacy modulok teljes körű átvétele és stabilizálása kritikus
+      határidők mellett.
+    - Architekturális refaktorálási döntések vezetése a hosszú távú karbantarthatóság
+      jegyében.
+    - Nemzetközi (német–magyar) aszinkron együttműködés irányítása.
   location:
-    de: Budapest, Ungarn
-    en: Budapest, Hungary
-    hu: Budapest, Magyarország
-  period: 2023 – present
+    de: Remote (DE/HU)
+    en: Remote (DE/HU)
+    hu: Távmunka (DE/HU)
+  period: 2024 – present
   role:
-    de: Senior Full-Stack Engineer
-    en: Senior Full-Stack Engineer
-    hu: Szenior full stack fejlesztő
+    de: Full Stack Developer (Java / Spring / Angular)
+    en: Full Stack Developer (Java / Spring / Angular)
+    hu: Full Stack Fejlesztő (Java / Spring / Angular)
+- company: Games for Business
+  details:
+    de:
+    - Entwicklung skalierbarer Gamified-Learning-Plattformen mit PHP und JavaScript.
+    - Implementierung von CI/CD-Workflows und Optimierung der Datenbankleistung.
+    en:
+    - Developed scalable gamified learning platforms using PHP (Laminas) and JavaScript.
+    - Implemented CI/CD workflows and optimized database performance.
+    hu:
+    - Skálázható gamifikált tanulási platformok fejlesztése PHP és JavaScript alapokon.
+    - CI/CD workflow-k implementálása és adatbázis-teljesítmény optimalizálása.
+  location:
+    de: Pécs, Ungarn
+    en: Pécs, Hungary
+    hu: Pécs, Magyarország
+  period: '2023'
+  role:
+    de: Full Stack Developer (PHP / JS / Agile)
+    en: Full Stack Developer (PHP / JS / Agile)
+    hu: Full Stack Fejlesztő (PHP / JS / Agile)
+- company: Baranya County Police Headquarters
+  details:
+    de:
+    - Verwaltung kritischer Infrastrukturen in einer Hochsicherheitsumgebung.
+    - Unterstützung interner Entwicklungsteams bei sicheren Bereitstellungsstrategien.
+    en:
+    - Managed critical infrastructure in a high-security public sector environment.
+    - Supported internal development teams with secure deployment strategies.
+    hu:
+    - Kritikus infrastruktúra üzemeltetése magas biztonsági kockázatú környezetben.
+    - Belső fejlesztői csapatok támogatása biztonságos deployment stratégiákkal.
+  location:
+    de: Pécs, Ungarn
+    en: Pécs, Hungary
+    hu: Pécs, Magyarország
+  period: 2021 – 2023
+  role:
+    de: IT-Spezialist (Netzwerksicherheit & Systeme)
+    en: IT Specialist (Network Security & Systems)
+    hu: IT Specialista (Hálózatbiztonság és Rendszerüzemeltetés)
+- company: InnoTeq
+  details:
+    de:
+    - Grundlegende Erfahrung in Enterprise-Java (Spring Boot) und Angular-Architekturen.
+    - Fokus auf objektorientierte Designmuster und Clean-Code-Prinzipien.
+    en:
+    - Gained foundational experience in enterprise Java (Spring Boot) and Angular
+      architectures.
+    - Focused on object-oriented design patterns and clean code principles.
+    hu:
+    - Vállalati szintű Java (Spring Boot) és Angular architektúrák alapjainak elsajátítása.
+    - Fókuszban az objektumorientált tervezési minták és a tiszta kód elvei.
+  location:
+    de: Pécs, Ungarn
+    en: Pécs, Hungary
+    hu: Pécs, Magyarország
+  period: '2021'
+  role:
+    de: Softwareentwickler-Praktikant (Java/Spring)
+    en: Software Development Intern (Java/Spring)
+    hu: Szoftverfejlesztő gyakornok (Java/Spring)
+- company: University of Pécs
+  details:
+    de:
+    - Anwendung von analytischem Systemdenken auf komplexe linguistische Themen.
+    - Verwaltung von Forschungsarchiven und Metadaten-Systemen.
+    en:
+    - Applied analytical systems thinking to break down complex linguistic topics.
+    - Managed research archives and metadata systems; foundations of my data engineering
+      mindset.
+    hu:
+    - Analitikus rendszerszemlélet alkalmazása komplex nyelvészeti problémák bontására.
+    - Kutatási archívumok és metadata-rendszerek kezelése (az adatvezérelt gondolkodás
+      alapjai).
+  location:
+    de: Pécs, Ungarn
+    en: Pécs, Hungary
+    hu: Pécs, Magyarország
+  period: 2007 – 2020
+  role:
+    de: Wissenschaftlicher Mitarbeiter & Dozent
+    en: Assistant Lecturer & PhD Researcher
+    hu: Doktorandusz óraadó és kutató
 headings:
   awards:
     de: Auszeichnungen
-    en: Awards
-    hu: Díjak
+    en: Awards & Certifications
+    hu: Díjak és Tanúsítványok
+  education:
+    de: Ausbildung
+    en: Education
+    hu: Tanulmányok
   experience:
     de: Berufserfahrung
-    en: Experience
-    hu: Tapasztalat
+    en: Engineering Timeline
+    hu: Szakmai Tapasztalat
+  interests:
+    de: Interessen
+    en: Interests
+    hu: Érdeklődési körök
+  languages:
+    de: Sprachen
+    en: Languages
+    hu: Nyelvek
   publications:
     de: Publikationen
     en: Publications
     hu: Publikációk
   skills:
     de: Fähigkeiten
-    en: Skills
-    hu: Készségek
+    en: Tech Stack & Capabilities
+    hu: Technológiai Stack
   summary:
     de: Zusammenfassung
-    en: Summary
-    hu: Összegzés
+    en: Architectural Summary
+    hu: Architekturális Összegzés
+interests:
+- description:
+    de: Erforschung komplexer narrativer Architekturen. International veröffentlicht.
+    en: Exploring complex narrative architectures and futuristic systems. Published
+      internationally.
+    hu: Komplex narratív architektúrák és futurisztikus rendszerek kutatása. Nemzetközi
+      publikációk.
+  name:
+    de: Autor spekulativer Fiktion
+    en: Speculative Fiction Author
+    hu: Spekulatív fikciós író
+- description:
+    de: Anwendung des linguistischen Strukturalismus auf Software-Muster.
+    en: Applying linguistic structuralism to software patterns and API design.
+    hu: Nyelvészeti strukturalizmus alkalmazása szoftveres mintázatokra és API tervezésre.
+  name:
+    de: Systemdesign & Architektur
+    en: System Design & Architecture
+    hu: Rendszertervezés és architektúra
+languages:
+- name:
+    de: Ungarisch (Muttersprache)
+    en: Hungarian (Native)
+    hu: Magyar (Anyanyelv)
+- name:
+    de: Englisch (C1 – Zertifiziert)
+    en: English (C1 – Certified)
+    hu: Angol (C1 – felsőfokú nyelvvizsga)
+- name:
+    de: Deutsch (B2 – passiv, auffrischungsbedürftig)
+    en: German (B2 – Passive, needs refresh)
+    hu: Német (B2 – passzív, felfrissítést igényel)
 name:
-  de: Adam Porkolab
-  en: Adam Porkolab
-  hu: Porkoláb Ádám
+  de: Dr. Ádám Porkoláb
+  en: Ádám Porkoláb, PhD
+  hu: Porkoláb Ádám, PhD
 public_blacklist:
 - email
 - phone
@@ -62,73 +214,75 @@ public_blacklist:
 - linkedin
 skills:
   backend:
-  - de: Java (Spring Boot, Spring MVC, Spring Data)
-    en: Java (Spring Boot, Spring MVC, Spring Data)
-    hu: Java (Spring Boot, Spring MVC, Spring Data)
-  - de: REST- und GraphQL-API-Design
-    en: REST and GraphQL API design
-    hu: REST és GraphQL API-tervezés
-  - de: Microservice-Architektur
-    en: Microservice architecture
-    hu: Mikroszerviz-architektúra
-  cloud:
-  - de: Rclone-Automatisierung
-    en: Rclone automation
-    hu: Rclone automatizáció
-  - de: Google-Drive-API-Integrationen
-    en: Google Drive API integrations
-    hu: Google Drive API-integrációk
+  - de: Java-Ökosystem (Spring Boot, MVC, Data)
+    en: Java ecosystem (Spring Boot, Spring MVC, Spring Data)
+    hu: Java ökoszisztéma (Spring Boot, MVC, Data)
+  - de: Microservices & Entwurf verteilter Systeme
+    en: Microservices & Distributed Systems Design
+    hu: Mikroszervizek és elosztott rendszerek tervezése
+  - de: Refactoring und Stabilisierung von Legacy-Code
+    en: Legacy Code Refactoring & Stabilization
+    hu: Legacy kód refaktorálása és stabilizálása
+  - de: Clean Architecture & Design Patterns (Layered Architecture, DI, Service-Decomposition)
+    en: Clean Architecture & Design Patterns (Layered Architecture, DI, Service Decomposition)
+    hu: Clean Architecture és tervezési minták (rétegzett architektúra, DI, szolgáltatásbontás)
+  - de: REST-API-Design & Dokumentation (REST Maturity, OpenAPI/Swagger)
+    en: REST API Design & Documentation (REST maturity, OpenAPI/Swagger)
+    hu: REST API tervezés és dokumentáció (REST érettség, OpenAPI/Swagger)
   devops:
-  - de: Docker & Docker Compose
-    en: Docker & Docker Compose
-    hu: Docker és Docker Compose
-  - de: Nginx / Apache Administration
-    en: Nginx / Apache administration
-    hu: Nginx / Apache üzemeltetés
-  - de: Linux-Serververwaltung (Ubuntu)
-    en: Linux server management (Ubuntu)
-    hu: Linux szerverkezelés (Ubuntu)
-  - de: CI/CD (GitHub Actions, GitLab CI)
-    en: CI/CD (GitHub Actions, GitLab CI)
-    hu: CI/CD (GitHub Actions, GitLab CI)
+  - de: Google Cloud Platform (GCP) & Docker
+    en: Google Cloud Platform (GCP) & Docker
+    hu: Google Cloud Platform (GCP) és Docker
+  - de: Optimierung von CI/CD-Pipelines
+    en: CI/CD Pipeline Optimization
+    hu: CI/CD pipeline optimalizálás
+  - de: Linux-Systemverwaltung
+    en: Linux System Management
+    hu: Linux rendszerüzemeltetés
   frontend:
-  - de: Angular (RxJS, NgRx)
-    en: Angular (RxJS, NgRx)
-    hu: Angular (RxJS, NgRx)
-  - de: TypeScript / JavaScript
-    en: TypeScript / JavaScript
-    hu: TypeScript / JavaScript
-  - de: Responsives UI-Development
-    en: Responsive UI development
-    hu: Reszponzív UI-fejlesztés
-  tools:
-  - de: Shell-Skripte (Zsh, Bash)
-    en: Shell scripting (Zsh, Bash)
-    hu: Shell-szkriptek (Zsh, Bash)
-  - de: AppleScript + macOS-Automatisierung
-    en: AppleScript + macOS automation
-    hu: AppleScript + macOS automatizáció
+  - de: Angular (TypeScript, RxJS, Enterprise-Komponenten)
+    en: Angular (TypeScript, RxJS, Enterprise Components)
+    hu: Angular (TypeScript, RxJS, Vállalati komponensek)
+  - de: Responsive UI/UX-Implementierung
+    en: Responsive UI/UX Implementation
+    hu: Reszponzív UI/UX implementáció
+  methodology:
+  - de: Async-First Remote-Zusammenarbeit
+    en: Async-First Remote Collaboration
+    hu: Async-First távoli együttműködés
+  - de: Strukturelle Code-Analyse (Linguistischer Ansatz)
+    en: Structural Code Analysis (Linguistic Approach)
+    hu: Strukturális kódanalízis (Nyelvészeti megközelítés)
   writing:
-  - de: Worldbuilding in spekulativer Fiktion
-    en: Speculative fiction worldbuilding
-    hu: Spekulatív fikció világépítés
-  - de: Dokumentenbasierte narrative Systeme (A29, Exhuman)
-    en: Document-driven narrative systems (A29, Exhuman)
-    hu: Dokumentumalapú narratív rendszerek (A29, Exhuman)
+  - de: Technische Dokumentation & Wissensdatenbank-Architektur
+    en: Technical Documentation & Knowledge Base Architecture
+    hu: Technikai dokumentáció és tudásbázis-építés
+  - de: Spekulative Fiktion & Narratives Design
+    en: Speculative Fiction & Narrative Design
+    hu: Spekulatív fikció és narratív tervezés
 summary:
-  de: 'Senior Full-Stack Engineer mit Erfahrung in narrativen Systemen und spekulativer
-    Fiktion.
+  de: 'Senior Full-Stack Engineer (Java/Spring & Angular) mit Promotion in Linguistik.
+    Spezialisiert auf die Stabilisierung undokumentierter Legacy-Systeme, klare und
+    vorhersagbare Architekturprinzipien sowie async-first Remote-Arbeit. Schwerpunkte:
+    API-Design, Wartbarkeit und präzise technische Kommunikation — keine Whiteboard-Rätsel,
+    kein Live-Coding.
 
     '
-  en: 'Senior full-stack engineer with a background in narrative systems and speculative
-    fiction.
+  en: 'Senior Full-Stack Engineer (Java/Spring & Angular) with a PhD in Linguistics.
+    I specialize in stabilizing undocumented legacy systems, designing clean and predictable
+    architectures, and working async-first within fully remote teams. Strong focus
+    on API design, maintainability, and precise technical communication — no whiteboard
+    puzzles, no performative live coding.
 
     '
-  hu: 'Szenior full stack fejlesztő, narratív rendszerek és spekulatív fikció területén
-    szerzett tapasztalattal.
+  hu: 'Szenior full stack mérnök (Java/Spring & Angular) nyelvészeti PhD-vel. Dokumentálatlan
+    legacy rendszerek stabilizálására, tiszta és kiszámítható architektúrák tervezésére,
+    valamint async-first, teljesen távoli munkavégzésre specializálódom. Fókusz: API-tervezés,
+    karbantarthatóság és pontos technikai kommunikáció — nincs whiteboard-feladvány,
+    nincs élő kódolós show.
 
     '
 title:
-  de: Senior Full-Stack Engineer und Science-Fiction-Autor
-  en: Senior Full-Stack Engineer & Speculative-Fiction Author
-  hu: Szenior full stack fejlesztő és sci-fi író
+  de: Senior Full-Stack Engineer & Computerlinguist
+  en: Senior Full-Stack Engineer & Computational Linguist
+  hu: Szenior full stack mérnök és számítógépes nyelvész
