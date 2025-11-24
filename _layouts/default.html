@@ -103,7 +103,7 @@
         border-right: 1px solid var(--border);
         background: rgba(0, 0, 0, 0.5);
         backdrop-filter: blur(10px);
-        overflow-y: auto; 
+        overflow-y: auto;
       }
 
       /* --- DATA PANEL (Right) --- */
@@ -254,10 +254,9 @@
         color: var(--accent);
       }
 
-      /* --- SKILL BOXES (Javítva!) --- */
+      /* --- SKILL BOXES --- */
       .skill-grid {
         display: grid;
-        /* Rugalmasabb méretezés: min 130px, de kitölti a helyet */
         grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
         gap: 1rem;
       }
@@ -265,7 +264,7 @@
         border: 1px solid var(--border);
         padding: 1rem;
         text-align: center;
-        font-size: 0.85rem; /* Kicsit kisebb betű, hogy több férjen */
+        font-size: 0.85rem;
         font-weight: 500;
         transition: 0.3s;
         cursor: default;
@@ -274,12 +273,11 @@
           transparent 50%,
           rgba(112, 0, 255, 0.05) 100%
         );
-        
-        /* JAVÍTÁS: Szöveg tördelés és igazítás */
+
         display: flex;
         align-items: center;
         justify-content: center;
-        min-height: 80px; /* Egységes magasság */
+        min-height: 80px;
         word-wrap: break-word;
         overflow-wrap: break-word;
         hyphens: auto;
@@ -339,9 +337,15 @@
       }
 
       @keyframes pulse {
-        0% { opacity: 1; }
-        50% { opacity: 0.3; }
-        100% { opacity: 1; }
+        0% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0.3;
+        }
+        100% {
+          opacity: 1;
+        }
       }
 
       /* --- MOBILE / RESPONSIVE --- */
@@ -349,15 +353,14 @@
         .layout-wrapper {
           flex-direction: column;
         }
-        /* Mobilnézetben nincs fix magasság és sticky pozíció */
         .identity-panel {
           width: 100%;
-          height: auto; 
+          height: auto;
           position: relative;
           padding: 3rem 1.5rem;
           border-right: none;
           border-bottom: 1px solid var(--border);
-          overflow: visible; /* Görgetés a teljes oldalon van */
+          overflow: visible;
         }
         .data-panel {
           width: 100%;
@@ -367,8 +370,6 @@
         h1 {
           font-size: 2.2rem;
         }
-        
-        /* Nyelvválasztó feljebb és kisebbre */
         .lang-switch {
           top: 1rem;
           right: 1rem;
@@ -378,22 +379,26 @@
         .lang-btn {
           font-size: 1.2rem;
         }
-
-        /* Skill grid mobilon: 2 oszlop fixen, hogy ne legyen túl zsúfolt */
         .skill-grid {
           grid-template-columns: 1fr 1fr;
         }
-        
         .interest-grid {
           grid-template-columns: 1fr;
         }
       }
 
-      /* Nagyon kis képernyő (pl. iPhone SE) */
       @media (max-width: 480px) {
-        h1 { font-size: 1.8rem; }
-        .identity-panel, .data-panel { padding: 2rem 1rem; }
-        .skill-box { font-size: 0.8rem; padding: 0.5rem; }
+        h1 {
+          font-size: 1.8rem;
+        }
+        .identity-panel,
+        .data-panel {
+          padding: 2rem 1rem;
+        }
+        .skill-box {
+          font-size: 0.8rem;
+          padding: 0.5rem;
+        }
       }
     </style>
   </head>
@@ -419,40 +424,21 @@
       >
     </div>
 
-    {% assign cv = site.data.cv_data %}
-    {% assign lang = page.lang | default: "en" %}
-
-    {% if lang == 'hu' %}
-      {% assign t_skills = "Készségek" %}
-      {% assign t_exp = "Tapasztalat" %}
-      {% assign t_edu = "Tanulmányok" %}
-      {% assign t_pubs = "Publikációk" %}
-      {% assign t_awards = "Díjak" %}
-      {% assign t_lang = "Nyelvek" %}
-      {% assign t_int = "Érdeklődés" %}
-      {% assign t_dl = "Önéletrajz Letöltése" %}
-      {% assign t_req = "Hozzáférés Kérése" %}
-    {% elsif lang == 'de' %}
-      {% assign t_skills = "Fähigkeiten" %}
-      {% assign t_exp = "Erfahrung" %}
-      {% assign t_edu = "Ausbildung" %}
-      {% assign t_pubs = "Publikationen" %}
-      {% assign t_awards = "Auszeichnungen" %}
-      {% assign t_lang = "Sprachen" %}
-      {% assign t_int = "Interessen" %}
-      {% assign t_dl = "Lebenslauf Herunterladen" %}
-      {% assign t_req = "Zugriff Anfordern" %}
-    {% else %}
-      {% assign t_skills = "Skills" %}
-      {% assign t_exp = "Experience" %}
-      {% assign t_edu = "Education" %}
-      {% assign t_pubs = "Publications" %}
-      {% assign t_awards = "Awards" %}
-      {% assign t_lang = "Languages" %}
-      {% assign t_int = "Interests" %}
-      {% assign t_dl = "Download CV" %}
-      {% assign t_req = "Request Access" %}
-    {% endif %}
+    {% assign cv = site.data.cv_data %} {% assign lang = page.lang | default:
+    "en" %} {% if lang == 'hu' %} {% assign t_skills = "Készségek" %} {% assign
+    t_exp = "Tapasztalat" %} {% assign t_edu = "Tanulmányok" %} {% assign t_pubs
+    = "Publikációk" %} {% assign t_awards = "Díjak" %} {% assign t_lang =
+    "Nyelvek" %} {% assign t_int = "Érdeklődés" %} {% assign t_dl = "Önéletrajz
+    Letöltése" %} {% assign t_req = "Hozzáférés Kérése" %} {% elsif lang == 'de'
+    %} {% assign t_skills = "Fähigkeiten" %} {% assign t_exp = "Erfahrung" %} {%
+    assign t_edu = "Ausbildung" %} {% assign t_pubs = "Publikationen" %} {%
+    assign t_awards = "Auszeichnungen" %} {% assign t_lang = "Sprachen" %} {%
+    assign t_int = "Interessen" %} {% assign t_dl = "Lebenslauf Herunterladen"
+    %} {% assign t_req = "Zugriff Anfordern" %} {% else %} {% assign t_skills =
+    "Skills" %} {% assign t_exp = "Experience" %} {% assign t_edu = "Education"
+    %} {% assign t_pubs = "Publications" %} {% assign t_awards = "Awards" %} {%
+    assign t_lang = "Languages" %} {% assign t_int = "Interests" %} {% assign
+    t_dl = "Download CV" %} {% assign t_req = "Request Access" %} {% endif %}
 
     <div class="bg-mesh"></div>
     <div class="layout-wrapper">
@@ -468,35 +454,55 @@
         <div style="margin-top: 3rem">
           <div class="social-stack">
             {% if cv.contact.website %}
-            <a href="{{ cv.contact.website }}" class="social-link" target="_blank">Portfolio / Web</a>
-            {% endif %}
-            {% if cv.contact.github %}
-            <a href="{{ cv.contact.github }}" class="social-link" target="_blank">GitHub / Code</a>
-            {% endif %}
-            {% if cv.contact.linkedin %}
-            <a href="{{ cv.contact.linkedin }}" class="social-link" target="_blank">LinkedIn / Connect</a>
+            <a
+              href="{{ cv.contact.website }}"
+              class="social-link"
+              target="_blank"
+              >Portfolio / Web</a
+            >
+            {% endif %} {% if cv.contact.github %}
+            <a
+              href="{{ cv.contact.github }}"
+              class="social-link"
+              target="_blank"
+              >GitHub / Code</a
+            >
+            {% endif %} {% if cv.contact.linkedin %}
+            <a
+              href="{{ cv.contact.linkedin }}"
+              class="social-link"
+              target="_blank"
+              >LinkedIn / Connect</a
+            >
             {% endif %}
             <div class="social-link" style="cursor: default; color: #444">
               {{ cv.contact.location[lang] }}
             </div>
           </div>
 
-          {% assign lang_cvs = site.data.cv_list.cvs | where: "lang", lang %}
-          {% assign latest_cv = lang_cvs | first %}
-          
-          {% unless latest_cv %}
-            {% assign latest_cv = site.data.cv_list.cvs | first %}
-          {% endunless %}
-
-          {% if latest_cv %}
-          <a href="{{ latest_cv.url }}" class="dl-btn" target="_blank">
+          {% assign pdf_url = cv.downloads[lang] %} {% unless pdf_url %} {%
+          assign pdf_url = cv.downloads['en'] %} {% endunless %} {% if pdf_url
+          %}
+          <a href="{{ pdf_url }}" class="dl-btn" target="_blank">
             {{ t_dl }}
           </a>
-          <div style="margin-top: 10px; font-size: 0.7rem; color: #444; font-family: monospace; text-align: center;">
-            VERSION: {{ latest_cv.updated }} | {{ latest_cv.lang | upcase }}
+          <div
+            style="
+              margin-top: 10px;
+              font-size: 0.7rem;
+              color: #444;
+              font-family: monospace;
+              text-align: center;
+            "
+          >
+            SECURE LINK | {{ lang | upcase }}
           </div>
           {% else %}
-          <a href="mailto:{{ cv.contact.email }}" class="dl-btn" style="opacity: 0.8">
+          <a
+            href="mailto:{{ cv.contact.email }}"
+            class="dl-btn"
+            style="opacity: 0.8"
+          >
             {{ t_req }}
           </a>
           {% endif %}
@@ -504,19 +510,26 @@
       </div>
 
       <div class="data-panel">
-        
         <section>
           <h2>{{ t_skills }} <span class="index">01</span></h2>
           {% for category in cv.skills %}
-            <div style="margin-bottom: 2rem">
-              <div style="color: #666; font-size: 0.8rem; margin-bottom: 1rem; text-transform: uppercase;">
-                {{ category[0] | replace: "_", " " | capitalize }} </div>
-              <div class="skill-grid">
-                {% for s in category[1] %}
-                <div class="skill-box">{{ s[lang] }}</div>
-                {% endfor %}
-              </div>
+          <div style="margin-bottom: 2rem">
+            <div
+              style="
+                color: #666;
+                font-size: 0.8rem;
+                margin-bottom: 1rem;
+                text-transform: uppercase;
+              "
+            >
+              {{ category[0] | replace: "_", " " | capitalize }}
             </div>
+            <div class="skill-grid">
+              {% for s in category[1] %}
+              <div class="skill-box">{{ s[lang] }}</div>
+              {% endfor %}
+            </div>
+          </div>
           {% endfor %}
         </section>
 
@@ -527,7 +540,8 @@
             <div class="xp-header">
               <div class="xp-role">{{ exp.role[lang] }}</div>
               <div class="xp-meta">
-                <span style="color: var(--accent)">{{ exp.company }}</span> / {{ exp.period }}
+                <span style="color: var(--accent)">{{ exp.company }}</span> / {{
+                exp.period }}
               </div>
             </div>
             <ul class="xp-list">
@@ -543,14 +557,12 @@
         <section>
           <h2>{{ t_edu }} <span class="index">03</span></h2>
           {% for edu in cv.education %}
-          <div class="xp-item" style="border-left: 2px solid var(--accent);">
+          <div class="xp-item" style="border-left: 2px solid var(--accent)">
             <div class="xp-header">
               <div class="xp-role">{{ edu.degree[lang] }}</div>
-              <div class="xp-meta">
-                {{ edu.institution }} / {{ edu.year }}
-              </div>
+              <div class="xp-meta">{{ edu.institution }} / {{ edu.year }}</div>
             </div>
-            <p style="color: #888; margin: 0;">{{ edu.details[lang] }}</p>
+            <p style="color: #888; margin: 0">{{ edu.details[lang] }}</p>
           </div>
           {% endfor %}
         </section>
@@ -558,20 +570,31 @@
 
         <section>
           <h2>{{ t_lang }} & {{ t_int }} <span class="index">04</span></h2>
-          
-          {% if cv.languages %}
-          <div style="margin-bottom: 2rem;">
-             <div style="color: #fff; font-weight: 700; margin-bottom: 1rem">{{ t_lang }}</div>
-             <div class="skill-grid">
-                {% for lan in cv.languages %}
-                  <div class="skill-box" style="border-color: var(--accent);">{{ lan.name[lang] }}</div>
-                {% endfor %}
-             </div>
-          </div>
-          {% endif %}
 
-          {% if cv.interests %}
-          <div style="color: #fff; font-weight: 700; margin-bottom: 1rem; margin-top: 2rem;">{{ t_int }}</div>
+          {% if cv.languages %}
+          <div style="margin-bottom: 2rem">
+            <div style="color: #fff; font-weight: 700; margin-bottom: 1rem">
+              {{ t_lang }}
+            </div>
+            <div class="skill-grid">
+              {% for lan in cv.languages %}
+              <div class="skill-box" style="border-color: var(--accent)">
+                {{ lan.name[lang] }}
+              </div>
+              {% endfor %}
+            </div>
+          </div>
+          {% endif %} {% if cv.interests %}
+          <div
+            style="
+              color: #fff;
+              font-weight: 700;
+              margin-bottom: 1rem;
+              margin-top: 2rem;
+            "
+          >
+            {{ t_int }}
+          </div>
           <div class="interest-grid">
             {% for int in cv.interests %}
             <div class="interest-item">
@@ -593,23 +616,39 @@
               {{ t_pubs }}
             </div>
             {% for pub in cv.publications %}
-            <div style="border-bottom: 1px solid var(--border); padding: 1rem 0; display: flex; justify-content: space-between;">
+            <div
+              style="
+                border-bottom: 1px solid var(--border);
+                padding: 1rem 0;
+                display: flex;
+                justify-content: space-between;
+              "
+            >
               <span style="color: #ccc">{{ pub.title }}</span>
-              <span style="color: #666; font-family: monospace">{{ pub.year }}</span>
+              <span style="color: #666; font-family: monospace"
+                >{{ pub.year }}</span
+              >
             </div>
             {% endfor %}
           </div>
-          {% endif %} 
-          
-          {% if cv.awards %}
+          {% endif %} {% if cv.awards %}
           <div>
             <div style="color: #fff; font-weight: 700; margin-bottom: 1rem">
               {{ t_awards }}
             </div>
             {% for award in cv.awards %}
-            <div style="border-bottom: 1px solid var(--border); padding: 1rem 0; display: flex; justify-content: space-between;">
+            <div
+              style="
+                border-bottom: 1px solid var(--border);
+                padding: 1rem 0;
+                display: flex;
+                justify-content: space-between;
+              "
+            >
               <span style="color: #ccc">{{ award.name }}</span>
-              <span style="color: #666; font-family: monospace">{{ award.year }}</span>
+              <span style="color: #666; font-family: monospace"
+                >{{ award.year }}</span
+              >
             </div>
             {% endfor %}
           </div>
@@ -617,9 +656,18 @@
         </section>
         {% endif %}
 
-        <footer style="margin-top: 6rem; padding-top: 2rem; border-top: 1px solid var(--border); color: #444; font-size: 0.8rem;">
+        <footer
+          style="
+            margin-top: 6rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border);
+            color: #444;
+            font-size: 0.8rem;
+          "
+        >
           System Status: <span style="color: var(--accent)">OPTIMAL</span><br />
-          © {{ "now" | date: "%Y" }} {{ cv.name[lang] }} // PORKOLAB_PERSONA_DELTA
+          © {{ "now" | date: "%Y" }} {{ cv.name[lang] }} //
+          PORKOLAB_PERSONA_DELTA
         </footer>
       </div>
     </div>
