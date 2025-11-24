@@ -445,7 +445,7 @@
       </div>
 
       <div class="data-panel">
-        <section>
+       <section>
           <h2>{{ t_skills }} <span class="index">01</span></h2>
 
           {% if cv.skills.backend %}
@@ -462,11 +462,13 @@
             </div>
             <div class="skill-grid">
               {% for s in cv.skills.backend %}
-              <div class="skill-box">{{ s }}</div>
+              <div class="skill-box">{{ s[lang] }}</div>
               {% endfor %}
             </div>
           </div>
-          {% endif %} {% if cv.skills.frontend %}
+          {% endif %} 
+          
+          {% if cv.skills.frontend %}
           <div>
             <div
               style="
@@ -480,7 +482,7 @@
             </div>
             <div class="skill-grid">
               {% for s in cv.skills.frontend %}
-              <div class="skill-box">{{ s }}</div>
+              <div class="skill-box">{{ s[lang] }}</div>
               {% endfor %}
             </div>
           </div>
