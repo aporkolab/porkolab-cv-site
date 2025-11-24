@@ -52,6 +52,61 @@ public_blacklist:
 - address
 - location
 - linkedin
+skills:
+  Backend / Core:
+  - de: Java (Spring Boot, Spring MVC, Spring Data)
+    en: Java (Spring Boot, Spring MVC, Spring Data)
+    hu: Java (Spring Boot, Spring MVC, Spring Data)
+  - de: REST- und GraphQL-API-Design
+    en: REST and GraphQL API design
+    hu: REST és GraphQL API-tervezés
+  - de: Microservice-Architektur
+    en: Microservice architecture
+    hu: Mikroszerviz-architektúra
+  Cloud / Storage:
+  - de: Rclone-Automatisierung
+    en: Rclone automation
+    hu: Rclone automatizáció
+  - de: Google-Drive-API-Integrationen
+    en: Google Drive API integrations
+    hu: Google Drive API-integrációk
+  DevOps / Infra:
+  - de: Docker & Docker Compose
+    en: Docker & Docker Compose
+    hu: Docker és Docker Compose
+  - de: Nginx / Apache Administration
+    en: Nginx / Apache administration
+    hu: Nginx / Apache üzemeltetés
+  - de: Linux-Serververwaltung (Ubuntu)
+    en: Linux server management (Ubuntu)
+    hu: Linux szerverkezelés (Ubuntu)
+  - de: CI/CD (GitHub Actions, GitLab CI)
+    en: CI/CD (GitHub Actions, GitLab CI)
+    hu: CI/CD (GitHub Actions, GitLab CI)
+  Frontend / UI:
+  - de: Angular (RxJS, NgRx)
+    en: Angular (RxJS, NgRx)
+    hu: Angular (RxJS, NgRx)
+  - de: TypeScript / JavaScript
+    en: TypeScript / JavaScript
+    hu: TypeScript / JavaScript
+  - de: Responsives UI-Development
+    en: Responsive UI development
+    hu: Reszponzív UI-fejlesztés
+  Tooling / Automation:
+  - de: Shell-Skripte (Zsh, Bash)
+    en: Shell scripting (Zsh, Bash)
+    hu: Shell-szkriptek (Zsh, Bash)
+  - de: AppleScript + macOS-Automatisierung
+    en: AppleScript + macOS automation
+    hu: AppleScript + macOS automatizáció
+  Writing & Narrative Systems:
+  - de: Worldbuilding in spekulativer Fiktion
+    en: Speculative fiction worldbuilding
+    hu: Spekulatív fikció világépítés
+  - de: Dokumentenbasierte narrative Systeme (A29, Exhuman)
+    en: Document-driven narrative systems (A29, Exhuman)
+    hu: Dokumentumalapú narratív rendszerek (A29, Exhuman)
 summary:
   de: 'Senior Full-Stack Engineer mit Erfahrung in narrativen Systemen und spekulativer
     Fiktion.
