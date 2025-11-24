@@ -30,10 +30,18 @@ experience:
     en: Senior Full-Stack Engineer
     hu: Szenior full stack fejlesztő
 headings:
+  awards:
+    de: Auszeichnungen
+    en: Awards
+    hu: Díjak
   experience:
     de: Berufserfahrung
     en: Experience
     hu: Tapasztalat
+  publications:
+    de: Publikationen
+    en: Publications
+    hu: Publikációk
   skills:
     de: Fähigkeiten
     en: Skills
@@ -53,7 +61,7 @@ public_blacklist:
 - location
 - linkedin
 skills:
-  Backend / Core:
+  backend:
   - de: Java (Spring Boot, Spring MVC, Spring Data)
     en: Java (Spring Boot, Spring MVC, Spring Data)
     hu: Java (Spring Boot, Spring MVC, Spring Data)
@@ -63,14 +71,14 @@ skills:
   - de: Microservice-Architektur
     en: Microservice architecture
     hu: Mikroszerviz-architektúra
-  Cloud / Storage:
+  cloud:
   - de: Rclone-Automatisierung
     en: Rclone automation
     hu: Rclone automatizáció
   - de: Google-Drive-API-Integrationen
     en: Google Drive API integrations
     hu: Google Drive API-integrációk
-  DevOps / Infra:
+  devops:
   - de: Docker & Docker Compose
     en: Docker & Docker Compose
     hu: Docker és Docker Compose
@@ -83,7 +91,7 @@ skills:
   - de: CI/CD (GitHub Actions, GitLab CI)
     en: CI/CD (GitHub Actions, GitLab CI)
     hu: CI/CD (GitHub Actions, GitLab CI)
-  Frontend / UI:
+  frontend:
   - de: Angular (RxJS, NgRx)
     en: Angular (RxJS, NgRx)
     hu: Angular (RxJS, NgRx)
@@ -93,14 +101,14 @@ skills:
   - de: Responsives UI-Development
     en: Responsive UI development
     hu: Reszponzív UI-fejlesztés
-  Tooling / Automation:
+  tools:
   - de: Shell-Skripte (Zsh, Bash)
     en: Shell scripting (Zsh, Bash)
     hu: Shell-szkriptek (Zsh, Bash)
   - de: AppleScript + macOS-Automatisierung
     en: AppleScript + macOS automation
     hu: AppleScript + macOS automatizáció
-  Writing & Narrative Systems:
+  writing:
   - de: Worldbuilding in spekulativer Fiktion
     en: Speculative fiction worldbuilding
     hu: Spekulatív fikció világépítés
