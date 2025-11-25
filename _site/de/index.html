@@ -1,0 +1,2889 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <title>Portfolio | Adam Porkolab — CV</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&family=Syncopate:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        mermaid.initialize({
+          startOnLoad: false,
+          theme: 'base',
+          themeVariables: {
+            primaryColor: '#7000ff',
+            primaryTextColor: '#fff',
+            primaryBorderColor: '#7000ff',
+            lineColor: '#00f3ff',
+            secondaryColor: '#0a0a0c',
+            tertiaryColor: '#0a0a0c',
+            mainBkg: '#0a0a0c',
+            nodeBorder: '#7000ff',
+            clusterBkg: 'rgba(255,255,255,0.05)',
+            clusterBorder: '#333',
+            defaultLinkColor: '#00f3ff',
+            fontFamily: 'JetBrains Mono',
+          },
+          securityLevel: 'loose',
+        });
+      });
+    </script>
+
+    <style>
+      :root {
+        --bg: #030304;
+        --surface: #0a0a0c;
+        --surface-glass: rgba(15, 15, 20, 0.85);
+        --fg: #e0e0e0;
+        --dim: #888899;
+
+        --accent: #7000ff;
+        --accent-glow: rgba(112, 0, 255, 0.4);
+        --secondary: #00f3ff;
+
+        --border: rgba(255, 255, 255, 0.08);
+        --radius: 16px;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        background-color: var(--bg);
+        color: var(--fg);
+        font-family: 'Outfit', sans-serif;
+        font-size: 16px;
+        line-height: 1.6;
+        overflow-x: hidden;
+      }
+
+      /* --- BACKGROUND --- */
+      .noise-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: -1;
+        opacity: 0.03;
+        background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1MDAiIGhlaWdodD0iNTAwIj48ZmlsdGVyIGlkPSJub2lzZSI+PGZlVHVyYnVsZW5jZSB0eXBlPSJmcmFjdGFsTm9pc2UiIGJhc2VGcmVxdWVuY3k9IjAuNjUiIG51bU9jdGF2ZXM9IjMiIHN0aXRjaFRpbGVzPSJzdGl0Y2giLz48L2ZpbHRlcj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWx0ZXI9InVybCgjbm9pc2UpIiBvcGFjaXR5PSIxIi8+PC9zdmc+');
+      }
+      .bg-orb {
+        position: fixed;
+        border-radius: 50%;
+        filter: blur(120px);
+        z-index: -2;
+        opacity: 0.25;
+      }
+      .orb-1 {
+        top: -20%;
+        left: -20%;
+        width: 70vw;
+        height: 70vw;
+        background: var(--accent);
+      }
+      .orb-2 {
+        bottom: -20%;
+        right: -20%;
+        width: 60vw;
+        height: 60vw;
+        background: var(--secondary);
+      }
+
+      .layout-wrapper {
+        display: grid;
+        grid-template-columns: 420px 1fr;
+        max-width: 1440px;
+        margin: 0 auto;
+        gap: 4rem;
+        padding: 2rem;
+        min-height: 100vh;
+      }
+
+      /* --- SIDEBAR --- */
+      .identity-panel {
+        position: sticky;
+        top: 2rem;
+        height: calc(100vh - 4rem);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 2.5rem;
+        background: var(--surface-glass);
+        backdrop-filter: blur(20px);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        overflow-y: auto;
+      }
+
+      .data-panel {
+        padding-top: 1rem;
+        padding-bottom: 4rem;
+      }
+
+      /* --- TYPOGRAPHY --- */
+      h1 {
+        font-family: 'Outfit', sans-serif;
+        font-weight: 800;
+        font-size: 3rem;
+        line-height: 1;
+        margin: 0 0 1rem 0;
+        text-transform: uppercase;
+        letter-spacing: -1px;
+        color: #fff;
+      }
+      .role-title {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.8rem;
+        color: var(--secondary);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 1rem;
+      }
+      h2 {
+        font-size: 1.2rem;
+        color: var(--dim);
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        margin: 5rem 0 2rem 0;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+      }
+      h2::after {
+        content: '';
+        flex: 1;
+        height: 1px;
+        background: rgba(255, 255, 255, 0.1);
+      }
+      h2 span.index {
+        font-family: 'JetBrains Mono';
+        color: var(--accent);
+        font-weight: bold;
+      }
+
+      /* --- PROJECT CARDS --- */
+      .project-grid-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 2rem;
+      }
+      .project-card {
+        position: relative;
+        background: var(--surface-glass);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 2rem;
+        display: flex;
+        flex-direction: column;
+        transition: 0.3s;
+        min-height: 350px; /* Magasság igazítva */
+        border-top: 3px solid transparent;
+      }
+      .project-card:hover {
+        border-color: var(--accent);
+        border-top-color: var(--secondary);
+        transform: translateY(-5px);
+      }
+
+      .card-content {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+      }
+
+      /* Project Links (Compatible with new YAML) */
+      .prj-actions {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 1rem;
+      }
+      .prj-link {
+        font-family: 'JetBrains Mono';
+        font-size: 0.75rem;
+        color: var(--fg);
+        text-decoration: none;
+        padding: 4px 10px;
+        border: 1px solid var(--border);
+        border-radius: 6px;
+        transition: 0.2s;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        background: rgba(255, 255, 255, 0.02);
+      }
+      .prj-link:hover {
+        border-color: var(--secondary);
+        color: #fff;
+        background: rgba(0, 243, 255, 0.1);
+      }
+      .prj-link svg {
+        width: 12px;
+        height: 12px;
+        fill: currentColor;
+      }
+
+      /* --- ARCHITECTURE MODAL --- */
+      .arch-btn {
+        margin-top: 1.5rem;
+        width: 100%;
+        padding: 0.8rem;
+        background: rgba(112, 0, 255, 0.1);
+        border: 1px solid var(--accent);
+        color: #fff;
+        font-family: 'Syncopate', sans-serif;
+        font-size: 0.7rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: 0.3s;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+      }
+      .arch-btn:hover {
+        background: var(--accent);
+        box-shadow: 0 0 20px var(--accent-glow);
+      }
+
+      /* --- GLOBAL MODAL --- */
+      .modal-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.9);
+        backdrop-filter: blur(10px);
+        z-index: 9999;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        visibility: hidden;
+        transition: 0.3s;
+      }
+      .modal-overlay.active {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      .modal-content {
+        width: 90vw;
+        max-width: 1100px;
+        height: 85vh;
+        background: #0a0a0c;
+        border: 1px solid var(--secondary);
+        border-radius: var(--radius);
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        transform: scale(0.95);
+        transition: 0.3s;
+        overflow: hidden;
+      }
+      .modal-overlay.active .modal-content {
+        transform: scale(1);
+      }
+
+      .modal-header {
+        padding: 1.5rem;
+        border-bottom: 1px solid var(--border);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: rgba(255, 255, 255, 0.02);
+      }
+      .modal-close {
+        background: none;
+        border: none;
+        color: var(--fg);
+        font-size: 1.5rem;
+        cursor: pointer;
+      }
+      .mermaid-container {
+        flex: 1;
+        overflow: auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 2rem;
+      }
+      .mermaid-container svg {
+        max-width: 100%;
+        height: auto;
+      }
+
+      /* --- DOWNLOAD BUTTON --- */
+      .dl-btn {
+        display: block;
+        width: 100%;
+        padding: 1.2rem;
+        margin-top: auto;
+        background: var(--fg);
+        color: var(--bg);
+        font-weight: 800;
+        text-transform: uppercase;
+        text-align: center;
+        border-radius: 12px;
+        transition: 0.3s;
+        cursor: pointer;
+      }
+      .dl-btn:hover {
+        background: var(--accent);
+        color: #fff;
+      }
+
+      /* --- SOCIAL LINKS --- */
+      .social-stack {
+        display: flex;
+        flex-direction: column;
+        gap: 0.8rem;
+        margin-bottom: 2rem;
+      }
+      .social-link {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem;
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        color: var(--fg);
+        text-decoration: none;
+        transition: 0.2s;
+        font-size: 0.9rem;
+        background: rgba(255, 255, 255, 0.02);
+      }
+      .social-link:hover {
+        border-color: var(--accent);
+        background: rgba(255, 255, 255, 0.05);
+        transform: translateX(5px);
+      }
+
+      /* --- SKILL CHIPS & XP --- */
+      .skill-chip {
+        padding: 0.5rem 1rem;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid var(--border);
+        border-radius: 100px;
+        font-size: 0.85rem;
+        color: #ddd;
+        display: inline-block;
+        margin-right: 0.5rem;
+        margin-bottom: 0.5rem;
+      }
+      .xp-item {
+        padding-left: 2rem;
+        border-left: 2px solid var(--border);
+        margin-bottom: 3rem;
+        position: relative;
+      }
+      .xp-dot {
+        position: absolute;
+        left: -5px;
+        top: 5px;
+        width: 8px;
+        height: 8px;
+        background: var(--bg);
+        border: 2px solid var(--dim);
+        border-radius: 50%;
+      }
+
+      @media (max-width: 1000px) {
+        .layout-wrapper {
+          grid-template-columns: 1fr;
+          padding: 1.5rem;
+          gap: 2rem;
+        }
+        .identity-panel {
+          position: relative;
+          height: auto;
+          top: 0;
+          overflow: visible;
+          padding: 2rem;
+        }
+        h1 {
+          font-size: 2.5rem;
+        }
+        .lang-switch {
+          top: 1rem;
+          right: 1rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="noise-overlay"></div>
+    <div class="bg-orb orb-1"></div>
+    <div class="bg-orb orb-2"></div>
+
+    <div
+      style="
+        position: fixed;
+        top: 1.5rem;
+        right: 2rem;
+        z-index: 999;
+        background: rgba(0, 0, 0, 0.6);
+        padding: 6px 12px;
+        border-radius: 50px;
+        border: 1px solid var(--border);
+        backdrop-filter: blur(10px);
+        display: flex;
+        gap: 10px;
+      "
+    >
+      <a
+        href="/"
+        style="
+          text-decoration: none;
+          filter: grayscale(1);
+          opacity: 0.7;
+          transition: 0.3s;
+        "
+        onmouseover="this.style.filter='none';this.style.opacity='1'"
+        onmouseout="this.style.filter='grayscale(1)';this.style.opacity='0.7'"
+        >🇬🇧</a
+      >
+      <a
+        href="/hu/"
+        style="
+          text-decoration: none;
+          filter: grayscale(1);
+          opacity: 0.7;
+          transition: 0.3s;
+        "
+        onmouseover="this.style.filter='none';this.style.opacity='1'"
+        onmouseout="this.style.filter='grayscale(1)';this.style.opacity='0.7'"
+        >🇭🇺</a
+      >
+      <a
+        href="/de/"
+        style="
+          text-decoration: none;
+          filter: grayscale(1);
+          opacity: 0.7;
+          transition: 0.3s;
+        "
+        onmouseover="this.style.filter='none';this.style.opacity='1'"
+        onmouseout="this.style.filter='grayscale(1)';this.style.opacity='0.7'"
+        >🇩🇪</a
+      >
+    </div>
+
+      
+
+
+    <div id="archModal" class="modal-overlay" onclick="closeModal(event)">
+      <div class="modal-content" onclick="event.stopPropagation()">
+        <div class="modal-header">
+          <div class="modal-title" style="color: var(--secondary)">
+            SYSTEM ARCHITECTURE
+          </div>
+          <button class="modal-close" onclick="closeModal()">✕</button>
+        </div>
+        <div id="mermaidTarget" class="mermaid-container"></div>
+      </div>
+    </div>
+
+    <div class="layout-wrapper">
+      <aside class="identity-panel">
+        <div style="flex: 1">
+          <div class="role-title">Senior Full-Stack Engineer & Digitallinguist</div>
+          <h1>Dr. Ádám Porkoláb</h1>
+          <p style="color: var(--dim); margin-top: 1.5rem; line-height: 1.6">
+            Senior Full-Stack Engineer (Java/Spring & Angular) mit Promotion in Linguistik. Spezialisiert auf die Stabilisierung undokumentierter Legacy-Systeme, klare und vorhersagbare Architekturprinzipien sowie async-first Remote-Arbeit. Schwerpunkte: API-Design, Wartbarkeit und präzise technische Kommunikation — keine Whiteboard-Rätsel, kein Live-Coding.
+
+          </p>
+        </div>
+
+        <div style="margin-top: 3rem">
+          <div class="social-stack">
+            
+            <a
+              href="https://aporkolab.com"
+              class="social-link"
+              target="_blank"
+            >
+              Portfolio / Web <span>→</span>
+            </a>
+             
+            <a
+              href="https://github.com/APorkolab"
+              class="social-link"
+              target="_blank"
+            >
+              GitHub / Code <span>→</span>
+            </a>
+             
+          </div>
+
+            
+          <a href="https://pub-c677684c572248f4ae32cfb9fc6b6972.r2.dev/cv_public_de_default_20251124_193818.pdf" class="dl-btn" target="_blank">Lebenslauf Herunterladen</a>
+          <div
+            style="
+              margin-top: 10px;
+              font-size: 0.7rem;
+              color: var(--dim);
+              text-align: center;
+              font-family: 'JetBrains Mono';
+            "
+          >
+            SECURE LINK • DE
+          </div>
+          
+        </div>
+      </aside>
+
+      <main class="data-panel">
+        <section>
+          <h2>Experience <span class="index">XP</span></h2>
+          
+          <div class="xp-item">
+            <div class="xp-dot"></div>
+            <h3 style="color: #fff; margin-bottom: 0.2rem; font-size: 1.3rem">
+              Full Stack Developer (Java / Spring / Angular)
+            </h3>
+            <div
+              style="
+                color: var(--secondary);
+                font-family: 'JetBrains Mono';
+                font-size: 0.9rem;
+                margin-bottom: 1rem;
+              "
+            >
+              Deutsche Telekom • 2024 – present
+            </div>
+            <ul style="list-style: none; color: var(--dim)">
+              
+              <li
+                style="
+                  margin-bottom: 0.5rem;
+                  padding-left: 1rem;
+                  position: relative;
+                "
+              >
+                <span style="position: absolute; left: 0; color: var(--accent)"
+                  >›</span
+                >
+                Übernahme der vollen Verantwortung für undokumentierte Legacy-Module unter hohem Druck.
+              </li>
+              
+              <li
+                style="
+                  margin-bottom: 0.5rem;
+                  padding-left: 1rem;
+                  position: relative;
+                "
+              >
+                <span style="position: absolute; left: 0; color: var(--accent)"
+                  >›</span
+                >
+                Leitung architektonischer Refactoring-Entscheidungen mit Fokus auf langfristige Wartbarkeit.
+              </li>
+              
+              <li
+                style="
+                  margin-bottom: 0.5rem;
+                  padding-left: 1rem;
+                  position: relative;
+                "
+              >
+                <span style="position: absolute; left: 0; color: var(--accent)"
+                  >›</span
+                >
+                Steuerung der asynchronen Zusammenarbeit in internationalen Teams.
+              </li>
+              
+            </ul>
+          </div>
+          
+          <div class="xp-item">
+            <div class="xp-dot"></div>
+            <h3 style="color: #fff; margin-bottom: 0.2rem; font-size: 1.3rem">
+              Full Stack Developer (PHP / JS / Agile)
+            </h3>
+            <div
+              style="
+                color: var(--secondary);
+                font-family: 'JetBrains Mono';
+                font-size: 0.9rem;
+                margin-bottom: 1rem;
+              "
+            >
+              Games for Business • 2023
+            </div>
+            <ul style="list-style: none; color: var(--dim)">
+              
+              <li
+                style="
+                  margin-bottom: 0.5rem;
+                  padding-left: 1rem;
+                  position: relative;
+                "
+              >
+                <span style="position: absolute; left: 0; color: var(--accent)"
+                  >›</span
+                >
+                Entwicklung skalierbarer Gamified-Learning-Plattformen mit PHP und JavaScript.
+              </li>
+              
+              <li
+                style="
+                  margin-bottom: 0.5rem;
+                  padding-left: 1rem;
+                  position: relative;
+                "
+              >
+                <span style="position: absolute; left: 0; color: var(--accent)"
+                  >›</span
+                >
+                Implementierung von CI/CD-Workflows und Optimierung der Datenbankleistung.
+              </li>
+              
+            </ul>
+          </div>
+          
+          <div class="xp-item">
+            <div class="xp-dot"></div>
+            <h3 style="color: #fff; margin-bottom: 0.2rem; font-size: 1.3rem">
+              IT-Spezialist (Netzwerksicherheit & Systeme)
+            </h3>
+            <div
+              style="
+                color: var(--secondary);
+                font-family: 'JetBrains Mono';
+                font-size: 0.9rem;
+                margin-bottom: 1rem;
+              "
+            >
+              Baranya County Police Headquarters • 2021 – 2023
+            </div>
+            <ul style="list-style: none; color: var(--dim)">
+              
+              <li
+                style="
+                  margin-bottom: 0.5rem;
+                  padding-left: 1rem;
+                  position: relative;
+                "
+              >
+                <span style="position: absolute; left: 0; color: var(--accent)"
+                  >›</span
+                >
+                Verwaltung kritischer Infrastrukturen in einer Hochsicherheitsumgebung.
+              </li>
+              
+              <li
+                style="
+                  margin-bottom: 0.5rem;
+                  padding-left: 1rem;
+                  position: relative;
+                "
+              >
+                <span style="position: absolute; left: 0; color: var(--accent)"
+                  >›</span
+                >
+                Unterstützung interner Entwicklungsteams bei sicheren Bereitstellungsstrategien.
+              </li>
+              
+            </ul>
+          </div>
+          
+          <div class="xp-item">
+            <div class="xp-dot"></div>
+            <h3 style="color: #fff; margin-bottom: 0.2rem; font-size: 1.3rem">
+              Softwareentwickler-Praktikant (Java/Spring)
+            </h3>
+            <div
+              style="
+                color: var(--secondary);
+                font-family: 'JetBrains Mono';
+                font-size: 0.9rem;
+                margin-bottom: 1rem;
+              "
+            >
+              InnoTeq • 2021
+            </div>
+            <ul style="list-style: none; color: var(--dim)">
+              
+              <li
+                style="
+                  margin-bottom: 0.5rem;
+                  padding-left: 1rem;
+                  position: relative;
+                "
+              >
+                <span style="position: absolute; left: 0; color: var(--accent)"
+                  >›</span
+                >
+                Grundlegende Erfahrung in Enterprise-Java (Spring Boot) und Angular-Architekturen.
+              </li>
+              
+              <li
+                style="
+                  margin-bottom: 0.5rem;
+                  padding-left: 1rem;
+                  position: relative;
+                "
+              >
+                <span style="position: absolute; left: 0; color: var(--accent)"
+                  >›</span
+                >
+                Fokus auf objektorientierte Designmuster und Clean-Code-Prinzipien.
+              </li>
+              
+            </ul>
+          </div>
+          
+          <div class="xp-item">
+            <div class="xp-dot"></div>
+            <h3 style="color: #fff; margin-bottom: 0.2rem; font-size: 1.3rem">
+              Uni-student, Wissenschaftlicher Mitarbeiter & Dozent
+            </h3>
+            <div
+              style="
+                color: var(--secondary);
+                font-family: 'JetBrains Mono';
+                font-size: 0.9rem;
+                margin-bottom: 1rem;
+              "
+            >
+              University of Pécs • 2007 – 2020
+            </div>
+            <ul style="list-style: none; color: var(--dim)">
+              
+              <li
+                style="
+                  margin-bottom: 0.5rem;
+                  padding-left: 1rem;
+                  position: relative;
+                "
+              >
+                <span style="position: absolute; left: 0; color: var(--accent)"
+                  >›</span
+                >
+                Anwendung von analytischem Systemdenken auf komplexe linguistische Themen.
+              </li>
+              
+              <li
+                style="
+                  margin-bottom: 0.5rem;
+                  padding-left: 1rem;
+                  position: relative;
+                "
+              >
+                <span style="position: absolute; left: 0; color: var(--accent)"
+                  >›</span
+                >
+                Verwaltung von Forschungsarchiven und Metadaten-Systemen.
+              </li>
+              
+            </ul>
+          </div>
+          
+        </section>
+
+        <section>
+          <h2>Skills <span class="index">TK</span></h2>
+          
+          <div style="margin-bottom: 2rem">
+            <div
+              style="
+                text-transform: uppercase;
+                color: var(--dim);
+                font-size: 0.8rem;
+                margin-bottom: 0.8rem;
+                letter-spacing: 1px;
+              "
+            >
+              backend
+            </div>
+            <div style="display: flex; flex-wrap: wrap; gap: 0.6rem">
+              
+              <div class="skill-chip">Java-Ökosystem (Spring Boot, MVC, Data)</div>
+              
+              <div class="skill-chip">Microservices & Entwurf verteilter Systeme</div>
+              
+              <div class="skill-chip">Refactoring und Stabilisierung von Legacy-Code</div>
+              
+              <div class="skill-chip">Clean Architecture & Design Patterns (Layered Architecture, DI, Service-Decomposition)</div>
+              
+              <div class="skill-chip">REST-API-Design & Dokumentation (REST Maturity, OpenAPI/Swagger)</div>
+              
+            </div>
+          </div>
+          
+          <div style="margin-bottom: 2rem">
+            <div
+              style="
+                text-transform: uppercase;
+                color: var(--dim);
+                font-size: 0.8rem;
+                margin-bottom: 0.8rem;
+                letter-spacing: 1px;
+              "
+            >
+              devops
+            </div>
+            <div style="display: flex; flex-wrap: wrap; gap: 0.6rem">
+              
+              <div class="skill-chip">Google Cloud Platform (GCP) & Docker</div>
+              
+              <div class="skill-chip">Optimierung von CI/CD-Pipelines</div>
+              
+              <div class="skill-chip">Linux-Systemverwaltung</div>
+              
+            </div>
+          </div>
+          
+          <div style="margin-bottom: 2rem">
+            <div
+              style="
+                text-transform: uppercase;
+                color: var(--dim);
+                font-size: 0.8rem;
+                margin-bottom: 0.8rem;
+                letter-spacing: 1px;
+              "
+            >
+              frontend
+            </div>
+            <div style="display: flex; flex-wrap: wrap; gap: 0.6rem">
+              
+              <div class="skill-chip">Angular (TypeScript, RxJS, Enterprise-Komponenten)</div>
+              
+              <div class="skill-chip">Responsive UI/UX-Implementierung</div>
+              
+            </div>
+          </div>
+          
+          <div style="margin-bottom: 2rem">
+            <div
+              style="
+                text-transform: uppercase;
+                color: var(--dim);
+                font-size: 0.8rem;
+                margin-bottom: 0.8rem;
+                letter-spacing: 1px;
+              "
+            >
+              methodology
+            </div>
+            <div style="display: flex; flex-wrap: wrap; gap: 0.6rem">
+              
+              <div class="skill-chip">Async-First Remote-Zusammenarbeit</div>
+              
+              <div class="skill-chip">Strukturelle Code-Analyse (Linguistischer Ansatz)</div>
+              
+            </div>
+          </div>
+          
+          <div style="margin-bottom: 2rem">
+            <div
+              style="
+                text-transform: uppercase;
+                color: var(--dim);
+                font-size: 0.8rem;
+                margin-bottom: 0.8rem;
+                letter-spacing: 1px;
+              "
+            >
+              writing
+            </div>
+            <div style="display: flex; flex-wrap: wrap; gap: 0.6rem">
+              
+              <div class="skill-chip">Technische Dokumentation & Wissensdatenbank-Architektur</div>
+              
+              <div class="skill-chip">Spekulative Fiktion & Narratives Design</div>
+              
+            </div>
+          </div>
+          
+        </section>
+
+				  
+        <section>
+          <h2 style="margin-top: 0">
+            
+            <span class="index" style="font-size: 0.8rem; margin-left: auto"
+              >18 UNITS</span
+            >
+          </h2>
+
+          <div class="project-grid-container">
+            
+            <div class="project-card">
+              <div class="card-content">
+                <h3
+                  style="color: #fff; margin-bottom: 0.5rem; font-size: 1.2rem"
+                >
+                  Chaos Symphony
+                </h3>
+
+                <div class="prj-actions">
+                  
+                  <a
+                    href="https://github.com/APorkolab/chaos-symphony"
+                    target="_blank"
+                    class="prj-link"
+                  >
+                    <svg viewBox="0 0 24 24">
+                      <path
+                        d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405 1.02 0 2.04.135 3 .405 2.28-1.56 3.285-1.23 3.285-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"
+                      />
+                    </svg>
+                    CODE
+                  </a>
+                   
+                </div>
+
+                <p
+                  style="
+                    color: var(--dim);
+                    font-size: 0.9rem;
+                    margin-bottom: 1.5rem;
+                  "
+                >
+                  Simulator für die Zuverlässigkeit verteilter Systeme.
+                </p>
+
+                <div
+                  style="
+                    display: flex;
+                    flex-wrap: wrap;
+                    gap: 0.5rem;
+                    margin-top: auto;
+                  "
+                >
+                  
+                  <span
+                    style="
+                      padding: 4px 8px;
+                      border: 1px solid var(--border);
+                      border-radius: 4px;
+                      font-size: 0.75rem;
+                      color: #ccc;
+                      background: rgba(255, 255, 255, 0.05);
+                    "
+                    >Java 21</span
+                  >
+                  
+                  <span
+                    style="
+                      padding: 4px 8px;
+                      border: 1px solid var(--border);
+                      border-radius: 4px;
+                      font-size: 0.75rem;
+                      color: #ccc;
+                      background: rgba(255, 255, 255, 0.05);
+                    "
+                    >Microservices</span
+                  >
+                  
+                  <span
+                    style="
+                      padding: 4px 8px;
+                      border: 1px solid var(--border);
+                      border-radius: 4px;
+                      font-size: 0.75rem;
+                      color: #ccc;
+                      background: rgba(255, 255, 255, 0.05);
+                    "
+                    >Kafka</span
+                  >
+                  
+                </div>
+              </div>
+
+              
+              <div
+                id="mermaid-source-1"
+                style="display: none"
+              >
+                graph TD
+  User -->|HTTP| API_Gateway
+  API_Gateway -->|REST| OrderService
+  OrderService -->|Kafka| PaymentService
+  PaymentService -->|"Circuit Breaker"| Bank
+
+              </div>
+
+              <button
+                class="arch-btn"
+                onclick="openArchModal('mermaid-source-1')"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path d="M2 12h20M12 2v20" />
+                </svg>
+                
+              </button>
+              
+            </div>
+            
+            <div class="project-card">
+              <div class="card-content">
+                <h3
+                  style="color: #fff; margin-bottom: 0.5rem; font-size: 1.2rem"
+                >
+                  Cziczere
+                </h3>
+
+                <div class="prj-actions">
+                  
+                  <a
+                    href="https://github.com/APorkolab/cziczere"
+                    target="_blank"
+                    class="prj-link"
+                  >
+                    <svg viewBox="0 0 24 24">
+                      <path
+                        d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405 1.02 0 2.04.135 3 .405 2.28-1.56 3.285-1.23 3.285-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"
+                      />
+                    </svg>
+                    CODE
+                  </a>
+                   
+                </div>
+
+                <p
+                  style="
+                    color: var(--dim);
+                    font-size: 0.9rem;
+                    margin-bottom: 1.5rem;
+                  "
+                >
+                  Digitaler Erinnerungsgarten.
+                </p>
+
+                <div
+                  style="
+                    display: flex;
+                    flex-wrap: wrap;
+                    gap: 0.5rem;
+                    margin-top: auto;
+                  "
+                >
+                  
+                  <span
+                    style="
+                      padding: 4px 8px;
+                      border: 1px solid var(--border);
+                      border-radius: 4px;
+                      font-size: 0.75rem;
+                      color: #ccc;
+                      background: rgba(255, 255, 255, 0.05);
+                    "
+                    >Java</span
+                  >
+                  
+                  <span
+                    style="
+                      padding: 4px 8px;
+                      border: 1px solid var(--border);
+                      border-radius: 4px;
+                      font-size: 0.75rem;
+                      color: #ccc;
+                      background: rgba(255, 255, 255, 0.05);
+                    "
+                    >Generative Art</span
+                  >
+                  
+                </div>
+              </div>
+
+              
+              <div
+                id="mermaid-source-2"
+                style="display: none"
+              >
+                graph TD
+  Seed --> Generator
+  Generator --> RuleSet
+  RuleSet --> Renderer
+  Renderer --> Output
+
+              </div>
+
+              <button
+                class="arch-btn"
+                onclick="openArchModal('mermaid-source-2')"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path d="M2 12h20M12 2v20" />
+                </svg>
+                
+              </button>
+              
+            </div>
+            
+            <div class="project-card">
+              <div class="card-content">
+                <h3
+                  style="color: #fff; margin-bottom: 0.5rem; font-size: 1.2rem"
+                >
+                  FeastFrenzy
+                </h3>
+
+                <div class="prj-actions">
+                  
+                  <a
+                    href="https://github.com/APorkolab/FeastFrenzy"
+                    target="_blank"
+                    class="prj-link"
+                  >
+                    <svg viewBox="0 0 24 24">
+                      <path
+                        d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405 1.02 0 2.04.135 3 .405 2.28-1.56 3.285-1.23 3.285-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"
+                      />
+                    </svg>
+                    CODE
+                  </a>
+                   
+                </div>
+
+                <p
+                  style="
+                    color: var(--dim);
+                    font-size: 0.9rem;
+                    margin-bottom: 1.5rem;
+                  "
+                >
+                  Mandantenfähiger Verpflegungsplaner.
+                </p>
+
+                <div
+                  style="
+                    display: flex;
+                    flex-wrap: wrap;
+                    gap: 0.5rem;
+                    margin-top: auto;
+                  "
+                >
+                  
+                  <span
+                    style="
+                      padding: 4px 8px;
+                      border: 1px solid var(--border);
+                      border-radius: 4px;
+                      font-size: 0.75rem;
+                      color: #ccc;
+                      background: rgba(255, 255, 255, 0.05);
+                    "
+                    >Angular</span
+                  >
+                  
+                  <span
+                    style="
+                      padding: 4px 8px;
+                      border: 1px solid var(--border);
+                      border-radius: 4px;
+                      font-size: 0.75rem;
+                      color: #ccc;
+                      background: rgba(255, 255, 255, 0.05);
+                    "
+                    >Spring Boot</span
+                  >
+                  
+                  <span
+                    style="
+                      padding: 4px 8px;
+                      border: 1px solid var(--border);
+                      border-radius: 4px;
+                      font-size: 0.75rem;
+                      color: #ccc;
+                      background: rgba(255, 255, 255, 0.05);
+                    "
+                    >Docker</span
+                  >
+                  
+                </div>
+              </div>
+
+              
+              <div
+                id="mermaid-source-3"
+                style="display: none"
+              >
+                sequenceDiagram
+  User->>Angular: Order
+  Angular->>SpringBoot: POST /api
+  SpringBoot->>DB: Transaction
+  DB-->>SpringBoot: OK
+
+              </div>
+
+              <button
+                class="arch-btn"
+                onclick="openArchModal('mermaid-source-3')"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path d="M2 12h20M12 2v20" />
+                </svg>
+                
+              </button>
+              
+            </div>
+            
+            <div class="project-card">
+              <div class="card-content">
+                <h3
+                  style="color: #fff; margin-bottom: 0.5rem; font-size: 1.2rem"
+                >
+                  SudoQMaestro
+                </h3>
+
+                <div class="prj-actions">
+                  
+                  <a
+                    href="https://github.com/APorkolab/SudoQMaestro"
+                    target="_blank"
+                    class="prj-link"
+                  >
+                    <svg viewBox="0 0 24 24">
+                      <path
+                        d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405 1.02 0 2.04.135 3 .405 2.28-1.56 3.285-1.23 3.285-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"
+                      />
+                    </svg>
+                    CODE
+                  </a>
+                   
+                </div>
+
+                <p
+                  style="
+                    color: var(--dim);
+                    font-size: 0.9rem;
+                    margin-bottom: 1.5rem;
+                  "
+                >
+                  OCR-basierte Pipeline für Sudoku.
+                </p>
+
+                <div
+                  style="
+                    display: flex;
+                    flex-wrap: wrap;
+                    gap: 0.5rem;
+                    margin-top: auto;
+                  "
+                >
+                  
+                  <span
+                    style="
+                      padding: 4px 8px;
+                      border: 1px solid var(--border);
+                      border-radius: 4px;
+                      font-size: 0.75rem;
+                      color: #ccc;
+                      background: rgba(255, 255, 255, 0.05);
+                    "
+                    >Angular</span
+                  >
+                  
+                  <span
+                    style="
+                      padding: 4px 8px;
+                      border: 1px solid var(--border);
+                      border-radius: 4px;
+                      font-size: 0.75rem;
+                      color: #ccc;
+                      background: rgba(255, 255, 255, 0.05);
+                    "
+                    >Node.js</span
+                  >
+                  
+                  <span
+                    style="
+                      padding: 4px 8px;
+                      border: 1px solid var(--border);
+                      border-radius: 4px;
+                      font-size: 0.75rem;
+                      color: #ccc;
+                      background: rgba(255, 255, 255, 0.05);
+                    "
+                    >OCR</span
+                  >
+                  
+                </div>
+              </div>
+
+              
+              <div
+                id="mermaid-source-4"
+                style="display: none"
+              >
+                graph LR
+  Image --> OCR
+  OCR --> Solver
+  Solver --> GameState
+  GameState --> UI
+
+              </div>
+
+              <button
+                class="arch-btn"
+                onclick="openArchModal('mermaid-source-4')"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path d="M2 12h20M12 2v20" />
+                </svg>
+                
+              </button>
+              
+            </div>
+            
+            <div class="project-card">
+              <div class="card-content">
+                <h3
+                  style="color: #fff; margin-bottom: 0.5rem; font-size: 1.2rem"
+                >
+                  SquareSketcher
+                </h3>
+
+                <div class="prj-actions">
+                  
+                  <a
+                    href="https://github.com/APorkolab/SquareSketcher"
+                    target="_blank"
+                    class="prj-link"
+                  >
+                    <svg viewBox="0 0 24 24">
+                      <path
+                        d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405 1.02 0 2.04.135 3 .405 2.28-1.56 3.285-1.23 3.285-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"
+                      />
+                    </svg>
+                    CODE
+                  </a>
+                   
+                </div>
+
+                <p
+                  style="
+                    color: var(--dim);
+                    font-size: 0.9rem;
+                    margin-bottom: 1.5rem;
+                  "
+                >
+                  Pixel-Art-Engine im Browser.
+                </p>
+
+                <div
+                  style="
+                    display: flex;
+                    flex-wrap: wrap;
+                    gap: 0.5rem;
+                    margin-top: auto;
+                  "
+                >
+                  
+                  <span
+                    style="
+                      padding: 4px 8px;
+                      border: 1px solid var(--border);
+                      border-radius: 4px;
+                      font-size: 0.75rem;
+                      color: #ccc;
+                      background: rgba(255, 255, 255, 0.05);
+                    "
+                    >Angular</span
+                  >
+                  
+                  <span
+                    style="
+                      padding: 4px 8px;
+                      border: 1px solid var(--border);
+                      border-radius: 4px;
+                      font-size: 0.75rem;
+                      color: #ccc;
+                      background: rgba(255, 255, 255, 0.05);
+                    "
+                    >Canvas API</span
+                  >
+                  
+                </div>
+              </div>
+
+              
+              <div
+                id="mermaid-source-5"
+                style="display: none"
+              >
+                graph TD
+  User --> Canvas
+  Canvas --> Engine
+  Engine --> Layers
+  Layers --> Renderer
+
+              </div>
+
+              <button
+                class="arch-btn"
+                onclick="openArchModal('mermaid-source-5')"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path d="M2 12h20M12 2v20" />
+                </svg>
+                
+              </button>
+              
+            </div>
+            
+            <div class="project-card">
+              <div class="card-content">
+                <h3
+                  style="color: #fff; margin-bottom: 0.5rem; font-size: 1.2rem"
+                >
+                  TruHoldem
+                </h3>
+
+                <div class="prj-actions">
+                  
+                  <a
+                    href="https://github.com/APorkolab/Truholdem"
+                    target="_blank"
+                    class="prj-link"
+                  >
+                    <svg viewBox="0 0 24 24">
+                      <path
+                        d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405 1.02 0 2.04.135 3 .405 2.28-1.56 3.285-1.23 3.285-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"
+                      />
+                    </svg>
+                    CODE
+                  </a>
+                   
+                </div>
+
+                <p
+                  style="
+                    color: var(--dim);
+                    font-size: 0.9rem;
+                    margin-bottom: 1.5rem;
+                  "
+                >
+                  Texas Hold’em-Simulator.
+                </p>
+
+                <div
+                  style="
+                    display: flex;
+                    flex-wrap: wrap;
+                    gap: 0.5rem;
+                    margin-top: auto;
+                  "
+                >
+                  
+                  <span
+                    style="
+                      padding: 4px 8px;
+                      border: 1px solid var(--border);
+                      border-radius: 4px;
+                      font-size: 0.75rem;
+                      color: #ccc;
+                      background: rgba(255, 255, 255, 0.05);
+                    "
+                    >Spring Boot</span
+                  >
+                  
+                  <span
+                    style="
+                      padding: 4px 8px;
+                      border: 1px solid var(--border);
+                      border-radius: 4px;
+                      font-size: 0.75rem;
+                      color: #ccc;
+                      background: rgba(255, 255, 255, 0.05);
+                    "
+                    >WebSocket</span
+                  >
+                  
+                  <span
+                    style="
+                      padding: 4px 8px;
+                      border: 1px solid var(--border);
+                      border-radius: 4px;
+                      font-size: 0.75rem;
+                      color: #ccc;
+                      background: rgba(255, 255, 255, 0.05);
+                    "
+                    >AI</span
+                  >
+                  
+                </div>
+              </div>
+
+              
+              <div
+                id="mermaid-source-6"
+                style="display: none"
+              >
+                graph TD
+  Player --> WS
+  WS --> Engine
+  Engine --> StateMachine
+  StateMachine --> Logic
+
+              </div>
+
+              <button
+                class="arch-btn"
+                onclick="openArchModal('mermaid-source-6')"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path d="M2 12h20M12 2v20" />
+                </svg>
+                
+              </button>
+              
+            </div>
+            
+            <div class="project-card">
+              <div class="card-content">
+                <h3
+                  style="color: #fff; margin-bottom: 0.5rem; font-size: 1.2rem"
+                >
+                  Baccaratio
+                </h3>
+
+                <div class="prj-actions">
+                  
+                  <a
+                    href="https://github.com/APorkolab/Baccaratio"
+                    target="_blank"
+                    class="prj-link"
+                  >
+                    <svg viewBox="0 0 24 24">
+                      <path
+                        d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405 1.02 0 2.04.135 3 .405 2.28-1.56 3.285-1.23 3.285-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"
+                      />
+                    </svg>
+                    CODE
+                  </a>
+                   
+                </div>
+
+                <p
+                  style="
+                    color: var(--dim);
+                    font-size: 0.9rem;
+                    margin-bottom: 1.5rem;
+                  "
+                >
+                  Full-Stack-Baccarat-Engine.
+                </p>
+
+                <div
+                  style="
+                    display: flex;
+                    flex-wrap: wrap;
+                    gap: 0.5rem;
+                    margin-top: auto;
+                  "
+                >
+                  
+                  <span
+                    style="
+                      padding: 4px 8px;
+                      border: 1px solid var(--border);
+                      border-radius: 4px;
+                      font-size: 0.75rem;
+                      color: #ccc;
+                      background: rgba(255, 255, 255, 0.05);
+                    "
+                    >Spring Data JPA</span
+                  >
+                  
+                  <span
+                    style="
+                      padding: 4px 8px;
+                      border: 1px solid var(--border);
+                      border-radius: 4px;
+                      font-size: 0.75rem;
+                      color: #ccc;
+                      background: rgba(255, 255, 255, 0.05);
+                    "
+                    >ACID</span
+                  >
+                  
+                </div>
+              </div>
+
+              
+              <div
+                id="mermaid-source-7"
+                style="display: none"
+              >
+                graph LR
+  User --> API
+  API --> Service
+  Service --> Engine
+  Engine --> DB
+
+              </div>
+
+              <button
+                class="arch-btn"
+                onclick="openArchModal('mermaid-source-7')"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path d="M2 12h20M12 2v20" />
+                </svg>
+                
+              </button>
+              
+            </div>
+            
+            <div class="project-card">
+              <div class="card-content">
+                <h3
+                  style="color: #fff; margin-bottom: 0.5rem; font-size: 1.2rem"
+                >
+                  NyelvSzó v2.0
+                </h3>
+
+                <div class="prj-actions">
+                  
+                  <a
+                    href="https://github.com/APorkolab/Nyelvszo-v.2.0"
+                    target="_blank"
+                    class="prj-link"
+                  >
+                    <svg viewBox="0 0 24 24">
+                      <path
+                        d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405 1.02 0 2.04.135 3 .405 2.28-1.56 3.285-1.23 3.285-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"
+                      />
+                    </svg>
+                    CODE
+                  </a>
+                   
+                </div>
+
+                <p
+                  style="
+                    color: var(--dim);
+                    font-size: 0.9rem;
+                    margin-bottom: 1.5rem;
+                  "
+                >
+                  Skalierbare lexikalische Datenbank.
+                </p>
+
+                <div
+                  style="
+                    display: flex;
+                    flex-wrap: wrap;
+                    gap: 0.5rem;
+                    margin-top: auto;
+                  "
+                >
+                  
+                  <span
+                    style="
+                      padding: 4px 8px;
+                      border: 1px solid var(--border);
+                      border-radius: 4px;
+                      font-size: 0.75rem;
+                      color: #ccc;
+                      background: rgba(255, 255, 255, 0.05);
+                    "
+                    >MongoDB</span
+                  >
+                  
+                  <span
+                    style="
+                      padding: 4px 8px;
+                      border: 1px solid var(--border);
+                      border-radius: 4px;
+                      font-size: 0.75rem;
+                      color: #ccc;
+                      background: rgba(255, 255, 255, 0.05);
+                    "
+                    >Express.js</span
+                  >
+                  
+                </div>
+              </div>
+
+              
+              <div
+                id="mermaid-source-8"
+                style="display: none"
+              >
+                graph LR
+  Client --> API
+  API --> Cache
+  API --> Mongo
+  Mongo --> Search
+
+              </div>
+
+              <button
+                class="arch-btn"
+                onclick="openArchModal('mermaid-source-8')"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path d="M2 12h20M12 2v20" />
+                </svg>
+                
+              </button>
+              
+            </div>
+            
+            <div class="project-card">
+              <div class="card-content">
+                <h3
+                  style="color: #fff; margin-bottom: 0.5rem; font-size: 1.2rem"
+                >
+                  Convertrix
+                </h3>
+
+                <div class="prj-actions">
+                  
+                  <a
+                    href="https://github.com/APorkolab/Convertrix"
+                    target="_blank"
+                    class="prj-link"
+                  >
+                    <svg viewBox="0 0 24 24">
+                      <path
+                        d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405 1.02 0 2.04.135 3 .405 2.28-1.56 3.285-1.23 3.285-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"
+                      />
+                    </svg>
+                    CODE
+                  </a>
+                   
+                </div>
+
+                <p
+                  style="
+                    color: var(--dim);
+                    font-size: 0.9rem;
+                    margin-bottom: 1.5rem;
+                  "
+                >
+                  Moderne Angular-Migrationsstudie.
+                </p>
+
+                <div
+                  style="
+                    display: flex;
+                    flex-wrap: wrap;
+                    gap: 0.5rem;
+                    margin-top: auto;
+                  "
+                >
+                  
+                  <span
+                    style="
+                      padding: 4px 8px;
+                      border: 1px solid var(--border);
+                      border-radius: 4px;
+                      font-size: 0.75rem;
+                      color: #ccc;
+                      background: rgba(255, 255, 255, 0.05);
+                    "
+                    >Angular 18</span
+                  >
+                  
+                  <span
+                    style="
+                      padding: 4px 8px;
+                      border: 1px solid var(--border);
+                      border-radius: 4px;
+                      font-size: 0.75rem;
+                      color: #ccc;
+                      background: rgba(255, 255, 255, 0.05);
+                    "
+                    >Signals</span
+                  >
+                  
+                </div>
+              </div>
+
+              
+              <div
+                id="mermaid-source-9"
+                style="display: none"
+              >
+                graph TD
+  Input --> Converter
+  Converter --> Output
+  Output --> UI
+
+              </div>
+
+              <button
+                class="arch-btn"
+                onclick="openArchModal('mermaid-source-9')"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path d="M2 12h20M12 2v20" />
+                </svg>
+                
+              </button>
+              
+            </div>
+            
+            <div class="project-card">
+              <div class="card-content">
+                <h3
+                  style="color: #fff; margin-bottom: 0.5rem; font-size: 1.2rem"
+                >
+                  Chronica Arcana
+                </h3>
+
+                <div class="prj-actions">
+                  
+                  <a
+                    href="https://github.com/APorkolab/ancient-chronicles"
+                    target="_blank"
+                    class="prj-link"
+                  >
+                    <svg viewBox="0 0 24 24">
+                      <path
+                        d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405 1.02 0 2.04.135 3 .405 2.28-1.56 3.285-1.23 3.285-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"
+                      />
+                    </svg>
+                    CODE
+                  </a>
+                   
+                </div>
+
+                <p
+                  style="
+                    color: var(--dim);
+                    font-size: 0.9rem;
+                    margin-bottom: 1.5rem;
+                  "
+                >
+                  KI-gestützte digitale Restaurierung.
+                </p>
+
+                <div
+                  style="
+                    display: flex;
+                    flex-wrap: wrap;
+                    gap: 0.5rem;
+                    margin-top: auto;
+                  "
+                >
+                  
+                  <span
+                    style="
+                      padding: 4px 8px;
+                      border: 1px solid var(--border);
+                      border-radius: 4px;
+                      font-size: 0.75rem;
+                      color: #ccc;
+                      background: rgba(255, 255, 255, 0.05);
+                    "
+                    >Generative AI</span
+                  >
+                  
+                  <span
+                    style="
+                      padding: 4px 8px;
+                      border: 1px solid var(--border);
+                      border-radius: 4px;
+                      font-size: 0.75rem;
+                      color: #ccc;
+                      background: rgba(255, 255, 255, 0.05);
+                    "
+                    >Archiving</span
+                  >
+                  
+                </div>
+              </div>
+
+              
+              <div
+                id="mermaid-source-10"
+                style="display: none"
+              >
+                graph LR
+  Text --> LLM
+  LLM --> Restore
+  Restore --> UI
+
+              </div>
+
+              <button
+                class="arch-btn"
+                onclick="openArchModal('mermaid-source-10')"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path d="M2 12h20M12 2v20" />
+                </svg>
+                
+              </button>
+              
+            </div>
+            
+            <div class="project-card">
+              <div class="card-content">
+                <h3
+                  style="color: #fff; margin-bottom: 0.5rem; font-size: 1.2rem"
+                >
+                  Miserere Mei
+                </h3>
+
+                <div class="prj-actions">
+                  
+                  <a
+                    href="https://github.com/APorkolab/Miserere-Mei"
+                    target="_blank"
+                    class="prj-link"
+                  >
+                    <svg viewBox="0 0 24 24">
+                      <path
+                        d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405 1.02 0 2.04.135 3 .405 2.28-1.56 3.285-1.23 3.285-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"
+                      />
+                    </svg>
+                    CODE
+                  </a>
+                   
+                </div>
+
+                <p
+                  style="
+                    color: var(--dim);
+                    font-size: 0.9rem;
+                    margin-bottom: 1.5rem;
+                  "
+                >
+                  Interaktive Erzähl-Engine.
+                </p>
+
+                <div
+                  style="
+                    display: flex;
+                    flex-wrap: wrap;
+                    gap: 0.5rem;
+                    margin-top: auto;
+                  "
+                >
+                  
+                  <span
+                    style="
+                      padding: 4px 8px;
+                      border: 1px solid var(--border);
+                      border-radius: 4px;
+                      font-size: 0.75rem;
+                      color: #ccc;
+                      background: rgba(255, 255, 255, 0.05);
+                    "
+                    >Node.js</span
+                  >
+                  
+                  <span
+                    style="
+                      padding: 4px 8px;
+                      border: 1px solid var(--border);
+                      border-radius: 4px;
+                      font-size: 0.75rem;
+                      color: #ccc;
+                      background: rgba(255, 255, 255, 0.05);
+                    "
+                    >Custom Parser</span
+                  >
+                  
+                </div>
+              </div>
+
+              
+              <div
+                id="mermaid-source-11"
+                style="display: none"
+              >
+                graph TD
+  Script --> Parser
+  Parser --> Engine
+  Engine --> UI
+
+              </div>
+
+              <button
+                class="arch-btn"
+                onclick="openArchModal('mermaid-source-11')"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path d="M2 12h20M12 2v20" />
+                </svg>
+                
+              </button>
+              
+            </div>
+            
+            <div class="project-card">
+              <div class="card-content">
+                <h3
+                  style="color: #fff; margin-bottom: 0.5rem; font-size: 1.2rem"
+                >
+                  FizzingBrain
+                </h3>
+
+                <div class="prj-actions">
+                  
+                  <a
+                    href="https://github.com/APorkolab/FizzingBrain"
+                    target="_blank"
+                    class="prj-link"
+                  >
+                    <svg viewBox="0 0 24 24">
+                      <path
+                        d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405 1.02 0 2.04.135 3 .405 2.28-1.56 3.285-1.23 3.285-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"
+                      />
+                    </svg>
+                    CODE
+                  </a>
+                   
+                </div>
+
+                <p
+                  style="
+                    color: var(--dim);
+                    font-size: 0.9rem;
+                    margin-bottom: 1.5rem;
+                  "
+                >
+                  Echtzeit-Quizengine.
+                </p>
+
+                <div
+                  style="
+                    display: flex;
+                    flex-wrap: wrap;
+                    gap: 0.5rem;
+                    margin-top: auto;
+                  "
+                >
+                  
+                  <span
+                    style="
+                      padding: 4px 8px;
+                      border: 1px solid var(--border);
+                      border-radius: 4px;
+                      font-size: 0.75rem;
+                      color: #ccc;
+                      background: rgba(255, 255, 255, 0.05);
+                    "
+                    >Angular</span
+                  >
+                  
+                  <span
+                    style="
+                      padding: 4px 8px;
+                      border: 1px solid var(--border);
+                      border-radius: 4px;
+                      font-size: 0.75rem;
+                      color: #ccc;
+                      background: rgba(255, 255, 255, 0.05);
+                    "
+                    >WebSocket</span
+                  >
+                  
+                </div>
+              </div>
+
+              
+              <div
+                id="mermaid-source-12"
+                style="display: none"
+              >
+                graph LR
+  User --> WS
+  WS --> Game
+  Game --> Score
+  Score --> UI
+
+              </div>
+
+              <button
+                class="arch-btn"
+                onclick="openArchModal('mermaid-source-12')"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path d="M2 12h20M12 2v20" />
+                </svg>
+                
+              </button>
+              
+            </div>
+            
+            <div class="project-card">
+              <div class="card-content">
+                <h3
+                  style="color: #fff; margin-bottom: 0.5rem; font-size: 1.2rem"
+                >
+                  Astropa
+                </h3>
+
+                <div class="prj-actions">
+                  
+                  <a
+                    href="https://github.com/APorkolab/Astropa"
+                    target="_blank"
+                    class="prj-link"
+                  >
+                    <svg viewBox="0 0 24 24">
+                      <path
+                        d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405 1.02 0 2.04.135 3 .405 2.28-1.56 3.285-1.23 3.285-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"
+                      />
+                    </svg>
+                    CODE
+                  </a>
+                   
+                </div>
+
+                <p
+                  style="
+                    color: var(--dim);
+                    font-size: 0.9rem;
+                    margin-bottom: 1.5rem;
+                  "
+                >
+                  Graphbasierte Kompatibilitätsanalyse.
+                </p>
+
+                <div
+                  style="
+                    display: flex;
+                    flex-wrap: wrap;
+                    gap: 0.5rem;
+                    margin-top: auto;
+                  "
+                >
+                  
+                  <span
+                    style="
+                      padding: 4px 8px;
+                      border: 1px solid var(--border);
+                      border-radius: 4px;
+                      font-size: 0.75rem;
+                      color: #ccc;
+                      background: rgba(255, 255, 255, 0.05);
+                    "
+                    >Algorithm Design</span
+                  >
+                  
+                </div>
+              </div>
+
+              
+              <div
+                id="mermaid-source-13"
+                style="display: none"
+              >
+                graph TD
+  Profile --> Graph
+  Graph --> Algo
+  Algo --> Result
+
+              </div>
+
+              <button
+                class="arch-btn"
+                onclick="openArchModal('mermaid-source-13')"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path d="M2 12h20M12 2v20" />
+                </svg>
+                
+              </button>
+              
+            </div>
+            
+            <div class="project-card">
+              <div class="card-content">
+                <h3
+                  style="color: #fff; margin-bottom: 0.5rem; font-size: 1.2rem"
+                >
+                  RandomRobi
+                </h3>
+
+                <div class="prj-actions">
+                  
+                  <a
+                    href="https://github.com/APorkolab/RandomRobi"
+                    target="_blank"
+                    class="prj-link"
+                  >
+                    <svg viewBox="0 0 24 24">
+                      <path
+                        d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405 1.02 0 2.04.135 3 .405 2.28-1.56 3.285-1.23 3.285-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"
+                      />
+                    </svg>
+                    CODE
+                  </a>
+                   
+                </div>
+
+                <p
+                  style="
+                    color: var(--dim);
+                    font-size: 0.9rem;
+                    margin-bottom: 1.5rem;
+                  "
+                >
+                  Automatisierte Content-Aggregationspipeline.
+                </p>
+
+                <div
+                  style="
+                    display: flex;
+                    flex-wrap: wrap;
+                    gap: 0.5rem;
+                    margin-top: auto;
+                  "
+                >
+                  
+                  <span
+                    style="
+                      padding: 4px 8px;
+                      border: 1px solid var(--border);
+                      border-radius: 4px;
+                      font-size: 0.75rem;
+                      color: #ccc;
+                      background: rgba(255, 255, 255, 0.05);
+                    "
+                    >Puppeteer</span
+                  >
+                  
+                  <span
+                    style="
+                      padding: 4px 8px;
+                      border: 1px solid var(--border);
+                      border-radius: 4px;
+                      font-size: 0.75rem;
+                      color: #ccc;
+                      background: rgba(255, 255, 255, 0.05);
+                    "
+                    >Automation</span
+                  >
+                  
+                </div>
+              </div>
+
+              
+              <div
+                id="mermaid-source-14"
+                style="display: none"
+              >
+                graph LR
+  Cron --> Puppeteer
+  Puppeteer --> Scraper
+  Scraper --> DB
+
+              </div>
+
+              <button
+                class="arch-btn"
+                onclick="openArchModal('mermaid-source-14')"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path d="M2 12h20M12 2v20" />
+                </svg>
+                
+              </button>
+              
+            </div>
+            
+            <div class="project-card">
+              <div class="card-content">
+                <h3
+                  style="color: #fff; margin-bottom: 0.5rem; font-size: 1.2rem"
+                >
+                  JobHuntHelper
+                </h3>
+
+                <div class="prj-actions">
+                  
+                  <a
+                    href="https://github.com/APorkolab/JobHuntHelper"
+                    target="_blank"
+                    class="prj-link"
+                  >
+                    <svg viewBox="0 0 24 24">
+                      <path
+                        d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405 1.02 0 2.04.135 3 .405 2.28-1.56 3.285-1.23 3.285-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"
+                      />
+                    </svg>
+                    CODE
+                  </a>
+                   
+                </div>
+
+                <p
+                  style="
+                    color: var(--dim);
+                    font-size: 0.9rem;
+                    margin-bottom: 1.5rem;
+                  "
+                >
+                  Automatisierungsskript für Recruiting-Workflows.
+                </p>
+
+                <div
+                  style="
+                    display: flex;
+                    flex-wrap: wrap;
+                    gap: 0.5rem;
+                    margin-top: auto;
+                  "
+                >
+                  
+                  <span
+                    style="
+                      padding: 4px 8px;
+                      border: 1px solid var(--border);
+                      border-radius: 4px;
+                      font-size: 0.75rem;
+                      color: #ccc;
+                      background: rgba(255, 255, 255, 0.05);
+                    "
+                    >Google Apps Script</span
+                  >
+                  
+                </div>
+              </div>
+
+              
+              <div
+                id="mermaid-source-15"
+                style="display: none"
+              >
+                graph TD
+  Trigger --> Check
+  Check --> Email
+  Email --> UpdateSheet
+
+              </div>
+
+              <button
+                class="arch-btn"
+                onclick="openArchModal('mermaid-source-15')"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path d="M2 12h20M12 2v20" />
+                </svg>
+                
+              </button>
+              
+            </div>
+            
+            <div class="project-card">
+              <div class="card-content">
+                <h3
+                  style="color: #fff; margin-bottom: 0.5rem; font-size: 1.2rem"
+                >
+                  ObsequiNG
+                </h3>
+
+                <div class="prj-actions">
+                  
+                  <a
+                    href="https://github.com/APorkolab/ObsequiNG"
+                    target="_blank"
+                    class="prj-link"
+                  >
+                    <svg viewBox="0 0 24 24">
+                      <path
+                        d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405 1.02 0 2.04.135 3 .405 2.28-1.56 3.285-1.23 3.285-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"
+                      />
+                    </svg>
+                    CODE
+                  </a>
+                   
+                </div>
+
+                <p
+                  style="
+                    color: var(--dim);
+                    font-size: 0.9rem;
+                    margin-bottom: 1.5rem;
+                  "
+                >
+                  Leichte Utility-Bibliothek.
+                </p>
+
+                <div
+                  style="
+                    display: flex;
+                    flex-wrap: wrap;
+                    gap: 0.5rem;
+                    margin-top: auto;
+                  "
+                >
+                  
+                  <span
+                    style="
+                      padding: 4px 8px;
+                      border: 1px solid var(--border);
+                      border-radius: 4px;
+                      font-size: 0.75rem;
+                      color: #ccc;
+                      background: rgba(255, 255, 255, 0.05);
+                    "
+                    >TypeScript</span
+                  >
+                  
+                  <span
+                    style="
+                      padding: 4px 8px;
+                      border: 1px solid var(--border);
+                      border-radius: 4px;
+                      font-size: 0.75rem;
+                      color: #ccc;
+                      background: rgba(255, 255, 255, 0.05);
+                    "
+                    >NPM</span
+                  >
+                  
+                </div>
+              </div>
+
+              
+              <div
+                id="mermaid-source-16"
+                style="display: none"
+              >
+                graph TD
+  Code --> Build
+  Build --> TreeShake
+  TreeShake --> Package
+
+              </div>
+
+              <button
+                class="arch-btn"
+                onclick="openArchModal('mermaid-source-16')"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path d="M2 12h20M12 2v20" />
+                </svg>
+                
+              </button>
+              
+            </div>
+            
+            <div class="project-card">
+              <div class="card-content">
+                <h3
+                  style="color: #fff; margin-bottom: 0.5rem; font-size: 1.2rem"
+                >
+                  BibleVerse
+                </h3>
+
+                <div class="prj-actions">
+                  
+                  <a
+                    href="https://github.com/APorkolab/Bibleverse"
+                    target="_blank"
+                    class="prj-link"
+                  >
+                    <svg viewBox="0 0 24 24">
+                      <path
+                        d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405 1.02 0 2.04.135 3 .405 2.28-1.56 3.285-1.23 3.285-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"
+                      />
+                    </svg>
+                    CODE
+                  </a>
+                   
+                </div>
+
+                <p
+                  style="
+                    color: var(--dim);
+                    font-size: 0.9rem;
+                    margin-bottom: 1.5rem;
+                  "
+                >
+                  Angular-basierte Schriftensuchmaschine.
+                </p>
+
+                <div
+                  style="
+                    display: flex;
+                    flex-wrap: wrap;
+                    gap: 0.5rem;
+                    margin-top: auto;
+                  "
+                >
+                  
+                  <span
+                    style="
+                      padding: 4px 8px;
+                      border: 1px solid var(--border);
+                      border-radius: 4px;
+                      font-size: 0.75rem;
+                      color: #ccc;
+                      background: rgba(255, 255, 255, 0.05);
+                    "
+                    >Angular</span
+                  >
+                  
+                  <span
+                    style="
+                      padding: 4px 8px;
+                      border: 1px solid var(--border);
+                      border-radius: 4px;
+                      font-size: 0.75rem;
+                      color: #ccc;
+                      background: rgba(255, 255, 255, 0.05);
+                    "
+                    >API</span
+                  >
+                  
+                </div>
+              </div>
+
+              
+              <div
+                id="mermaid-source-17"
+                style="display: none"
+              >
+                graph TD
+  User --> API
+  API --> Cache
+  Cache --> UI
+
+              </div>
+
+              <button
+                class="arch-btn"
+                onclick="openArchModal('mermaid-source-17')"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path d="M2 12h20M12 2v20" />
+                </svg>
+                
+              </button>
+              
+            </div>
+            
+            <div class="project-card">
+              <div class="card-content">
+                <h3
+                  style="color: #fff; margin-bottom: 0.5rem; font-size: 1.2rem"
+                >
+                  Cadentis
+                </h3>
+
+                <div class="prj-actions">
+                  
+                  <a
+                    href="https://github.com/APorkolab/Cadentis"
+                    target="_blank"
+                    class="prj-link"
+                  >
+                    <svg viewBox="0 0 24 24">
+                      <path
+                        d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405 1.02 0 2.04.135 3 .405 2.28-1.56 3.285-1.23 3.285-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"
+                      />
+                    </svg>
+                    CODE
+                  </a>
+                   
+                </div>
+
+                <p
+                  style="
+                    color: var(--dim);
+                    font-size: 0.9rem;
+                    margin-bottom: 1.5rem;
+                  "
+                >
+                  NLP-basiertes Analysewerkzeug.
+                </p>
+
+                <div
+                  style="
+                    display: flex;
+                    flex-wrap: wrap;
+                    gap: 0.5rem;
+                    margin-top: auto;
+                  "
+                >
+                  
+                  <span
+                    style="
+                      padding: 4px 8px;
+                      border: 1px solid var(--border);
+                      border-radius: 4px;
+                      font-size: 0.75rem;
+                      color: #ccc;
+                      background: rgba(255, 255, 255, 0.05);
+                    "
+                    >NLP</span
+                  >
+                  
+                  <span
+                    style="
+                      padding: 4px 8px;
+                      border: 1px solid var(--border);
+                      border-radius: 4px;
+                      font-size: 0.75rem;
+                      color: #ccc;
+                      background: rgba(255, 255, 255, 0.05);
+                    "
+                    >Algorithms</span
+                  >
+                  
+                </div>
+              </div>
+
+              
+              <div
+                id="mermaid-source-18"
+                style="display: none"
+              >
+                graph TD
+  Text[Input Text] --> Analysis[Analysis Engine]
+  Analysis --> Metrics[Metric Generator]
+  Metrics --> UI[User Interface]
+
+              </div>
+
+              <button
+                class="arch-btn"
+                onclick="openArchModal('mermaid-source-18')"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path d="M2 12h20M12 2v20" />
+                </svg>
+                
+              </button>
+              
+            </div>
+            
+          </div>
+        </section>
+        
+
+        <section>
+					       
+        <section>
+          <h2>Ausbildung <span class="index">03</span></h2>
+          
+          <div class="xp-item" style="border-left: 2px solid var(--accent)">
+            <div class="xp-header">
+              <div class="xp-role">Dr. phil. in Linguistik (Summa Cum Laude)</div>
+              <div class="xp-meta">University of Pécs / 2013 – 2018</div>
+            </div>
+            <p style="color: #888; margin: 0">Schwerpunkt Strukturanalyse und kognitive Systeme.</p>
+          </div>
+          
+          <div class="xp-item" style="border-left: 2px solid var(--accent)">
+            <div class="xp-header">
+              <div class="xp-role">Zertifizierungen für Softwaretechnik</div>
+              <div class="xp-meta">Training 360 / StudiCore / OKTÁV / 2019 – 2022</div>
+            </div>
+            <p style="color: #888; margin: 0">Intensivtraining in Java-Backend, Frontend und Informatik-Grundlagen.</p>
+          </div>
+          
+          <div class="xp-item" style="border-left: 2px solid var(--accent)">
+            <div class="xp-header">
+              <div class="xp-role">BA & MA in Ungarisch- und Geschichtslehramt (Mit Auszeichnung)</div>
+              <div class="xp-meta">University of Pécs / 2007 – 2012</div>
+            </div>
+            <p style="color: #888; margin: 0">Doppeltes Lehramtsstudium, mit Auszeichnung abgeschlossen.</p>
+          </div>
+          
+        </section>
+        
+
+        <section>
+          <h2>Sprachen & Interessen <span class="index">04</span></h2>
+
+          
+          <div style="margin-bottom: 2rem">
+            <div style="color: #fff; font-weight: 700; margin-bottom: 1rem">
+              Sprachen
+            </div>
+            <div class="skill-grid">
+              
+              <div class="skill-box" style="border-color: var(--accent)">
+                Ungarisch (Muttersprache)
+              </div>
+              
+              <div class="skill-box" style="border-color: var(--accent)">
+                Englisch (C1 – Zertifiziert)
+              </div>
+              
+              <div class="skill-box" style="border-color: var(--accent)">
+                Deutsch (B2 – passiv, auffrischungsbedürftig)
+              </div>
+              
+            </div>
+          </div>
+           
+          <div
+            style="
+              color: #fff;
+              font-weight: 700;
+              margin-bottom: 1rem;
+              margin-top: 2rem;
+            "
+          >
+            Interessen
+          </div>
+          <div class="interest-grid">
+            
+            <div class="interest-item">
+              <h3>Autor spekulativer Fiktion</h3>
+              <p>Erforschung komplexer narrativer Architekturen. International veröffentlicht.</p>
+            </div>
+            
+            <div class="interest-item">
+              <h3>Systemdesign & Architektur</h3>
+              <p>Anwendung des linguistischen Strukturalismus auf Software-Muster.</p>
+            </div>
+            
+          </div>
+          
+        </section>
+
+        
+
+
+      </main>
+    </div>
+
+    <script>
+      async function openArchModal(sourceId) {
+        const modal = document.getElementById('archModal');
+        const target = document.getElementById('mermaidTarget');
+        const source = document.getElementById(sourceId).innerText;
+
+        // Clear previous content
+        target.innerHTML = '';
+
+        // Create a new div for mermaid to render into
+        const graphDiv = document.createElement('div');
+        graphDiv.className = 'mermaid';
+        graphDiv.textContent = source;
+        target.appendChild(graphDiv);
+
+        // Show modal
+        modal.classList.add('active');
+
+        // Run Mermaid
+        try {
+          await mermaid.run({nodes: [graphDiv]});
+        } catch (e) {
+          console.error('Mermaid render error:', e);
+          graphDiv.textContent = 'Error rendering diagram.';
+        }
+      }
+
+      function closeModal(e) {
+        const modal = document.getElementById('archModal');
+        modal.classList.remove('active');
+      }
+    </script>
+  </body>
+</html>
