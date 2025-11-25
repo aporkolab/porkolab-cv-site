@@ -154,15 +154,17 @@
       h1 {
         font-family: 'Syncopate', sans-serif;
         font-weight: 700;
-        font-size: clamp(2rem, 4vw, 4rem);
-        line-height: 1.1;
+        /* A clamp értékeket állítottam, hogy kisebb legyen mobilon/tableten */
+        font-size: clamp(1.8rem, 3.5vw, 3.5rem);
+        line-height: 1.2; /* Lazább sorköz, hogy ne érjenek össze a betűk */
         margin: 0 0 1rem 0;
         text-transform: uppercase;
-        letter-spacing: -2px;
+        letter-spacing: -1px; /* Kicsit visszavettem a kerningből */
         background: linear-gradient(to right, #fff, var(--accent-light));
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         word-wrap: break-word;
+        hyphens: auto; /* Segít a tördelésben */
       }
 
       .role-title {
@@ -725,9 +727,9 @@
         <section>
           <h2 style="border-bottom: none; margin-bottom: 2rem">
             {{ t_projects }}
-            <span class="index" style="font-size: 1rem; opacity: 0.5"
-              >{{ projects.size }} MODULES LOADED</span
-            >
+            <span class="index" style="font-size: 1rem; opacity: 0.5">
+              {{ projects.size }} MODULES LOADED
+            </span>
           </h2>
 
           <div class="project-grid-container">
@@ -742,15 +744,17 @@
                       href="{{ project.links.repo }}"
                       target="_blank"
                       class="code-link"
-                      ><span style="color: var(--accent)">git</span>_repo</a
                     >
+                      <span style="color: var(--accent)">git</span>_repo
+                    </a>
                     {% endif %} {% if project.links.demo %} /
                     <a
                       href="{{ project.links.demo }}"
                       target="_blank"
                       class="live-link"
-                      >live_feed</a
                     >
+                      live_feed
+                    </a>
                     {% endif %}
                   </div>
                 </div>
@@ -770,8 +774,12 @@
               {% if project.mermaid %}
               <div class="arch-overlay">
                 <div class="arch-label">SYSTEM ARCHITECTURE</div>
-                <div class="mermaid">{{ project.mermaid }}</div>
+
+                <div class="mermaid">
+                  {% raw %} {{ project.mermaid }} {% endraw %}
+                </div>
               </div>
+
               <div class="arch-trigger" title="View Architecture">
                 <svg
                   width="24"
