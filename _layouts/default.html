@@ -28,162 +28,33 @@
       rel="icon"
       href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👨‍💻</text></svg>"
     />
+    <meta
+      property="og:title"
+      content="Ádám Porkoláb, PhD | Senior Full-Stack Engineer"
+    />
+    <meta
+      property="og:description"
+      content="Java/Spring & Angular expert specializing in legacy stabilization and clean architecture."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://aporkolab.com/" />
+    <meta name="twitter:card" content="summary_large_image" />
     <style>
-      .stack-icon {
-        font-size: 1.2rem;
-        color: var(--dim);
-        transition: 0.3s;
-        vertical-align: middle;
-      }
-
-      .project-card:hover .stack-icon {
-        color: var(--fg);
-      }
-      /* --- SKILL BOXES --- */
-      .skill-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
-        gap: 1rem;
-      }
-      .skill-box {
-        border: 1px solid var(--border);
-        padding: 1rem;
-        text-align: center;
-        font-size: 0.85rem;
-        font-weight: 500;
-        transition: 0.3s;
-        cursor: default;
-        background: linear-gradient(
-          45deg,
-          transparent 50%,
-          rgba(112, 0, 255, 0.05) 100%
-        );
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        min-height: 80px;
-        word-wrap: break-word;
-        hyphens: auto;
-        line-height: 1.3;
-      }
-      .skill-box:hover {
-        border-color: #fff;
-        background: #fff;
-        color: #000;
-      }
-
-      .dl-btn {
-        display: block;
-        width: 100%;
-        padding: 1.5rem;
-        background: #fff;
-        color: #000;
-        font-family: 'Syncopate', sans-serif;
-        font-weight: 700;
-        text-transform: uppercase;
-        text-align: center;
-        border: none;
-        cursor: pointer;
-        transition: 0.4s;
-        margin-top: 2rem;
-        position: relative;
-        overflow: hidden;
-      }
-      .dl-btn:hover {
-        background: var(--accent);
-        color: #fff;
-        letter-spacing: 2px;
-      }
-      .dl-btn::after {
-        content: ' [PDF]';
-        opacity: 0.5;
-        font-size: 0.8em;
-      }
-
-      .interest-item {
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-      }
-
-      .interest-grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 2rem;
-      }
-      .interest-item h3 {
-        font-family: 'Space Grotesk';
-        font-size: 1rem;
-        color: #fff;
-        margin: 0 0 0.5rem 0;
-        text-transform: uppercase;
-      }
-      .interest-item p {
-        font-size: 0.9rem;
-        color: #888;
-        margin: 0;
-      }
-
-      @keyframes pulse {
-        0% {
-          opacity: 1;
-        }
-        50% {
-          opacity: 0.3;
-        }
-        100% {
-          opacity: 1;
-        }
-      }
-
-      @media (max-width: 900px) {
-        .layout-wrapper {
-          flex-direction: column;
-        }
-        .identity-panel {
-          width: 100%;
-          height: auto;
-          padding: 3rem 1.5rem;
-          border-right: none;
-          border-bottom: 1px solid var(--border);
-        }
-        .data-panel {
-          width: 100%;
-          height: auto;
-          padding: 2rem 1.5rem;
-        }
-        h1 {
-          font-size: 2.2rem;
-        }
-        .lang-switch {
-          top: 1rem;
-          right: 1rem;
-          padding: 0.5rem;
-          gap: 0.5rem;
-        }
-        .lang-btn {
-          font-size: 1.2rem;
-        }
-        .skill-grid {
-          grid-template-columns: 1fr 1fr;
-        }
-        .interest-grid {
-          grid-template-columns: 1fr;
-        }
-      }
-      /* --- GLOBAL STYLES --- */
-
+      /* --- 1. ALAPBEÁLLÍTÁSOK & VÁLTOZÓK --- */
       :root {
         --bg: #030304;
         --surface: #0a0a0c;
-        --surface-glass: rgba(15, 15, 20, 0.85);
+        --surface-glass: rgba(
+          15,
+          15,
+          20,
+          0.7
+        ); /* Kicsit átlátszóbb a menőbb hatásért */
         --fg: #f0f0f0;
         --dim: #b0b0c0;
-
         --accent: #7000ff;
         --accent-glow: rgba(112, 0, 255, 0.4);
         --secondary: #00f3ff;
-
         --border: rgba(255, 255, 255, 0.08);
         --radius: 16px;
       }
@@ -198,12 +69,430 @@
         background-color: var(--bg);
         color: var(--fg);
         font-family: 'Outfit', sans-serif;
-        font-size: 16px;
+        font-size: 1rem;
         line-height: 1.6;
         overflow-x: hidden;
       }
 
-      /* --- BACKGROUND --- */
+      /* --- 2. LAYOUT (A JÓ SZERKEZET) --- */
+      .layout-wrapper {
+        display: grid;
+        grid-template-columns: minmax(300px, 22vw) 1fr;
+        gap: 6rem;
+        max-width: 95vw;
+        margin: 0 auto;
+        padding: 2rem 4rem;
+        min-height: 100vh;
+      }
+
+      /* --- 3. OLDALSÁV (ASIDE) --- */
+      .identity-panel {
+        position: sticky;
+        top: 2rem;
+        height: fit-content;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        padding: 2.5rem;
+        background: var(--surface-glass);
+        backdrop-filter: blur(20px);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+        box-shadow: 0 0 40px rgba(0, 0, 0, 0.5); /* Mélység hozzáadása */
+      }
+      .identity-panel::-webkit-scrollbar {
+        display: none;
+      }
+
+      /* --- 4. TARTALOM (MAIN) --- */
+      .data-panel {
+        padding-top: 1rem;
+        padding-bottom: 4rem;
+        content-visibility: auto;
+      }
+
+      /* --- 5. MOBIL & TABLET NÉZET --- */
+      @media (max-width: 1024px) {
+        .layout-wrapper {
+          display: flex;
+          flex-direction: column;
+          gap: 3rem;
+          padding: 1.5rem;
+          max-width: 100%;
+        }
+        .identity-panel {
+          position: relative;
+          top: 0;
+          width: 100%;
+          max-width: 100%;
+          margin: 0 auto;
+        }
+        .project-grid-container,
+        .skill-grid,
+        .interest-grid {
+          grid-template-columns: 1fr !important;
+        }
+        h1 {
+          font-size: 2.5rem;
+        }
+      }
+
+      /* --- 6. PROFILKÉP --- */
+      .profile-image-container {
+        position: relative;
+        width: 180px;
+        height: 180px;
+        margin: 0 auto 2rem auto;
+        border-radius: var(--radius);
+        overflow: hidden;
+        border: 2px solid rgba(255, 255, 255, 0.1);
+        transition: 0.3s;
+        background: #0a0a0c;
+        flex-shrink: 0;
+      }
+      @media (max-width: 600px) {
+        .profile-image-container {
+          margin-top: 2rem;
+        }
+      }
+
+      .profile-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        filter: grayscale(100%) contrast(1.2) brightness(0.9);
+        transition: 0.3s;
+      }
+      .profile-image-container:hover {
+        border-color: var(--accent);
+        box-shadow: 0 0 25px rgba(112, 0, 255, 0.3);
+      }
+      .profile-image-container:hover .profile-image {
+        filter: grayscale(100%) sepia(100%) hue-rotate(230deg) saturate(3)
+          contrast(1.1);
+      }
+      .glitch-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: repeating-linear-gradient(
+          transparent 0px,
+          rgba(0, 243, 255, 0.1) 2px,
+          transparent 4px
+        );
+        opacity: 0;
+        pointer-events: none;
+        transition: 0.3s;
+        mix-blend-mode: overlay;
+      }
+      .profile-image-container:hover .glitch-overlay {
+        opacity: 1;
+      }
+
+      /* --- 7. DESIGN ELEMEK & VISSZAHOZOTT STÍLUSOK --- */
+
+      /* Skill Buborékok (EZ HIÁNYZOTT) */
+      .skill-chip {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.4rem 1rem;
+        margin: 0 0.5rem 0.5rem 0;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid var(--border);
+        border-radius: 50px; /* Kerekített pirula forma */
+        font-size: 0.95rem;
+        color: #ccc;
+        transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        cursor: default;
+      }
+      .skill-chip:hover {
+        border-color: var(--accent);
+        background: var(--accent-glow);
+        color: #fff;
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(112, 0, 255, 0.2);
+      }
+
+      /* Skill Box Grid (Nyelvekhez) */
+      .skill-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+        gap: 1rem;
+      }
+      .skill-box {
+        border: 1px solid var(--border);
+        padding: 1rem;
+        text-align: center;
+        font-size: 0.95rem;
+        font-weight: 500;
+        transition: 0.3s;
+        cursor: default;
+        background: linear-gradient(
+          45deg,
+          transparent 50%,
+          rgba(112, 0, 255, 0.05) 100%
+        );
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 80px;
+        border-radius: 12px;
+      }
+      .skill-box:hover {
+        border-color: var(--secondary);
+        background: rgba(0, 243, 255, 0.1);
+        color: #fff;
+        transform: translateY(-3px);
+      }
+
+      /* Social Buttons (Szebbek lettek) */
+      .social-stack {
+        display: flex;
+        flex-direction: column;
+        gap: 0.8rem;
+        margin-bottom: 2rem;
+      }
+      .social-link {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 1.2rem; /* Kicsit nagyobb padding */
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        color: var(--fg);
+        text-decoration: none;
+        transition: 0.3s;
+        font-size: 0.9rem;
+        background: rgba(255, 255, 255, 0.02);
+        font-family: 'JetBrains Mono', monospace;
+      }
+      .social-link:hover {
+        border-color: var(--accent);
+        background: rgba(255, 255, 255, 0.08);
+        transform: translateX(5px);
+        box-shadow: 0 0 20px rgba(112, 0, 255, 0.15);
+      }
+      .social-link span {
+        color: var(--secondary);
+      }
+
+      /* Download Button (PROFI VERZIÓ) */
+      .dl-btn {
+        display: block;
+        width: 100%;
+        padding: 1.2rem;
+        margin-top: auto;
+        background: #fff;
+        color: #000;
+        font-family: 'Syncopate', sans-serif;
+        font-weight: 700;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        text-align: center;
+        border-radius: 12px;
+        transition: 0.3s;
+        cursor: pointer;
+        border: none;
+        position: relative;
+        overflow: hidden;
+      }
+      .dl-btn:hover {
+        background: var(--accent);
+        color: #fff;
+        box-shadow: 0 0 30px var(--accent-glow);
+        letter-spacing: 2px;
+      }
+
+      /* Project Cards */
+      .project-grid-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 2rem;
+        padding: 15px;
+        margin: -15px;
+      }
+      .project-card {
+        position: relative;
+        background: var(--surface-glass);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 2rem;
+        display: flex;
+        flex-direction: column;
+        min-height: 350px;
+        border-top: 3px solid transparent;
+        transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+        z-index: 1;
+        transform-style: preserve-3d;
+        backface-visibility: hidden;
+      }
+      .project-grid-container:hover .project-card {
+        opacity: 0.4;
+        filter: grayscale(100%) blur(2px);
+        transform: scale(0.98);
+      }
+      .project-grid-container .project-card:hover {
+        opacity: 1;
+        filter: none;
+        z-index: 100;
+        border-color: var(--secondary);
+        box-shadow: 0 15px 40px -10px rgba(0, 243, 255, 0.15);
+      }
+      .card-content {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+      }
+
+      /* Project Buttons */
+      .prj-actions {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 1rem;
+      }
+      .prj-link {
+        font-family: 'JetBrains Mono';
+        font-size: 0.85rem;
+        color: var(--fg);
+        text-decoration: none;
+        padding: 6px 12px;
+        border: 1px solid var(--border);
+        border-radius: 6px;
+        transition: 0.2s;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        background: rgba(255, 255, 255, 0.02);
+      }
+      .prj-link:hover {
+        border-color: var(--secondary);
+        color: #fff;
+        background: rgba(0, 243, 255, 0.1);
+      }
+      .prj-link svg {
+        width: 12px;
+        height: 12px;
+        fill: currentColor;
+      }
+      .arch-btn {
+        margin-top: 1.5rem;
+        width: 100%;
+        padding: 0.8rem;
+        background: rgba(112, 0, 255, 0.1);
+        border: 1px solid var(--accent);
+        color: #fff;
+        font-family: 'Syncopate', sans-serif;
+        font-size: 1rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: 0.3s;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+      }
+      .arch-btn:hover {
+        background: var(--accent);
+        box-shadow: 0 0 20px var(--accent-glow);
+      }
+      .arch-btn svg {
+        width: 16px;
+        height: 16px;
+        flex-shrink: 0;
+      }
+
+      /* Typography & Misc */
+      h1 {
+        font-family: 'Outfit', sans-serif;
+        font-weight: 800;
+        font-size: 2.7rem;
+        line-height: 1;
+        margin: 0 0 1rem 0;
+        text-transform: uppercase;
+        letter-spacing: -1px;
+        color: #fff;
+      }
+      .role-title {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 1.5rem;
+        color: var(--secondary);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 1rem;
+      }
+      h2 {
+        font-size: 1.2rem;
+        color: var(--dim);
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        margin: 5rem 0 2rem 0;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+      }
+      h2::after {
+        content: '';
+        flex: 1;
+        height: 1px;
+        background: rgba(255, 255, 255, 0.1);
+      }
+      h2 span.index {
+        font-family: 'JetBrains Mono';
+        color: var(--accent);
+        font-weight: bold;
+      }
+      .xp-item {
+        padding-left: 2rem;
+        border-left: 2px solid var(--border);
+        margin-bottom: 3rem;
+        position: relative;
+      }
+      .xp-dot {
+        position: absolute;
+        left: -5px;
+        top: 5px;
+        width: 8px;
+        height: 8px;
+        background: var(--bg);
+        border: 2px solid var(--dim);
+        border-radius: 50%;
+      }
+      .stack-icon {
+        font-size: 1.2rem;
+        color: var(--dim);
+        transition: 0.3s;
+        vertical-align: middle;
+      }
+      .project-card:hover .stack-icon {
+        color: var(--fg);
+      }
+      .interest-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+      }
+      .interest-item h3 {
+        font-family: 'Space Grotesk';
+        font-size: 1.3rem;
+        color: #fff;
+        margin: 0 0 0.5rem 0;
+        text-transform: uppercase;
+      }
+      .interest-item p {
+        font-size: 1rem;
+        color: #888;
+        margin: 0;
+      }
+
+      /* Background FX */
       .noise-overlay {
         position: fixed;
         top: 0;
@@ -237,185 +526,7 @@
         background: var(--secondary);
       }
 
-      .layout-wrapper {
-        display: grid;
-        grid-template-columns: 420px 1fr;
-        max-width: 1440px;
-        margin: 0 auto;
-        gap: 4rem;
-        padding: 2rem;
-        min-height: 100vh;
-      }
-
-      /* --- SIDEBAR --- */
-      .identity-panel {
-        position: sticky;
-        top: 2rem;
-        height: calc(100vh - 4rem);
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        padding: 2.5rem;
-        background: var(--surface-glass);
-        backdrop-filter: blur(20px);
-        border: 1px solid var(--border);
-        border-radius: var(--radius);
-        overflow-y: auto;
-      }
-
-      .data-panel {
-        padding-top: 1rem;
-        padding-bottom: 4rem;
-      }
-
-      /* --- TYPOGRAPHY --- */
-      h1 {
-        font-family: 'Outfit', sans-serif;
-        font-weight: 800;
-        font-size: 3rem;
-        line-height: 1;
-        margin: 0 0 1rem 0;
-        text-transform: uppercase;
-        letter-spacing: -1px;
-        color: #fff;
-      }
-      .role-title {
-        font-family: 'JetBrains Mono', monospace;
-        font-size: 0.8rem;
-        color: var(--secondary);
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        margin-bottom: 1rem;
-      }
-      h2 {
-        font-size: 1.2rem;
-        color: var(--dim);
-        text-transform: uppercase;
-        letter-spacing: 3px;
-        margin: 5rem 0 2rem 0;
-        display: flex;
-        align-items: center;
-        gap: 1rem;
-      }
-      h2::after {
-        content: '';
-        flex: 1;
-        height: 1px;
-        background: rgba(255, 255, 255, 0.1);
-      }
-      h2 span.index {
-        font-family: 'JetBrains Mono';
-        color: var(--accent);
-        font-weight: bold;
-      }
-
-      /* --- PROJECT CARDS --- */
-      .project-grid-container {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-        gap: 2rem;
-        padding: 3rem;
-        margin: -15px;
-      }
-      .project-card {
-        position: relative;
-        background: var(--surface-glass);
-        border: 1px solid var(--border);
-        border-radius: var(--radius);
-        padding: 2rem;
-        display: flex;
-        flex-direction: column;
-        transition: 0.3s;
-        min-height: 350px;
-        border-top: 3px solid transparent;
-        transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1); /* Sokkal organikusabb mozgás */
-        z-index: 1; /* Alap rétegrend */
-        transform-style: preserve-3d; /* Segít a "kilökődés" ellen */
-        backface-visibility: hidden;
-      }
-      .project-card:hover {
-        border-color: var(--accent);
-        border-top-color: var(--secondary);
-        transform: translateY(-5px);
-      }
-
-      .card-content {
-        flex: 1;
-        display: flex;
-        flex-direction: column;
-      }
-
-      /* Project Links (Compatible with new YAML) */
-      .prj-actions {
-        display: flex;
-        gap: 10px;
-        margin-bottom: 1rem;
-      }
-      .prj-link {
-        font-family: 'JetBrains Mono';
-        font-size: 0.75rem;
-        color: var(--fg);
-        text-decoration: none;
-        padding: 4px 10px;
-        border: 1px solid var(--border);
-        border-radius: 6px;
-        transition: 0.2s;
-        display: flex;
-        align-items: center;
-        gap: 6px;
-        background: rgba(255, 255, 255, 0.02);
-      }
-      .prj-link:hover {
-        border-color: var(--secondary);
-        color: #fff;
-        background: rgba(0, 243, 255, 0.1);
-      }
-      .prj-link svg {
-        width: 12px;
-        height: 12px;
-        fill: currentColor;
-      }
-
-      /* --- ARCHITECTURE MODAL --- */
-      .arch-btn {
-        margin-top: 1.5rem;
-        width: 100%;
-        padding: 0.8rem;
-        background: rgba(112, 0, 255, 0.1);
-        border: 1px solid var(--accent);
-        color: #fff;
-        font-family: 'Syncopate', sans-serif;
-        font-size: 0.7rem;
-        font-weight: 700;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        border-radius: 8px;
-        cursor: pointer;
-        transition: 0.3s;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 10px;
-      }
-      .arch-btn:hover {
-        background: var(--accent);
-        box-shadow: 0 0 20px var(--accent-glow);
-      }
-
-      /* --- JAVÍTÁS FIREFOXHOZ --- */
-      .arch-btn svg {
-        width: 16px;
-        height: 16px;
-        flex-shrink: 0;
-      }
-
-      .social-link svg {
-        width: 14px;
-        height: 14px;
-        flex-shrink: 0;
-      }
-
-      /* --- GLOBAL MODAL (JAVÍTOTT) --- */
+      /* Modals */
       .modal-overlay {
         position: fixed;
         top: 0;
@@ -436,11 +547,10 @@
         opacity: 1;
         visibility: visible;
       }
-
       .modal-content {
         width: 95vw;
         max-width: 1200px;
-        height: 90vh; /* Nagyobb ablak */
+        height: 90vh;
         background: #0a0a0c;
         border: 1px solid var(--secondary);
         border-radius: var(--radius);
@@ -455,7 +565,6 @@
       .modal-overlay.active .modal-content {
         transform: scale(1);
       }
-
       .modal-header {
         padding: 1.5rem;
         border-bottom: 1px solid var(--border);
@@ -483,161 +592,60 @@
         transform: rotate(90deg);
       }
       .mermaid-container {
-        flex: 1;
-        width: 100%;
-        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
         overflow: auto;
-        padding: 2rem;
-        display: block;
-        display: grid;
-        place-items: center;
+        padding: 3rem;
+      }
+
+      .mermaid-container .mermaid {
+        display: inline-block;
+        max-width: 100%;
       }
 
       .mermaid-container svg {
-        max-width: none !important;
+        width: 100% !important;
         height: auto !important;
-        width: auto !important;
-        min-width: 100%;
+        max-width: 100% !important;
+        min-width: 0 !important;
       }
 
-      /* --- DOWNLOAD BUTTON --- */
-      .dl-btn {
-        display: block;
-        width: 100%;
-        padding: 1.2rem;
-        margin-top: auto;
-        background: var(--fg);
-        color: var(--bg);
-        font-weight: 800;
-        text-transform: uppercase;
-        text-align: center;
-        border-radius: 12px;
-        transition: 0.3s;
-        cursor: pointer;
-      }
-      .dl-btn:hover {
-        background: var(--accent);
-        color: #fff;
-      }
-
-      /* --- SOCIAL LINKS --- */
-      .social-stack {
-        display: flex;
-        flex-direction: column;
-        gap: 0.8rem;
-        margin-bottom: 2rem;
-      }
-      .social-link {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 1rem;
-        border: 1px solid var(--border);
-        border-radius: 12px;
-        color: var(--fg);
-        text-decoration: none;
-        transition: 0.2s;
-        font-size: 0.9rem;
-        background: rgba(255, 255, 255, 0.02);
-      }
-      .social-link:hover {
-        border-color: var(--accent);
-        background: rgba(255, 255, 255, 0.05);
-        transform: translateX(5px);
-      }
-
-      /* --- SKILL CHIPS & XP --- */
-      .skill-chip {
-        padding: 0.5rem 1rem;
-        background: rgba(255, 255, 255, 0.03);
-        border: 1px solid var(--border);
-        border-radius: 100px;
-        font-size: 0.85rem;
-        color: #ddd;
-        display: inline-block;
-        margin-right: 0.5rem;
-        margin-bottom: 0.5rem;
-      }
-      .xp-item {
-        padding-left: 2rem;
-        border-left: 2px solid var(--border);
-        margin-bottom: 3rem;
-        position: relative;
-      }
-      .xp-dot {
-        position: absolute;
-        left: -5px;
-        top: 5px;
-        width: 8px;
-        height: 8px;
-        background: var(--bg);
-        border: 2px solid var(--dim);
-        border-radius: 50%;
-      }
-
-      @media (max-width: 1000px) {
-        .layout-wrapper {
-          grid-template-columns: 1fr;
-          padding: 1.5rem;
-          gap: 2rem;
+      /* Print */
+      @media print {
+        body {
+          background-color: #fff !important;
+          color: #000 !important;
         }
-        .identity-panel {
-          position: relative;
-          height: auto;
-          top: 0;
-          overflow: visible;
-          padding: 2rem;
+        .identity-panel,
+        .project-card,
+        .skill-box,
+        .modal-content {
+          background: #fff !important;
+          border: 1px solid #ddd !important;
+          box-shadow: none !important;
+          color: #000 !important;
         }
-        h1 {
-          font-size: 2.5rem;
+        h1,
+        h2,
+        h3,
+        .role-title,
+        .xp-role {
+          color: #000 !important;
         }
-        .lang-switch {
-          top: 1rem;
-          right: 1rem;
+        .noise-overlay,
+        .bg-orb,
+        .lang-switch,
+        button,
+        .dl-btn,
+        .prj-actions {
+          display: none !important;
         }
-      }
-      @media (max-width: 600px) {
-        .skill-grid {
-          grid-template-columns: 1fr;
+        a::after {
+          content: ' (' attr(href) ')';
+          font-size: 0.8em;
+          color: #555;
         }
-
-        .project-grid-container {
-          grid-template-columns: 1fr;
-        }
-
-        .data-panel {
-          padding-left: 1rem;
-          padding-right: 1rem;
-        }
-
-        h1 {
-          font-size: 2rem;
-        }
-      }
-      @media (max-width: 900px) {
-        .project-card {
-          min-height: 280px;
-        }
-      }
-      /* --- PROJECT CARD HOVER EFFECT --- */
-      .project-grid-container:hover .project-card {
-        opacity: 0.4;
-        filter: grayscale(100%) blur(2px);
-        transform: scale(0.98);
-      }
-
-      .project-grid-container .project-card:hover {
-        opacity: 1;
-        filter: none;
-        z-index: 100;
-        transform: scale(1.05);
-        border-color: var(--secondary);
-        box-shadow: 0 15px 40px -10px rgba(0, 243, 255, 0.15); /* Glow effekt */
-      }
-
-      section {
-        content-visibility: auto;
-        contain-intrinsic-size: 1px 1000px;
       }
     </style>
   </head>
@@ -743,15 +751,26 @@
 
     <div class="layout-wrapper">
       <aside class="identity-panel">
-        <div style="flex: 1">
-          <div class="role-title">{{ cv.title[lang] }}</div>
-          <h1>{{ cv.name[lang] }}</h1>
-          <p style="color: var(--dim); margin-top: 1.5rem; line-height: 1.6">
-            {{ cv.summary[lang] }}
-          </p>
-        </div>
+        <div style="flex: 1; display: flex; flex-direction: column">
+          <div class="profile-image-container">
+            <img
+              src="/assets/img/adam-portrait.png"
+              alt="Ádám Porkoláb"
+              class="profile-image"
+              onerror="this.style.display='none'"
+            />
+            <div class="glitch-overlay"></div>
+          </div>
 
-        <div style="margin-top: 3rem">
+          <div>
+            <div class="role-title">{{ cv.title[lang] }}</div>
+            <h1>{{ cv.name[lang] }}</h1>
+            <p style="color: var(--dim); margin-top: 1.5rem; line-height: 1.6">
+              {{ cv.summary[lang] }}
+            </p>
+          </div>
+        </div>
+        <div style="margin-top: 2rem">
           <div class="social-stack">
             {% if cv.contact.github %}
             <a
@@ -795,33 +814,34 @@
             </a>
             {% endif %}
           </div>
-          <!-- social-stack -->
-        </div>
-        <!-- margin-top wrapper -->
-        <div>
-          {% assign pdf_url = cv.downloads[lang] %} {% unless pdf_url %} {%
-          assign pdf_url = cv.downloads['en'] %} {% endunless %} {% if pdf_url
-          %}
-          <a href="{{ pdf_url }}" class="dl-btn" target="_blank">{{ t_dl }}</a>
-          <div
-            style="
-              margin-top: 10px;
-              font-size: 0.7rem;
-              color: var(--dim);
-              text-align: center;
-              font-family: 'JetBrains Mono';
-            "
-          >
-            SECURE LINK • {{ lang | upcase }}
+
+          <div>
+            {% assign pdf_url = cv.downloads[lang] %} {% unless pdf_url %} {%
+            assign pdf_url = cv.downloads['en'] %} {% endunless %} {% if pdf_url
+            %}
+            <a href="{{ pdf_url }}" class="dl-btn" target="_blank"
+              >{{ t_dl }}</a
+            >
+            <div
+              style="
+                margin-top: 10px;
+                font-size: 0.7rem;
+                color: var(--dim);
+                text-align: center;
+                font-family: 'JetBrains Mono';
+              "
+            >
+              SECURE LINK • {{ lang | upcase }}
+            </div>
+            {% else %}
+            <a
+              href="mailto:{{ cv.contact.email }}"
+              class="dl-btn"
+              style="opacity: 0.7"
+              >{{ t_req }}</a
+            >
+            {% endif %}
           </div>
-          {% else %}
-          <a
-            href="mailto:{{ cv.contact.email }}"
-            class="dl-btn"
-            style="opacity: 0.7"
-            >{{ t_req }}</a
-          >
-          {% endif %}
         </div>
       </aside>
 
@@ -892,7 +912,7 @@
         <section>
           <h2 style="margin-top: 0">
             {{ t_projects }}
-            <span class="index" style="font-size: 0.8rem; margin-left: auto"
+            <span class="index" style="font-size: 1rem; margin-left: auto"
               >{{ projects.size }} UNITS</span
             >
           </h2>
@@ -1178,182 +1198,177 @@
     </div>
 
     <script>
-      /* --- 1. MERMAID LAZY LOADER (PERFORMANCE FIX) --- */
-      let mermaidLoaded = false;
+                  /* --- 1. MERMAID LAZY LOADER (PERFORMANCE FIX) --- */
+                  let mermaidLoaded = false;
 
-      async function loadMermaidLibrary() {
-        return new Promise((resolve, reject) => {
-          if (mermaidLoaded) {
-            resolve();
-            return;
-          }
+                  async function loadMermaidLibrary() {
+                    return new Promise((resolve, reject) => {
+                      if (mermaidLoaded) {
+                        resolve();
+                        return;
+                      }
 
-          const script = document.createElement('script');
-          script.src = 'https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js';
-          script.onload = () => {
-            mermaidLoaded = true;
-            // Inicializálás, csak miután betöltött
-            mermaid.initialize({
-              startOnLoad: false,
-              theme: 'base',
-              flowchart: { useMaxWidth: false, htmlLabels: true },
-              securityLevel: 'loose',
-              themeVariables: {
-                primaryColor: '#7000ff',
-                primaryTextColor: '#fff',
-                primaryBorderColor: '#7000ff',
-                lineColor: '#00f3ff',
-                secondaryColor: '#0a0a0c',
-                tertiaryColor: '#0a0a0c',
-                mainBkg: '#0a0a0c',
-                nodeBorder: '#7000ff',
-                clusterBkg: 'rgba(255,255,255,0.05)',
-                clusterBorder: '#333',
-                defaultLinkColor: '#00f3ff',
-                fontFamily: 'JetBrains Mono',
-              }
-            });
-            resolve();
-          };
-          script.onerror = reject;
-          document.head.appendChild(script);
-        });
-      }
+                      const script = document.createElement('script');
+                      script.src = 'https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js';
+                      script.onload = () => {
+                        mermaidLoaded = true;
+                        // Inicializálás, csak miután betöltött
+                        mermaid.initialize({
+                          startOnLoad: false,
+                          theme: 'base',
+                          flowchart: { useMaxWidth: false, htmlLabels: true },
+                          securityLevel: 'loose',
+                          themeVariables: {
+                            primaryColor: '#7000ff',
+                            primaryTextColor: '#fff',
+                            primaryBorderColor: '#7000ff',
+                            lineColor: '#00f3ff',
+                            secondaryColor: '#0a0a0c',
+                            tertiaryColor: '#0a0a0c',
+                            mainBkg: '#0a0a0c',
+                            nodeBorder: '#7000ff',
+                            clusterBkg: 'rgba(255,255,255,0.05)',
+                            clusterBorder: '#333',
+                            defaultLinkColor: '#00f3ff',
+                            fontFamily: 'JetBrains Mono',
+                          }
+                        });
+                        resolve();
+                      };
+                      script.onerror = reject;
+                      document.head.appendChild(script);
+                    });
+                  }
 
       async function openArchModal(sourceId) {
-        const modal = document.getElementById('archModal');
-        const target = document.getElementById('mermaidTarget');
-        const source = document.getElementById(sourceId).innerText;
+          const modal = document.getElementById('archModal');
+          const target = document.getElementById('mermaidTarget');
+          const source = document.getElementById(sourceId).textContent.trim();
 
-        // Loading jelzés
-        target.innerHTML = '<div style="color:var(--secondary); font-family:monospace; margin-top:2rem;">INITIALIZING SYSTEM BLUEPRINT...</div>';
-        modal.classList.add('active');
+          target.innerHTML = '<div style="color:var(--secondary);margin-top:2rem;">Loading…</div>';
+          modal.classList.add('active');
 
-        try {
-          // 1. Dinamikusan betöltjük a könyvtárat (csak kattintáskor!)
           await loadMermaidLibrary();
 
-          // 2. Renderelünk
           target.innerHTML = '';
           const graphDiv = document.createElement('div');
           graphDiv.className = 'mermaid';
           graphDiv.textContent = source;
           target.appendChild(graphDiv);
 
-          await mermaid.run({ nodes: [graphDiv] });
-        } catch (e) {
-          console.error('Mermaid render error:', e);
-          target.innerHTML = '<div style="color:red; margin-top:2rem;">ERROR: COULD NOT LOAD BLUEPRINT MODULE.</div>';
-        }
+          await mermaid.run({
+            querySelector: '#mermaidTarget .mermaid'
+          });
       }
 
-      function closeModal(e) {
-        const modal = document.getElementById('archModal');
-        modal.classList.remove('active');
-      }
 
-      /* --- 2. JSON MODE --- */
-      function toggleJsonMode() {
-        var mainWrapper = document.querySelector('.layout-wrapper');
-        var jsonViewer = document.getElementById('json-viewer');
+                  function closeModal(e) {
+                    const modal = document.getElementById('archModal');
+                    modal.classList.remove('active');
+                  }
 
-        if (!jsonViewer) {
-          jsonViewer = document.createElement('div');
-          jsonViewer.id = 'json-viewer';
-          jsonViewer.style.cssText = `
-            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
-            background: #0a0a0c; color: #00f3ff; z-index: 10000;
-            padding: 2rem; overflow: auto; font-family: 'JetBrains Mono', monospace;
-            font-size: 14px; display: none; white-space: pre;
-          `;
+                  /* --- 2. JSON MODE --- */
+                  function toggleJsonMode() {
+                    var mainWrapper = document.querySelector('.layout-wrapper');
+                    var jsonViewer = document.getElementById('json-viewer');
 
-          var rawData = {
-            engineer: "{{ site.data.cv_data.name['en'] }}",
-            title: "{{ site.data.cv_data.title['en'] }}",
-            philosophy: "Code is narrative structure.",
-            skills: {{ site.data.cv_data.skills | jsonify }},
-            projects: {{ site.data.projects.projects | jsonify }}
-          };
+                    if (!jsonViewer) {
+                      jsonViewer = document.createElement('div');
+                      jsonViewer.id = 'json-viewer';
+                      jsonViewer.style.cssText = `
+                        position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+                        background: #0a0a0c; color: #00f3ff; z-index: 10000;
+                        padding: 2rem; overflow: auto; font-family: 'JetBrains Mono', monospace;
+                        font-size: 14px; display: none; white-space: pre;
+                      `;
 
-          jsonViewer.textContent = JSON.stringify(rawData, null, 2);
+                      var rawData = {
+                        engineer: "{{ site.data.cv_data.name['en'] }}",
+                        title: "{{ site.data.cv_data.title['en'] }}",
+                        philosophy: "Code is narrative structure.",
+                        skills: {{ site.data.cv_data.skills | jsonify }},
+                        projects: {{ site.data.projects.projects | jsonify }}
+                      };
 
-          var closeBtn = document.createElement('button');
-          closeBtn.innerText = "✕ CLOSE RAW DATA";
-          closeBtn.style.cssText = `
-            position: fixed; top: 20px; right: 30px;
-            background: rgba(255,0,0,0.2); color: #fff; border: 1px solid red;
-            padding: 10px 20px; cursor: pointer; font-family: 'Syncopate'; font-weight: bold;
-          `;
-          closeBtn.onclick = toggleJsonMode;
-          jsonViewer.appendChild(closeBtn);
-          document.body.appendChild(jsonViewer);
-        }
+                      jsonViewer.textContent = JSON.stringify(rawData, null, 2);
 
-        if (jsonViewer.style.display === 'none') {
-          jsonViewer.style.display = 'block';
-          document.body.style.overflow = 'hidden';
-        } else {
-          jsonViewer.style.display = 'none';
-          document.body.style.overflow = 'auto';
-        }
-      }
+                      var closeBtn = document.createElement('button');
+                      closeBtn.innerText = "✕ CLOSE RAW DATA";
+                      closeBtn.style.cssText = `
+                        position: fixed; top: 20px; right: 30px;
+                        background: rgba(255,0,0,0.2); color: #fff; border: 1px solid red;
+                        padding: 10px 20px; cursor: pointer; font-family: 'Syncopate'; font-weight: bold;
+                      `;
+                      closeBtn.onclick = toggleJsonMode;
+                      jsonViewer.appendChild(closeBtn);
+                      document.body.appendChild(jsonViewer);
+                    }
 
-      /* --- 3. COMMAND PALETTE (CMD+K) --- */
-      document.addEventListener('keydown', function(e) {
-        if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
-            e.preventDefault();
-            toggleCommandPalette();
-        }
-        if (e.key === 'Escape') {
-            const palette = document.getElementById('cmd-palette');
-            if (palette) palette.style.display = 'none';
-        }
-      });
+                    if (jsonViewer.style.display === 'none') {
+                      jsonViewer.style.display = 'block';
+                      document.body.style.overflow = 'hidden';
+                    } else {
+                      jsonViewer.style.display = 'none';
+                      document.body.style.overflow = 'auto';
+                    }
+                  }
 
-      function toggleCommandPalette() {
-        let palette = document.getElementById('cmd-palette');
-        if (!palette) {
-            palette = document.createElement('div');
-            palette.id = 'cmd-palette';
-            palette.style.cssText = `
-                position: fixed; top: 20%; left: 50%; transform: translateX(-50%);
-                width: 500px; max-width: 90vw;
-                background: #0a0a0c; border: 1px solid var(--accent);
-                box-shadow: 0 0 50px rgba(0,0,0,0.8); z-index: 10001;
-                border-radius: 12px; padding: 1rem;
-                font-family: 'JetBrains Mono', monospace; display: none;
-            `;
+                  /* --- 3. COMMAND PALETTE (CMD+K) --- */
+                  document.addEventListener('keydown', function(e) {
+                    if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+                        e.preventDefault();
+                        toggleCommandPalette();
+                    }
+                    if (e.key === 'Escape') {
+                        const palette = document.getElementById('cmd-palette');
+                        if (palette) palette.style.display = 'none';
+                    }
+                  });
 
-            const commands = [
-                { key: 'JSON Mode', action: 'toggleJsonMode()' },
-                { key: 'Download CV', action: "window.open('{{ cv.downloads[page.lang] }}', '_blank')" },
-                { key: 'Go to GitHub', action: "window.open('{{ cv.contact.github }}', '_blank')" },
-                { key: 'Switch Language: EN', action: "window.location.href='/'" },
-                { key: 'Switch Language: HU', action: "window.location.href='/hu/'" },
-                { key: 'Switch Language: DE', action: "window.location.href='/de/'" },
-            ];
+                  function toggleCommandPalette() {
+                    let palette = document.getElementById('cmd-palette');
+                    if (!palette) {
+                        palette = document.createElement('div');
+                        palette.id = 'cmd-palette';
+                        palette.style.cssText = `
+                            position: fixed; top: 20%; left: 50%; transform: translateX(-50%);
+                            width: 500px; max-width: 90vw;
+                            background: #0a0a0c; border: 1px solid var(--accent);
+                            box-shadow: 0 0 50px rgba(0,0,0,0.8); z-index: 10001;
+                            border-radius: 12px; padding: 1rem;
+                            font-family: 'JetBrains Mono', monospace; display: none;
+                        `;
 
-            let html = `<div style="color:#666; font-size:12px; margin-bottom:10px;">COMMAND PALETTE</div>`;
-            commands.forEach(cmd => {
-                html += `
-                    <div onclick="${cmd.action}; document.getElementById('cmd-palette').style.display='none'"
-                         style="padding: 10px; border-bottom: 1px solid #333; cursor: pointer; color: #fff; transition:0.2s;"
-                         onmouseover="this.style.background='#1a1a20';this.style.paddingLeft='15px'"
-                         onmouseout="this.style.background='transparent';this.style.paddingLeft='10px'">
-                        <span style="color:var(--secondary)">></span> ${cmd.key}
-                    </div>`;
-            });
-            html += `<div style="text-align:right; margin-top:10px; font-size:10px; color:#555;">[ESC] to close</div>`;
-            palette.innerHTML = html;
-            document.body.appendChild(palette);
-        }
-        palette.style.display = (palette.style.display === 'none') ? 'block' : 'none';
-      }
+                        const commands = [
+                            { key: 'JSON Mode', action: 'toggleJsonMode()' },
+                            { key: 'Download CV', action: "window.open('{{ cv.downloads[page.lang] }}', '_blank')" },
+                            { key: 'Go to GitHub', action: "window.open('{{ cv.contact.github }}', '_blank')" },
+                            { key: 'Switch Language: EN', action: "window.location.href='/'" },
+                            { key: 'Switch Language: HU', action: "window.location.href='/hu/'" },
+                            { key: 'Switch Language: DE', action: "window.location.href='/de/'" },
+                        ];
 
-      /* --- 4. TITLE FLICKER --- */
-      let docTitle = document.title;
-      window.addEventListener("blur", () => { document.title = "⚠️ Awaiting Input..."; });
-      window.addEventListener("focus", () => { document.title = docTitle; });
+                        let html = `<div style="color:#666; font-size:12px; margin-bottom:10px;">COMMAND PALETTE</div>`;
+                        commands.forEach(cmd => {
+                            html += `
+                                <div onclick="${cmd.action}; document.getElementById('cmd-palette').style.display='none'"
+                                     style="padding: 10px; border-bottom: 1px solid #333; cursor: pointer; color: #fff; transition:0.2s;"
+                                     onmouseover="this.style.background='#1a1a20';this.style.paddingLeft='15px'"
+                                     onmouseout="this.style.background='transparent';this.style.paddingLeft='10px'">
+                                    <span style="color:var(--secondary)">></span> ${cmd.key}
+                                </div>`;
+                        });
+                        html += `<div style="text-align:right; margin-top:10px; font-size:10px; color:#555;">[ESC] to close</div>`;
+                        palette.innerHTML = html;
+                        document.body.appendChild(palette);
+                    }
+                    palette.style.display = (palette.style.display === 'none') ? 'block' : 'none';
+                  }
+
+                  /* --- 4. TITLE FLICKER --- */
+                  let docTitle = document.title;
+                  window.addEventListener("blur", () => { document.title = "⚠️ Awaiting Input..."; });
+                  window.addEventListener("focus", () => { document.title = docTitle; });
     </script>
   </body>
 </html>
