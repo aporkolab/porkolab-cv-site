@@ -11,8 +11,47 @@
       href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700&family=Syncopate:wght@400;700&display=swap"
       rel="stylesheet"
     />
+    <script type="module">
+      import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+      mermaid.initialize({
+        startOnLoad: true,
+        theme: 'dark',
+        securityLevel: 'loose',
+        fontFamily: 'Space Grotesk',
+      });
+    </script>
 
     <style>
+      @media print {
+        .bg-mesh,
+        .lang-switch,
+        .social-stack,
+        .dl-btn {
+          display: none !important;
+        }
+        body,
+        .identity-panel,
+        .data-panel,
+        .xp-item,
+        .skill-box {
+          background: white !important;
+          color: black !important;
+          border: none !important;
+          width: 100% !important;
+          position: static !important;
+          height: auto !important;
+          overflow: visible !important;
+        }
+        .layout-wrapper {
+          flex-direction: column;
+        }
+        /* Linkek URL-jének megjelenítése nyomtatásban */
+        a[href]:after {
+          content: ' (' attr(href) ')';
+          font-size: 0.8em;
+        }
+      }
+
       :root {
         --bg: #000000;
         --fg: #ffffff;
@@ -400,6 +439,151 @@
           padding: 0.5rem;
         }
       }
+
+      /* --- PROJECT GRID & ARCHITECTURE --- */
+
+      .project-grid-container {
+        display: grid;
+        /* Automatikus kitöltés: min. 320px széles kártyák, amennyi kifér */
+        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+        gap: 1.5rem;
+      }
+
+      .project-card {
+        position: relative;
+        min-height: 300px; /* Fix magasság, hogy egységes legyen a rács */
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 0; /* Grid gap kezeli */
+        background: rgba(10, 10, 10, 0.6); /* Még átlátszóbb */
+      }
+
+      .project-card:hover {
+        border-color: var(--accent);
+        transform: translateY(-3px);
+      }
+
+      .card-content {
+        transition: opacity 0.3s ease, filter 0.3s ease;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .compact-skill {
+        padding: 0.2rem 0.5rem;
+        font-size: 0.7rem;
+        min-height: auto;
+        border-color: #333;
+      }
+
+      .project-desc {
+        color: #aaa;
+        font-size: 0.85rem;
+        margin-top: auto; /* Aljára tolja, ha rövid */
+        line-height: 1.5;
+      }
+
+      .code-link,
+      .live-link {
+        font-family: 'Syncopate', sans-serif;
+        font-weight: 700;
+        font-size: 0.7rem;
+        text-transform: uppercase;
+      }
+
+      /* ARCHITECTURE OVERLAY */
+      .arch-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.95);
+        backdrop-filter: blur(5px);
+        padding: 1.5rem;
+        opacity: 0;
+        pointer-events: none; /* Alapból átkattintható */
+        transition: opacity 0.4s ease;
+        z-index: 10;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+      }
+
+      .arch-label {
+        position: absolute;
+        top: 1rem;
+        left: 1rem;
+        font-size: 0.6rem;
+        color: var(--accent);
+        letter-spacing: 2px;
+        font-family: 'Syncopate';
+      }
+
+      /* Mermaid specific styling to make it fit */
+      .mermaid {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .mermaid svg {
+        max-width: 100% !important;
+        max-height: 220px !important; /* Hogy beleférjen a kártyába */
+      }
+
+      /* TRIGGER MECHANISM */
+      .arch-trigger {
+        position: absolute;
+        bottom: 1rem;
+        right: 1rem;
+        color: #444;
+        cursor: pointer;
+        z-index: 20;
+        transition: 0.3s;
+        background: rgba(0, 0, 0, 0.5);
+        border-radius: 4px;
+        padding: 4px;
+      }
+
+      .project-card:hover .arch-trigger {
+        color: var(--accent);
+      }
+
+      /* Ha a kártya fölé viszed az egeret ÉS van diagram, megjelenik */
+      .project-card:hover .arch-overlay {
+        opacity: 1;
+        pointer-events: auto;
+      }
+
+      .project-card:hover .card-content {
+        opacity: 0.1; /* Halványodik a szöveg */
+        filter: blur(2px);
+      }
+
+      /* Mobile adjustments */
+      @media (max-width: 600px) {
+        .project-grid-container {
+          grid-template-columns: 1fr; /* 1 oszlop mobilon */
+        }
+        .project-card {
+          min-height: auto; /* Mobilon nyúlhat */
+        }
+        .arch-overlay {
+          display: none; /* Mobilon ne zavarjon a hover overlay, túl bonyolult UX */
+        }
+        .arch-trigger {
+          display: none;
+        }
+        .project-card:hover .card-content {
+          opacity: 1;
+          filter: none;
+        }
+      }
     </style>
   </head>
   <body>
@@ -531,6 +715,82 @@
             </div>
           </div>
           {% endfor %}
+        </section>
+
+        {% assign projects = site.data.projects %} {% assign t_projects =
+        "Engineering Portfolio" %} {% if page.lang == 'hu' %}{% assign
+        t_projects = "Mérnöki Portfólió" %} {% elsif page.lang == 'de' %}{%
+        assign t_projects = "Ingenieur-Portfolio" %} {% endif %}
+
+        <section>
+          <h2 style="border-bottom: none; margin-bottom: 2rem">
+            {{ t_projects }}
+            <span class="index" style="font-size: 1rem; opacity: 0.5"
+              >{{ projects.size }} MODULES LOADED</span
+            >
+          </h2>
+
+          <div class="project-grid-container">
+            {% for project in projects %}
+            <div class="xp-item project-card group">
+              <div class="card-content">
+                <div class="xp-header">
+                  <div class="xp-role">{{ project.name }}</div>
+                  <div class="xp-meta">
+                    {% if project.links.repo %}
+                    <a
+                      href="{{ project.links.repo }}"
+                      target="_blank"
+                      class="code-link"
+                      ><span style="color: var(--accent)">git</span>_repo</a
+                    >
+                    {% endif %} {% if project.links.demo %} /
+                    <a
+                      href="{{ project.links.demo }}"
+                      target="_blank"
+                      class="live-link"
+                      >live_feed</a
+                    >
+                    {% endif %}
+                  </div>
+                </div>
+
+                <div
+                  class="skill-grid"
+                  style="margin-bottom: 1rem; gap: 0.5rem"
+                >
+                  {% for tech in project.stack %}
+                  <span class="skill-box compact-skill">{{ tech }}</span>
+                  {% endfor %}
+                </div>
+
+                <p class="project-desc">{{ project.description[page.lang] }}</p>
+              </div>
+
+              {% if project.mermaid %}
+              <div class="arch-overlay">
+                <div class="arch-label">SYSTEM ARCHITECTURE</div>
+                <div class="mermaid">{{ project.mermaid }}</div>
+              </div>
+              <div class="arch-trigger" title="View Architecture">
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                >
+                  <path
+                    d="M3 3h7v7H3zM14 3h7v7h-7zM14 14h7v7h-7zM3 14h7v7H3z"
+                  />
+                  <path d="M10 6.5h4M6.5 10v4M17.5 10v4M10 17.5h4" />
+                </svg>
+              </div>
+              {% endif %}
+            </div>
+            {% endfor %}
+          </div>
         </section>
 
         <section>
