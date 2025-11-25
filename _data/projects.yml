@@ -1,7 +1,13 @@
+---
 projects:
   - id: chaos-symphony
     name: Chaos Symphony
-    stack: [Java 21, Microservices, Chaos Engineering, Resilience4j, Kafka]
+    stack:
+      - Java 21
+      - Microservices
+      - Chaos Engineering
+      - Resilience4j
+      - Kafka
     links:
       repo: https://github.com/APorkolab/chaos-symphony
     mermaid: |
@@ -12,13 +18,22 @@ projects:
         PaymentService -->|Circuit Breaker| ThirdPartyBank
         ThirdPartyBank -.->|Failure Path| FallbackQueue[(Fallback Queue)]
     description:
-      en: Distributed systems reliability simulator. Event-driven architecture designed to validate microservice resilience patterns (Circuit Breaker, Bulkhead, Retry) under controlled high-failure conditions.
-      de: Simulator für die Zuverlässigkeit verteilter Systeme. Ereignisgesteuerte Architektur zur Validierung von Resilienzmustern unter Last und Fehlerszenarien.
-      hu: Elosztott rendszerek megbízhatóságát vizsgáló szimulátor. Eseményvezérelt architektúra reziliencia-minták tesztelésére kontrollált, hibatűrő környezetben.
-
+      en: Distributed systems reliability simulator. Event-driven architecture
+        designed to validate microservice resilience patterns (Circuit Breaker,
+        Bulkhead, Retry) under controlled high-failure conditions.
+      de:
+        Simulator für die Zuverlässigkeit verteilter Systeme. Ereignisgesteuerte
+        Architektur zur Validierung von Resilienzmustern unter Last und
+        Fehlerszenarien.
+      hu:
+        Elosztott rendszerek megbízhatóságát vizsgáló szimulátor. Eseményvezérelt
+        architektúra reziliencia-minták tesztelésére kontrollált, hibatűrő
+        környezetben.
   - id: cziczere
     name: Cziczere
-    stack: [Java, Generative Art]
+    stack:
+      - Java
+      - Generative Art
     links:
       repo: https://github.com/APorkolab/cziczere
     mermaid: |
@@ -28,13 +43,20 @@ projects:
         RuleSet --> Renderer[Canvas Renderer]
         Renderer --> Output[Digital Garden Visualization]
     description:
-      en: Digital memory garden built on generative seeds and deterministic pattern rules.
-      de: Digitaler Erinnerungsgarten, basierend auf generativen Seeds und deterministischen Musterregeln.
-      hu: Generatív „emlékmagokra” épülő digitális kert vizualizáció. Tech + Art fúzió.
-
+      en:
+        Digital memory garden built on generative seeds and deterministic pattern
+        rules.
+      de: Digitaler Erinnerungsgarten, basierend auf generativen Seeds und
+        deterministischen Musterregeln.
+      hu: Generatív „emlékmagokra” épülő digitális kert vizualizáció. Tech + Art
+        fúzió.
   - id: feastfrenzy
     name: FeastFrenzy
-    stack: [Angular 17+, Spring Boot 3, Docker, Relational Design]
+    stack:
+      - Angular 17+
+      - Spring Boot 3
+      - Docker
+      - Relational Design
     links:
       repo: https://github.com/APorkolab/FeastFrenzy
     mermaid: |
@@ -47,13 +69,21 @@ projects:
         DB-->>SpringBoot: OK
         SpringBoot-->>-AngularApp: 201 Created (Order Saved)
     description:
-      en: Multi-tenant catering resource planner with transactional ordering, inventory locking, and RBAC security. Built with Spring Boot and Angular.
-      de: Mandantenfähiger Verpflegungsplaner mit Transaktionsverwaltung, Inventarsperrung und Rollenbasiertem Zugriff.
-      hu: Multi-tenant étkeztetési erőforrás-tervező rendszer tranzakciókezeléssel, készletszint-zárolással és RBAC-biztonsággal.
-
+      en: Multi-tenant catering resource planner with transactional ordering,
+        inventory locking, and RBAC security. Built with Spring Boot and
+        Angular.
+      de: Mandantenfähiger Verpflegungsplaner mit Transaktionsverwaltung,
+        Inventarsperrung und Rollenbasiertem Zugriff.
+      hu:
+        Multi-tenant étkeztetési erőforrás-tervező rendszer tranzakciókezeléssel,
+        készletszint-zárolással és RBAC-biztonsággal.
   - id: sudoqmaestro
     name: SudoQMaestro
-    stack: [Angular, Node.js, Tesseract.js, Computer Vision]
+    stack:
+      - Angular
+      - Node.js
+      - Tesseract.js
+      - Computer Vision
     links:
       repo: https://github.com/APorkolab/SudoQMaestro
     mermaid: |
@@ -64,13 +94,21 @@ projects:
         Solver --> GameState[Interactive Game State]
         GameState --> UI[Angular UI Layer]
     description:
-      en: OCR-powered pipeline converting analog Sudoku puzzles into fully interactive digital game states using client-side CV.
-      de: OCR-basierte Pipeline zur Umwandlung analoger Sudoku-Rätsel in interaktive digitale Spielzustände.
-      hu: OCR alapú pipeline analóg Sudoku-ból interaktív digitális játéktáblához, kliens oldali CV-feldolgozással.
-
+      en:
+        OCR-powered pipeline converting analog Sudoku puzzles into fully interactive
+        digital game states using client-side CV.
+      de:
+        OCR-basierte Pipeline zur Umwandlung analoger Sudoku-Rätsel in interaktive
+        digitale Spielzustände.
+      hu:
+        OCR alapú pipeline analóg Sudoku-ból interaktív digitális játéktáblához,
+        kliens oldali CV-feldolgozással.
   - id: squaresketcher
     name: SquareSketcher
-    stack: [Angular, Canvas API, Performance Optimization]
+    stack:
+      - Angular
+      - Canvas API
+      - Performance Optimization
     links:
       repo: https://github.com/APorkolab/SquareSketcher
     mermaid: |
@@ -82,13 +120,19 @@ projects:
         Renderer --> SaveAPI[REST Save Endpoint]
         SaveAPI --> Mongo[(MongoDB)]
     description:
-      en: High-performance browser-based pixel art engine with optimized Canvas operations and real-time layer handling.
-      de: Hochperformante Pixel-Art-Engine im Browser mit optimierten Canvas-Operationen und Ebenenverwaltung.
-      hu: Böngészőalapú, nagy teljesítményű pixel art motor optimalizált Canvas-műveletekkel és valós idejű rétegkezeléssel.
-
+      en: High-performance browser-based pixel art engine with optimized Canvas
+        operations and real-time layer handling.
+      de: Hochperformante Pixel-Art-Engine im Browser mit optimierten
+        Canvas-Operationen und Ebenenverwaltung.
+      hu: Böngészőalapú, nagy teljesítményű pixel art motor optimalizált
+        Canvas-műveletekkel és valós idejű rétegkezeléssel.
   - id: truholdem
     name: TruHoldem
-    stack: [Spring Boot, WebSocket, State Machine, Game Theory]
+    stack:
+      - Spring Boot
+      - WebSocket
+      - State Machine
+      - Game Theory
     links:
       repo: https://github.com/APorkolab/Truholdem
       demo: https://truholdem.porkolab.hu/
@@ -101,13 +145,19 @@ projects:
         Dealer --> Evaluator[Hand Evaluator]
         Evaluator -->|WS Broadcast| Clients[Angular Table UI]
     description:
-      en: Texas Hold’em simulator implementing hand evaluation, multi-stage betting logic, and WebSocket-driven synchronization.
-      de: Texas-Hold’em-Simulator mit Handbewertung, mehrstufiger Wettlogik und WebSocket-Synchronisierung.
-      hu: Hold’em szimulátor hand rankinggel, többlépcsős fogadási logikával és WebSocket-alapú szinkronizációval.
-
+      en:
+        Texas Hold’em simulator implementing hand evaluation, multi-stage betting
+        logic, and WebSocket-driven synchronization.
+      de: Texas-Hold’em-Simulator mit Handbewertung, mehrstufiger Wettlogik und
+        WebSocket-Synchronisierung.
+      hu: Hold’em szimulátor hand rankinggel, többlépcsős fogadási logikával és
+        WebSocket-alapú szinkronizációval.
   - id: baccaratio
     name: Baccaratio
-    stack: [Spring Data JPA, PostgreSQL, ACID Compliance]
+    stack:
+      - Spring Data JPA
+      - PostgreSQL
+      - ACID Compliance
     links:
       repo: https://github.com/APorkolab/Baccaratio
       demo: https://baccaratio.porkolab.hu/
@@ -120,13 +170,19 @@ projects:
         Odds --> Repo[Spring Data Repository]
         Repo --> PG[(PostgreSQL)]
     description:
-      en: Full-stack Baccarat engine implementing betting management, bankroll simulation, and consistent ACID-safe transactions.
-      de: Full-Stack-Baccarat-Engine mit Wettverwaltung, Bankroll-Simulation und ACID-konformen Transaktionen.
-      hu: Teljes stack Baccarat-játékmotor fogadáskezeléssel, bankroll-szimulációval és ACID-biztos tranzakciókkal.
-
+      en: Full-stack Baccarat engine implementing betting management, bankroll
+        simulation, and consistent ACID-safe transactions.
+      de: Full-Stack-Baccarat-Engine mit Wettverwaltung, Bankroll-Simulation und
+        ACID-konformen Transaktionen.
+      hu:
+        Teljes stack Baccarat-játékmotor fogadáskezeléssel, bankroll-szimulációval
+        és ACID-biztos tranzakciókkal.
   - id: nyelvszo
     name: NyelvSzó v2.0 — English–Hungarian Linguistic Dictionary
-    stack: [MongoDB Aggregation, Express.js, Indexing Strategy]
+    stack:
+      - MongoDB Aggregation
+      - Express.js
+      - Indexing Strategy
     links:
       repo: https://github.com/APorkolab/Nyelvszo-v.2.0
       demo: https://www.nyelvszo.eu/
@@ -137,13 +193,20 @@ projects:
         API -->|Query| Mongo[(MongoDB Atlas)]
         Mongo -->|Indexed Search| SearchEngine[Text Search Engine]
     description:
-      en: Scalable lexical database with tuned aggregation pipelines and millisecond query performance across 12,000+ linguistic entries.
-      de: Skalierbare lexikalische Datenbank mit optimierten Aggregationspipelines und Millisekunden-Abfragen.
-      hu: Skálázható lexikális adatbázis 12 000+ bejegyzéssel, optimalizált aggregációval és milliszekundumos lekérdezésekkel.
-
+      en:
+        Scalable lexical database with tuned aggregation pipelines and millisecond
+        query performance across 12,000+ linguistic entries.
+      de:
+        Skalierbare lexikalische Datenbank mit optimierten Aggregationspipelines und
+        Millisekunden-Abfragen.
+      hu: Skálázható lexikális adatbázis 12 000+ bejegyzéssel, optimalizált
+        aggregációval és milliszekundumos lekérdezésekkel.
   - id: convertrix
     name: Convertrix
-    stack: [Angular 18, Signals, Standalone Components]
+    stack:
+      - Angular 18
+      - Signals
+      - Standalone Components
     links:
       repo: https://github.com/APorkolab/Convertrix
       demo: https://convertrix.porkolab.hu/
@@ -154,13 +217,23 @@ projects:
         Converter --> DerivedSignals[Derived Signals]
         DerivedSignals --> Renderer[UI Renderer]
     description:
-      en: Modern Angular migration study using Signals, standalone components, and improved tree-shaking strategies.
-      de: Moderne Angular-Migrationsstudie mit Signals, Standalone-Komponenten und verbessertem Tree-Shaking.
-      hu: Modern Angular migrációs esettanulmány Signals, Standalone komponensek és optimalizált tree-shaking használatával.
-
+      en:
+        Modern Angular showcase. Refactored a legacy codebase to use Angular 18
+        Signals and Standalone Components, improving change detection
+        performance and readability.
+      de:
+        Modernes Angular-Showcase. Refactoring einer Legacy-Codebasis auf Angular 18
+        Signals.
+      hu:
+        Modern Angular demó. Legacy kódbázis refaktorálása Angular 18 Signals és
+        Standalone komponensek használatával a tisztább kódért és jobb
+        teljesítményért.
   - id: chronica
     name: Chronica Arcana
-    stack: [Generative AI API, Prompt Engineering, Digital Archiving]
+    stack:
+      - Generative AI API
+      - Prompt Engineering
+      - Digital Archiving
     links:
       repo: https://github.com/APorkolab/ancient-chronicles
       demo: https://chronica.porkolab.hu/
@@ -171,13 +244,22 @@ projects:
         Completion --> Archive[Digital Archive Renderer]
         Archive --> UI[Web Interface]
     description:
-      en: AI-augmented digital restoration combining classic archiving with LLM-powered semantic completion to reconstruct fragmented narratives.
-      de: KI-gestützte digitale Restaurierung zur Rekonstruktion fragmentierter Texte mittels semantischer LLM-Vervollständigung.
-      hu: AI-támogatott digitális restaurálás LLM-es szemantikai kiegészítéssel töredékes narratívák helyreállítására.
-
+      en:
+        Where code meets narrative. Built a custom pipeline that uses Generative AI
+        to restore and complete fragmented legacy texts, blending my linguistic
+        background with tech.
+      de:
+        Wo Code auf Erzählung trifft. Bau einer Pipeline zur Wiederherstellung alter
+        Texte mittels KI.
+      hu: Ahol a kód és a narratíva találkozik. Egyedi pipeline építése, amely
+        Generatív AI-t használ töredékes szövegek helyreállítására, ötvözve a
+        nyelvész múltamat a technológiával.
   - id: miserere
     name: Miserere Mei
-    stack: [Node.js, Custom Parser, Interactive Fiction]
+    stack:
+      - Node.js
+      - Custom Parser
+      - Interactive Fiction
     links:
       repo: https://github.com/APorkolab/Miserere-Mei
       demo: https://miserere.porkolab.hu/
@@ -188,13 +270,19 @@ projects:
         Engine --> UserState[Persistent User State]
         UserState --> UI[Interactive UI]
     description:
-      en: Domain-specific interactive fiction engine with custom scripting language and persistent branching narrative.
-      de: Interaktive Erzähl-Engine mit domänenspezifischer Skriptsprache und persistenten Erzählzweigen.
-      hu: Interaktív fikciós motor egyedi szkriptnyelvvel és perzisztens elágazó narratívával.
-
+      en:
+        Domain-specific interactive fiction engine with custom scripting language
+        and persistent branching narrative.
+      de: Interaktive Erzähl-Engine mit domänenspezifischer Skriptsprache und
+        persistenten Erzählzweigen.
+      hu: Interaktív fikciós motor egyedi szkriptnyelvvel és perzisztens elágazó
+        narratívával.
   - id: fizzingbrain
     name: FizzingBrain
-    stack: [Angular, WebSocket, Real-time Sync]
+    stack:
+      - Angular
+      - WebSocket
+      - Real-time Sync
     links:
       repo: https://github.com/APorkolab/FizzingBrain
       demo: https://fizzingbrain.porkolab.hu/
@@ -207,13 +295,18 @@ projects:
         Score --> WSOut[WebSocket → Clients]
         WSOut --> UI[Angular UI]
     description:
-      en: Real-time quiz engine handling state consistency, latency management, and synchronized WebSocket updates.
-      de: Echtzeit-Quizengine mit Statuskonsistenz, Latenzmanagement und synchronisierten WebSocket-Updates.
+      en:
+        Real-time quiz engine handling state consistency, latency management, and
+        synchronized WebSocket updates.
+      de: Echtzeit-Quizengine mit Statuskonsistenz, Latenzmanagement und
+        synchronisierten WebSocket-Updates.
       hu: Valós idejű kvízmotor szinkron állapotkezeléssel és WS-alapú frissítésekkel.
-
   - id: astropa
     name: Astropa
-    stack: [Algorithm Design, Data Structures, Full Stack]
+    stack:
+      - Algorithm Design
+      - Data Structures
+      - Full Stack
     links:
       repo: https://github.com/APorkolab/Astropa
     mermaid: |
@@ -223,13 +316,19 @@ projects:
         Engine --> Result[Compatibility Result]
         Result --> UI[Angular UI]
     description:
-      en: Graph-based compatibility analysis engine implementing advanced zodiac logic and relationship heuristics.
-      de: Graphbasierte Kompatibilitätsanalyse mit komplexer Zodiaklogik und Beziehungsheuristiken.
-      hu: Gráf-alapú kompatibilitáselemző motor összetett zodiákus logikával és kapcsolati heurisztikákkal.
-
+      en:
+        Graph-based compatibility analysis engine implementing advanced zodiac logic
+        and relationship heuristics.
+      de: Graphbasierte Kompatibilitätsanalyse mit komplexer Zodiaklogik und
+        Beziehungsheuristiken.
+      hu: Gráf-alapú kompatibilitáselemző motor összetett zodiákus logikával és
+        kapcsolati heurisztikákkal.
   - id: randomrobi
     name: RandomRobi
-    stack: [Puppeteer, Automation, Headless Browser]
+    stack:
+      - Puppeteer
+      - Automation
+      - Headless Browser
     links:
       repo: https://github.com/APorkolab/RandomRobi
       demo: https://randomrobi.porkolab.hu/
@@ -241,13 +340,19 @@ projects:
         Validator --> API[REST API]
         API --> Admin[Angular Admin Dashboard]
     description:
-      en: Automated content aggregation pipeline using headless browser workflows and validation layers.
-      de: Automatisierte Content-Aggregationspipeline mit Headless-Browser-Workflows und Validierung.
-      hu: Automatizált tartalom-aggregációs pipeline headless böngészővel és többfázisú validálással.
-
+      en:
+        Automated content aggregation pipeline using headless browser workflows and
+        validation layers.
+      de:
+        Automatisierte Content-Aggregationspipeline mit Headless-Browser-Workflows
+        und Validierung.
+      hu: Automatizált tartalom-aggregációs pipeline headless böngészővel és
+        többfázisú validálással.
   - id: jobhunthelper
     name: JobHuntHelper
-    stack: [Google Apps Script, Process Automation]
+    stack:
+      - Google Apps Script
+      - Process Automation
     links:
       repo: https://github.com/APorkolab/JobHuntHelper
     mermaid: |
@@ -257,13 +362,19 @@ projects:
         StateEngine --> Emailer[Follow-up Emailer]
         StateEngine --> Writer[Sheet Writer]
     description:
-      en: Recruitment workflow automation script handling status transitions, follow-ups, and sheet synchronization.
-      de: Automatisierungsskript für Recruiting-Workflows mit Statusübergängen und Follow-ups.
-      hu: Toborzási workflow-automatizáció státuszváltásokkal és automatikus emlékeztetőkkel.
-
+      en: Recruitment workflow automation script handling status transitions,
+        follow-ups, and sheet synchronization.
+      de:
+        Automatisierungsskript für Recruiting-Workflows mit Statusübergängen und
+        Follow-ups.
+      hu: Toborzási workflow-automatizáció státuszváltásokkal és automatikus
+        emlékeztetőkkel.
   - id: obsequing
     name: ObsequiNG
-    stack: [TypeScript, Library Architecture, NPM]
+    stack:
+      - TypeScript
+      - Library Architecture
+      - NPM
     links:
       repo: https://github.com/APorkolab/ObsequiNG
     mermaid: |
@@ -272,13 +383,19 @@ projects:
         Utils --> Barrel[Barrel Export]
         Barrel --> NPM[NPM Package]
     description:
-      en: Lightweight reusable utility library built with strongly-typed, tree-shakable TypeScript modules.
-      de: Leichte, wiederverwendbare Utility-Bibliothek mit stark typisierten, tree-shakeable TS-Modulen.
-      hu: Könnyű, újrafelhasználható utility-könyvtár erősen típusos, tree-shakable TypeScript modulokkal.
-
+      en: Lightweight reusable utility library built with strongly-typed,
+        tree-shakable TypeScript modules.
+      de: Leichte, wiederverwendbare Utility-Bibliothek mit stark typisierten,
+        tree-shakeable TS-Modulen.
+      hu:
+        Könnyű, újrafelhasználható utility-könyvtár erősen típusos, tree-shakable
+        TypeScript modulokkal.
   - id: bibleverse
     name: BibleVerse
-    stack: [Angular, API, Caching]
+    stack:
+      - Angular
+      - API
+      - Caching
     links:
       repo: https://github.com/APorkolab/Bibleverse
       demo: https://bibleverse.porkolab.hu/
@@ -289,13 +406,18 @@ projects:
         Cache --> Renderer[Results Renderer]
         Renderer --> UI[Angular App]
     description:
-      en: Angular-based scripture search engine with keyword search, caching, and randomizers.
+      en:
+        Angular-based scripture search engine with keyword search, caching, and
+        randomizers.
       de: Angular-basierte Schriftensuchmaschine mit Stichwortsuche und Caching.
-      hu: Angular alapú verskereső kulcsszavas kereséssel, cache-eléssel és randomizerrel.
-
+      hu: Angular alapú verskereső kulcsszavas kereséssel, cache-eléssel és
+        randomizerrel.
   - id: cadentis
     name: Cadentis
-    stack: [NLP, Linguistics, Algorithms]
+    stack:
+      - NLP
+      - Linguistics
+      - Algorithms
     links:
       repo: https://github.com/APorkolab/Cadentis
     mermaid: |
@@ -306,6 +428,10 @@ projects:
         Meter --> Report[Analysis Report]
         Report --> UI[Web Interface]
     description:
-      en: NLP-based poetry meter analyzer detecting rhyme patterns, syllabic structures, and prosodic metrics.
-      de: NLP-basiertes Analysewerkzeug zur Erkennung von Reimschemata, Silbenstrukturen und metrischen Mustern.
-      hu: NLP-alapú versritmus-elemző rímképek, szótagstruktúrák és prozódiai minták detektálására.
+      en: NLP-based poetry meter analyzer detecting rhyme patterns, syllabic
+        structures, and prosodic metrics.
+      de: NLP-basiertes Analysewerkzeug zur Erkennung von Reimschemata,
+        Silbenstrukturen und metrischen Mustern.
+      hu:
+        NLP-alapú versritmus-elemző rímképek, szótagstruktúrák és prozódiai minták
+        detektálására.
