@@ -9,7 +9,7 @@ projects:
         User -->|HTTP| API_Gateway
         API_Gateway -->|REST| OrderService
         OrderService -->|Kafka| PaymentService
-        PaymentService -->|CircuitBreaker| Bank
+        PaymentService -->|"Circuit Breaker"| Bank
     description:
       en: Distributed systems reliability simulator. Event-driven architecture designed to validate microservice resilience patterns.
       de: Simulator für die Zuverlässigkeit verteilter Systeme.
@@ -269,10 +269,9 @@ projects:
     links:
       repo: https://github.com/APorkolab/Cadentis
     mermaid: |
-      graph TD
-        Text --> Analysis
-        Analysis --> Metrics
-        Metrics --> UI
+      Text[Input Text] --> Analysis[Analysis Engine]
+      Analysis --> Metrics[Metric Generator]
+      Metrics --> UI[User Interface]
     description:
       en: NLP-based poetry meter analyzer detecting rhyme patterns.
       de: NLP-basiertes Analysewerkzeug.
