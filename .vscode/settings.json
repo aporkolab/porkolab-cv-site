@@ -1,0 +1,14 @@
+{
+  "files.watcherExclude": {
+    "_site/**": true,
+    ".jekyll-cache/**": true,
+    ".sass-cache/**": true,
+    ".jekyll-metadata": true
+  },
+  "files.exclude": {
+    "_site": true,
+    ".jekyll-cache": true,
+    ".sass-cache": true,
+    ".jekyll-metadata": true
+  }
+}
