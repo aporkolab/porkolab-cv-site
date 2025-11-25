@@ -20,33 +20,14 @@
       type="text/css"
       href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css"
     />
-    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
-    <script>
-      document.addEventListener('DOMContentLoaded', function () {
-        mermaid.initialize({
-          startOnLoad: false,
-          theme: 'base',
-          flowchart: {useMaxWidth: false, htmlLabels: true},
-          sequence: {useMaxWidth: false},
-          themeVariables: {
-            primaryColor: '#7000ff',
-            primaryTextColor: '#fff',
-            primaryBorderColor: '#7000ff',
-            lineColor: '#00f3ff',
-            secondaryColor: '#0a0a0c',
-            tertiaryColor: '#0a0a0c',
-            mainBkg: '#0a0a0c',
-            nodeBorder: '#7000ff',
-            clusterBkg: 'rgba(255,255,255,0.05)',
-            clusterBorder: '#333',
-            defaultLinkColor: '#00f3ff',
-            fontFamily: 'JetBrains Mono',
-          },
-          securityLevel: 'loose',
-        });
-      });
-    </script>
-
+    <meta
+      name="description"
+      content="Senior Full-Stack Engineer (Java/Spring & Angular) with a PhD in Linguistics. Specialist in system architecture, legacy stabilization, and clean code."
+    />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👨‍💻</text></svg>"
+    />
     <style>
       .stack-icon {
         font-size: 1.2rem;
@@ -197,7 +178,7 @@
         --surface: #0a0a0c;
         --surface-glass: rgba(15, 15, 20, 0.85);
         --fg: #f0f0f0;
-        --dim: #888899;
+        --dim: #b0b0c0;
 
         --accent: #7000ff;
         --accent-glow: rgba(112, 0, 255, 0.4);
@@ -684,6 +665,7 @@
       <a
         href="/"
         style="
+          padding: 10px;
           text-decoration: none;
           transition: 0.3s;
           /* Ha angol az oldal, akkor NINCS szürke szűrő, egyébként VAN */
@@ -699,6 +681,7 @@
       <a
         href="/hu/"
         style="
+          padding: 10px;
           text-decoration: none;
           transition: 0.3s;
           filter: {% if current_lang == 'hu' %}none{% else %}grayscale(1){% endif %};
@@ -713,6 +696,7 @@
       <a
         href="/de/"
         style="
+          padding: 10px;
           text-decoration: none;
           transition: 0.3s;
           filter: {% if current_lang == 'de' %}none{% else %}grayscale(1){% endif %};
@@ -1194,151 +1178,182 @@
     </div>
 
     <script>
-                            async function openArchModal(sourceId) {
-                              const modal = document.getElementById('archModal');
-                              const target = document.getElementById('mermaidTarget');
-                              const source = document.getElementById(sourceId).innerText;
+      /* --- 1. MERMAID LAZY LOADER (PERFORMANCE FIX) --- */
+      let mermaidLoaded = false;
 
-                              // Clear previous content
-                              target.innerHTML = '';
-
-                              // Create a new div for mermaid to render into
-                              const graphDiv = document.createElement('div');
-                              graphDiv.className = 'mermaid';
-                              graphDiv.textContent = source;
-                              target.appendChild(graphDiv);
-
-                              // Show modal
-                              modal.classList.add('active');
-
-                              // Run Mermaid
-                              try {
-                                await mermaid.run({nodes: [graphDiv]});
-                              } catch (e) {
-                                console.error('Mermaid render error:', e);
-                                graphDiv.textContent = 'Error rendering diagram.';
-                              }
-                            }
-
-                            function closeModal(e) {
-                              const modal = document.getElementById('archModal');
-                              modal.classList.remove('active');
-                            }
-
-                function toggleJsonMode() {
-                        var mainWrapper = document.querySelector('.layout-wrapper');
-                        var jsonViewer = document.getElementById('json-viewer');
-
-                        if (!jsonViewer) {
-                          jsonViewer = document.createElement('div');
-                          jsonViewer.id = 'json-viewer';
-                          jsonViewer.style.cssText = `
-                            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
-                            background: #0a0a0c; color: #00f3ff; z-index: 10000;
-                            padding: 2rem; overflow: auto; font-family: 'JetBrains Mono', monospace;
-                            font-size: 14px; display: none; white-space: pre;
-                          `;
-
-                          var rawData = {
-                            engineer: "{{ site.data.cv_data.name['en'] }}",
-                            title: "{{ site.data.cv_data.title['en'] }}",
-                            philosophy: "Code is narrative structure.",
-                            skills: {{ site.data.cv_data.skills | jsonify }},
-                            projects: {{ site.data.projects.projects | jsonify }}
-                          };
-
-                          jsonViewer.textContent = JSON.stringify(rawData, null, 2);
-
-                          // Bezáró gomb
-                          var closeBtn = document.createElement('button');
-                          closeBtn.innerText = "✕ CLOSE RAW DATA";
-                          closeBtn.style.cssText = `
-                            position: fixed; top: 20px; right: 30px;
-                            background: rgba(255,0,0,0.2); color: #fff; border: 1px solid red;
-                            padding: 10px 20px; cursor: pointer; font-family: 'Syncopate'; font-weight: bold;
-                          `;
-                          closeBtn.onclick = toggleJsonMode;
-                          jsonViewer.appendChild(closeBtn);
-
-                          document.body.appendChild(jsonViewer);
-                        }
-
-                        // Megjelenítés / Elrejtés logika
-                        if (jsonViewer.style.display === 'none') {
-                          jsonViewer.style.display = 'block';
-                          document.body.style.overflow = 'hidden'; // Scroll letiltása
-                        } else {
-                          jsonViewer.style.display = 'none';
-                          document.body.style.overflow = 'auto'; // Scroll engedélyezése
-                        }
-                      }
-
-
-          document.addEventListener('keydown', function(e) {
-              // Mac: Meta+K, Windows: Ctrl+K
-              if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
-                  e.preventDefault();
-                  toggleCommandPalette();
-              }
-              // Escape bezárja
-              if (e.key === 'Escape') {
-                  const palette = document.getElementById('cmd-palette');
-                  if (palette) palette.style.display = 'none';
-              }
-          });
-
-          function toggleCommandPalette() {
-              let palette = document.getElementById('cmd-palette');
-
-              if (!palette) {
-                  palette = document.createElement('div');
-                  palette.id = 'cmd-palette';
-                  palette.style.cssText = `
-                      position: fixed; top: 20%; left: 50%; transform: translateX(-50%);
-                      width: 500px; max-width: 90vw;
-                      background: #0a0a0c; border: 1px solid var(--accent);
-                      box-shadow: 0 0 50px rgba(0,0,0,0.8); z-index: 10001;
-                      border-radius: 12px; padding: 1rem;
-                      font-family: 'JetBrains Mono', monospace; display: none;
-                  `;
-
-                  const commands = [
-                      { key: 'JSON Mode', action: 'toggleJsonMode()' },
-                      { key: 'Download CV', action: "window.open('{{ cv.downloads[page.lang] }}', '_blank')" },
-                      { key: 'Go to GitHub', action: "window.open('{{ cv.contact.github }}', '_blank')" },
-                      { key: 'Switch Language: EN', action: "window.location.href='/'" },
-                      { key: 'Switch Language: HU', action: "window.location.href='/hu/'" },
-                      { key: 'Switch Language: DE', action: "window.location.href='/de/'" },
-                  ];
-
-                  let html = `<div style="color:#666; font-size:12px; margin-bottom:10px;">COMMAND PALETTE</div>`;
-                  commands.forEach(cmd => {
-                      html += `
-                          <div onclick="${cmd.action}; document.getElementById('cmd-palette').style.display='none'"
-                               style="padding: 10px; border-bottom: 1px solid #333; cursor: pointer; color: #fff; transition:0.2s;"
-                               onmouseover="this.style.background='#1a1a20';this.style.paddingLeft='15px'"
-                               onmouseout="this.style.background='transparent';this.style.paddingLeft='10px'">
-                              <span style="color:var(--secondary)">></span> ${cmd.key}
-                          </div>`;
-                  });
-
-                  // Bezárás info
-                  html += `<div style="text-align:right; margin-top:10px; font-size:10px; color:#555;">[ESC] to close</div>`;
-
-                  palette.innerHTML = html;
-                  document.body.appendChild(palette);
-              }
-
-              palette.style.display = (palette.style.display === 'none') ? 'block' : 'none';
+      async function loadMermaidLibrary() {
+        return new Promise((resolve, reject) => {
+          if (mermaidLoaded) {
+            resolve();
+            return;
           }
 
+          const script = document.createElement('script');
+          script.src = 'https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js';
+          script.onload = () => {
+            mermaidLoaded = true;
+            // Inicializálás, csak miután betöltött
+            mermaid.initialize({
+              startOnLoad: false,
+              theme: 'base',
+              flowchart: { useMaxWidth: false, htmlLabels: true },
+              securityLevel: 'loose',
+              themeVariables: {
+                primaryColor: '#7000ff',
+                primaryTextColor: '#fff',
+                primaryBorderColor: '#7000ff',
+                lineColor: '#00f3ff',
+                secondaryColor: '#0a0a0c',
+                tertiaryColor: '#0a0a0c',
+                mainBkg: '#0a0a0c',
+                nodeBorder: '#7000ff',
+                clusterBkg: 'rgba(255,255,255,0.05)',
+                clusterBorder: '#333',
+                defaultLinkColor: '#00f3ff',
+                fontFamily: 'JetBrains Mono',
+              }
+            });
+            resolve();
+          };
+          script.onerror = reject;
+          document.head.appendChild(script);
+        });
+      }
+
+      async function openArchModal(sourceId) {
+        const modal = document.getElementById('archModal');
+        const target = document.getElementById('mermaidTarget');
+        const source = document.getElementById(sourceId).innerText;
+
+        // Loading jelzés
+        target.innerHTML = '<div style="color:var(--secondary); font-family:monospace; margin-top:2rem;">INITIALIZING SYSTEM BLUEPRINT...</div>';
+        modal.classList.add('active');
+
+        try {
+          // 1. Dinamikusan betöltjük a könyvtárat (csak kattintáskor!)
+          await loadMermaidLibrary();
+
+          // 2. Renderelünk
+          target.innerHTML = '';
+          const graphDiv = document.createElement('div');
+          graphDiv.className = 'mermaid';
+          graphDiv.textContent = source;
+          target.appendChild(graphDiv);
+
+          await mermaid.run({ nodes: [graphDiv] });
+        } catch (e) {
+          console.error('Mermaid render error:', e);
+          target.innerHTML = '<div style="color:red; margin-top:2rem;">ERROR: COULD NOT LOAD BLUEPRINT MODULE.</div>';
+        }
+      }
+
+      function closeModal(e) {
+        const modal = document.getElementById('archModal');
+        modal.classList.remove('active');
+      }
+
+      /* --- 2. JSON MODE --- */
+      function toggleJsonMode() {
+        var mainWrapper = document.querySelector('.layout-wrapper');
+        var jsonViewer = document.getElementById('json-viewer');
+
+        if (!jsonViewer) {
+          jsonViewer = document.createElement('div');
+          jsonViewer.id = 'json-viewer';
+          jsonViewer.style.cssText = `
+            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+            background: #0a0a0c; color: #00f3ff; z-index: 10000;
+            padding: 2rem; overflow: auto; font-family: 'JetBrains Mono', monospace;
+            font-size: 14px; display: none; white-space: pre;
+          `;
+
+          var rawData = {
+            engineer: "{{ site.data.cv_data.name['en'] }}",
+            title: "{{ site.data.cv_data.title['en'] }}",
+            philosophy: "Code is narrative structure.",
+            skills: {{ site.data.cv_data.skills | jsonify }},
+            projects: {{ site.data.projects.projects | jsonify }}
+          };
+
+          jsonViewer.textContent = JSON.stringify(rawData, null, 2);
+
+          var closeBtn = document.createElement('button');
+          closeBtn.innerText = "✕ CLOSE RAW DATA";
+          closeBtn.style.cssText = `
+            position: fixed; top: 20px; right: 30px;
+            background: rgba(255,0,0,0.2); color: #fff; border: 1px solid red;
+            padding: 10px 20px; cursor: pointer; font-family: 'Syncopate'; font-weight: bold;
+          `;
+          closeBtn.onclick = toggleJsonMode;
+          jsonViewer.appendChild(closeBtn);
+          document.body.appendChild(jsonViewer);
+        }
+
+        if (jsonViewer.style.display === 'none') {
+          jsonViewer.style.display = 'block';
+          document.body.style.overflow = 'hidden';
+        } else {
+          jsonViewer.style.display = 'none';
+          document.body.style.overflow = 'auto';
+        }
+      }
+
+      /* --- 3. COMMAND PALETTE (CMD+K) --- */
+      document.addEventListener('keydown', function(e) {
+        if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+            e.preventDefault();
+            toggleCommandPalette();
+        }
+        if (e.key === 'Escape') {
+            const palette = document.getElementById('cmd-palette');
+            if (palette) palette.style.display = 'none';
+        }
+      });
+
+      function toggleCommandPalette() {
+        let palette = document.getElementById('cmd-palette');
+        if (!palette) {
+            palette = document.createElement('div');
+            palette.id = 'cmd-palette';
+            palette.style.cssText = `
+                position: fixed; top: 20%; left: 50%; transform: translateX(-50%);
+                width: 500px; max-width: 90vw;
+                background: #0a0a0c; border: 1px solid var(--accent);
+                box-shadow: 0 0 50px rgba(0,0,0,0.8); z-index: 10001;
+                border-radius: 12px; padding: 1rem;
+                font-family: 'JetBrains Mono', monospace; display: none;
+            `;
+
+            const commands = [
+                { key: 'JSON Mode', action: 'toggleJsonMode()' },
+                { key: 'Download CV', action: "window.open('{{ cv.downloads[page.lang] }}', '_blank')" },
+                { key: 'Go to GitHub', action: "window.open('{{ cv.contact.github }}', '_blank')" },
+                { key: 'Switch Language: EN', action: "window.location.href='/'" },
+                { key: 'Switch Language: HU', action: "window.location.href='/hu/'" },
+                { key: 'Switch Language: DE', action: "window.location.href='/de/'" },
+            ];
+
+            let html = `<div style="color:#666; font-size:12px; margin-bottom:10px;">COMMAND PALETTE</div>`;
+            commands.forEach(cmd => {
+                html += `
+                    <div onclick="${cmd.action}; document.getElementById('cmd-palette').style.display='none'"
+                         style="padding: 10px; border-bottom: 1px solid #333; cursor: pointer; color: #fff; transition:0.2s;"
+                         onmouseover="this.style.background='#1a1a20';this.style.paddingLeft='15px'"
+                         onmouseout="this.style.background='transparent';this.style.paddingLeft='10px'">
+                        <span style="color:var(--secondary)">></span> ${cmd.key}
+                    </div>`;
+            });
+            html += `<div style="text-align:right; margin-top:10px; font-size:10px; color:#555;">[ESC] to close</div>`;
+            palette.innerHTML = html;
+            document.body.appendChild(palette);
+        }
+        palette.style.display = (palette.style.display === 'none') ? 'block' : 'none';
+      }
+
+      /* --- 4. TITLE FLICKER --- */
       let docTitle = document.title;
-      window.addEventListener("blur", () => {
-        document.title = "⚠️ Awaiting Input...";
-      });
-      window.addEventListener("focus", () => {
-        document.title = docTitle;
-      });
+      window.addEventListener("blur", () => { document.title = "⚠️ Awaiting Input..."; });
+      window.addEventListener("focus", () => { document.title = docTitle; });
     </script>
   </body>
 </html>

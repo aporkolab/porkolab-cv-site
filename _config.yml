@@ -3,3 +3,7 @@ baseurl: '' # rooton fut
 url: 'https://cv.adamporkolab.com'
 
 theme: minima
+
+sass:
+  style: compressed
+  quiet_deps: true
