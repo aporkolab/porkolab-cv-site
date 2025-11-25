@@ -269,9 +269,10 @@ projects:
     links:
       repo: https://github.com/APorkolab/Cadentis
     mermaid: |
-      Text[Input Text] --> Analysis[Analysis Engine]
-      Analysis --> Metrics[Metric Generator]
-      Metrics --> UI[User Interface]
+      graph TD
+        Text[Input Text] --> Analysis[Analysis Engine]
+        Analysis --> Metrics[Metric Generator]
+        Metrics --> UI[User Interface]
     description:
       en: NLP-based poetry meter analyzer detecting rhyme patterns.
       de: NLP-basiertes Analysewerkzeug.
