@@ -15,14 +15,17 @@
       href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700&display=swap"
       rel="stylesheet"
     />
-
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css"
+    />
     <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
     <script>
       document.addEventListener('DOMContentLoaded', function () {
         mermaid.initialize({
           startOnLoad: false,
           theme: 'base',
-          // Kikapcsoljuk a max-width kényszerítést JS oldalon is
           flowchart: {useMaxWidth: false, htmlLabels: true},
           sequence: {useMaxWidth: false},
           themeVariables: {
@@ -45,6 +48,16 @@
     </script>
 
     <style>
+      .stack-icon {
+        font-size: 1.2rem;
+        color: var(--dim);
+        transition: 0.3s;
+        vertical-align: middle;
+      }
+
+      .project-card:hover .stack-icon {
+        color: var(--fg);
+      }
       /* --- SKILL BOXES --- */
       .skill-grid {
         display: grid;
@@ -320,6 +333,8 @@
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
         gap: 2rem;
+        padding: 3rem;
+        margin: -15px;
       }
       .project-card {
         position: relative;
@@ -330,8 +345,12 @@
         display: flex;
         flex-direction: column;
         transition: 0.3s;
-        min-height: 350px; /* Magasság igazítva */
+        min-height: 350px;
         border-top: 3px solid transparent;
+        transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1); /* Sokkal organikusabb mozgás */
+        z-index: 1; /* Alap rétegrend */
+        transform-style: preserve-3d; /* Segít a "kilökődés" ellen */
+        backface-visibility: hidden;
       }
       .project-card:hover {
         border-color: var(--accent);
@@ -486,19 +505,18 @@
         flex: 1;
         width: 100%;
         height: 100%;
-        overflow: auto; /* Görgetés engedélyezése */
+        overflow: auto;
         padding: 2rem;
-        display: block; /* Grid/Flex helyett block, hogy a scroll működjön */
+        display: block;
         display: grid;
         place-items: center;
       }
 
-      /* SVG JAVÍTÁS: Ne menjen össze! */
       .mermaid-container svg {
-        max-width: none !important; /* Tilos összenyomni */
+        max-width: none !important;
         height: auto !important;
-        width: auto !important; /* Eredeti méret */
-        min-width: 100%; /* De legalább töltse ki a képernyőt */
+        width: auto !important;
+        min-width: 100%;
       }
 
       /* --- DOWNLOAD BUTTON --- */
@@ -620,6 +638,26 @@
           min-height: 280px;
         }
       }
+      /* --- PROJECT CARD HOVER EFFECT --- */
+      .project-grid-container:hover .project-card {
+        opacity: 0.4;
+        filter: grayscale(100%) blur(2px);
+        transform: scale(0.98);
+      }
+
+      .project-grid-container .project-card:hover {
+        opacity: 1;
+        filter: none;
+        z-index: 100;
+        transform: scale(1.05);
+        border-color: var(--secondary);
+        box-shadow: 0 15px 40px -10px rgba(0, 243, 255, 0.15); /* Glow effekt */
+      }
+
+      section {
+        content-visibility: auto;
+        contain-intrinsic-size: 1px 1000px;
+      }
     </style>
   </head>
   <body>
@@ -627,6 +665,7 @@
     <div class="bg-orb orb-1"></div>
     <div class="bg-orb orb-2"></div>
 
+    {% assign current_lang = page.lang | default: "en" %}
     <div
       style="
         position: fixed;
@@ -646,38 +685,46 @@
         href="/"
         style="
           text-decoration: none;
-          filter: grayscale(1);
-          opacity: 0.7;
           transition: 0.3s;
+          /* Ha angol az oldal, akkor NINCS szürke szűrő, egyébként VAN */
+          filter: {% if current_lang == 'en' %}none{% else %}grayscale(1){% endif %};
+          opacity: {% if current_lang == 'en' %}1{% else %}0.5{% endif %};
+          transform: {% if current_lang == 'en' %}scale(1.1){% else %}scale(1){% endif %};
         "
         onmouseover="this.style.filter='none';this.style.opacity='1'"
-        onmouseout="this.style.filter='grayscale(1)';this.style.opacity='0.7'"
+        onmouseout="this.style.filter='{% if current_lang == 'en' %}none{% else %}grayscale(1){% endif %}';this.style.opacity='{% if current_lang == 'en' %}1{% else %}0.5{% endif %}'"
         >🇬🇧</a
       >
+
       <a
         href="/hu/"
         style="
           text-decoration: none;
-          filter: grayscale(1);
-          opacity: 0.7;
           transition: 0.3s;
+          filter: {% if current_lang == 'hu' %}none{% else %}grayscale(1){% endif %};
+          opacity: {% if current_lang == 'hu' %}1{% else %}0.5{% endif %};
+          transform: {% if current_lang == 'hu' %}scale(1.1){% else %}scale(1){% endif %};
         "
         onmouseover="this.style.filter='none';this.style.opacity='1'"
-        onmouseout="this.style.filter='grayscale(1)';this.style.opacity='0.7'"
+        onmouseout="this.style.filter='{% if current_lang == 'hu' %}none{% else %}grayscale(1){% endif %}';this.style.opacity='{% if current_lang == 'hu' %}1{% else %}0.5{% endif %}'"
         >🇭🇺</a
       >
+
       <a
         href="/de/"
         style="
           text-decoration: none;
-          filter: grayscale(1);
-          opacity: 0.7;
           transition: 0.3s;
+          filter: {% if current_lang == 'de' %}none{% else %}grayscale(1){% endif %};
+          opacity: {% if current_lang == 'de' %}1{% else %}0.5{% endif %};
+          transform: {% if current_lang == 'de' %}scale(1.1){% else %}scale(1){% endif %};
         "
         onmouseover="this.style.filter='none';this.style.opacity='1'"
-        onmouseout="this.style.filter='grayscale(1)';this.style.opacity='0.7'"
+        onmouseout="this.style.filter='{% if current_lang == 'de' %}none{% else %}grayscale(1){% endif %}';this.style.opacity='{% if current_lang == 'de' %}1{% else %}0.5{% endif %}'"
         >🇩🇪</a
       >
+
+      <button onclick="toggleJsonMode()">[RAW DATA]</button>
     </div>
 
     {% assign cv = site.data.cv_data %} {% assign lang = page.lang | default:
@@ -924,18 +971,57 @@
                     margin-top: auto;
                   "
                 >
-                  {% for t in project.stack %}
+                  {% for t in project.stack %} {% assign tech_key = t | downcase
+                  | strip %} {% assign icon_class = "" %} {% case tech_key %} {%
+                  comment %} --- FRONTEND & FRAMEWORKS --- {% endcomment %} {%
+                  when 'angular' or 'angular 18' or 'signals' %} {% assign
+                  icon_class = "devicon-angular-plain" %} {% when 'javascript'
+                  %} {% assign icon_class = "devicon-javascript-plain" %} {%
+                  when 'typescript' %} {% assign icon_class =
+                  "devicon-typescript-plain" %} {% when 'react' %} {% assign
+                  icon_class = "devicon-react-original" %} {% comment %} ---
+                  BACKEND & RUNTIME --- {% endcomment %} {% when 'java' %} {%
+                  assign icon_class = "devicon-java-plain" %} {% when 'spring'
+                  or 'spring boot' or 'spring data jpa' %} {% assign icon_class
+                  = "devicon-spring-plain" %} {% when 'node.js' or 'nodejs' or
+                  'express.js' %} {% assign icon_class = "devicon-nodejs-plain"
+                  %} {% comment %} --- AI, DATA & ALGORITHMS --- {% endcomment
+                  %} {% when 'python' or 'nlp' %} {% assign icon_class =
+                  "devicon-python-plain" %} {% when 'generative ai' %} {% assign
+                  icon_class = "devicon-tensorflow-original" %} {% when
+                  'algorithms' or 'algorithm design' or 'cadentis' %} {% assign
+                  icon_class = "devicon-thealgorithms-plain" %} {% comment %}
+                  --- TOOLS & PROTOCOLS --- {% endcomment %} {% when 'docker' %}
+                  {% assign icon_class = "devicon-docker-plain" %} {% when 'git'
+                  %} {% assign icon_class = "devicon-git-plain" %} {% when 'npm'
+                  %} {% assign icon_class = "devicon-npm-original-wordmark" %}
+                  {% when 'google apps script' %} {% assign icon_class =
+                  "devicon-google-plain" %} {% when 'api' %} {% assign
+                  icon_class = "devicon-postman-plain" %} {% when 'websocket' %}
+                  {% assign icon_class = "devicon-socketio-original" %}{%
+                  comment %} --- AUTOMATION & UTILS --- {% endcomment %} {% when
+                  'automation' %} {% assign icon_class = "devicon-zsh-plain" %}
+                  {% when 'custom parser' or 'archiving' %} {% assign icon_class
+                  = "devicon-linux-plain" %} {% comment %} --- MINDEN MÁS
+                  (DEFAULT HELYKITÖLTŐ) --- {% endcomment %} {% else %} {%
+                  assign icon_class = "devicon-bash-plain" %} {% endcase %}
+
                   <span
                     style="
-                      padding: 4px 8px;
+                      padding: 4px 10px;
                       border: 1px solid var(--border);
                       border-radius: 4px;
                       font-size: 0.75rem;
                       color: #ccc;
                       background: rgba(255, 255, 255, 0.05);
+                      display: inline-flex;
+                      align-items: center;
+                      gap: 8px;
                     "
-                    >{{ t }}</span
                   >
+                    <i class="{{ icon_class }} stack-icon"></i>
+                    {{ t }}
+                  </span>
                   {% endfor %}
                 </div>
               </div>
@@ -951,16 +1037,40 @@
               <button
                 class="arch-btn"
                 onclick="openArchModal('mermaid-source-{{ forloop.index }}')"
+                style="
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  gap: 12px;
+                "
               >
                 <svg
                   viewBox="0 0 24 24"
                   fill="none"
                   stroke="currentColor"
-                  stroke-width="2"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  style="width: 20px; height: 20px; flex-shrink: 0"
                 >
-                  <path d="M2 12h20M12 2v20" />
+                  <rect x="3" y="3" width="7" height="7"></rect>
+                  <rect x="14" y="3" width="7" height="7"></rect>
+                  <rect x="14" y="14" width="7" height="7"></rect>
+                  <path d="M10 6.5h4"></path>
+                  <path d="M6.5 10v4"></path>
+                  <path d="M17.5 10v4"></path>
+                  <path d="M10 17.5h4"></path>
                 </svg>
-                {{ t_view_arch }}
+                <span
+                  style="
+                    font-family: 'Syncopate', sans-serif;
+                    font-weight: 700;
+                    letter-spacing: 1px;
+                    font-size: 0.8rem;
+                  "
+                >
+                  VIEW SYSTEM BLUEPRINT
+                </span>
               </button>
               {% endif %}
             </div>
@@ -1084,36 +1194,151 @@
     </div>
 
     <script>
-      async function openArchModal(sourceId) {
-        const modal = document.getElementById('archModal');
-        const target = document.getElementById('mermaidTarget');
-        const source = document.getElementById(sourceId).innerText;
+                            async function openArchModal(sourceId) {
+                              const modal = document.getElementById('archModal');
+                              const target = document.getElementById('mermaidTarget');
+                              const source = document.getElementById(sourceId).innerText;
 
-        // Clear previous content
-        target.innerHTML = '';
+                              // Clear previous content
+                              target.innerHTML = '';
 
-        // Create a new div for mermaid to render into
-        const graphDiv = document.createElement('div');
-        graphDiv.className = 'mermaid';
-        graphDiv.textContent = source;
-        target.appendChild(graphDiv);
+                              // Create a new div for mermaid to render into
+                              const graphDiv = document.createElement('div');
+                              graphDiv.className = 'mermaid';
+                              graphDiv.textContent = source;
+                              target.appendChild(graphDiv);
 
-        // Show modal
-        modal.classList.add('active');
+                              // Show modal
+                              modal.classList.add('active');
 
-        // Run Mermaid
-        try {
-          await mermaid.run({nodes: [graphDiv]});
-        } catch (e) {
-          console.error('Mermaid render error:', e);
-          graphDiv.textContent = 'Error rendering diagram.';
-        }
-      }
+                              // Run Mermaid
+                              try {
+                                await mermaid.run({nodes: [graphDiv]});
+                              } catch (e) {
+                                console.error('Mermaid render error:', e);
+                                graphDiv.textContent = 'Error rendering diagram.';
+                              }
+                            }
 
-      function closeModal(e) {
-        const modal = document.getElementById('archModal');
-        modal.classList.remove('active');
-      }
+                            function closeModal(e) {
+                              const modal = document.getElementById('archModal');
+                              modal.classList.remove('active');
+                            }
+
+                function toggleJsonMode() {
+                        var mainWrapper = document.querySelector('.layout-wrapper');
+                        var jsonViewer = document.getElementById('json-viewer');
+
+                        if (!jsonViewer) {
+                          jsonViewer = document.createElement('div');
+                          jsonViewer.id = 'json-viewer';
+                          jsonViewer.style.cssText = `
+                            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+                            background: #0a0a0c; color: #00f3ff; z-index: 10000;
+                            padding: 2rem; overflow: auto; font-family: 'JetBrains Mono', monospace;
+                            font-size: 14px; display: none; white-space: pre;
+                          `;
+
+                          var rawData = {
+                            engineer: "{{ site.data.cv_data.name['en'] }}",
+                            title: "{{ site.data.cv_data.title['en'] }}",
+                            philosophy: "Code is narrative structure.",
+                            skills: {{ site.data.cv_data.skills | jsonify }},
+                            projects: {{ site.data.projects.projects | jsonify }}
+                          };
+
+                          jsonViewer.textContent = JSON.stringify(rawData, null, 2);
+
+                          // Bezáró gomb
+                          var closeBtn = document.createElement('button');
+                          closeBtn.innerText = "✕ CLOSE RAW DATA";
+                          closeBtn.style.cssText = `
+                            position: fixed; top: 20px; right: 30px;
+                            background: rgba(255,0,0,0.2); color: #fff; border: 1px solid red;
+                            padding: 10px 20px; cursor: pointer; font-family: 'Syncopate'; font-weight: bold;
+                          `;
+                          closeBtn.onclick = toggleJsonMode;
+                          jsonViewer.appendChild(closeBtn);
+
+                          document.body.appendChild(jsonViewer);
+                        }
+
+                        // Megjelenítés / Elrejtés logika
+                        if (jsonViewer.style.display === 'none') {
+                          jsonViewer.style.display = 'block';
+                          document.body.style.overflow = 'hidden'; // Scroll letiltása
+                        } else {
+                          jsonViewer.style.display = 'none';
+                          document.body.style.overflow = 'auto'; // Scroll engedélyezése
+                        }
+                      }
+
+
+          document.addEventListener('keydown', function(e) {
+              // Mac: Meta+K, Windows: Ctrl+K
+              if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+                  e.preventDefault();
+                  toggleCommandPalette();
+              }
+              // Escape bezárja
+              if (e.key === 'Escape') {
+                  const palette = document.getElementById('cmd-palette');
+                  if (palette) palette.style.display = 'none';
+              }
+          });
+
+          function toggleCommandPalette() {
+              let palette = document.getElementById('cmd-palette');
+
+              if (!palette) {
+                  palette = document.createElement('div');
+                  palette.id = 'cmd-palette';
+                  palette.style.cssText = `
+                      position: fixed; top: 20%; left: 50%; transform: translateX(-50%);
+                      width: 500px; max-width: 90vw;
+                      background: #0a0a0c; border: 1px solid var(--accent);
+                      box-shadow: 0 0 50px rgba(0,0,0,0.8); z-index: 10001;
+                      border-radius: 12px; padding: 1rem;
+                      font-family: 'JetBrains Mono', monospace; display: none;
+                  `;
+
+                  const commands = [
+                      { key: 'JSON Mode', action: 'toggleJsonMode()' },
+                      { key: 'Download CV', action: "window.open('{{ cv.downloads[page.lang] }}', '_blank')" },
+                      { key: 'Go to GitHub', action: "window.open('{{ cv.contact.github }}', '_blank')" },
+                      { key: 'Switch Language: EN', action: "window.location.href='/'" },
+                      { key: 'Switch Language: HU', action: "window.location.href='/hu/'" },
+                      { key: 'Switch Language: DE', action: "window.location.href='/de/'" },
+                  ];
+
+                  let html = `<div style="color:#666; font-size:12px; margin-bottom:10px;">COMMAND PALETTE</div>`;
+                  commands.forEach(cmd => {
+                      html += `
+                          <div onclick="${cmd.action}; document.getElementById('cmd-palette').style.display='none'"
+                               style="padding: 10px; border-bottom: 1px solid #333; cursor: pointer; color: #fff; transition:0.2s;"
+                               onmouseover="this.style.background='#1a1a20';this.style.paddingLeft='15px'"
+                               onmouseout="this.style.background='transparent';this.style.paddingLeft='10px'">
+                              <span style="color:var(--secondary)">></span> ${cmd.key}
+                          </div>`;
+                  });
+
+                  // Bezárás info
+                  html += `<div style="text-align:right; margin-top:10px; font-size:10px; color:#555;">[ESC] to close</div>`;
+
+                  palette.innerHTML = html;
+                  document.body.appendChild(palette);
+              }
+
+              palette.style.display = (palette.style.display === 'none') ? 'block' : 'none';
+          }
+
+      let docTitle = document.title;
+      window.addEventListener("blur", () => {
+        document.title = "⚠️ Awaiting Input...";
+      });
+      window.addEventListener("focus", () => {
+        document.title = docTitle;
+      });
     </script>
   </body>
 </html>
