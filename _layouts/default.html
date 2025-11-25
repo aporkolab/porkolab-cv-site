@@ -183,7 +183,7 @@
         --bg: #030304;
         --surface: #0a0a0c;
         --surface-glass: rgba(15, 15, 20, 0.85);
-        --fg: #e0e0e0;
+        --fg: #f0f0f0;
         --dim: #888899;
 
         --accent: #7000ff;
@@ -709,15 +709,7 @@
 
         <div style="margin-top: 3rem">
           <div class="social-stack">
-            {% if cv.contact.website %}
-            <a
-              href="{{ cv.contact.website }}"
-              class="social-link"
-              target="_blank"
-            >
-              Portfolio / Web <span>→</span>
-            </a>
-            {% endif %} {% if cv.contact.github %}
+            {% if cv.contact.github %}
             <a
               href="{{ cv.contact.github }}"
               class="social-link"
