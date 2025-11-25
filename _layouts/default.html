@@ -11,6 +11,10 @@
       href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&family=Syncopate:wght@400;700&display=swap"
       rel="stylesheet"
     />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700&display=swap"
+      rel="stylesheet"
+    />
 
     <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
     <script>
@@ -18,6 +22,9 @@
         mermaid.initialize({
           startOnLoad: false,
           theme: 'base',
+          // Kikapcsoljuk a max-width kényszerítést JS oldalon is
+          flowchart: {useMaxWidth: false, htmlLabels: true},
+          sequence: {useMaxWidth: false},
           themeVariables: {
             primaryColor: '#7000ff',
             primaryTextColor: '#fff',
@@ -38,6 +45,140 @@
     </script>
 
     <style>
+      /* --- SKILL BOXES --- */
+      .skill-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+        gap: 1rem;
+      }
+      .skill-box {
+        border: 1px solid var(--border);
+        padding: 1rem;
+        text-align: center;
+        font-size: 0.85rem;
+        font-weight: 500;
+        transition: 0.3s;
+        cursor: default;
+        background: linear-gradient(
+          45deg,
+          transparent 50%,
+          rgba(112, 0, 255, 0.05) 100%
+        );
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 80px;
+        word-wrap: break-word;
+        hyphens: auto;
+        line-height: 1.3;
+      }
+      .skill-box:hover {
+        border-color: #fff;
+        background: #fff;
+        color: #000;
+      }
+
+      .dl-btn {
+        display: block;
+        width: 100%;
+        padding: 1.5rem;
+        background: #fff;
+        color: #000;
+        font-family: 'Syncopate', sans-serif;
+        font-weight: 700;
+        text-transform: uppercase;
+        text-align: center;
+        border: none;
+        cursor: pointer;
+        transition: 0.4s;
+        margin-top: 2rem;
+        position: relative;
+        overflow: hidden;
+      }
+      .dl-btn:hover {
+        background: var(--accent);
+        color: #fff;
+        letter-spacing: 2px;
+      }
+      .dl-btn::after {
+        content: ' [PDF]';
+        opacity: 0.5;
+        font-size: 0.8em;
+      }
+
+      .interest-item {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+      }
+
+      .interest-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+      }
+      .interest-item h3 {
+        font-family: 'Space Grotesk';
+        font-size: 1rem;
+        color: #fff;
+        margin: 0 0 0.5rem 0;
+        text-transform: uppercase;
+      }
+      .interest-item p {
+        font-size: 0.9rem;
+        color: #888;
+        margin: 0;
+      }
+
+      @keyframes pulse {
+        0% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0.3;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+
+      @media (max-width: 900px) {
+        .layout-wrapper {
+          flex-direction: column;
+        }
+        .identity-panel {
+          width: 100%;
+          height: auto;
+          padding: 3rem 1.5rem;
+          border-right: none;
+          border-bottom: 1px solid var(--border);
+        }
+        .data-panel {
+          width: 100%;
+          height: auto;
+          padding: 2rem 1.5rem;
+        }
+        h1 {
+          font-size: 2.2rem;
+        }
+        .lang-switch {
+          top: 1rem;
+          right: 1rem;
+          padding: 0.5rem;
+          gap: 0.5rem;
+        }
+        .lang-btn {
+          font-size: 1.2rem;
+        }
+        .skill-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+        .interest-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+      /* --- GLOBAL STYLES --- */
+
       :root {
         --bg: #030304;
         --surface: #0a0a0c;
@@ -261,7 +402,7 @@
         box-shadow: 0 0 20px var(--accent-glow);
       }
 
-      /* --- GLOBAL MODAL --- */
+      /* --- GLOBAL MODAL (JAVÍTOTT) --- */
       .modal-overlay {
         position: fixed;
         top: 0;
@@ -284,9 +425,9 @@
       }
 
       .modal-content {
-        width: 90vw;
-        max-width: 1100px;
-        height: 85vh;
+        width: 95vw;
+        max-width: 1200px;
+        height: 90vh; /* Nagyobb ablak */
         background: #0a0a0c;
         border: 1px solid var(--secondary);
         border-radius: var(--radius);
@@ -296,6 +437,7 @@
         transform: scale(0.95);
         transition: 0.3s;
         overflow: hidden;
+        box-shadow: 0 0 50px rgba(0, 0, 0, 0.8);
       }
       .modal-overlay.active .modal-content {
         transform: scale(1);
@@ -309,24 +451,41 @@
         align-items: center;
         background: rgba(255, 255, 255, 0.02);
       }
+      .modal-title {
+        font-family: 'Syncopate';
+        color: var(--secondary);
+        font-size: 1rem;
+        letter-spacing: 2px;
+      }
       .modal-close {
         background: none;
         border: none;
         color: var(--fg);
         font-size: 1.5rem;
         cursor: pointer;
+        transition: 0.2s;
+      }
+      .modal-close:hover {
+        color: #fff;
+        transform: rotate(90deg);
       }
       .mermaid-container {
         flex: 1;
-        overflow: auto;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        width: 100%;
+        height: 100%;
+        overflow: auto; /* Görgetés engedélyezése */
         padding: 2rem;
+        display: block; /* Grid/Flex helyett block, hogy a scroll működjön */
+        display: grid;
+        place-items: center;
       }
+
+      /* SVG JAVÍTÁS: Ne menjen össze! */
       .mermaid-container svg {
-        max-width: 100%;
-        height: auto;
+        max-width: none !important; /* Tilos összenyomni */
+        height: auto !important;
+        width: auto !important; /* Eredeti méret */
+        min-width: 100%; /* De legalább töltse ki a képernyőt */
       }
 
       /* --- DOWNLOAD BUTTON --- */
@@ -425,6 +584,29 @@
           right: 1rem;
         }
       }
+      @media (max-width: 600px) {
+        .skill-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .project-grid-container {
+          grid-template-columns: 1fr;
+        }
+
+        .data-panel {
+          padding-left: 1rem;
+          padding-right: 1rem;
+        }
+
+        h1 {
+          font-size: 2rem;
+        }
+      }
+      @media (max-width: 900px) {
+        .project-card {
+          min-height: 280px;
+        }
+      }
     </style>
   </head>
   <body>
@@ -499,9 +681,9 @@
     "Skills" %} {% assign t_exp = "Experience" %} {% assign t_edu = "Education"
     %} {% assign t_pubs = "Publications" %} {% assign t_awards = "Awards" %} {%
     assign t_lang = "Languages" %} {% assign t_int = "Interests" %} {% assign
-    t_dl = "Download CV" %} {% assign t_req = "Request Access" %}  {% assign t_projects = "Engineering Portfolio" %} {% assign
-    t_view_arch = "View Blueprint" %} {% endif %}
-
+    t_dl = "Download CV" %} {% assign t_req = "Request Access" %} {% assign
+    t_projects = "Engineering Portfolio" %} {% assign t_view_arch = "View
+    Blueprint" %} {% endif %}
 
     <div id="archModal" class="modal-overlay" onclick="closeModal(event)">
       <div class="modal-content" onclick="event.stopPropagation()">
@@ -551,9 +733,36 @@
             >
               LinkedIn <span>→</span>
             </a>
+            {% endif %} {% if cv.contact.medium %}
+            <a
+              href="{{ cv.contact.medium }}"
+              class="social-link"
+              target="_blank"
+            >
+              Medium blog <span>→</span>
+            </a>
+            {% endif %} {% if cv.contact.bento %}
+            <a
+              href="{{ cv.contact.bento }}"
+              class="social-link"
+              target="_blank"
+            >
+              Bento (all links one space) <span>→</span>
+            </a>
+            {% endif %} {% if cv.contact.authorWebsite %}
+            <a
+              href="{{ cv.contact.authorWebsite }}"
+              class="social-link"
+              target="_blank"
+            >
+              Writer Site <span>→</span>
+            </a>
             {% endif %}
           </div>
-
+          <!-- social-stack -->
+        </div>
+        <!-- margin-top wrapper -->
+        <div>
           {% assign pdf_url = cv.downloads[lang] %} {% unless pdf_url %} {%
           assign pdf_url = cv.downloads['en'] %} {% endunless %} {% if pdf_url
           %}
@@ -643,7 +852,7 @@
           {% endfor %}
         </section>
 
-				 {% assign projects = site.data.projects.projects %} {% if projects %}
+        {% assign projects = site.data.projects.projects %} {% if projects %}
         <section>
           <h2 style="margin-top: 0">
             {{ t_projects }}
@@ -753,10 +962,7 @@
             {% endfor %}
           </div>
         </section>
-        {% endif %}
-
-        <section>
-					       {% if cv.education %}
+        {% endif %} {% if cv.education %}
         <section>
           <h2>{{ t_edu }} <span class="index">03</span></h2>
           {% for edu in cv.education %}
@@ -776,12 +982,23 @@
 
           {% if cv.languages %}
           <div style="margin-bottom: 2rem">
-            <div style="color: #fff; font-weight: 700; margin-bottom: 1rem">
+            <div
+              style="
+                color: #fff;
+                font-weight: 700;
+                margin-bottom: 1rem;
+                border-radius: 2px;
+                padding-bottom: 0.5rem;
+              "
+            >
               {{ t_lang }}
             </div>
             <div class="skill-grid">
               {% for lan in cv.languages %}
-              <div class="skill-box" style="border-color: var(--accent)">
+              <div
+                class="skill-box"
+                style="border-color: var(--accent); border-radius: 20px"
+              >
                 {{ lan.name[lang] }}
               </div>
               {% endfor %}
@@ -858,8 +1075,6 @@
           {% endif %}
         </section>
         {% endif %}
-
-
       </main>
     </div>
 
