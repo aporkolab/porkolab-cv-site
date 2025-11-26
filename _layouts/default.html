@@ -1,33 +1,43 @@
 <!DOCTYPE html>
 <html lang="{{ page.lang | default: 'en' }}">
+  HTML
   <head>
     <meta charset="utf-8" />
     <title>{{ page.title }} | {{ site.title }}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&family=Syncopate:wght@400;700&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css"
-    />
     <meta
       name="description"
       content="Senior Full-Stack Engineer (Java/Spring & Angular) with a PhD in Linguistics. Specialist in system architecture, legacy stabilization, and clean code."
     />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" />
+
     <link
       rel="icon"
       href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👨‍💻</text></svg>"
     />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&family=Syncopate:wght@400;700&family=Space+Grotesk:wght@300;400;500;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css"
+      media="print"
+      onload="this.media='all'"
+    />
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css"
+      />
+    </noscript>
+
     <meta
       property="og:title"
       content="Ádám Porkoláb, PhD | Senior Full-Stack Engineer"
@@ -39,6 +49,7 @@
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://aporkolab.com/" />
     <meta name="twitter:card" content="summary_large_image" />
+
     <style>
       /* --- 1. ALAPBEÁLLÍTÁSOK & VÁLTOZÓK --- */
       :root {
@@ -754,7 +765,7 @@
         <div style="flex: 1; display: flex; flex-direction: column">
           <div class="profile-image-container">
             <img
-              src="/assets/img/adam-portrait.png"
+              src="/assets/img/adam-portrait.webp"
               alt="Ádám Porkoláb"
               class="profile-image"
               onerror="this.style.display='none'"
