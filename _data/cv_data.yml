@@ -9,9 +9,9 @@ contact:
   phone: null
   website: https://aporkolab.com
 downloads:
-  de: https://pub-c677684c572248f4ae32cfb9fc6b6972.r2.dev/cv_public_de_default_20251125_083935.pdf
-  en: https://pub-c677684c572248f4ae32cfb9fc6b6972.r2.dev/cv_public_en_default_20251125_083923.pdf
-  hu: https://pub-c677684c572248f4ae32cfb9fc6b6972.r2.dev/cv_public_hu_default_20251125_083929.pdf
+  de: https://pub-c677684c572248f4ae32cfb9fc6b6972.r2.dev/cv_public_de_default_20251126_120101.pdf
+  en: https://pub-c677684c572248f4ae32cfb9fc6b6972.r2.dev/cv_public_en_default_20251126_120045.pdf
+  hu: https://pub-c677684c572248f4ae32cfb9fc6b6972.r2.dev/cv_public_hu_default_20251126_120054.pdf
 education:
 - degree:
     de: Dr. phil. in Linguistik (Summa Cum Laude)
@@ -267,10 +267,10 @@ skills:
   methodology:
   - de: Async-First Remote-Zusammenarbeit
     en: Async-First Remote Collaboration
-    hu: Async-First távoli együttműködés
+    hu: Async-First Távmunkás együttműködés
   - de: Strukturelle Code-Analyse (Linguistischer Ansatz)
     en: Structural Code Analysis (Linguistic Approach)
-    hu: Strukturális kódanalízis (Nyelvészeti megközelítés)
+    hu: Strukturális kódanalízis (Nyelvészeti-pedagógiai megközelítés)
   writing:
   - de: Technische Dokumentation & Wissensdatenbank-Architektur
     en: Technical Documentation & Knowledge Base Architecture
@@ -293,14 +293,15 @@ summary:
     puzzles, no performative live coding.
 
     '
-  hu: 'Szenior full stack mérnök (Java/Spring & Angular) nyelvészeti PhD-vel. Dokumentálatlan
-    legacy rendszerek stabilizálására, tiszta és kiszámítható architektúrák tervezésére,
-    valamint async-first, teljesen távoli munkavégzésre specializálódom. Fókusz: API-tervezés,
-    karbantarthatóság és pontos technikai kommunikáció — nem veszek részt whiteboard-teszteken,
-    és nem vállalok live codingot a kiválasztás folyamán.
+  hu: 'Szenior full stack szoftverfejlesztő (Java/Spring & Angular) nyelvészeti PhD-vel.
+    Dokumentálatlan legacy rendszerek stabilizálására, tiszta és kiszámítható architektúrák
+    tervezésére, valamint async-first, teljesen távoli munkavégzésre specializálódom.
+    Fókusz: API-tervezés, karbantarthatóság és pontos technikai kommunikáció — nem
+    veszek részt whiteboard-teszteken, és nem vállalok live codingot a kiválasztás
+    folyamán.
 
     '
 title:
   de: Senior Full-Stack Engineer & Digitallinguist
   en: Senior Full-Stack Engineer & Digital Linguist
-  hu: Szenior full stack mérnök és digitális nyelvész
+  hu: Senior full stack szoftverfejlesztő és digitális nyelvész
