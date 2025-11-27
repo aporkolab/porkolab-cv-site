@@ -354,6 +354,80 @@
         letter-spacing: 2px;
       }
 
+      /* --- SOCIAL CONTROL GRID (Senior Dashboard Style) --- */
+      .social-grid {
+        display: grid;
+        /* Automatikusan kitölti a helyet, kb 50-60px-es gombokkal */
+        grid-template-columns: repeat(auto-fill, minmax(50px, 1fr));
+        gap: 0.8rem;
+        margin-bottom: 2rem;
+      }
+
+      .social-btn {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 50px;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        color: var(--dim);
+        transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        text-decoration: none;
+        overflow: visible; /* Kell a tooltip miatt */
+      }
+
+      .social-btn svg {
+        width: 22px;
+        height: 22px;
+        fill: currentColor;
+        transition: 0.3s;
+      }
+
+      /* HOVER EFFEKT - A "Senior Flex" */
+      .social-btn:hover {
+        border-color: var(--secondary); /* Cián keret */
+        background: rgba(0, 243, 255, 0.1); /* Halvány cián háttér */
+        color: #fff;
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px rgba(0, 243, 255, 0.2); /* Neon ragyogás */
+        z-index: 10;
+      }
+
+      .social-btn:hover svg {
+        transform: scale(1.1);
+        filter: drop-shadow(0 0 5px var(--secondary));
+      }
+
+      /* TOOLTIP (A szöveg megjelenítése hoverkor) */
+      .social-btn::after {
+        content: attr(aria-label); /* A HTML aria-label-jét olvassa ki */
+        position: absolute;
+        bottom: 120%;
+        left: 50%;
+        transform: translateX(-50%) translateY(10px);
+        background: var(--surface);
+        border: 1px solid var(--secondary);
+        color: var(--secondary);
+        padding: 4px 8px;
+        font-size: 0.7rem;
+        font-family: 'JetBrains Mono', monospace;
+        white-space: nowrap;
+        border-radius: 4px;
+        opacity: 0;
+        visibility: hidden;
+        transition: 0.2s;
+        pointer-events: none;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
+      }
+
+      .social-btn:hover::after {
+        opacity: 1;
+        visibility: visible;
+        transform: translateX(-50%) translateY(0);
+      }
+
       /* Project Cards */
       .project-grid-container {
         display: grid;
@@ -819,46 +893,97 @@
           </div>
         </div>
         <div style="margin-top: 2rem">
-          <div class="social-stack">
+          <div class="social-grid">
             {% if cv.contact.github %}
             <a
               href="{{ cv.contact.github }}"
-              class="social-link"
+              class="social-btn"
               target="_blank"
+              aria-label="GitHub / Code"
             >
-              GitHub / Code <span>→</span>
+              <svg viewBox="0 0 24 24">
+                <path
+                  d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"
+                />
+              </svg>
+            </a>
+            {% endif %} {% if cv.contact.usesSite %}
+            <a
+              href="{{ cv.contact.usesSite }}"
+              class="social-btn"
+              target="_blank"
+              aria-label="/Uses (Tech Stack)"
+            >
+              <svg viewBox="0 0 24 24">
+                <path
+                  d="M20 18c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2H0v2h24v-2h-4zM4 6h16v10H4V6z"
+                />
+              </svg>
+            </a>
+            {% endif %} {% if cv.contact.digitalGarden %}
+            <a
+              href="{{ cv.contact.digitalGarden }}"
+              class="social-btn"
+              target="_blank"
+              aria-label="Digital Garden / Notes"
+            >
+              <svg viewBox="0 0 24 24">
+                <path
+                  d="M17,8C8,10,5.9,16.17,3.82,21.34L5.71,22l1-2.3A4.49,4.49,0,0,0,8,20C19,20,22,3,22,3,21,5,14,5.25,9,6.25S2,11.5,2,13.5a6.22,6.22,0,0,0,1.75,3.79,42.85,42.85,0,0,0,4.38-10.11L8,7.18S15,9,17,8Z"
+                />
+              </svg>
             </a>
             {% endif %} {% if cv.contact.linkedin %}
             <a
               href="{{ cv.contact.linkedin }}"
-              class="social-link"
+              class="social-btn"
               target="_blank"
+              aria-label="LinkedIn"
             >
-              LinkedIn <span>→</span>
+              <svg viewBox="0 0 24 24">
+                <path
+                  d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"
+                />
+              </svg>
             </a>
             {% endif %} {% if cv.contact.medium %}
             <a
               href="{{ cv.contact.medium }}"
-              class="social-link"
+              class="social-btn"
               target="_blank"
+              aria-label="Medium Blog"
             >
-              Medium blog <span>→</span>
+              <svg viewBox="0 0 24 24">
+                <path
+                  d="M0 0v24h24v-24h-24zm11.325 18.917c-2.438 0-4.414-2.813-4.414-6.28s1.976-6.274 4.414-6.274 4.414 2.808 4.414 6.274-1.976 6.28-4.414 6.28zm7.621-.556c-1.177 0-2.131-2.56-2.131-5.724s.954-5.717 2.131-5.717 2.131 2.56 2.131 5.717-.954 5.724-2.131 5.724zm3.893-1.691c-.364 0-.66-1.806-.66-4.033s.295-4.027.66-4.027.66 1.806.66 4.027-.295 4.033-.66 4.033z"
+                />
+              </svg>
             </a>
             {% endif %} {% if cv.contact.bento %}
             <a
               href="{{ cv.contact.bento }}"
-              class="social-link"
+              class="social-btn"
               target="_blank"
+              aria-label="Bento / Links"
             >
-              Bento (all links one space) <span>→</span>
+              <svg viewBox="0 0 24 24">
+                <path
+                  d="M10 3H4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1zM9 9H5V5h4v4zm11-6h-6a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1zm-1 6h-4V5h4v4zm-9 4H4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-6a1 1 0 0 0-1-1zm-1 6H5v-4h4v4zm8-6c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zm0 6c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z"
+                />
+              </svg>
             </a>
             {% endif %} {% if cv.contact.authorWebsite %}
             <a
               href="{{ cv.contact.authorWebsite }}"
-              class="social-link"
+              class="social-btn"
               target="_blank"
+              aria-label="Author Website"
             >
-              Writer Site <span>→</span>
+              <svg viewBox="0 0 24 24">
+                <path
+                  d="M19.045 7.401c.278-.535.425-1.14.419-1.743-.022-2.246-1.753-3.975-4-3.997-.604-.006-1.209.141-1.743.419-3.407 1.775-6.373 6.322-8.025 10.254-.338.803-.751 2.272-.923 3.71-.031.261.079.522.292.688.158.124.354.175.547.144 1.438-.231 2.896-.694 3.67-1.069 3.933-1.903 8.065-6.632 9.763-8.406zm-2.89 1.313c-.433.422-1.399 1.295-2.973 2.092-1.02.517-2.613.982-3.927 1.177l.132-.679c.218-1.127.719-2.503 1.162-3.417.757-1.561 1.639-2.792 2.29-3.221.395-.26.863-.352 1.328-.263.929.179 1.585.98 1.593 1.926.003.244-.055.486-.166.703-.35.682-.969 1.269-1.439 1.682z"
+                />
+              </svg>
             </a>
             {% endif %}
           </div>

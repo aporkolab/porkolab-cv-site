@@ -9,3 +9,11 @@ _site/
 .sass-cache/
 .jekyll-cache/
 .jekyll-metadata
+.DS_Store
+Thumbs.db
+*.log
+*.tmp
+*.swp
+*.bak
+*.orig
+*.rej
