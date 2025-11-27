@@ -1,17 +1,19 @@
 contact:
   authorWebsite: https://www.adamporkolab.com
   bento: https://bento.me/adamporkolab
+  digitalGarden: https://aporkolab.com/silicon
   email: null
   github: https://github.com/APorkolab
   linkedin: null
   location: null
   medium: https://aporkolabsdevhackery.medium.com
   phone: null
+  usesSite: https://adamporkolab.com/uses
   website: https://aporkolab.com
 downloads:
-  de: https://pub-c677684c572248f4ae32cfb9fc6b6972.r2.dev/cv_public_de_default_20251126_120101.pdf
-  en: https://pub-c677684c572248f4ae32cfb9fc6b6972.r2.dev/cv_public_en_default_20251126_120045.pdf
-  hu: https://pub-c677684c572248f4ae32cfb9fc6b6972.r2.dev/cv_public_hu_default_20251126_120054.pdf
+  de: https://pub-c677684c572248f4ae32cfb9fc6b6972.r2.dev/cv_public_de_default_20251127_072352.pdf
+  en: https://pub-c677684c572248f4ae32cfb9fc6b6972.r2.dev/cv_public_en_default_20251127_072338.pdf
+  hu: https://pub-c677684c572248f4ae32cfb9fc6b6972.r2.dev/cv_public_hu_default_20251127_072346.pdf
 education:
 - degree:
     de: Dr. phil. in Linguistik (Summa Cum Laude)
