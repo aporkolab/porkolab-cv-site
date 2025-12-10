@@ -1,783 +1,853 @@
 <!DOCTYPE html>
 <html lang="{{ page.lang | default: 'en' }}">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{{ page.title }} | {{ site.title }}</title>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{{ page.title }} | {{ site.title }}</title>
 
-    <meta
-      name="description"
-      content="Senior Full-Stack Engineer (Java/Spring & Angular) with a PhD in Linguistics. Specialist in system architecture, legacy stabilization, and clean code."
-    />
+  <meta
+          name="description"
+          content="Senior Full-Stack Engineer (Java/Spring & Angular) with a PhD in Linguistics. Specialist in system architecture, legacy stabilization, and clean code."
+  />
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="preconnect" href="https://cdn.jsdelivr.net" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" />
 
+  <link
+          rel="icon"
+          href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>👨‍💻</text></svg>"
+  />
+
+  
+  <link
+          rel="preload"
+          as="style"
+          href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&family=Syncopate:wght@400;700&family=Space+Grotesk:wght@300;400;500;700&display=swap"
+  />
+
+  
+  <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&family=Syncopate:wght@400;700&family=Space+Grotesk:wght@300;400;500;700&display=swap"
+          media="print"
+          onload="this.media='all'"
+  />
+  <noscript>
     <link
-      rel="icon"
-      href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>👨‍💻</text></svg>"
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&family=Syncopate:wght@400;700&family=Space+Grotesk:wght@300;400;500;700&display=swap"
     />
+  </noscript>
 
-    <!-- 🔥 FONT PRELOAD (kritikus gyorsítás) -->
+  
+  <link
+          rel="stylesheet"
+          href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css"
+          media="print"
+          onload="this.media='all'"
+  />
+  <noscript>
     <link
-      rel="preload"
-      as="style"
-      href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&family=Syncopate:wght@400;700&family=Space+Grotesk:wght@300;400;500;700&display=swap"
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css"
     />
+  </noscript>
 
-    <!-- 🔥 Async CSS betöltés -->
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&family=Syncopate:wght@400;700&family=Space+Grotesk:wght@300;400;500;700&display=swap"
-      media="print"
-      onload="this.media='all'"
-    />
-    <noscript>
-      <link
-        rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&family=Syncopate:wght@400;700&family=Space+Grotesk:wght@300;400;500;700&display=swap"
-      />
-    </noscript>
+  <meta
+          property="og:title"
+          content="Ádám Porkoláb, PhD | Senior Full-Stack Engineer"
+  />
+  <meta
+          property="og:description"
+          content="Java/Spring & Angular expert specializing in legacy stabilization and clean architecture."
+  />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://aporkolab.com/" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta property="og:image" content="/assets/img/og-preview.png" />
+  <style>
+    /* --- 1. ALAPBEÁLLÍTÁSOK & VÁLTOZÓK --- */
+    :root {
+      --bg: #030304;
+      --surface: #0a0a0c;
+      --surface-glass: rgba(
+        15,
+        15,
+        20,
+        0.7
+      ); /* Kicsit átlátszóbb a menőbb hatásért */
+      --fg: #f0f0f0;
+      --dim: #b0b0c0;
+      --accent: #7000ff;
+      --accent-glow: rgba(112, 0, 255, 0.4);
+      --secondary: #00f3ff;
+      --border: rgba(255, 255, 255, 0.08);
+      --radius: 16px;
+    }
 
-    <!-- Devicon async betöltés változatlanul hagyva -->
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css"
-      media="print"
-      onload="this.media='all'"
-    />
-    <noscript>
-      <link
-        rel="stylesheet"
-        href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css"
-      />
-    </noscript>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-    <meta
-      property="og:title"
-      content="Ádám Porkoláb, PhD | Senior Full-Stack Engineer"
-    />
-    <meta
-      property="og:description"
-      content="Java/Spring & Angular expert specializing in legacy stabilization and clean architecture."
-    />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://aporkolab.com/" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta property="og:image" content="/assets/img/og-preview.png" />
-    <style>
-      /* --- 1. ALAPBEÁLLÍTÁSOK & VÁLTOZÓK --- */
-      :root {
-        --bg: #030304;
-        --surface: #0a0a0c;
-        --surface-glass: rgba(
-          15,
-          15,
-          20,
-          0.7
-        ); /* Kicsit átlátszóbb a menőbb hatásért */
-        --fg: #f0f0f0;
-        --dim: #b0b0c0;
-        --accent: #7000ff;
-        --accent-glow: rgba(112, 0, 255, 0.4);
-        --secondary: #00f3ff;
-        --border: rgba(255, 255, 255, 0.08);
-        --radius: 16px;
-      }
-
+    @media (prefers-reduced-motion: reduce) {
       * {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
+        transition: none !important;
+        animation: none !important;
       }
+    }
 
-      @media (prefers-reduced-motion: reduce) {
-        * {
-          transition: none !important;
-          animation: none !important;
-        }
-      }
+    body {
+      background-color: var(--bg);
+      color: var(--fg);
+      font-family: 'Outfit', sans-serif;
+      font-size: 1rem;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
 
-      body {
-        background-color: var(--bg);
-        color: var(--fg);
-        font-family: 'Outfit', sans-serif;
-        font-size: 1rem;
-        line-height: 1.6;
-        overflow-x: hidden;
-      }
+    /* --- 2. LAYOUT (A JÓ SZERKEZET) --- */
+    .layout-wrapper {
+      display: grid;
+      grid-template-columns: minmax(300px, 22vw) 1fr;
+      gap: 6rem;
+      max-width: 95vw;
+      margin: 0 auto;
+      padding: 2rem 4rem;
+      min-height: 100vh;
+      content-visibility: auto;
+      contain-intrinsic-size: 1200px;
+    }
 
-      /* --- 2. LAYOUT (A JÓ SZERKEZET) --- */
-      .layout-wrapper {
-        display: grid;
-        grid-template-columns: minmax(300px, 22vw) 1fr;
-        gap: 6rem;
-        max-width: 95vw;
-        margin: 0 auto;
-        padding: 2rem 4rem;
-        min-height: 100vh;
-        content-visibility: auto;
-        contain-intrinsic-size: 1200px;
-      }
+    /* --- 3. OLDALSÁV (ASIDE) --- */
+    .identity-panel {
+      position: sticky;
+      top: 2rem;
+      height: fit-content;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      padding: 2.5rem;
+      background: var(--surface-glass);
+      backdrop-filter: blur(20px);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      box-shadow: 0 0 40px rgba(0, 0, 0, 0.5); /* Mélység hozzáadása */
+    }
+    .identity-panel::-webkit-scrollbar {
+      display: none;
+    }
 
-      /* --- 3. OLDALSÁV (ASIDE) --- */
-      .identity-panel {
-        position: sticky;
-        top: 2rem;
-        height: fit-content;
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-        padding: 2.5rem;
-        background: var(--surface-glass);
-        backdrop-filter: blur(20px);
-        border: 1px solid var(--border);
-        border-radius: var(--radius);
-        scrollbar-width: none;
-        -ms-overflow-style: none;
-        box-shadow: 0 0 40px rgba(0, 0, 0, 0.5); /* Mélység hozzáadása */
-      }
-      .identity-panel::-webkit-scrollbar {
-        display: none;
-      }
+    /* --- 4. TARTALOM (MAIN) --- */
+    .data-panel {
+      padding-top: 1rem;
+      padding-bottom: 4rem;
+      content-visibility: auto;
+    }
 
-      /* --- 4. TARTALOM (MAIN) --- */
-      .data-panel {
-        padding-top: 1rem;
-        padding-bottom: 4rem;
-        content-visibility: auto;
-      }
-
-      /* --- 5. MOBIL & TABLET NÉZET --- */
-      @media (max-width: 600px) {
-        .bg-orb {
-          filter: blur(50px);
-        }
-        .identity-panel {
-          backdrop-filter: blur(10px);
-        }
-      }
-
-      @media (max-width: 1024px) {
-        .layout-wrapper {
-          display: flex;
-          flex-direction: column;
-          gap: 3rem;
-          padding: 1.5rem;
-          max-width: 100%;
-        }
-        .identity-panel {
-          position: relative;
-          top: 0;
-          width: 100%;
-          max-width: 100%;
-          margin: 0 auto;
-        }
-        .project-grid-container,
-        .skill-grid,
-        .interest-grid {
-          grid-template-columns: 1fr !important;
-        }
-        h1 {
-          font-size: 2.5rem;
-        }
-      }
-
-      /* --- 6. PROFILKÉP --- */
-      .profile-image-container {
-        position: relative;
-        width: 180px;
-        height: 180px;
-        margin: 0 auto 2rem auto;
-        border-radius: var(--radius);
-        overflow: hidden;
-        border: 2px solid rgba(255, 255, 255, 0.1);
-        transition: 0.3s;
-        background: #0a0a0c;
-        flex-shrink: 0;
-        will-change: box-shadow, border-color;
-      }
-      @media (max-width: 600px) {
-        .profile-image-container {
-          margin-top: 2rem;
-        }
-      }
-
-      .profile-image {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        filter: grayscale(100%) contrast(1.2) brightness(0.9);
-        transition: 0.3s;
-      }
-      .profile-image-container:hover {
-        border-color: var(--accent);
-        box-shadow: 0 0 25px rgba(112, 0, 255, 0.3);
-      }
-      .profile-image-container:hover .profile-image {
-        filter: grayscale(100%) sepia(100%) hue-rotate(230deg) saturate(3)
-          contrast(1.1);
-      }
-      .glitch-overlay {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: repeating-linear-gradient(
-          transparent 0px,
-          rgba(0, 243, 255, 0.1) 2px,
-          transparent 4px
-        );
-        opacity: 0;
-        pointer-events: none;
-        transition: 0.3s;
-        mix-blend-mode: overlay;
-      }
-      .profile-image-container:hover .glitch-overlay {
-        opacity: 1;
-      }
-
-      /* --- 7. DESIGN ELEMEK & VISSZAHOZOTT STÍLUSOK --- */
-
-      /* Skill Buborékok (EZ HIÁNYZOTT) */
-      .skill-chip {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        padding: 0.4rem 1rem;
-        margin: 0 0.5rem 0.5rem 0;
-        background: rgba(255, 255, 255, 0.03);
-        border: 1px solid var(--border);
-        border-radius: 50px; /* Kerekített pirula forma */
-        font-size: 0.95rem;
-        color: #ccc;
-        transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-        cursor: default;
-      }
-      .skill-chip:hover {
-        border-color: var(--accent);
-        background: var(--accent-glow);
-        color: #fff;
-        transform: translateY(-2px);
-        box-shadow: 0 5px 15px rgba(112, 0, 255, 0.2);
-      }
-
-      /* Skill Box Grid (Nyelvekhez) */
-      .skill-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
-        gap: 1rem;
-      }
-      .skill-box {
-        border: 1px solid var(--border);
-        padding: 1rem;
-        text-align: center;
-        font-size: 0.95rem;
-        font-weight: 500;
-        transition: 0.3s;
-        cursor: default;
-        background: linear-gradient(
-          45deg,
-          transparent 50%,
-          rgba(112, 0, 255, 0.05) 100%
-        );
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        min-height: 80px;
-        border-radius: 12px;
-      }
-      .skill-box:hover {
-        border-color: var(--secondary);
-        background: rgba(0, 243, 255, 0.1);
-        color: #fff;
-        transform: translateY(-3px);
-      }
-
-      /* Social Buttons (Szebbek lettek) */
-      .social-stack {
-        display: flex;
-        flex-direction: column;
-        gap: 0.8rem;
-        margin-bottom: 2rem;
-      }
-      .social-link {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 1rem 1.2rem; /* Kicsit nagyobb padding */
-        border: 1px solid var(--border);
-        border-radius: 12px;
-        color: var(--fg);
-        text-decoration: none;
-        transition: 0.3s;
-        font-size: 0.9rem;
-        background: rgba(255, 255, 255, 0.02);
-        font-family: 'JetBrains Mono', monospace;
-      }
-      .social-link:hover {
-        border-color: var(--accent);
-        background: rgba(255, 255, 255, 0.08);
-        transform: translateX(5px);
-        box-shadow: 0 0 20px rgba(112, 0, 255, 0.15);
-      }
-      .social-link span {
-        color: var(--secondary);
-      }
-
-      /* Download Button (PROFI VERZIÓ) */
-      .dl-btn {
-        display: block;
-        width: 100%;
-        padding: 1.2rem;
-        margin-top: auto;
-        background: #fff;
-        color: #000;
-        font-family: 'Syncopate', sans-serif;
-        font-weight: 700;
-        letter-spacing: 1px;
-        text-transform: uppercase;
-        text-align: center;
-        border-radius: 12px;
-        transition: 0.3s;
-        cursor: pointer;
-        border: none;
-        position: relative;
-        overflow: hidden;
-      }
-      .dl-btn:hover {
-        background: var(--accent);
-        color: #fff;
-        box-shadow: 0 0 30px var(--accent-glow);
-        letter-spacing: 2px;
-      }
-
-      /* --- SOCIAL CONTROL GRID (Senior Dashboard Style) --- */
-      .social-grid {
-        display: grid;
-        /* Automatikusan kitölti a helyet, kb 50-60px-es gombokkal */
-        grid-template-columns: repeat(auto-fill, minmax(50px, 1fr));
-        gap: 0.8rem;
-        margin-bottom: 2rem;
-      }
-
-      .social-btn {
-        position: relative;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        height: 50px;
-        background: rgba(255, 255, 255, 0.03);
-        border: 1px solid var(--border);
-        border-radius: 12px;
-        color: var(--dim);
-        transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-        text-decoration: none;
-        overflow: visible; /* Kell a tooltip miatt */
-      }
-
-      .social-btn svg {
-        width: 22px;
-        height: 22px;
-        fill: currentColor;
-        transition: 0.3s;
-      }
-
-      /* HOVER EFFEKT - A "Senior Flex" */
-      .social-btn:hover {
-        border-color: var(--secondary); /* Cián keret */
-        background: rgba(0, 243, 255, 0.1); /* Halvány cián háttér */
-        color: #fff;
-        transform: translateY(-3px);
-        box-shadow: 0 5px 15px rgba(0, 243, 255, 0.2); /* Neon ragyogás */
-        z-index: 10;
-      }
-
-      .social-btn:hover svg {
-        transform: scale(1.1);
-        filter: drop-shadow(0 0 5px var(--secondary));
-      }
-
-      /* TOOLTIP (A szöveg megjelenítése hoverkor) */
-      .social-btn::after {
-        content: attr(aria-label); /* A HTML aria-label-jét olvassa ki */
-        position: absolute;
-        bottom: 120%;
-        left: 50%;
-        transform: translateX(-50%) translateY(10px);
-        background: var(--surface);
-        border: 1px solid var(--secondary);
-        color: var(--secondary);
-        padding: 4px 8px;
-        font-size: 0.7rem;
-        font-family: 'JetBrains Mono', monospace;
-        white-space: nowrap;
-        border-radius: 4px;
-        opacity: 0;
-        visibility: hidden;
-        transition: 0.2s;
-        pointer-events: none;
-        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
-      }
-
-      .social-btn:hover::after {
-        opacity: 1;
-        visibility: visible;
-        transform: translateX(-50%) translateY(0);
-      }
-
-      /* Project Cards */
-      .project-grid-container {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-        gap: 2rem;
-        padding: 15px;
-        margin: -15px;
-      }
-      .project-card {
-        position: relative;
-        background: var(--surface-glass);
-        border: 1px solid var(--border);
-        border-radius: var(--radius);
-        padding: 2rem;
-        display: flex;
-        flex-direction: column;
-        min-height: 350px;
-        border-top: 3px solid transparent;
-        transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
-        z-index: 1;
-        transform-style: preserve-3d;
-        backface-visibility: hidden;
-      }
-      .project-grid-container:hover .project-card {
-        opacity: 0.4;
-        filter: grayscale(100%) blur(2px);
-        transform: scale(0.98);
-      }
-      .project-grid-container .project-card:hover {
-        opacity: 1;
-        filter: none;
-        z-index: 100;
-        border-color: var(--secondary);
-        box-shadow: 0 15px 40px -10px rgba(0, 243, 255, 0.15);
-      }
-      .card-content {
-        flex: 1;
-        display: flex;
-        flex-direction: column;
-      }
-
-      /* Project Buttons */
-      .prj-actions {
-        display: flex;
-        gap: 10px;
-        margin-bottom: 1rem;
-      }
-      .prj-link {
-        font-family: 'JetBrains Mono';
-        font-size: 0.85rem;
-        color: var(--fg);
-        text-decoration: none;
-        padding: 6px 12px;
-        border: 1px solid var(--border);
-        border-radius: 6px;
-        transition: 0.2s;
-        display: flex;
-        align-items: center;
-        gap: 6px;
-        background: rgba(255, 255, 255, 0.02);
-      }
-      .prj-link:hover {
-        border-color: var(--secondary);
-        color: #fff;
-        background: rgba(0, 243, 255, 0.1);
-      }
-      .prj-link svg {
-        width: 12px;
-        height: 12px;
-        fill: currentColor;
-      }
-      .arch-btn {
-        margin-top: 1.5rem;
-        width: 100%;
-        padding: 0.8rem;
-        background: rgba(112, 0, 255, 0.1);
-        border: 1px solid var(--accent);
-        color: #fff;
-        font-family: 'Syncopate', sans-serif;
-        font-size: 1rem;
-        font-weight: 700;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        border-radius: 8px;
-        cursor: pointer;
-        transition: 0.3s;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 10px;
-      }
-      .arch-btn:hover {
-        background: var(--accent);
-        box-shadow: 0 0 20px var(--accent-glow);
-      }
-      .arch-btn svg {
-        width: 16px;
-        height: 16px;
-        flex-shrink: 0;
-      }
-
-      /* Typography & Misc */
-      h1 {
-        font-family: 'Outfit', sans-serif;
-        font-weight: 800;
-        font-size: 2.7rem;
-        line-height: 1;
-        margin: 0 0 1rem 0;
-        text-transform: uppercase;
-        letter-spacing: -1px;
-        color: #fff;
-      }
-      .role-title {
-        font-family: 'JetBrains Mono', monospace;
-        font-size: 1.5rem;
-        color: var(--secondary);
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        margin-bottom: 1rem;
-      }
-      h2 {
-        font-size: 1.2rem;
-        color: var(--dim);
-        text-transform: uppercase;
-        letter-spacing: 3px;
-        margin: 5rem 0 2rem 0;
-        display: flex;
-        align-items: center;
-        gap: 1rem;
-      }
-      h2::after {
-        content: '';
-        flex: 1;
-        height: 1px;
-        background: rgba(255, 255, 255, 0.1);
-      }
-      h2 span.index {
-        font-family: 'JetBrains Mono';
-        color: var(--accent);
-        font-weight: bold;
-      }
-      .xp-item {
-        padding-left: 2rem;
-        border-left: 2px solid var(--border);
-        margin-bottom: 3rem;
-        position: relative;
-      }
-      .xp-dot {
-        position: absolute;
-        left: -5px;
-        top: 5px;
-        width: 8px;
-        height: 8px;
-        background: var(--bg);
-        border: 2px solid var(--dim);
-        border-radius: 50%;
-      }
-      .stack-icon {
-        font-size: 1.2rem;
-        color: var(--dim);
-        transition: 0.3s;
-        vertical-align: middle;
-      }
-      .project-card:hover .stack-icon {
-        color: var(--fg);
-      }
-      .interest-grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 2rem;
-      }
-      .interest-item h3 {
-        font-family: 'Space Grotesk';
-        font-size: 1.3rem;
-        color: #fff;
-        margin: 0 0 0.5rem 0;
-        text-transform: uppercase;
-      }
-      .interest-item p {
-        font-size: 1rem;
-        color: #888;
-        margin: 0;
-      }
-
-      /* Background FX */
-      .noise-overlay {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        pointer-events: none;
-        z-index: -1;
-        opacity: 0.03;
-        background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1MDAiIGhlaWdodD0iNTAwIj48ZmlsdGVyIGlkPSJub2lzZSI+PGZlVHVyYnVsZW5jZSB0eXBlPSJmcmFjdGFsTm9pc2UiIGJhc2VGcmVxdWVuY3k9IjAuNjUiIG51bU9jdGF2ZXM9IjMiIHN0aXRjaFRpbGVzPSJzdGl0Y2giLz48L2ZpbHRlcj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWx0ZXI9InVybCgjbm9pc2UpIiBvcGFjaXR5PSIxIi8+PC9zdmc+');
-      }
+    /* --- 5. MOBIL & TABLET NÉZET --- */
+    @media (max-width: 600px) {
       .bg-orb {
-        position: fixed;
-        border-radius: 50%;
-        filter: blur(120px);
-        z-index: -2;
-        opacity: 0.25;
-        will-change: transform, filter;
+        filter: blur(50px);
       }
-      .orb-1 {
-        top: -20%;
-        left: -20%;
-        width: 70vw;
-        height: 70vw;
-        background: var(--accent);
-      }
-      .orb-2 {
-        bottom: -20%;
-        right: -20%;
-        width: 60vw;
-        height: 60vw;
-        background: var(--secondary);
-      }
-
-      /* Modals */
-      .modal-overlay {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.9);
+      .identity-panel {
         backdrop-filter: blur(10px);
-        z-index: 9999;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        opacity: 0;
-        visibility: hidden;
-        transition: 0.3s;
       }
-      .modal-overlay.active {
-        opacity: 1;
-        visibility: visible;
-      }
-      .modal-content {
-        width: 95vw;
-        max-width: 1200px;
-        height: 90vh;
-        background: #0a0a0c;
-        border: 1px solid var(--secondary);
-        border-radius: var(--radius);
-        padding: 0;
+    }
+
+    @media (max-width: 1024px) {
+      .layout-wrapper {
         display: flex;
         flex-direction: column;
-        transform: scale(0.95);
-        transition: 0.3s;
-        overflow: hidden;
-        box-shadow: 0 0 50px rgba(0, 0, 0, 0.8);
-      }
-      .modal-overlay.active .modal-content {
-        transform: scale(1);
-      }
-      .modal-header {
+        gap: 3rem;
         padding: 1.5rem;
-        border-bottom: 1px solid var(--border);
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        background: rgba(255, 255, 255, 0.02);
-      }
-      .modal-title {
-        font-family: 'Syncopate';
-        color: var(--secondary);
-        font-size: 1rem;
-        letter-spacing: 2px;
-      }
-      .modal-close {
-        background: none;
-        border: none;
-        color: var(--fg);
-        font-size: 1.5rem;
-        cursor: pointer;
-        transition: 0.2s;
-      }
-      .modal-close:hover {
-        color: #fff;
-        transform: rotate(90deg);
-      }
-      .mermaid-container {
-        display: flex;
-        justify-content: center;
-        align-items: flex-start;
-        overflow: auto;
-        padding: 3rem;
-      }
-
-      .mermaid-container .mermaid {
-        display: inline-block;
         max-width: 100%;
       }
-
-      .mermaid-container svg {
-        width: 100% !important;
-        height: auto !important;
-        max-width: 100% !important;
-        min-width: 0 !important;
+      .identity-panel {
+        position: relative;
+        top: 0;
+        width: 100%;
+        max-width: 100%;
+        margin: 0 auto;
       }
-
-      /* Print */
-      @media print {
-        body {
-          background-color: #fff !important;
-          color: #000 !important;
-        }
-        .identity-panel,
-        .project-card,
-        .skill-box,
-        .modal-content {
-          background: #fff !important;
-          border: 1px solid #ddd !important;
-          box-shadow: none !important;
-          color: #000 !important;
-        }
-        h1,
-        h2,
-        h3,
-        .role-title,
-        .xp-role {
-          color: #000 !important;
-        }
-        .noise-overlay,
-        .bg-orb,
-        .lang-switch,
-        button,
-        .dl-btn,
-        .prj-actions {
-          display: none !important;
-        }
-        a::after {
-          content: ' (' attr(href) ')';
-          font-size: 0.8em;
-          color: #555;
-        }
+      .project-grid-container,
+      .skill-grid,
+      .interest-grid {
+        grid-template-columns: 1fr !important;
       }
-    </style>
-  </head>
-  <body>
-    <div class="noise-overlay"></div>
-    <div class="bg-orb orb-1"></div>
-    <div class="bg-orb orb-2"></div>
+      h1 {
+        font-size: 2.5rem;
+      }
+      .senior-scope-table {
+        font-size: 0.85rem;
+      }
+      .senior-scope-table td:first-child {
+        min-width: 100px;
+      }
+    }
 
-    {% assign current_lang = page.lang | default: "en" %}
-    <div
-      style="
+    /* --- 6. PROFILKÉP --- */
+    .profile-image-container {
+      position: relative;
+      width: 180px;
+      height: 180px;
+      margin: 0 auto 2rem auto;
+      border-radius: var(--radius);
+      overflow: hidden;
+      border: 2px solid rgba(255, 255, 255, 0.1);
+      transition: 0.3s;
+      background: #0a0a0c;
+      flex-shrink: 0;
+      will-change: box-shadow, border-color;
+    }
+    @media (max-width: 600px) {
+      .profile-image-container {
+        margin-top: 2rem;
+      }
+    }
+
+    .profile-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: grayscale(100%) contrast(1.2) brightness(0.9);
+      transition: 0.3s;
+    }
+    .profile-image-container:hover {
+      border-color: var(--accent);
+      box-shadow: 0 0 25px rgba(112, 0, 255, 0.3);
+    }
+    .profile-image-container:hover .profile-image {
+      filter: grayscale(100%) sepia(100%) hue-rotate(230deg) saturate(3)
+        contrast(1.1);
+    }
+    .glitch-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: repeating-linear-gradient(
+        transparent 0px,
+        rgba(0, 243, 255, 0.1) 2px,
+        transparent 4px
+      );
+      opacity: 0;
+      pointer-events: none;
+      transition: 0.3s;
+      mix-blend-mode: overlay;
+    }
+    .profile-image-container:hover .glitch-overlay {
+      opacity: 1;
+    }
+
+    /* --- 7. DESIGN ELEMEK & VISSZAHOZOTT STÍLUSOK --- */
+
+    /* Skill Buborékok (EZ HIÁNYZOTT) */
+    .skill-chip {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.4rem 1rem;
+      margin: 0 0.5rem 0.5rem 0;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border);
+      border-radius: 50px; /* Kerekített pirula forma */
+      font-size: 0.95rem;
+      color: #ccc;
+      transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+      cursor: default;
+    }
+    .skill-chip:hover {
+      border-color: var(--accent);
+      background: var(--accent-glow);
+      color: #fff;
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(112, 0, 255, 0.2);
+    }
+
+    /* Skill Box Grid (Nyelvekhez) */
+    .skill-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+      gap: 1rem;
+    }
+    .skill-box {
+      border: 1px solid var(--border);
+      padding: 1rem;
+      text-align: center;
+      font-size: 0.95rem;
+      font-weight: 500;
+      transition: 0.3s;
+      cursor: default;
+      background: linear-gradient(
+        45deg,
+        transparent 50%,
+        rgba(112, 0, 255, 0.05) 100%
+      );
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 80px;
+      border-radius: 12px;
+    }
+    .skill-box:hover {
+      border-color: var(--secondary);
+      background: rgba(0, 243, 255, 0.1);
+      color: #fff;
+      transform: translateY(-3px);
+    }
+
+    /* Social Buttons (Szebbek lettek) */
+    .social-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+      margin-bottom: 2rem;
+    }
+    .social-link {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 1.2rem; /* Kicsit nagyobb padding */
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      color: var(--fg);
+      text-decoration: none;
+      transition: 0.3s;
+      font-size: 0.9rem;
+      background: rgba(255, 255, 255, 0.02);
+      font-family: 'JetBrains Mono', monospace;
+    }
+    .social-link:hover {
+      border-color: var(--accent);
+      background: rgba(255, 255, 255, 0.08);
+      transform: translateX(5px);
+      box-shadow: 0 0 20px rgba(112, 0, 255, 0.15);
+    }
+    .social-link span {
+      color: var(--secondary);
+    }
+
+    /* Download Button (PROFI VERZIÓ) */
+    .dl-btn {
+      display: block;
+      width: 100%;
+      padding: 1.2rem;
+      margin-top: auto;
+      background: #fff;
+      color: #000;
+      font-family: 'Syncopate', sans-serif;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      text-align: center;
+      border-radius: 12px;
+      transition: 0.3s;
+      cursor: pointer;
+      border: none;
+      position: relative;
+      overflow: hidden;
+    }
+    .dl-btn:hover {
+      background: var(--accent);
+      color: #fff;
+      box-shadow: 0 0 30px var(--accent-glow);
+      letter-spacing: 2px;
+    }
+
+    /* --- SOCIAL CONTROL GRID (Senior Dashboard Style) --- */
+    .social-grid {
+      display: grid;
+      /* Automatikusan kitölti a helyet, kb 50-60px-es gombokkal */
+      grid-template-columns: repeat(auto-fill, minmax(50px, 1fr));
+      gap: 0.8rem;
+      margin-bottom: 2rem;
+    }
+
+    .social-btn {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 50px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      color: var(--dim);
+      transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+      text-decoration: none;
+      overflow: visible; /* Kell a tooltip miatt */
+    }
+
+    .social-btn svg {
+      width: 22px;
+      height: 22px;
+      fill: currentColor;
+      transition: 0.3s;
+    }
+
+    /* HOVER EFFEKT - A "Senior Flex" */
+    .social-btn:hover {
+      border-color: var(--secondary); /* Cián keret */
+      background: rgba(0, 243, 255, 0.1); /* Halvány cián háttér */
+      color: #fff;
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(0, 243, 255, 0.2); /* Neon ragyogás */
+      z-index: 10;
+    }
+
+    .social-btn:hover svg {
+      transform: scale(1.1);
+      filter: drop-shadow(0 0 5px var(--secondary));
+    }
+
+    /* TOOLTIP (A szöveg megjelenítése hoverkor) */
+    .social-btn::after {
+      content: attr(aria-label); /* A HTML aria-label-jét olvassa ki */
+      position: absolute;
+      bottom: 120%;
+      left: 50%;
+      transform: translateX(-50%) translateY(10px);
+      background: var(--surface);
+      border: 1px solid var(--secondary);
+      color: var(--secondary);
+      padding: 4px 8px;
+      font-size: 0.7rem;
+      font-family: 'JetBrains Mono', monospace;
+      white-space: nowrap;
+      border-radius: 4px;
+      opacity: 0;
+      visibility: hidden;
+      transition: 0.2s;
+      pointer-events: none;
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
+    }
+
+    .social-btn:hover::after {
+      opacity: 1;
+      visibility: visible;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    /* Project Cards */
+    .project-grid-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 2rem;
+      padding: 15px;
+      margin: -15px;
+    }
+    .project-card {
+      position: relative;
+      background: var(--surface-glass);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      min-height: 350px;
+      border-top: 3px solid transparent;
+      transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+      z-index: 1;
+      transform-style: preserve-3d;
+      backface-visibility: hidden;
+    }
+    .project-grid-container:hover .project-card {
+      opacity: 0.4;
+      filter: grayscale(100%) blur(2px);
+      transform: scale(0.98);
+    }
+    .project-grid-container .project-card:hover {
+      opacity: 1;
+      filter: none;
+      z-index: 100;
+      border-color: var(--secondary);
+      box-shadow: 0 15px 40px -10px rgba(0, 243, 255, 0.15);
+    }
+    .card-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Project Buttons */
+    .prj-actions {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 1rem;
+    }
+    .prj-link {
+      font-family: 'JetBrains Mono';
+      font-size: 0.85rem;
+      color: var(--fg);
+      text-decoration: none;
+      padding: 6px 12px;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      transition: 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255, 255, 255, 0.02);
+    }
+    .prj-link:hover {
+      border-color: var(--secondary);
+      color: #fff;
+      background: rgba(0, 243, 255, 0.1);
+    }
+    .prj-link svg {
+      width: 12px;
+      height: 12px;
+      fill: currentColor;
+    }
+    .arch-btn {
+      margin-top: 1.5rem;
+      width: 100%;
+      padding: 0.8rem;
+      background: rgba(112, 0, 255, 0.1);
+      border: 1px solid var(--accent);
+      color: #fff;
+      font-family: 'Syncopate', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.3s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+    .arch-btn:hover {
+      background: var(--accent);
+      box-shadow: 0 0 20px var(--accent-glow);
+    }
+    .arch-btn svg {
+      width: 16px;
+      height: 16px;
+      flex-shrink: 0;
+    }
+
+    /* Typography & Misc */
+    h1 {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 800;
+      font-size: 2.7rem;
+      line-height: 1;
+      margin: 0 0 1rem 0;
+      text-transform: uppercase;
+      letter-spacing: -1px;
+      color: #fff;
+    }
+    .role-title {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 1.5rem;
+      color: var(--secondary);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 1rem;
+    }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--dim);
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      margin: 5rem 0 2rem 0;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    h2::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: rgba(255, 255, 255, 0.1);
+    }
+    h2 span.index {
+      font-family: 'JetBrains Mono';
+      color: var(--accent);
+      font-weight: bold;
+    }
+    .xp-item {
+      padding-left: 2rem;
+      border-left: 2px solid var(--border);
+      margin-bottom: 3rem;
+      position: relative;
+    }
+    .xp-dot {
+      position: absolute;
+      left: -5px;
+      top: 5px;
+      width: 8px;
+      height: 8px;
+      background: var(--bg);
+      border: 2px solid var(--dim);
+      border-radius: 50%;
+    }
+    .stack-icon {
+      font-size: 1.2rem;
+      color: var(--dim);
+      transition: 0.3s;
+      vertical-align: middle;
+    }
+    .project-card:hover .stack-icon {
+      color: var(--fg);
+    }
+    .interest-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+    .interest-item h3 {
+      font-family: 'Space Grotesk';
+      font-size: 1.3rem;
+      color: #fff;
+      margin: 0 0 0.5rem 0;
+      text-transform: uppercase;
+    }
+    .interest-item p {
+      font-size: 1rem;
+      color: #888;
+      margin: 0;
+    }
+
+    /* --- SENIOR SCOPE TABLE --- */
+    .senior-scope-section {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+    }
+    .senior-scope-table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      font-size: 0.95rem;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+    .senior-scope-table thead {
+      background: linear-gradient(135deg, var(--accent) 0%, #4a00a8 100%);
+    }
+    .senior-scope-table th {
+      padding: 1rem 1.2rem;
+      text-align: left;
+      font-family: 'Syncopate', sans-serif;
+      font-weight: 700;
+      font-size: 0.75rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #fff;
+      border: none;
+    }
+    .senior-scope-table tbody tr {
+      background: rgba(255, 255, 255, 0.02);
+      transition: all 0.3s ease;
+    }
+    .senior-scope-table tbody tr:nth-child(even) {
+      background: rgba(255, 255, 255, 0.04);
+    }
+    .senior-scope-table tbody tr:hover {
+      background: rgba(112, 0, 255, 0.15);
+      transform: scale(1.01);
+    }
+    .senior-scope-table td {
+      padding: 1rem 1.2rem;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .senior-scope-table tbody tr:last-child td {
+      border-bottom: none;
+    }
+    .senior-scope-table td:first-child {
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 600;
+      color: var(--secondary);
+      white-space: nowrap;
+      min-width: 140px;
+    }
+    .senior-scope-table td:last-child {
+      color: var(--dim);
+    }
+
+    /* Background FX */
+    .noise-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: -1;
+      opacity: 0.03;
+      background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1MDAiIGhlaWdodD0iNTAwIj48ZmlsdGVyIGlkPSJub2lzZSI+PGZlVHVyYnVsZW5jZSB0eXBlPSJmcmFjdGFsTm9pc2UiIGJhc2VGcmVxdWVuY3k9IjAuNjUiIG51bU9jdGF2ZXM9IjMiIHN0aXRjaFRpbGVzPSJzdGl0Y2giLz48L2ZpbHRlcj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWx0ZXI9InVybCgjbm9pc2UpIiBvcGFjaXR5PSIxIi8+PC9zdmc+');
+    }
+    .bg-orb {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(120px);
+      z-index: -2;
+      opacity: 0.25;
+      will-change: transform, filter;
+    }
+    .orb-1 {
+      top: -20%;
+      left: -20%;
+      width: 70vw;
+      height: 70vw;
+      background: var(--accent);
+    }
+    .orb-2 {
+      bottom: -20%;
+      right: -20%;
+      width: 60vw;
+      height: 60vw;
+      background: var(--secondary);
+    }
+
+    /* Modals */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.9);
+      backdrop-filter: blur(10px);
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      visibility: hidden;
+      transition: 0.3s;
+    }
+    .modal-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+    .modal-content {
+      width: 95vw;
+      max-width: 1200px;
+      height: 90vh;
+      background: #0a0a0c;
+      border: 1px solid var(--secondary);
+      border-radius: var(--radius);
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      transform: scale(0.95);
+      transition: 0.3s;
+      overflow: hidden;
+      box-shadow: 0 0 50px rgba(0, 0, 0, 0.8);
+    }
+    .modal-overlay.active .modal-content {
+      transform: scale(1);
+    }
+    .modal-header {
+      padding: 1.5rem;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.02);
+    }
+    .modal-title {
+      font-family: 'Syncopate';
+      color: var(--secondary);
+      font-size: 1rem;
+      letter-spacing: 2px;
+    }
+    .modal-close {
+      background: none;
+      border: none;
+      color: var(--fg);
+      font-size: 1.5rem;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    .modal-close:hover {
+      color: #fff;
+      transform: rotate(90deg);
+    }
+    .mermaid-container {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      overflow: auto;
+      padding: 3rem;
+    }
+
+    .mermaid-container .mermaid {
+      display: inline-block;
+      max-width: 100%;
+    }
+
+    .mermaid-container svg {
+      width: 100% !important;
+      height: auto !important;
+      max-width: 100% !important;
+      min-width: 0 !important;
+    }
+
+    /* Print */
+    @media print {
+      body {
+        background-color: #fff !important;
+        color: #000 !important;
+      }
+      .identity-panel,
+      .project-card,
+      .skill-box,
+      .modal-content {
+        background: #fff !important;
+        border: 1px solid #ddd !important;
+        box-shadow: none !important;
+        color: #000 !important;
+      }
+      h1,
+      h2,
+      h3,
+      .role-title,
+      .xp-role {
+        color: #000 !important;
+      }
+      .noise-overlay,
+      .bg-orb,
+      .lang-switch,
+      button,
+      .dl-btn,
+      .prj-actions {
+        display: none !important;
+      }
+      a::after {
+        content: ' (' attr(href) ')';
+        font-size: 0.8em;
+        color: #555;
+      }
+      .senior-scope-table thead {
+        background: #333 !important;
+      }
+      .senior-scope-table td:first-child {
+        color: #333 !important;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="noise-overlay"></div>
+<div class="bg-orb orb-1"></div>
+<div class="bg-orb orb-2"></div>
+
+{% assign current_lang = page.lang | default: "en" %}
+<div
+        style="
         position: fixed;
         top: 1.5rem;
         right: 2rem;
@@ -790,10 +860,10 @@
         display: flex;
         gap: 10px;
       "
-    >
-      <a
-        href="/"
-        style="
+>
+  <a
+          href="/"
+          style="
           padding: 10px;
           text-decoration: none;
           transition: 0.3s;
@@ -802,14 +872,14 @@
           opacity: {% if current_lang == 'en' %}1{% else %}0.5{% endif %};
           transform: {% if current_lang == 'en' %}scale(1.1){% else %}scale(1){% endif %};
         "
-        onmouseover="this.style.filter='none';this.style.opacity='1'"
-        onmouseout="this.style.filter='{% if current_lang == 'en' %}none{% else %}grayscale(1){% endif %}';this.style.opacity='{% if current_lang == 'en' %}1{% else %}0.5{% endif %}'"
-        >🇬🇧</a
-      >
+          onmouseover="this.style.filter='none';this.style.opacity='1'"
+          onmouseout="this.style.filter='{% if current_lang == 'en' %}none{% else %}grayscale(1){% endif %}';this.style.opacity='{% if current_lang == 'en' %}1{% else %}0.5{% endif %}'"
+  >🇬🇧</a
+  >
 
-      <a
-        href="/hu/"
-        style="
+  <a
+          href="/hu/"
+          style="
           padding: 10px;
           text-decoration: none;
           transition: 0.3s;
@@ -817,14 +887,14 @@
           opacity: {% if current_lang == 'hu' %}1{% else %}0.5{% endif %};
           transform: {% if current_lang == 'hu' %}scale(1.1){% else %}scale(1){% endif %};
         "
-        onmouseover="this.style.filter='none';this.style.opacity='1'"
-        onmouseout="this.style.filter='{% if current_lang == 'hu' %}none{% else %}grayscale(1){% endif %}';this.style.opacity='{% if current_lang == 'hu' %}1{% else %}0.5{% endif %}'"
-        >🇭🇺</a
-      >
+          onmouseover="this.style.filter='none';this.style.opacity='1'"
+          onmouseout="this.style.filter='{% if current_lang == 'hu' %}none{% else %}grayscale(1){% endif %}';this.style.opacity='{% if current_lang == 'hu' %}1{% else %}0.5{% endif %}'"
+  >🇭🇺</a
+  >
 
-      <a
-        href="/de/"
-        style="
+  <a
+          href="/de/"
+          style="
           padding: 10px;
           text-decoration: none;
           transition: 0.3s;
@@ -832,359 +902,388 @@
           opacity: {% if current_lang == 'de' %}1{% else %}0.5{% endif %};
           transform: {% if current_lang == 'de' %}scale(1.1){% else %}scale(1){% endif %};
         "
-        onmouseover="this.style.filter='none';this.style.opacity='1'"
-        onmouseout="this.style.filter='{% if current_lang == 'de' %}none{% else %}grayscale(1){% endif %}';this.style.opacity='{% if current_lang == 'de' %}1{% else %}0.5{% endif %}'"
-        >🇩🇪</a
-      >
+          onmouseover="this.style.filter='none';this.style.opacity='1'"
+          onmouseout="this.style.filter='{% if current_lang == 'de' %}none{% else %}grayscale(1){% endif %}';this.style.opacity='{% if current_lang == 'de' %}1{% else %}0.5{% endif %}'"
+  >🇩🇪</a
+  >
 
-      <button onclick="toggleJsonMode()">[RAW DATA]</button>
+  <button onclick="toggleJsonMode()">[RAW DATA]</button>
+</div>
+
+{% assign cv = site.data.cv_data %} {% assign lang = page.lang | default:
+"en" %} {% if lang == 'hu' %} {% assign t_skills = "Készségek" %} {% assign
+t_exp = "Tapasztalat" %} {% assign t_edu = "Tanulmányok" %} {% assign t_pubs
+= "Publikációk" %} {% assign t_awards = "Díjak" %} {% assign t_lang =
+"Nyelvek" %} {% assign t_int = "Érdeklődés" %} {% assign t_dl = "Önéletrajz
+Letöltése" %} {% assign t_req = "Hozzáférés Kérése" %} {% assign t_scope =
+"Senior Kompetenciák" %} {% assign t_scope_domain = "Terület" %} {% assign
+t_scope_capability = "Demonstrált képesség" %} {% elsif lang == 'de' %} {%
+assign t_skills = "Fähigkeiten" %} {% assign t_exp = "Erfahrung" %} {%
+assign t_edu = "Ausbildung" %} {% assign t_pubs = "Publikationen" %} {%
+assign t_awards = "Auszeichnungen" %} {% assign t_lang = "Sprachen" %} {%
+assign t_int = "Interessen" %} {% assign t_dl = "Lebenslauf Herunterladen"
+%} {% assign t_req = "Zugriff Anfordern" %} {% assign t_scope = "Senior
+Kompetenzbereich" %} {% assign t_scope_domain = "Bereich" %} {% assign
+t_scope_capability = "Nachgewiesene Kompetenz" %} {% else %} {% assign
+t_skills = "Skills" %} {% assign t_exp = "Experience" %} {% assign t_edu =
+"Education" %} {% assign t_pubs = "Publications" %} {% assign t_awards =
+"Awards" %} {% assign t_lang = "Languages" %} {% assign t_int = "Interests"
+%} {% assign t_dl = "Download CV" %} {% assign t_req = "Request Access" %}
+{% assign t_projects = "Engineering Portfolio" %} {% assign t_view_arch =
+"View Blueprint" %} {% assign t_scope = "Senior Engineering Scope" %} {%
+assign t_scope_domain = "Domain" %} {% assign t_scope_capability =
+"Demonstrated Capability" %} {% endif %}
+
+<div id="archModal" class="modal-overlay" onclick="closeModal(event)">
+  <div class="modal-content" onclick="event.stopPropagation()">
+    <div class="modal-header">
+      <div class="modal-title" style="color: var(--secondary)">
+        SYSTEM ARCHITECTURE
+      </div>
+      <button class="modal-close" onclick="closeModal()">✕</button>
     </div>
+    <div id="mermaidTarget" class="mermaid-container"></div>
+  </div>
+</div>
 
-    {% assign cv = site.data.cv_data %} {% assign lang = page.lang | default:
-    "en" %} {% if lang == 'hu' %} {% assign t_skills = "Készségek" %} {% assign
-    t_exp = "Tapasztalat" %} {% assign t_edu = "Tanulmányok" %} {% assign t_pubs
-    = "Publikációk" %} {% assign t_awards = "Díjak" %} {% assign t_lang =
-    "Nyelvek" %} {% assign t_int = "Érdeklődés" %} {% assign t_dl = "Önéletrajz
-    Letöltése" %} {% assign t_req = "Hozzáférés Kérése" %} {% elsif lang == 'de'
-    %} {% assign t_skills = "Fähigkeiten" %} {% assign t_exp = "Erfahrung" %} {%
-    assign t_edu = "Ausbildung" %} {% assign t_pubs = "Publikationen" %} {%
-    assign t_awards = "Auszeichnungen" %} {% assign t_lang = "Sprachen" %} {%
-    assign t_int = "Interessen" %} {% assign t_dl = "Lebenslauf Herunterladen"
-    %} {% assign t_req = "Zugriff Anfordern" %} {% else %} {% assign t_skills =
-    "Skills" %} {% assign t_exp = "Experience" %} {% assign t_edu = "Education"
-    %} {% assign t_pubs = "Publications" %} {% assign t_awards = "Awards" %} {%
-    assign t_lang = "Languages" %} {% assign t_int = "Interests" %} {% assign
-    t_dl = "Download CV" %} {% assign t_req = "Request Access" %} {% assign
-    t_projects = "Engineering Portfolio" %} {% assign t_view_arch = "View
-    Blueprint" %} {% endif %}
+<div class="layout-wrapper">
+  <aside class="identity-panel">
+    <div style="flex: 1; display: flex; flex-direction: column">
+      <div class="profile-image-container">
+        <img
+                src="/assets/img/adam-portrait.webp"
+                alt="Ádám Porkoláb"
+                class="profile-image"
+                onerror="this.style.display='none'"
+                fetchpriority="high"
+        />
+        <div class="glitch-overlay"></div>
+      </div>
 
-    <div id="archModal" class="modal-overlay" onclick="closeModal(event)">
-      <div class="modal-content" onclick="event.stopPropagation()">
-        <div class="modal-header">
-          <div class="modal-title" style="color: var(--secondary)">
-            SYSTEM ARCHITECTURE
-          </div>
-          <button class="modal-close" onclick="closeModal()">✕</button>
-        </div>
-        <div id="mermaidTarget" class="mermaid-container"></div>
+      <div>
+        <div class="role-title">{{ cv.title[lang] }}</div>
+        <h1>{{ cv.name[lang] }}</h1>
+        <p style="color: var(--dim); margin-top: 1.5rem; line-height: 1.6">
+          {{ cv.summary[lang] }}
+        </p>
       </div>
     </div>
-
-    <div class="layout-wrapper">
-      <aside class="identity-panel">
-        <div style="flex: 1; display: flex; flex-direction: column">
-          <div class="profile-image-container">
-            <img
-              src="/assets/img/adam-portrait.webp"
-              alt="Ádám Porkoláb"
-              class="profile-image"
-              onerror="this.style.display='none'"
-              fetchpriority="high"
+    <div style="margin-top: 2rem">
+      <div class="social-grid">
+        {% if cv.contact.github %}
+        <a
+                href="{{ cv.contact.github }}"
+                class="social-btn"
+                target="_blank"
+                aria-label="GitHub / Code"
+        >
+          <svg viewBox="0 0 24 24">
+            <path
+                    d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"
             />
-            <div class="glitch-overlay"></div>
-          </div>
+          </svg>
+        </a>
+        {% endif %} {% if cv.contact.usesSite %}
+        <a
+                href="{{ cv.contact.usesSite }}"
+                class="social-btn"
+                target="_blank"
+                aria-label="/Uses (Tech Stack)"
+        >
+          <svg viewBox="0 0 24 24">
+            <path
+                    d="M20 18c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2H0v2h24v-2h-4zM4 6h16v10H4V6z"
+            />
+          </svg>
+        </a>
+        {% endif %} {% if cv.contact.digitalGarden %}
+        <a
+                href="{{ cv.contact.digitalGarden }}"
+                class="social-btn"
+                target="_blank"
+                aria-label="Digital Garden / Notes"
+        >
+          <svg viewBox="0 0 24 24">
+            <path
+                    d="M17,8C8,10,5.9,16.17,3.82,21.34L5.71,22l1-2.3A4.49,4.49,0,0,0,8,20C19,20,22,3,22,3,21,5,14,5.25,9,6.25S2,11.5,2,13.5a6.22,6.22,0,0,0,1.75,3.79,42.85,42.85,0,0,0,4.38-10.11L8,7.18S15,9,17,8Z"
+            />
+          </svg>
+        </a>
+        {% endif %} {% if cv.contact.linkedin %}
+        <a
+                href="{{ cv.contact.linkedin }}"
+                class="social-btn"
+                target="_blank"
+                aria-label="LinkedIn"
+        >
+          <svg viewBox="0 0 24 24">
+            <path
+                    d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"
+            />
+          </svg>
+        </a>
+        {% endif %} {% if cv.contact.medium %}
+        <a
+                href="{{ cv.contact.medium }}"
+                class="social-btn"
+                target="_blank"
+                aria-label="Medium Blog"
+        >
+          <svg viewBox="0 0 24 24">
+            <path
+                    d="M0 0v24h24v-24h-24zm11.325 18.917c-2.438 0-4.414-2.813-4.414-6.28s1.976-6.274 4.414-6.274 4.414 2.808 4.414 6.274-1.976 6.28-4.414 6.28zm7.621-.556c-1.177 0-2.131-2.56-2.131-5.724s.954-5.717 2.131-5.717 2.131 2.56 2.131 5.717-.954 5.724-2.131 5.724zm3.893-1.691c-.364 0-.66-1.806-.66-4.033s.295-4.027.66-4.027.66 1.806.66 4.027-.295 4.033-.66 4.033z"
+            />
+          </svg>
+        </a>
+        {% endif %} {% if cv.contact.bento %}
+        <a
+                href="{{ cv.contact.bento }}"
+                class="social-btn"
+                target="_blank"
+                aria-label="Bento / Links"
+        >
+          <svg viewBox="0 0 24 24">
+            <path
+                    d="M10 3H4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1zM9 9H5V5h4v4zm11-6h-6a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1zm-1 6h-4V5h4v4zm-9 4H4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-6a1 1 0 0 0-1-1zm-1 6H5v-4h4v4zm8-6c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zm0 6c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z"
+            />
+          </svg>
+        </a>
+        {% endif %} {% if cv.contact.authorWebsite %}
+        <a
+                href="{{ cv.contact.authorWebsite }}"
+                class="social-btn"
+                target="_blank"
+                aria-label="Author Website"
+        >
+          <svg viewBox="0 0 24 24">
+            <path
+                    d="M19.045 7.401c.278-.535.425-1.14.419-1.743-.022-2.246-1.753-3.975-4-3.997-.604-.006-1.209.141-1.743.419-3.407 1.775-6.373 6.322-8.025 10.254-.338.803-.751 2.272-.923 3.71-.031.261.079.522.292.688.158.124.354.175.547.144 1.438-.231 2.896-.694 3.67-1.069 3.933-1.903 8.065-6.632 9.763-8.406zm-2.89 1.313c-.433.422-1.399 1.295-2.973 2.092-1.02.517-2.613.982-3.927 1.177l.132-.679c.218-1.127.719-2.503 1.162-3.417.757-1.561 1.639-2.792 2.29-3.221.395-.26.863-.352 1.328-.263.929.179 1.585.98 1.593 1.926.003.244-.055.486-.166.703-.35.682-.969 1.269-1.439 1.682z"
+            />
+          </svg>
+        </a>
+        {% endif %}
+      </div>
 
-          <div>
-            <div class="role-title">{{ cv.title[lang] }}</div>
-            <h1>{{ cv.name[lang] }}</h1>
-            <p style="color: var(--dim); margin-top: 1.5rem; line-height: 1.6">
-              {{ cv.summary[lang] }}
-            </p>
-          </div>
-        </div>
-        <div style="margin-top: 2rem">
-          <div class="social-grid">
-            {% if cv.contact.github %}
-            <a
-              href="{{ cv.contact.github }}"
-              class="social-btn"
-              target="_blank"
-              aria-label="GitHub / Code"
-            >
-              <svg viewBox="0 0 24 24">
-                <path
-                  d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"
-                />
-              </svg>
-            </a>
-            {% endif %} {% if cv.contact.usesSite %}
-            <a
-              href="{{ cv.contact.usesSite }}"
-              class="social-btn"
-              target="_blank"
-              aria-label="/Uses (Tech Stack)"
-            >
-              <svg viewBox="0 0 24 24">
-                <path
-                  d="M20 18c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2H0v2h24v-2h-4zM4 6h16v10H4V6z"
-                />
-              </svg>
-            </a>
-            {% endif %} {% if cv.contact.digitalGarden %}
-            <a
-              href="{{ cv.contact.digitalGarden }}"
-              class="social-btn"
-              target="_blank"
-              aria-label="Digital Garden / Notes"
-            >
-              <svg viewBox="0 0 24 24">
-                <path
-                  d="M17,8C8,10,5.9,16.17,3.82,21.34L5.71,22l1-2.3A4.49,4.49,0,0,0,8,20C19,20,22,3,22,3,21,5,14,5.25,9,6.25S2,11.5,2,13.5a6.22,6.22,0,0,0,1.75,3.79,42.85,42.85,0,0,0,4.38-10.11L8,7.18S15,9,17,8Z"
-                />
-              </svg>
-            </a>
-            {% endif %} {% if cv.contact.linkedin %}
-            <a
-              href="{{ cv.contact.linkedin }}"
-              class="social-btn"
-              target="_blank"
-              aria-label="LinkedIn"
-            >
-              <svg viewBox="0 0 24 24">
-                <path
-                  d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"
-                />
-              </svg>
-            </a>
-            {% endif %} {% if cv.contact.medium %}
-            <a
-              href="{{ cv.contact.medium }}"
-              class="social-btn"
-              target="_blank"
-              aria-label="Medium Blog"
-            >
-              <svg viewBox="0 0 24 24">
-                <path
-                  d="M0 0v24h24v-24h-24zm11.325 18.917c-2.438 0-4.414-2.813-4.414-6.28s1.976-6.274 4.414-6.274 4.414 2.808 4.414 6.274-1.976 6.28-4.414 6.28zm7.621-.556c-1.177 0-2.131-2.56-2.131-5.724s.954-5.717 2.131-5.717 2.131 2.56 2.131 5.717-.954 5.724-2.131 5.724zm3.893-1.691c-.364 0-.66-1.806-.66-4.033s.295-4.027.66-4.027.66 1.806.66 4.027-.295 4.033-.66 4.033z"
-                />
-              </svg>
-            </a>
-            {% endif %} {% if cv.contact.bento %}
-            <a
-              href="{{ cv.contact.bento }}"
-              class="social-btn"
-              target="_blank"
-              aria-label="Bento / Links"
-            >
-              <svg viewBox="0 0 24 24">
-                <path
-                  d="M10 3H4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1zM9 9H5V5h4v4zm11-6h-6a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1zm-1 6h-4V5h4v4zm-9 4H4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-6a1 1 0 0 0-1-1zm-1 6H5v-4h4v4zm8-6c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zm0 6c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z"
-                />
-              </svg>
-            </a>
-            {% endif %} {% if cv.contact.authorWebsite %}
-            <a
-              href="{{ cv.contact.authorWebsite }}"
-              class="social-btn"
-              target="_blank"
-              aria-label="Author Website"
-            >
-              <svg viewBox="0 0 24 24">
-                <path
-                  d="M19.045 7.401c.278-.535.425-1.14.419-1.743-.022-2.246-1.753-3.975-4-3.997-.604-.006-1.209.141-1.743.419-3.407 1.775-6.373 6.322-8.025 10.254-.338.803-.751 2.272-.923 3.71-.031.261.079.522.292.688.158.124.354.175.547.144 1.438-.231 2.896-.694 3.67-1.069 3.933-1.903 8.065-6.632 9.763-8.406zm-2.89 1.313c-.433.422-1.399 1.295-2.973 2.092-1.02.517-2.613.982-3.927 1.177l.132-.679c.218-1.127.719-2.503 1.162-3.417.757-1.561 1.639-2.792 2.29-3.221.395-.26.863-.352 1.328-.263.929.179 1.585.98 1.593 1.926.003.244-.055.486-.166.703-.35.682-.969 1.269-1.439 1.682z"
-                />
-              </svg>
-            </a>
-            {% endif %}
-          </div>
-
-          <div>
-            {% assign pdf_url = cv.downloads[lang] %} {% unless pdf_url %} {%
-            assign pdf_url = cv.downloads['en'] %} {% endunless %} {% if pdf_url
-            %}
-            <a href="{{ pdf_url }}" class="dl-btn" target="_blank"
-              >{{ t_dl }}</a
-            >
-            <div
-              style="
+      <div>
+        {% assign pdf_url = cv.downloads[lang] %} {% unless pdf_url %} {%
+        assign pdf_url = cv.downloads['en'] %} {% endunless %} {% if pdf_url
+        %}
+        <a href="{{ pdf_url }}" class="dl-btn" target="_blank"
+        >{{ t_dl }}</a
+        >
+        <div
+                style="
                 margin-top: 10px;
                 font-size: 0.7rem;
                 color: var(--dim);
                 text-align: center;
                 font-family: 'JetBrains Mono';
               "
-            >
-              SECURE LINK • {{ lang | upcase }}
-            </div>
-            {% else %}
-            <a
-              href="mailto:{{ cv.contact.email }}"
-              class="dl-btn"
-              style="opacity: 0.7"
-              >{{ t_req }}</a
-            >
-            {% endif %}
-          </div>
+        >
+          SECURE LINK • {{ lang | upcase }}
         </div>
-      </aside>
+        {% else %}
+        <a
+                href="mailto:{{ cv.contact.email }}"
+                class="dl-btn"
+                style="opacity: 0.7"
+        >{{ t_req }}</a
+        >
+        {% endif %}
+      </div>
+    </div>
+  </aside>
 
-      <main class="data-panel">
-        <section>
-          <h2>Experience <span class="index">XP</span></h2>
-          {% for exp in cv.experience %}
-          <div class="xp-item">
-            <div class="xp-dot"></div>
-            <h3 style="color: #fff; margin-bottom: 0.2rem; font-size: 1.3rem">
-              {{ exp.role[lang] }}
-            </h3>
-            <div
-              style="
+  <main class="data-panel">
+    
+    {% if cv.senior_scope %}
+    <section class="senior-scope-section">
+      <h2 style="margin-top: 0">{{ t_scope }} <span class="index">00</span></h2>
+      <table class="senior-scope-table">
+        <thead>
+        <tr>
+          <th>{{ t_scope_domain }}</th>
+          <th>{{ t_scope_capability }}</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for item in cv.senior_scope %}
+        <tr>
+          <td>{{ item.domain[lang] }}</td>
+          <td>{{ item.capability[lang] }}</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+    </section>
+    {% endif %}
+
+    <section>
+      <h2>{{ t_exp }} <span class="index">01</span></h2>
+      {% for exp in cv.experience %}
+      <div class="xp-item">
+        <div class="xp-dot"></div>
+        <h3 style="color: #fff; margin-bottom: 0.2rem; font-size: 1.3rem">
+          {{ exp.role[lang] }}
+        </h3>
+        <div
+                style="
                 color: var(--secondary);
                 font-family: 'JetBrains Mono';
                 font-size: 0.9rem;
                 margin-bottom: 1rem;
               "
-            >
-              {{ exp.company }} • {{ exp.period }}
-            </div>
-            <ul style="list-style: none; color: var(--dim)">
-              {% for item in exp.details[lang] %}
-              <li
-                style="
+        >
+          {{ exp.company }} • {{ exp.period }}
+        </div>
+        <ul style="list-style: none; color: var(--dim)">
+          {% for item in exp.details[lang] %}
+          <li
+                  style="
                   margin-bottom: 0.5rem;
                   padding-left: 1rem;
                   position: relative;
                 "
-              >
+          >
                 <span style="position: absolute; left: 0; color: var(--accent)"
-                  >›</span
+                >›</span
                 >
-                {{ item }}
-              </li>
-              {% endfor %}
-            </ul>
-          </div>
+            {{ item }}
+          </li>
           {% endfor %}
-        </section>
+        </ul>
+      </div>
+      {% endfor %}
+    </section>
 
-        <section>
-          <h2>Skills <span class="index">TK</span></h2>
-          {% for category in cv.skills %}
-          <div style="margin-bottom: 2rem">
-            <div
-              style="
+    <section>
+      <h2>{{ t_skills }} <span class="index">02</span></h2>
+      {% for category in cv.skills %}
+      <div style="margin-bottom: 2rem">
+        <div
+                style="
                 text-transform: uppercase;
                 color: var(--dim);
                 font-size: 0.8rem;
                 margin-bottom: 0.8rem;
                 letter-spacing: 1px;
               "
-            >
-              {{ category[0] | replace: "_", " " }}
-            </div>
-            <div style="display: flex; flex-wrap: wrap; gap: 0.6rem">
-              {% for s in category[1] %}
-              <div class="skill-chip">{{ s[lang] }}</div>
-              {% endfor %}
-            </div>
-          </div>
+        >
+          {{ category[0] | replace: "_", " " }}
+        </div>
+        <div style="display: flex; flex-wrap: wrap; gap: 0.6rem">
+          {% for s in category[1] %}
+          <div class="skill-chip">{{ s[lang] }}</div>
           {% endfor %}
-        </section>
+        </div>
+      </div>
+      {% endfor %}
+    </section>
 
-        {% assign projects = site.data.projects.projects %} {% if projects %}
-        <section>
-          <h2 style="margin-top: 0">
-            {{ t_projects }}
-            <span class="index" style="font-size: 1rem; margin-left: auto"
-              >{{ projects.size }} UNITS</span
+    {% assign projects = site.data.projects.projects %} {% if projects %}
+    <section>
+      <h2 style="margin-top: 0">
+        {{ t_projects }}
+        <span class="index" style="font-size: 1rem; margin-left: auto"
+        >{{ projects.size }} UNITS</span
+        >
+      </h2>
+
+      <div class="project-grid-container">
+        {% for project in projects %}
+        <div class="project-card">
+          <div class="card-content">
+            <h3
+                    style="color: #fff; margin-bottom: 0.5rem; font-size: 1.2rem"
             >
-          </h2>
+              {{ project.name }}
+            </h3>
 
-          <div class="project-grid-container">
-            {% for project in projects %}
-            <div class="project-card">
-              <div class="card-content">
-                <h3
-                  style="color: #fff; margin-bottom: 0.5rem; font-size: 1.2rem"
-                >
-                  {{ project.name }}
-                </h3>
+            <div class="prj-actions">
+              {% if project.links.repo %}
+              <a
+                      href="{{ project.links.repo }}"
+                      target="_blank"
+                      class="prj-link"
+              >
+                <svg viewBox="0 0 24 24">
+                  <path
+                          d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405 1.02 0 2.04.135 3 .405 2.28-1.56 3.285-1.23 3.285-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"
+                  />
+                </svg>
+                CODE
+              </a>
+              {% endif %} {% if project.links.demo %}
+              <a
+                      href="{{ project.links.demo }}"
+                      target="_blank"
+                      class="prj-link"
+              >
+                <svg viewBox="0 0 24 24">
+                  <path
+                          d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42L17.59 5H14V3zM5 5h6V3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2v-6h-2v6H5V5z"
+                  />
+                </svg>
+                LIVE
+              </a>
+              {% endif %}
+            </div>
 
-                <div class="prj-actions">
-                  {% if project.links.repo %}
-                  <a
-                    href="{{ project.links.repo }}"
-                    target="_blank"
-                    class="prj-link"
-                  >
-                    <svg viewBox="0 0 24 24">
-                      <path
-                        d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405 1.02 0 2.04.135 3 .405 2.28-1.56 3.285-1.23 3.285-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"
-                      />
-                    </svg>
-                    CODE
-                  </a>
-                  {% endif %} {% if project.links.demo %}
-                  <a
-                    href="{{ project.links.demo }}"
-                    target="_blank"
-                    class="prj-link"
-                  >
-                    <svg viewBox="0 0 24 24">
-                      <path
-                        d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42L17.59 5H14V3zM5 5h6V3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2v-6h-2v6H5V5z"
-                      />
-                    </svg>
-                    LIVE
-                  </a>
-                  {% endif %}
-                </div>
-
-                <p
-                  style="
+            <p
+                    style="
                     color: var(--dim);
                     font-size: 0.9rem;
                     margin-bottom: 1.5rem;
                   "
-                >
-                  {{ project.description[lang] }}
-                </p>
+            >
+              {{ project.description[lang] }}
+            </p>
 
-                <div
-                  style="
+            <div
+                    style="
                     display: flex;
                     flex-wrap: wrap;
                     gap: 0.5rem;
                     margin-top: auto;
                   "
-                >
-                  {% for t in project.stack %} {% assign tech_key = t | downcase
-                  | strip %} {% assign icon_class = "" %} {% case tech_key %} {%
-                  comment %} --- FRONTEND & FRAMEWORKS --- {% endcomment %} {%
-                  when 'angular' or 'angular 18' or 'signals' %} {% assign
-                  icon_class = "devicon-angular-plain" %} {% when 'javascript'
-                  %} {% assign icon_class = "devicon-javascript-plain" %} {%
-                  when 'typescript' %} {% assign icon_class =
-                  "devicon-typescript-plain" %} {% when 'react' %} {% assign
-                  icon_class = "devicon-react-original" %} {% comment %} ---
-                  BACKEND & RUNTIME --- {% endcomment %} {% when 'java' %} {%
-                  assign icon_class = "devicon-java-plain" %} {% when 'spring'
-                  or 'spring boot' or 'spring data jpa' %} {% assign icon_class
-                  = "devicon-spring-plain" %} {% when 'node.js' or 'nodejs' or
-                  'express.js' %} {% assign icon_class = "devicon-nodejs-plain"
-                  %} {% comment %} --- AI, DATA & ALGORITHMS --- {% endcomment
-                  %} {% when 'python' or 'nlp' %} {% assign icon_class =
-                  "devicon-python-plain" %} {% when 'generative ai' %} {% assign
-                  icon_class = "devicon-tensorflow-original" %} {% when
-                  'algorithms' or 'algorithm design' or 'cadentis' %} {% assign
-                  icon_class = "devicon-thealgorithms-plain" %} {% comment %}
-                  --- TOOLS & PROTOCOLS --- {% endcomment %} {% when 'docker' %}
-                  {% assign icon_class = "devicon-docker-plain" %} {% when 'git'
-                  %} {% assign icon_class = "devicon-git-plain" %} {% when 'npm'
-                  %} {% assign icon_class = "devicon-npm-original-wordmark" %}
-                  {% when 'google apps script' %} {% assign icon_class =
-                  "devicon-google-plain" %} {% when 'api' %} {% assign
-                  icon_class = "devicon-postman-plain" %} {% when 'websocket' %}
-                  {% assign icon_class = "devicon-socketio-original" %}{%
-                  comment %} --- AUTOMATION & UTILS --- {% endcomment %} {% when
-                  'automation' %} {% assign icon_class = "devicon-zsh-plain" %}
-                  {% when 'custom parser' or 'archiving' %} {% assign icon_class
-                  = "devicon-linux-plain" %} {% comment %} --- MINDEN MÁS
-                  (DEFAULT HELYKITÖLTŐ) --- {% endcomment %} {% else %} {%
-                  assign icon_class = "devicon-bash-plain" %} {% endcase %}
+            >
+              {% for t in project.stack %} {% assign tech_key = t | downcase
+              | strip %} {% assign icon_class = "" %} {% case tech_key %} {%
+              comment %} --- FRONTEND & FRAMEWORKS --- {% endcomment %} {%
+              when 'angular' or 'angular 18' or 'signals' %} {% assign
+              icon_class = "devicon-angular-plain" %} {% when 'javascript'
+              %} {% assign icon_class = "devicon-javascript-plain" %} {%
+              when 'typescript' %} {% assign icon_class =
+              "devicon-typescript-plain" %} {% when 'react' %} {% assign
+              icon_class = "devicon-react-original" %} {% comment %} ---
+              BACKEND & RUNTIME --- {% endcomment %} {% when 'java' %} {%
+              assign icon_class = "devicon-java-plain" %} {% when 'spring'
+              or 'spring boot' or 'spring data jpa' %} {% assign icon_class
+              = "devicon-spring-plain" %} {% when 'node.js' or 'nodejs' or
+              'express.js' %} {% assign icon_class = "devicon-nodejs-plain"
+              %} {% comment %} --- AI, DATA & ALGORITHMS --- {% endcomment
+              %} {% when 'python' or 'nlp' %} {% assign icon_class =
+              "devicon-python-plain" %} {% when 'generative ai' %} {% assign
+              icon_class = "devicon-tensorflow-original" %} {% when
+              'algorithms' or 'algorithm design' or 'cadentis' %} {% assign
+              icon_class = "devicon-thealgorithms-plain" %} {% comment %}
+              --- TOOLS & PROTOCOLS --- {% endcomment %} {% when 'docker' %}
+              {% assign icon_class = "devicon-docker-plain" %} {% when 'git'
+              %} {% assign icon_class = "devicon-git-plain" %} {% when 'npm'
+              %} {% assign icon_class = "devicon-npm-original-wordmark" %}
+              {% when 'google apps script' %} {% assign icon_class =
+              "devicon-google-plain" %} {% when 'api' %} {% assign
+              icon_class = "devicon-postman-plain" %} {% when 'websocket' %}
+              {% assign icon_class = "devicon-socketio-original" %}{%
+              comment %} --- AUTOMATION & UTILS --- {% endcomment %} {% when
+              'automation' %} {% assign icon_class = "devicon-zsh-plain" %}
+              {% when 'custom parser' or 'archiving' %} {% assign icon_class
+              = "devicon-linux-plain" %} {% comment %} --- MINDEN MÁS
+              (DEFAULT HELYKITÖLTŐ) --- {% endcomment %} {% else %} {%
+              assign icon_class = "devicon-bash-plain" %} {% endcase %}
 
-                  <span
-                    style="
+              <span
+                      style="
                       padding: 4px 10px;
                       border: 1px solid var(--border);
                       border-radius: 4px;
@@ -1195,363 +1294,363 @@
                       align-items: center;
                       gap: 8px;
                     "
-                  >
+              >
                     <i class="{{ icon_class }} stack-icon"></i>
                     {{ t }}
                   </span>
-                  {% endfor %}
-                </div>
-              </div>
+              {% endfor %}
+            </div>
+          </div>
 
-              {% if project.mermaid %}
-              <div
-                id="mermaid-source-{{ forloop.index }}"
-                style="display: none"
-              >
-                {{ project.mermaid }}
-              </div>
+          {% if project.mermaid %}
+          <div
+                  id="mermaid-source-{{ forloop.index }}"
+                  style="display: none"
+          >
+            {{ project.mermaid }}
+          </div>
 
-              <button
-                class="arch-btn"
-                onclick="openArchModal('mermaid-source-{{ forloop.index }}')"
-                style="
+          <button
+                  class="arch-btn"
+                  onclick="openArchModal('mermaid-source-{{ forloop.index }}')"
+                  style="
                   display: flex;
                   align-items: center;
                   justify-content: center;
                   gap: 12px;
                 "
-              >
-                <svg
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="1.5"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  style="width: 20px; height: 20px; flex-shrink: 0"
-                >
-                  <rect x="3" y="3" width="7" height="7"></rect>
-                  <rect x="14" y="3" width="7" height="7"></rect>
-                  <rect x="14" y="14" width="7" height="7"></rect>
-                  <path d="M10 6.5h4"></path>
-                  <path d="M6.5 10v4"></path>
-                  <path d="M17.5 10v4"></path>
-                  <path d="M10 17.5h4"></path>
-                </svg>
-                <span
-                  style="
+          >
+            <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    style="width: 20px; height: 20px; flex-shrink: 0"
+            >
+              <rect x="3" y="3" width="7" height="7"></rect>
+              <rect x="14" y="3" width="7" height="7"></rect>
+              <rect x="14" y="14" width="7" height="7"></rect>
+              <path d="M10 6.5h4"></path>
+              <path d="M6.5 10v4"></path>
+              <path d="M17.5 10v4"></path>
+              <path d="M10 17.5h4"></path>
+            </svg>
+            <span
+                    style="
                     font-family: 'Syncopate', sans-serif;
                     font-weight: 700;
                     letter-spacing: 1px;
                     font-size: 0.8rem;
                   "
-                >
+            >
                   VIEW SYSTEM BLUEPRINT
                 </span>
-              </button>
-              {% endif %}
-            </div>
-            {% endfor %}
-          </div>
-        </section>
-        {% endif %} {% if cv.education %}
-        <section>
-          <h2>{{ t_edu }} <span class="index">03</span></h2>
-          {% for edu in cv.education %}
-          <div class="xp-item" style="border-left: 2px solid var(--accent)">
-            <div class="xp-header">
-              <div class="xp-role">{{ edu.degree[lang] }}</div>
-              <div class="xp-meta">{{ edu.institution }} / {{ edu.year }}</div>
-            </div>
-            <p style="color: #888; margin: 0">{{ edu.details[lang] }}</p>
-          </div>
-          {% endfor %}
-        </section>
-        {% endif %}
+          </button>
+          {% endif %}
+        </div>
+        {% endfor %}
+      </div>
+    </section>
+    {% endif %} {% if cv.education %}
+    <section>
+      <h2>{{ t_edu }} <span class="index">03</span></h2>
+      {% for edu in cv.education %}
+      <div class="xp-item" style="border-left: 2px solid var(--accent)">
+        <div class="xp-header">
+          <div class="xp-role">{{ edu.degree[lang] }}</div>
+          <div class="xp-meta">{{ edu.institution }} / {{ edu.year }}</div>
+        </div>
+        <p style="color: #888; margin: 0">{{ edu.details[lang] }}</p>
+      </div>
+      {% endfor %}
+    </section>
+    {% endif %}
 
-        <section>
-          <h2>{{ t_lang }} & {{ t_int }} <span class="index">04</span></h2>
+    <section>
+      <h2>{{ t_lang }} & {{ t_int }} <span class="index">04</span></h2>
 
-          {% if cv.languages %}
-          <div style="margin-bottom: 2rem">
-            <div
-              style="
+      {% if cv.languages %}
+      <div style="margin-bottom: 2rem">
+        <div
+                style="
                 color: #fff;
                 font-weight: 700;
                 margin-bottom: 1rem;
                 border-radius: 2px;
                 padding-bottom: 0.5rem;
               "
-            >
-              {{ t_lang }}
-            </div>
-            <div class="skill-grid">
-              {% for lan in cv.languages %}
-              <div
-                class="skill-box"
-                style="border-color: var(--accent); border-radius: 20px"
-              >
-                {{ lan.name[lang] }}
-              </div>
-              {% endfor %}
-            </div>
-          </div>
-          {% endif %} {% if cv.interests %}
+        >
+          {{ t_lang }}
+        </div>
+        <div class="skill-grid">
+          {% for lan in cv.languages %}
           <div
-            style="
+                  class="skill-box"
+                  style="border-color: var(--accent); border-radius: 20px"
+          >
+            {{ lan.name[lang] }}
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+      {% endif %} {% if cv.interests %}
+      <div
+              style="
               color: #fff;
               font-weight: 700;
               margin-bottom: 1rem;
               margin-top: 2rem;
             "
+      >
+        {{ t_int }}
+      </div>
+      <div class="interest-grid">
+        {% for int in cv.interests %}
+        <div class="interest-item">
+          <h3>{{ int.name[lang] }}</h3>
+          <p>{{ int.description[lang] }}</p>
+        </div>
+        {% endfor %}
+      </div>
+      {% endif %}
+    </section>
+
+    {% if cv.publications or cv.awards %}
+    <section>
+      <h2>Achievements <span class="index">05</span></h2>
+
+      {% if cv.publications %}
+      <div style="margin-bottom: 2rem">
+        <div style="color: #fff; font-weight: 700; margin-bottom: 1rem">
+          {{ t_pubs }}
+        </div>
+        {% for pub in cv.publications %}
+        <div
+                style="
+                border-bottom: 1px solid var(--border);
+                padding: 1rem 0;
+                display: flex;
+                justify-content: space-between;
+              "
+        >
+          <span style="color: #ccc">{{ pub.title }}</span>
+          <span style="color: #666; font-family: monospace"
+          >{{ pub.year }}</span
           >
-            {{ t_int }}
-          </div>
-          <div class="interest-grid">
-            {% for int in cv.interests %}
-            <div class="interest-item">
-              <h3>{{ int.name[lang] }}</h3>
-              <p>{{ int.description[lang] }}</p>
-            </div>
-            {% endfor %}
-          </div>
-          {% endif %}
-        </section>
-
-        {% if cv.publications or cv.awards %}
-        <section>
-          <h2>Achievements <span class="index">05</span></h2>
-
-          {% if cv.publications %}
-          <div style="margin-bottom: 2rem">
-            <div style="color: #fff; font-weight: 700; margin-bottom: 1rem">
-              {{ t_pubs }}
-            </div>
-            {% for pub in cv.publications %}
-            <div
-              style="
+        </div>
+        {% endfor %}
+      </div>
+      {% endif %} {% if cv.awards %}
+      <div>
+        <div style="color: #fff; font-weight: 700; margin-bottom: 1rem">
+          {{ t_awards }}
+        </div>
+        {% for award in cv.awards %}
+        <div
+                style="
                 border-bottom: 1px solid var(--border);
                 padding: 1rem 0;
                 display: flex;
                 justify-content: space-between;
               "
-            >
-              <span style="color: #ccc">{{ pub.title }}</span>
-              <span style="color: #666; font-family: monospace"
-                >{{ pub.year }}</span
-              >
-            </div>
-            {% endfor %}
-          </div>
-          {% endif %} {% if cv.awards %}
-          <div>
-            <div style="color: #fff; font-weight: 700; margin-bottom: 1rem">
-              {{ t_awards }}
-            </div>
-            {% for award in cv.awards %}
-            <div
-              style="
-                border-bottom: 1px solid var(--border);
-                padding: 1rem 0;
-                display: flex;
-                justify-content: space-between;
-              "
-            >
-              <span style="color: #ccc">{{ award.name }}</span>
-              <span style="color: #666; font-family: monospace"
-                >{{ award.year }}</span
-              >
-            </div>
-            {% endfor %}
-          </div>
-          {% endif %}
-        </section>
-        {% endif %}
-      </main>
-    </div>
+        >
+          <span style="color: #ccc">{{ award.name }}</span>
+          <span style="color: #666; font-family: monospace"
+          >{{ award.year }}</span
+          >
+        </div>
+        {% endfor %}
+      </div>
+      {% endif %}
+    </section>
+    {% endif %}
+  </main>
+</div>
 
-    <script>
-                      /* --- 1. MERMAID LAZY LOADER (PERFORMANCE FIX) --- */
-                      let mermaidLoaded = false;
+<script>
+  /* --- 1. MERMAID LAZY LOADER (PERFORMANCE FIX) --- */
+  let mermaidLoaded = false;
 
-                      async function loadMermaidLibrary() {
-                        return new Promise((resolve, reject) => {
-                          if (mermaidLoaded) {
-                            resolve();
-                            return;
-                          }
+  async function loadMermaidLibrary() {
+    return new Promise((resolve, reject) => {
+      if (mermaidLoaded) {
+        resolve();
+        return;
+      }
 
-                          const script = document.createElement('script');
-                          script.src = 'https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js';
-                          script.onload = () => {
-                            mermaidLoaded = true;
-                            // Inicializálás, csak miután betöltött
-                            mermaid.initialize({
-                              startOnLoad: false,
-                              theme: 'base',
-                              flowchart: { useMaxWidth: false, htmlLabels: true },
-                              securityLevel: 'loose',
-                              themeVariables: {
-                                primaryColor: '#7000ff',
-                                primaryTextColor: '#fff',
-                                primaryBorderColor: '#7000ff',
-                                lineColor: '#00f3ff',
-                                secondaryColor: '#0a0a0c',
-                                tertiaryColor: '#0a0a0c',
-                                mainBkg: '#0a0a0c',
-                                nodeBorder: '#7000ff',
-                                clusterBkg: 'rgba(255,255,255,0.05)',
-                                clusterBorder: '#333',
-                                defaultLinkColor: '#00f3ff',
-                                fontFamily: 'JetBrains Mono',
-                              }
-                            });
-                            resolve();
-                          };
-                          script.onerror = reject;
-                          document.head.appendChild(script);
-                        });
-                      }
-
-          async function openArchModal(sourceId) {
-              const modal = document.getElementById('archModal');
-              const target = document.getElementById('mermaidTarget');
-              const source = document.getElementById(sourceId).textContent.trim();
-
-              target.innerHTML = '<div style="color:var(--secondary);margin-top:2rem;">Loading…</div>';
-              modal.classList.add('active');
-
-              await loadMermaidLibrary();
-
-              target.innerHTML = '';
-              const graphDiv = document.createElement('div');
-              graphDiv.className = 'mermaid';
-              graphDiv.textContent = source;
-              target.appendChild(graphDiv);
-
-              await mermaid.run({
-                querySelector: '#mermaidTarget .mermaid'
-              });
+      const script = document.createElement('script');
+      script.src = 'https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js';
+      script.onload = () => {
+        mermaidLoaded = true;
+        // Inicializálás, csak miután betöltött
+        mermaid.initialize({
+          startOnLoad: false,
+          theme: 'base',
+          flowchart: { useMaxWidth: false, htmlLabels: true },
+          securityLevel: 'loose',
+          themeVariables: {
+            primaryColor: '#7000ff',
+            primaryTextColor: '#fff',
+            primaryBorderColor: '#7000ff',
+            lineColor: '#00f3ff',
+            secondaryColor: '#0a0a0c',
+            tertiaryColor: '#0a0a0c',
+            mainBkg: '#0a0a0c',
+            nodeBorder: '#7000ff',
+            clusterBkg: 'rgba(255,255,255,0.05)',
+            clusterBorder: '#333',
+            defaultLinkColor: '#00f3ff',
+            fontFamily: 'JetBrains Mono',
           }
+        });
+        resolve();
+      };
+      script.onerror = reject;
+      document.head.appendChild(script);
+    });
+  }
+
+async function openArchModal(sourceId) {
+const modal = document.getElementById('archModal');
+const target = document.getElementById('mermaidTarget');
+const source = document.getElementById(sourceId).textContent.trim();
+
+target.innerHTML = '<div style="color:var(--secondary);margin-top:2rem;">Loading…</div>';
+modal.classList.add('active');
+
+await loadMermaidLibrary();
+
+target.innerHTML = '';
+const graphDiv = document.createElement('div');
+graphDiv.className = 'mermaid';
+graphDiv.textContent = source;
+target.appendChild(graphDiv);
+
+await mermaid.run({
+querySelector: '#mermaidTarget .mermaid'
+});
+}
 
 
-                      function closeModal(e) {
-                        const modal = document.getElementById('archModal');
-                        modal.classList.remove('active');
-                      }
+  function closeModal(e) {
+    const modal = document.getElementById('archModal');
+    modal.classList.remove('active');
+  }
 
-                      /* --- 2. JSON MODE --- */
-                      function toggleJsonMode() {
-                        var mainWrapper = document.querySelector('.layout-wrapper');
-                        var jsonViewer = document.getElementById('json-viewer');
+  /* --- 2. JSON MODE --- */
+  function toggleJsonMode() {
+    var mainWrapper = document.querySelector('.layout-wrapper');
+    var jsonViewer = document.getElementById('json-viewer');
 
-                        if (!jsonViewer) {
-                          jsonViewer = document.createElement('div');
-                          jsonViewer.id = 'json-viewer';
-                          jsonViewer.style.cssText = `
-                            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
-                            background: #0a0a0c; color: #00f3ff; z-index: 10000;
-                            padding: 2rem; overflow: auto; font-family: 'JetBrains Mono', monospace;
-                            font-size: 14px; display: none; white-space: pre;
-                          `;
+    if (!jsonViewer) {
+      jsonViewer = document.createElement('div');
+      jsonViewer.id = 'json-viewer';
+      jsonViewer.style.cssText = `
+        position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+        background: #0a0a0c; color: #00f3ff; z-index: 10000;
+        padding: 2rem; overflow: auto; font-family: 'JetBrains Mono', monospace;
+        font-size: 14px; display: none; white-space: pre;
+      `;
 
-                          var rawData = {
-                            engineer: "{{ site.data.cv_data.name['en'] }}",
-                            title: "{{ site.data.cv_data.title['en'] }}",
-                            philosophy: "Code is narrative structure.",
-                            skills: {{ site.data.cv_data.skills | jsonify }},
-                            projects: {{ site.data.projects.projects | jsonify }}
-                          };
+      var rawData = {
+        engineer: "{{ site.data.cv_data.name['en'] }}",
+        title: "{{ site.data.cv_data.title['en'] }}",
+        philosophy: "Code is narrative structure.",
+        skills: {{ site.data.cv_data.skills | jsonify }},
+        projects: {{ site.data.projects.projects | jsonify }}
+      };
 
-                          jsonViewer.textContent = JSON.stringify(rawData, null, 2);
+      jsonViewer.textContent = JSON.stringify(rawData, null, 2);
 
-                          var closeBtn = document.createElement('button');
-                          closeBtn.innerText = "✕ CLOSE RAW DATA";
-                          closeBtn.style.cssText = `
-                            position: fixed; top: 20px; right: 30px;
-                            background: rgba(255,0,0,0.2); color: #fff; border: 1px solid red;
-                            padding: 10px 20px; cursor: pointer; font-family: 'Syncopate'; font-weight: bold;
-                          `;
-                          closeBtn.onclick = toggleJsonMode;
-                          jsonViewer.appendChild(closeBtn);
-                          document.body.appendChild(jsonViewer);
-                        }
+      var closeBtn = document.createElement('button');
+      closeBtn.innerText = "✕ CLOSE RAW DATA";
+      closeBtn.style.cssText = `
+        position: fixed; top: 20px; right: 30px;
+        background: rgba(255,0,0,0.2); color: #fff; border: 1px solid red;
+        padding: 10px 20px; cursor: pointer; font-family: 'Syncopate'; font-weight: bold;
+      `;
+      closeBtn.onclick = toggleJsonMode;
+      jsonViewer.appendChild(closeBtn);
+      document.body.appendChild(jsonViewer);
+    }
 
-                        if (jsonViewer.style.display === 'none') {
-                          jsonViewer.style.display = 'block';
-                          document.body.style.overflow = 'hidden';
-                        } else {
-                          jsonViewer.style.display = 'none';
-                          document.body.style.overflow = 'auto';
-                        }
-                      }
+    if (jsonViewer.style.display === 'none') {
+      jsonViewer.style.display = 'block';
+      document.body.style.overflow = 'hidden';
+    } else {
+      jsonViewer.style.display = 'none';
+      document.body.style.overflow = 'auto';
+    }
+  }
 
-                      /* --- 3. COMMAND PALETTE (CMD+K) --- */
-                      document.addEventListener('keydown', function(e) {
-                        if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
-                            e.preventDefault();
-                            toggleCommandPalette();
-                        }
-                        if (e.key === 'Escape') {
-                            const palette = document.getElementById('cmd-palette');
-                            if (palette) palette.style.display = 'none';
-                        }
-                      });
+  /* --- 3. COMMAND PALETTE (CMD+K) --- */
+  document.addEventListener('keydown', function(e) {
+    if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+        e.preventDefault();
+        toggleCommandPalette();
+    }
+    if (e.key === 'Escape') {
+        const palette = document.getElementById('cmd-palette');
+        if (palette) palette.style.display = 'none';
+    }
+  });
 
-                      function toggleCommandPalette() {
-                        let palette = document.getElementById('cmd-palette');
-                        if (!palette) {
-                            palette = document.createElement('div');
-                            palette.id = 'cmd-palette';
-                            palette.style.cssText = `
-                                position: fixed; top: 20%; left: 50%; transform: translateX(-50%);
-                                width: 500px; max-width: 90vw;
-                                background: #0a0a0c; border: 1px solid var(--accent);
-                                box-shadow: 0 0 50px rgba(0,0,0,0.8); z-index: 10001;
-                                border-radius: 12px; padding: 1rem;
-                                font-family: 'JetBrains Mono', monospace; display: none;
-                            `;
+  function toggleCommandPalette() {
+    let palette = document.getElementById('cmd-palette');
+    if (!palette) {
+        palette = document.createElement('div');
+        palette.id = 'cmd-palette';
+        palette.style.cssText = `
+            position: fixed; top: 20%; left: 50%; transform: translateX(-50%);
+            width: 500px; max-width: 90vw;
+            background: #0a0a0c; border: 1px solid var(--accent);
+            box-shadow: 0 0 50px rgba(0,0,0,0.8); z-index: 10001;
+            border-radius: 12px; padding: 1rem;
+            font-family: 'JetBrains Mono', monospace; display: none;
+        `;
 
-                            const commands = [
-                                { key: 'JSON Mode', action: 'toggleJsonMode()' },
-                                { key: 'Download CV', action: "window.open('{{ cv.downloads[page.lang] }}', '_blank')" },
-                                { key: 'Go to GitHub', action: "window.open('{{ cv.contact.github }}', '_blank')" },
-                                { key: 'Switch Language: EN', action: "window.location.href='/'" },
-                                { key: 'Switch Language: HU', action: "window.location.href='/hu/'" },
-                                { key: 'Switch Language: DE', action: "window.location.href='/de/'" },
-                            ];
+        const commands = [
+            { key: 'JSON Mode', action: 'toggleJsonMode()' },
+            { key: 'Download CV', action: "window.open('{{ cv.downloads[page.lang] }}', '_blank')" },
+            { key: 'Go to GitHub', action: "window.open('{{ cv.contact.github }}', '_blank')" },
+            { key: 'Switch Language: EN', action: "window.location.href='/'" },
+            { key: 'Switch Language: HU', action: "window.location.href='/hu/'" },
+            { key: 'Switch Language: DE', action: "window.location.href='/de/'" },
+        ];
 
-                            let html = `<div style="color:#666; font-size:12px; margin-bottom:10px;">COMMAND PALETTE</div>`;
-                            commands.forEach(cmd => {
-                                html += `
-                                    <div onclick="${cmd.action}; document.getElementById('cmd-palette').style.display='none'"
-                                         style="padding: 10px; border-bottom: 1px solid #333; cursor: pointer; color: #fff; transition:0.2s;"
-                                         onmouseover="this.style.background='#1a1a20';this.style.paddingLeft='15px'"
-                                         onmouseout="this.style.background='transparent';this.style.paddingLeft='10px'">
-                                        <span style="color:var(--secondary)">></span> ${cmd.key}
-                                    </div>`;
-                            });
-                            html += `<div style="text-align:right; margin-top:10px; font-size:10px; color:#555;">[ESC] to close</div>`;
-                            palette.innerHTML = html;
-                            document.body.appendChild(palette);
-                        }
-                        palette.style.display = (palette.style.display === 'none') ? 'block' : 'none';
-                      }
+        let html = `<div style="color:#666; font-size:12px; margin-bottom:10px;">COMMAND PALETTE</div>`;
+        commands.forEach(cmd => {
+            html += `
+                <div onclick="${cmd.action}; document.getElementById('cmd-palette').style.display='none'"
+                     style="padding: 10px; border-bottom: 1px solid #333; cursor: pointer; color: #fff; transition:0.2s;"
+                     onmouseover="this.style.background='#1a1a20';this.style.paddingLeft='15px'"
+                     onmouseout="this.style.background='transparent';this.style.paddingLeft='10px'">
+                    <span style="color:var(--secondary)">></span> ${cmd.key}
+                </div>`;
+        });
+        html += `<div style="text-align:right; margin-top:10px; font-size:10px; color:#555;">[ESC] to close</div>`;
+        palette.innerHTML = html;
+        document.body.appendChild(palette);
+    }
+    palette.style.display = (palette.style.display === 'none') ? 'block' : 'none';
+  }
 
-                      /* --- 4. TITLE FLICKER --- */
-                      let docTitle = document.title;
-                      window.addEventListener("blur", () => { document.title = "⚠️ Awaiting Input..."; });
-                      window.addEventListener("focus", () => { document.title = docTitle; });
+  /* --- 4. TITLE FLICKER --- */
+  let docTitle = document.title;
+  window.addEventListener("blur", () => { document.title = "⚠️ Awaiting Input..."; });
+  window.addEventListener("focus", () => { document.title = docTitle; });
 
-                      setTimeout(() => {
-        const h = document.getElementById('cmdk-hint');
-        if (h) h.style.opacity = "0";
-        setTimeout(() => h?.remove(), 1000);
-      }, 6000);
-    </script>
-    <div
-      id="cmdk-hint"
-      style="
+  setTimeout(() => {
+const h = document.getElementById('cmdk-hint');
+if (h) h.style.opacity = "0";
+setTimeout(() => h?.remove(), 1000);
+}, 6000);
+</script>
+<div
+        id="cmdk-hint"
+        style="
         position: fixed;
         bottom: 20px;
         right: 20px;
@@ -1566,8 +1665,8 @@
         pointer-events: none;
         z-index: 9000;
       "
-    >
-      CTRL-K/⌘-K opens Command Palette
-    </div>
-  </body>
+>
+  CTRL-K/⌘-K opens Command Palette
+</div>
+</body>
 </html>
