@@ -11,20 +11,18 @@ contact:
   usesSite: https://adamporkolab.com/uses
   website: https://aporkolab.com
 downloads:
-  de: https://pub-c677684c572248f4ae32cfb9fc6b6972.r2.dev/cv_public_de_default_20251210_162057.pdf
-  en: https://pub-c677684c572248f4ae32cfb9fc6b6972.r2.dev/cv_public_en_default_20251210_162040.pdf
-  hu: https://pub-c677684c572248f4ae32cfb9fc6b6972.r2.dev/cv_public_hu_default_20251210_162049.pdf
+  de: https://pub-c677684c572248f4ae32cfb9fc6b6972.r2.dev/cv_public_de_default_20251217_104120.pdf
+  en: https://pub-c677684c572248f4ae32cfb9fc6b6972.r2.dev/cv_public_en_default_20251217_104056.pdf
+  hu: https://pub-c677684c572248f4ae32cfb9fc6b6972.r2.dev/cv_public_hu_default_20251217_104108.pdf
 education:
 - degree:
     de: Dr. phil. in Linguistik (Summa Cum Laude)
     en: PhD in Linguistics (Summa Cum Laude)
     hu: Nyelvészet PhD (Summa Cum Laude)
   details:
-    de: Strukturanalyse und kognitive Systeme. Dissertation über systematische Mustererkennung.
-    en: Structural analysis and cognitive systems. Dissertation on systematic pattern
-      recognition.
-    hu: 'Strukturális analízis és kognitív rendszerek. Disszertáció: szisztematikus
-      mintafelismerés.'
+    de: Strukturanalyse und kognitive Systeme. Fokus auf systematische Mustererkennung.
+    en: Structural analysis and cognitive systems. Focus on systematic pattern recognition.
+    hu: Strukturális analízis és kognitív rendszerek. Fókuszban a szisztematikus mintafelismerés.
   institution: University of Pécs
   year: 2013 – 2018
 - degree:
@@ -52,19 +50,21 @@ experience:
 - company: Deutsche Telekom
   details:
     de:
-    - Vollständige Ownership undokumentierter Legacy-Module, eigenständige Entwicklung
-      und Wartung.
-    - Architektonische Refactoring-Entscheidungen mit Fokus auf langfristige Wartbarkeit.
-    - Asynchrone Zusammenarbeit mit internationalen Teams (Deutschland-Ungarn).
+    - Implementierung resilienter Microservices mittels Saga- und Outbox-Pattern für
+      Hochverfügbarkeit.
+    - Refactoring von Legacy-Monolithen in wartbare, domain-getriebene Module.
+    - Asynchrone Zusammenarbeit mit internationalen Teams zur Stabilisierung kritischer
+      Produktionsabläufe.
     en:
-    - Took full ownership of undocumented legacy modules, developing and maintaining
-      them independently.
-    - Made architectural refactoring decisions with a focus on long-term maintainability.
-    - Collaborated async with international teams (Germany-Hungary).
+    - Implemented resilient microservices using Saga and Outbox patterns for high-availability.
+    - Refactored legacy monoliths into maintainable, domain-driven modules.
+    - Collaborated async with international teams to stabilize critical production
+      flows.
     hu:
-    - Dokumentálatlan legacy modulok teljes ownership-je, önálló fejlesztés és karbantartás.
-    - Architekturális refaktorálási döntések a hosszú távú karbantarthatóság érdekében.
-    - Aszinkron együttműködés nemzetközi csapatokkal (Németország-Magyarország).
+    - Reziliens mikroszolgáltatások implementálása Saga és Outbox mintákkal a magas
+      rendelkezésre állásért.
+    - Legacy monolit rendszerek refaktorálása karbantartható, domain-vezérelt modulokká.
+    - Aszinkron együttműködés nemzetközi csapatokkal a kritikus éles folyamatok stabilizálásáért.
   location:
     de: Remote (DE/HU)
     en: Remote (DE/HU)
@@ -142,25 +142,26 @@ experience:
 - company: University of Pécs
   details:
     de:
-    - Anwendung von analytischem Systemdenken auf komplexe linguistische Themen.
-    - Verwaltung von Forschungsarchiven und Metadaten-Systemen; Grundlage des Data-Engineering-Denkens.
+    - Design von Metadaten-Schemata und strukturierten Datensätzen für groß angelegte
+      Analysen.
+    - Verwaltung von Forschungsarchiven und Automatisierung von Datenverarbeitungsabläufen.
     en:
-    - Applied analytical systems thinking to break down complex linguistic topics.
-    - Managed research archives and metadata systems; foundations of my data engineering
-      mindset.
+    - Designed metadata schemas and structured datasets for large-scale linguistic
+      analysis.
+    - Managed research archives and automated data processing workflows.
     hu:
-    - Analitikus rendszerszemlélet alkalmazása komplex nyelvészeti problémák bontására.
-    - Kutatási archívumok és metadata-rendszerek kezelése; az adatvezérelt gondolkodás
-      alapjai.
+    - Metadta-sémák és strukturált adatkészletek tervezése nagyléptékű nyelvészeti
+      elemzéshez.
+    - Kutatási archívumok kezelése és adatfeldolgozási folyamatok automatizálása.
   location:
     de: Pécs, Ungarn
     en: Pécs, Hungary
     hu: Pécs, Magyarország
   period: 2007 – 2020
   role:
-    de: Uni-Student, Wissenschaftlicher Mitarbeiter & Dozent
-    en: University Student, Assistant Lecturer & PhD Researcher
-    hu: Egyetemista, óraadó oktató & PhD kutató
+    de: Forscher & Datenmanager
+    en: Researcher & Data Manager
+    hu: Kutató & Adatmenedzser
 headings:
   awards:
     de: Auszeichnungen
@@ -350,45 +351,49 @@ skills:
   - de: Technische Dokumentation & Wissensarchitektur
     en: Technical Documentation & Knowledge Architecture
     hu: Technikai dokumentáció & tudásbázis-építés
-  - de: Spekulative Fiktion & Narrative Systeme
-    en: Speculative Fiction & Narrative Systems
-    hu: Spekulatív fikció & narratív rendszerek
+  - de: Architecture Decision Records (ADR) & Tech-Blogging
+    en: Architecture Decision Records (ADR) & Tech Blogging
+    hu: Architekturális döntési rekordok (ADR) & technikai blogolás
 summary:
   de: 'Senior Full Stack Engineer für wartbare Enterprise-Anwendungen mit Java/Spring
     Boot und Angular. 4+ Jahre in Enterprise-Umgebungen. Promotion in Linguistik —
-    strukturelle Analyse angewandt auf Systemdesign und Clean Architecture.
+    strukturelle Analyse angewandt auf verteilte Systeme und Datenmodellierung.
 
-    Stabilisierung undokumentierter Legacy-Systeme, Entwurf vorhersagbarer APIs, Entwicklung
-    responsiver, testbarer Frontends. Fokus: End-to-End-Ownership — von Datenbank
-    bis UI, von Refactoring bis Dokumentation.
+    Spezialisiert auf die Stabilisierung von Legacy-Systemen, Implementierung von
+    Resilienz-Mustern (Saga, Outbox) und Entwicklung vorhersagbarer Frontends. Fokus:
+    End-to-End-Ownership — von Datenbankarchitektur bis UI, mit Ziel der langfristigen
+    Wartbarkeit.
 
     Arbeitsstil: Remote-first, async-freundlich, spezifikationsgetrieben. Ich entfalte
-    mich bei Take-Home-Aufgaben und tiefgehenden technischen Gesprächen.
+    mich am besten bei Take-Home-Aufgaben und tiefgehenden technischen Gesprächen
+    statt Live-Coding.
 
     '
   en: 'Senior Full Stack Engineer building maintainable enterprise applications with
     Java/Spring Boot and Angular. 4+ years in enterprise environments. PhD in Linguistics
-    — trained in structural analysis, which I apply to system design and clean architecture.
+    — trained in structural analysis, which I apply to distributed system design and
+    data modeling.
 
-    I stabilize undocumented legacy systems, design predictable APIs, and build responsive,
-    testable frontends. Strong focus on end-to-end ownership: from database to UI,
-    from refactoring to documentation.
+    I specialize in stabilizing legacy systems, implementing resilience patterns (Saga,
+    Outbox), and building predictable, testable frontends. Strong focus on end-to-end
+    ownership: from database architecture to UI/UX, ensuring long-term maintainability.
 
     Work style: Remote-first, async-friendly, written-spec-driven. I perform best
     with take-home challenges and in-depth technical discussions that reveal real
-    engineering thinking.
+    engineering thinking rather than live coding.
 
     '
   hu: 'Senior full stack fejlesztő, aki karbantartható vállalati alkalmazásokat épít
     Java/Spring Boot és Angular technológiákkal. 4+ év vállalati tapasztalat. Nyelvészeti
-    PhD — a strukturális elemzést rendszertervezésre és tiszta architektúrára alkalmazom.
+    PhD — a strukturális elemzést elosztott rendszerek tervezésére és adatmodellezésre
+    alkalmazom.
 
-    Dokumentálatlan legacy rendszerek stabilizálása, kiszámítható API-k tervezése,
-    reszponzív, tesztelhető frontendek építése. Fókusz: end-to-end ownership — adatbázistól
-    UI-ig, refaktorálástól dokumentációig.
+    Specialitásom a legacy rendszerek stabilizálása, reziliencia minták (Saga, Outbox)
+    implementálása, és kiszámítható, tesztelhető frontendek építése. Fókusz: end-to-end
+    ownership — az adatbázis-architektúrától a UI-ig, biztosítva a hosszú távú karbantarthatóságot.
 
     Munkastílus: remote-first, async-friendly, írott specifikációk. Take-home feladatokban
-    és mélyreható technikai beszélgetésekben teljesedem ki.
+    és mélyreható technikai beszélgetésekben teljesedem ki a live coding helyett.
 
     '
 title:
