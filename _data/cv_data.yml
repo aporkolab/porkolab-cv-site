@@ -37,7 +37,10 @@ education:
     en: 'Intensive training: Java Backend, Frontend Development, Computer Science
       fundamentals.'
     hu: 'Intenzív képzés: Java backend, frontend fejlesztés, számítástechnikai alapok.'
-  institution: Training 360 / StudiCore / OKTÁV
+  institution:
+    de: Training 360 / StudiCore / OKTÁV
+    en: Training 360 / StudiCore / OKTÁV
+    hu: Training 360 / StudiCore / OKTÁV
   year: 2019 – 2022
 - degree:
     de: BA & MA in Ungarisch- und Geschichtslehramt (Mit Auszeichnung)

@@ -1360,7 +1360,7 @@ assign t_scope_domain = "Domain" %} {% assign t_scope_capability =
       <div class="xp-item" style="border-left: 2px solid var(--accent)">
         <div class="xp-header">
           <div class="xp-role">{{ edu.degree[lang] }}</div>
-          <div class="xp-meta">{{ edu.institution }} / {{ edu.year }}</div>
+          <div class="xp-meta">{% if edu.institution[lang] %}{{ edu.institution[lang] }}{% else %}{{ edu.institution }}{% endif %} / {{ edu.year }}</div>
         </div>
         <p style="color: #888; margin: 0">{{ edu.details[lang] }}</p>
       </div>
