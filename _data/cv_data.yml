@@ -11,9 +11,9 @@ contact:
   usesSite: https://adamporkolab.com/uses
   website: https://aporkolab.com
 downloads:
-  de: https://pub-c677684c572248f4ae32cfb9fc6b6972.r2.dev/cv_public_de_default_20260109_152512.pdf
-  en: https://pub-c677684c572248f4ae32cfb9fc6b6972.r2.dev/cv_public_en_default_20260109_152458.pdf
-  hu: https://pub-c677684c572248f4ae32cfb9fc6b6972.r2.dev/cv_public_hu_default_20260109_152506.pdf
+  de: ''
+  en: ''
+  hu: ''
 education:
 - degree:
     de: Dr. phil. in Linguistik (Summa Cum Laude)
@@ -23,7 +23,10 @@ education:
     de: Strukturanalyse und kognitive Systeme. Fokus auf systematische Mustererkennung.
     en: Structural analysis and cognitive systems. Focus on systematic pattern recognition.
     hu: Strukturális analízis és kognitív rendszerek. Fókuszban a szisztematikus mintafelismerés.
-  institution: University of Pécs
+  institution:
+    de: Universität Pécs
+    en: University of Pécs
+    hu: Pécsi Tudományegyetem (PTE)
   year: 2013 – 2018
 - degree:
     de: Zertifizierungen für Softwaretechnik
@@ -44,7 +47,10 @@ education:
     de: Doppeltes Lehramtsstudium, mit Auszeichnung abgeschlossen.
     en: Dual major program, completed with distinction.
     hu: Kettős tanári szak, kitűnő minősítéssel.
-  institution: University of Pécs
+  institution:
+    de: Universität Pécs
+    en: University of Pécs
+    hu: Pécsi Tudományegyetem (PTE)
   year: 2007 – 2012
 experience:
 - company: Deutsche Telekom
@@ -61,10 +67,9 @@ experience:
     - Collaborated async with international teams to stabilize critical production
       flows.
     hu:
-    - Reziliens mikroszolgáltatások implementálása Saga és Outbox mintákkal a magas
-      rendelkezésre állásért.
-    - Legacy monolit rendszerek refaktorálása karbantartható, domain-vezérelt modulokká.
-    - Aszinkron együttműködés nemzetközi csapatokkal a kritikus éles folyamatok stabilizálásáért.
+    - Mikroszolgáltatások fejlesztése hibatűrő mintákkal (Saga, Outbox).
+    - Régi, monolitikus kód szétbontása kisebb, jobban karbantartható modulokra.
+    - Nemzetközi csapattal dolgoztam, főként írásos egyeztetéssel.
   location:
     de: Remote (DE/HU)
     en: Remote (DE/HU)
@@ -85,9 +90,8 @@ experience:
       and JavaScript.
     - Implemented CI/CD pipelines and optimized database query performance.
     hu:
-    - Skálázható gamifikált tanulási platformok tervezése és fejlesztése PHP (Laminas)
-      és JavaScript alapokon.
-    - CI/CD pipeline-ok implementálása és adatbázis-lekérdezések optimalizálása.
+    - Játékosított oktatási platformok fejlesztése PHP-ban (Laminas) és JavaScript-ben.
+    - Automatikus build/deploy folyamatok javítása, lassú adatbázis-lekérdezések gyorsítása.
   location:
     de: Pécs, Ungarn
     en: Pécs, Hungary
@@ -97,27 +101,29 @@ experience:
     de: Full Stack Developer (PHP / JavaScript / Agile)
     en: Full Stack Developer (PHP / JavaScript / Agile)
     hu: Full Stack Fejlesztő (PHP / JavaScript / Agile)
-- company: Baranya County Police Headquarters
+- company:
+    de: Polizeipräsidium Komitat Baranya
+    en: Baranya County Police Headquarters
+    hu: Baranya Megyei Rendőr-főkapitányság
   details:
     de:
-    - Betrieb kritischer Infrastruktur in einer Hochsicherheits-Behördenumgebung.
-    - Unterstützung interner Entwicklungsteams bei sicheren Deployment-Strategien.
+    - Entwicklung interner Tools und Skripte (PHP) mit erfahrenem Kollegen.
+    - Wartung der Infrastruktur in einer Hochsicherheits-Behördenumgebung.
     en:
-    - Operated critical infrastructure in a high-security public sector environment.
-    - Supported internal development teams with secure deployment strategies.
+    - Developed internal tools and scripts (PHP) alongside a senior colleague.
+    - Maintained infrastructure in a high-security public sector environment.
     hu:
-    - Kritikus infrastruktúra üzemeltetése magas biztonsági követelményű közszféra
-      környezetben.
-    - Belső fejlesztői csapatok támogatása biztonságos deployment stratégiákkal.
+    - Belső toolok és scriptek fejlesztése (PHP) tapasztalt kolléga mellett.
+    - Infrastruktúra karbantartása fokozott biztonsági környezetben.
   location:
     de: Pécs, Ungarn
     en: Pécs, Hungary
     hu: Pécs, Magyarország
   period: 2021 – 2023
   role:
-    de: IT-Spezialist (Netzwerksicherheit & Systeme)
-    en: IT Specialist (Network Security & Systems)
-    hu: IT Specialista (Hálózatbiztonság & Rendszerek)
+    de: IT-Spezialist & Entwickler interner Tools
+    en: IT Specialist & Internal Tools Developer
+    hu: IT Specialista & Belső eszközök fejlesztője
 - company: InnoTeq
   details:
     de:
@@ -128,8 +134,8 @@ experience:
       architectures.
     - Focused on object-oriented design patterns and clean code principles.
     hu:
-    - Vállalati szintű Java (Spring Boot) és Angular architektúrák alapjainak elsajátítása.
-    - Fókuszban az objektumorientált tervezési minták és a tiszta kód elvei.
+    - Bevezetés a vállalati Java (Spring Boot) és Angular fejlesztésbe.
+    - OOP tervezési minták és tiszta kód elvek gyakorlati alkalmazása.
   location:
     de: Pécs, Ungarn
     en: Pécs, Hungary
@@ -139,7 +145,10 @@ experience:
     de: Softwareentwickler-Praktikant (Java/Spring)
     en: Software Development Intern (Java/Spring)
     hu: Szoftverfejlesztő gyakornok (Java/Spring)
-- company: University of Pécs
+- company:
+    de: Universität Pécs
+    en: University of Pécs
+    hu: Pécsi Tudományegyetem (PTE)
   details:
     de:
     - Design von Metadaten-Schemata und strukturierten Datensätzen für groß angelegte
@@ -150,9 +159,8 @@ experience:
       analysis.
     - Managed research archives and automated data processing workflows.
     hu:
-    - Metadta-sémák és strukturált adatkészletek tervezése nagyléptékű nyelvészeti
-      elemzéshez.
-    - Kutatási archívumok kezelése és adatfeldolgozási folyamatok automatizálása.
+    - Nyelvészeti adatbázisok struktúrájának megtervezése és karbantartása.
+    - Kutatási anyagok rendszerezése, adatfeldolgozás scriptelése.
   location:
     de: Pécs, Ungarn
     en: Pécs, Hungary
@@ -194,31 +202,31 @@ headings:
   skills:
     de: Fähigkeiten
     en: Tech Stack & Capabilities
-    hu: Technológiai Stack
+    hu: Használt technológiák
   summary:
     de: Senior Engineering Profil
     en: Senior Engineering Profile
-    hu: Senior Mérnöki Profil
+    hu: Bemutatkozás
 interests:
 - description:
     de: Erforschung komplexer narrativer Architekturen. International veröffentlicht.
     en: Exploring complex narrative architectures and futuristic systems. Published
       internationally.
-    hu: Komplex narratív architektúrák és futurisztikus rendszerek. Nemzetközi publikációk.
+    hu: Novellákat írok, külföldi magazinoknak is. Szeretem a jövőbe helyezett történeteket.
   name:
     de: Autor spekulativer Fiktion
     en: Speculative Fiction Author
-    hu: Spekulatív fikciós író
+    hu: Sci-fi / spekulatív fikció író
 - description:
     de: Linguistischer Strukturalismus für Software-Muster, API-Design und Domain-Modellierung.
     en: Applying linguistic structuralism to software patterns, API design, and domain
       modeling.
-    hu: Nyelvészeti strukturalizmus alkalmazása szoftveres mintákra, API és domain
-      modellezésre.
+    hu: 'A nyelvészeti hátteremet használom a szoftvertervezésben: rendszerek felépítése,
+      API-k, adatmodellek.'
   name:
     de: Systemdesign & Architektur
     en: System Design & Architecture
-    hu: Rendszertervezés és architektúra
+    hu: Rendszertervezés
 languages:
 - name:
     de: Ungarisch (Muttersprache)
@@ -244,17 +252,19 @@ public_blacklist:
 - linkedin
 senior_scope:
 - capability:
-    de: Modul-Dekomposition, API-Lifecycle-Design, Domain-Boundary-Entscheidungen
-    en: Module decomposition, API lifecycle design, domain boundary decisions
-    hu: Modul-dekompozíció, API életciklus tervezés, domain határok meghatározása
+    de: Features eigenständig von Datenbank bis UI umsetzen, Orientierung in unbekannten
+      Codebasen
+    en: Taking features from database to UI independently, navigating unfamiliar codebases
+    hu: Feladatok önálló végigvitele adatbázistól UI-ig, ismeretlen kódbázisokban
+      eligazodás
   domain:
-    de: Systemarchitektur
-    en: System Architecture
-    hu: Rendszerarchitektúra
+    de: Full-Stack-Verantwortung
+    en: Full Stack Ownership
+    hu: Teljes stack átlátása
 - capability:
     de: Event-Driven Patterns, Kafka, Resilience (Retry/Circuit Breaker/DLQ)
     en: Event-driven patterns, Kafka, resilience (retry/circuit breaker/DLQ)
-    hu: Eseményvezérelt minták, Kafka, reziliencia (retry/circuit breaker/DLQ)
+    hu: Eseményalapú minták, Kafka, hibatűrés (retry, circuit breaker, DLQ)
   domain:
     de: Verteilte Systeme
     en: Distributed Systems
@@ -262,15 +272,16 @@ senior_scope:
 - capability:
     de: Refactoring undokumentierter Systeme unter Produktionsdruck
     en: Refactoring undocumented systems under production pressure
-    hu: Dokumentálatlan rendszerek refaktorálása production nyomás alatt
+    hu: Dokumentálatlan rendszerek átírása éles üzem mellett
   domain:
     de: Legacy-Stabilisierung
     en: Legacy Stabilization
-    hu: Legacy stabilizálás
+    hu: Régi kód karbantartása
 - capability:
     de: Clean Architecture, testbares Design, Wartbarkeit-zuerst-Mentalität
     en: Clean architecture, testable design, maintainability-first mindset
-    hu: Clean architecture, tesztelhető design, karbantarthatóság-első szemlélet
+    hu: Clean architecture, tesztelhető design, karbantarthatóságra törekvés (maintainability-first
+      mindset)
   domain:
     de: Codequalität
     en: Code Quality
@@ -278,19 +289,20 @@ senior_scope:
 - capability:
     de: Async-First-Workflows, schriftliche Spezifikationen, internationale Teamkoordination
     en: Async-first workflows, written specs, international team coordination
-    hu: Async-first munkafolyamatok, írott specifikációk, nemzetközi csapat-koordináció
+    hu: Írásos egyeztetés, specifikációk, nemzetközi csapatban napi szintű részvétel,
+      ticket alapú munka
   domain:
     de: Remote-Zusammenarbeit
     en: Remote Collaboration
-    hu: Távoli együttműködés
+    hu: Távmunka
 - capability:
     de: Logging-Strategie, Nachverfolgbarkeit, Debugging verteilter Abläufe
     en: Logging strategy, traceability, debugging distributed flows
-    hu: Naplózási stratégia, nyomonkövethetőség, elosztott folyamatok debugolása
+    hu: Logolás megtervezése, hibakeresés összetett rendszerekben
   domain:
     de: Observability
     en: Observability
-    hu: Megfigyelhetőség
+    hu: Monitorozás
 skills:
   backend:
   - de: Java 21 & Spring-Ökosystem (Boot, MVC, Data, Security)
@@ -298,7 +310,7 @@ skills:
     hu: Java 21 & Spring ökoszisztéma (Boot, MVC, Data, Security)
   - de: Verteilte Systeme & Event-Driven Architecture
     en: Distributed Systems & Event-Driven Architecture
-    hu: Elosztott rendszerek & eseményvezérelt architektúra
+    hu: Elosztott rendszerek, eseményalapú felépítés
   - de: Resilience Patterns (Circuit Breaker, Retry, DLQ, Outbox)
     en: Resilience Patterns (Circuit Breaker, Retry, DLQ, Outbox)
     hu: Reziliencia minták (Circuit Breaker, Retry, DLQ, Outbox)
@@ -314,7 +326,7 @@ skills:
   devops:
   - de: Docker & Container-Orchestrierung
     en: Docker & Container Orchestration
-    hu: Docker & konténer-orkesztráció
+    hu: Docker, konténerek kezelése
   - de: CI/CD-Pipeline-Design (GitHub Actions, Jenkins)
     en: CI/CD Pipeline Design (GitHub Actions, Jenkins)
     hu: CI/CD pipeline tervezés (GitHub Actions, Jenkins)
@@ -333,30 +345,30 @@ skills:
     hu: Vállalati komponens-architektúra & állapotkezelés
   - de: Responsive UI/UX-Implementierung
     en: Responsive UI/UX Implementation
-    hu: Reszponzív UI/UX implementáció
+    hu: Reszponzív felületek készítése
   - de: REST-API-Integration & Fehlerbehandlung
     en: REST API Integration & Error Handling
     hu: REST API integráció & hibakezelés
   methodology:
   - de: Async-First Remote-Zusammenarbeit
     en: Async-First Remote Collaboration
-    hu: Async-first távmunkás együttműködés
+    hu: Távmunka írásos kommunikációval
   - de: Testcontainers & Integrationstests
     en: Testcontainers & Integration Testing
     hu: Testcontainers & integrációs tesztelés
   - de: Observability & Strukturiertes Logging
     en: Observability & Structured Logging
-    hu: Megfigyelhetőség & strukturált naplózás
+    hu: Monitorozás, strukturált logolás
   writing:
   - de: Technische Dokumentation & Wissensarchitektur
     en: Technical Documentation & Knowledge Architecture
     hu: Technikai dokumentáció & tudásbázis-építés
   - de: Architecture Decision Records (ADR) & Tech-Blogging
     en: Architecture Decision Records (ADR) & Tech Blogging
-    hu: Architekturális döntési rekordok (ADR) & technikai blogolás
+    hu: Döntések dokumentálása (ADR), szakmai blog
 summary:
   de: 'Senior Full Stack Engineer für wartbare Enterprise-Anwendungen mit Java/Spring
-    Boot und Angular. 4+ Jahre in Enterprise-Umgebungen. Promotion in Linguistik —
+    Boot und Angular. 5 Jahre in Enterprise-Umgebungen. Promotion in Linguistik —
     strukturelle Analyse angewandt auf verteilte Systeme und Datenmodellierung.
 
     Spezialisiert auf die Stabilisierung von Legacy-Systemen, Implementierung von
@@ -370,7 +382,7 @@ summary:
 
     '
   en: 'Senior Full Stack Engineer building maintainable enterprise applications with
-    Java/Spring Boot and Angular. 4+ years in enterprise environments. PhD in Linguistics
+    Java/Spring Boot and Angular. 5 years in enterprise environments. PhD in Linguistics
     — trained in structural analysis, which I apply to distributed system design and
     data modeling.
 
@@ -383,17 +395,16 @@ summary:
     engineering thinking rather than live coding.
 
     '
-  hu: 'Senior full stack fejlesztő, aki karbantartható vállalati alkalmazásokat épít
-    Java/Spring Boot és Angular technológiákkal. 4+ év vállalati tapasztalat. Nyelvészeti
-    PhD — a strukturális elemzést elosztott rendszerek tervezésére és adatmodellezésre
-    alkalmazom.
+  hu: 'Full stack fejlesztő, 5 év tapasztalattal nagyvállalati Java/Spring Boot és
+    Angular projekteken. Nyelvészeti PhD-m során megtanultam rendszerekben gondolkodni
+    — ezt használom az adatmodellezésben és a komplex üzleti logika felépítésében.
 
-    Specialitásom a legacy rendszerek stabilizálása, reziliencia minták (Saga, Outbox)
-    implementálása, és kiszámítható, tesztelhető frontendek építése. Fókusz: end-to-end
-    ownership — az adatbázis-architektúrától a UI-ig, biztosítva a hosszú távú karbantarthatóságot.
+    Erősségem a meglévő, rosszul dokumentált kódbázisok rendberakása és a hibatűrő
+    megoldások kialakítása. Szeretek egy feladatot végigvinni az adatbázistól a felhasználói
+    felületig.
 
-    Munkastílus: remote-first, async-friendly, írott specifikációk. Take-home feladatokban
-    és mélyreható technikai beszélgetésekben teljesedem ki a live coding helyett.
+    Távmunkában dolgozom, írásos egyeztetést preferálok a meetingek helyett. Interjún
+    szívesebben oldok meg házi feladatot, mint live coding feladatokat.
 
     '
 title:
