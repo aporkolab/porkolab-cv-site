@@ -1134,7 +1134,7 @@ assign t_scope_domain = "Domain" %} {% assign t_scope_capability =
                 margin-bottom: 1rem;
               "
         >
-          {{ exp.company }} • {{ exp.period }}
+          {% if exp.company[lang] %}{{ exp.company[lang] }}{% else %}{{ exp.company }}{% endif %} • {{ exp.period }}
         </div>
         <ul style="list-style: none; color: var(--dim)">
           {% for item in exp.details[lang] %}
