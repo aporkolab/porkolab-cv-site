@@ -3102,11 +3102,12 @@ setTimeout(() => h?.remove(), 1000);
     // Trigger confetti on special interactions
     window.triggerConfetti = (x, y, count) => createConfetti(x || window.innerWidth / 2, y || window.innerHeight / 3, count || 80);
 
-    // Confetti on download button click only
+    // Confetti on download button click only (doesn't block the link)
     document.querySelectorAll('.dl-btn').forEach(btn => {
       btn.addEventListener('click', (e) => {
-        const rect = e.target.getBoundingClientRect();
+        const rect = btn.getBoundingClientRect();
         createConfetti(rect.left + rect.width / 2, rect.top, 60);
+        // Don't prevent default - let the link work normally
       });
     });
   })();
