@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://cv.adamporkolab.com/sitemap.xml
+Sitemap: https://aporkolab.com/sitemap.xml
