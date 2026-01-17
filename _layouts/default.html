@@ -1951,8 +1951,8 @@ assign t_scope_domain = "Domain" %} {% assign t_scope_capability =
               <span class="github-stat-label">Followers</span>
             </div>
             <div class="github-stat-item">
-              <span class="github-stat-num" id="gh-stars">--</span>
-              <span class="github-stat-label">Stars</span>
+              <span class="github-stat-num" id="gh-years">--</span>
+              <span class="github-stat-label">Years</span>
             </div>
           </div>
         </a>
@@ -2950,34 +2950,33 @@ setTimeout(() => h?.remove(), 1000);
   (function fetchGitHubStats() {
     const username = 'APorkolab';
 
-    // Fetch user data
+    // Fetch user data (repos, followers, account age)
     fetch(`https://api.github.com/users/${username}`)
       .then(res => res.json())
       .then(data => {
         const reposEl = document.getElementById('gh-repos');
         const followersEl = document.getElementById('gh-followers');
+        const yearsEl = document.getElementById('gh-years');
+
         if (reposEl) reposEl.textContent = data.public_repos || '50+';
         if (followersEl) followersEl.textContent = data.followers || '10+';
+
+        // Calculate years on GitHub
+        if (yearsEl && data.created_at) {
+          const createdYear = new Date(data.created_at).getFullYear();
+          const currentYear = new Date().getFullYear();
+          const years = currentYear - createdYear;
+          yearsEl.textContent = years > 0 ? years + '+' : '1';
+        }
       })
       .catch(() => {
         // Fallback values on error
         const reposEl = document.getElementById('gh-repos');
         const followersEl = document.getElementById('gh-followers');
+        const yearsEl = document.getElementById('gh-years');
         if (reposEl) reposEl.textContent = '50+';
         if (followersEl) followersEl.textContent = '10+';
-      });
-
-    // Fetch repos to count stars
-    fetch(`https://api.github.com/users/${username}/repos?per_page=100`)
-      .then(res => res.json())
-      .then(repos => {
-        const totalStars = repos.reduce((acc, repo) => acc + (repo.stargazers_count || 0), 0);
-        const starsEl = document.getElementById('gh-stars');
-        if (starsEl) starsEl.textContent = totalStars || '20+';
-      })
-      .catch(() => {
-        const starsEl = document.getElementById('gh-stars');
-        if (starsEl) starsEl.textContent = '20+';
+        if (yearsEl) yearsEl.textContent = '5+';
       });
   })();
 
@@ -3072,21 +3071,13 @@ setTimeout(() => h?.remove(), 1000);
     // Trigger confetti on special interactions
     window.triggerConfetti = (x, y, count) => createConfetti(x || window.innerWidth / 2, y || window.innerHeight / 3, count || 80);
 
-    // Confetti on download button click
+    // Confetti on download button click only
     document.querySelectorAll('.dl-btn').forEach(btn => {
       btn.addEventListener('click', (e) => {
         const rect = e.target.getBoundingClientRect();
         createConfetti(rect.left + rect.width / 2, rect.top, 60);
       });
     });
-
-    // Confetti burst on first visit (once per session)
-    if (!sessionStorage.getItem('welcomed')) {
-      sessionStorage.setItem('welcomed', 'true');
-      setTimeout(() => {
-        createConfetti(window.innerWidth / 2, window.innerHeight / 4, 100);
-      }, 2500);
-    }
   })();
 </script>
 <div
