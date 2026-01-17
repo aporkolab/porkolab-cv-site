@@ -39,23 +39,23 @@
   />
 
   
-  <!-- Optimized: Reduced font weights, added fetchpriority -->
+  <!-- Fonts: Inter for body, JetBrains Mono for code, Syncopate for display -->
   <link
           rel="preload"
           as="style"
-          href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&family=JetBrains+Mono:wght@400&family=Syncopate:wght@700&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&family=Syncopate:wght@400;700&display=swap"
           fetchpriority="high"
   />
   <link
           rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&family=JetBrains+Mono:wght@400&family=Syncopate:wght@700&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&family=Syncopate:wght@400;700&display=swap"
           media="print"
           onload="this.media='all'"
   />
   <noscript>
     <link
             rel="stylesheet"
-            href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&family=JetBrains+Mono:wght@400&family=Syncopate:wght@700&display=swap"
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&family=Syncopate:wght@400;700&display=swap"
     />
   </noscript>
 
@@ -84,7 +84,10 @@
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://aporkolab.com/" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta property="og:image" content="/assets/img/og-preview.png" />
+  <meta property="og:image" content="{{ site.url }}/assets/img/og-preview.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:image" content="{{ site.url }}/assets/img/og-preview.png" />
 
   <!-- JSON-LD Structured Data -->
   <script type="application/ld+json">
@@ -167,7 +170,7 @@
     body {
       background-color: var(--bg);
       color: var(--fg);
-      font-family: 'Outfit', sans-serif;
+      font-family: 'Inter', sans-serif;
       font-size: 1rem;
       line-height: 1.6;
       overflow-x: hidden;
@@ -190,8 +193,7 @@
     .identity-panel {
       position: sticky;
       top: 2rem;
-      max-height: calc(100vh - 4rem);
-      overflow-y: auto;
+      height: fit-content;
       display: flex;
       flex-direction: column;
       justify-content: flex-start;
@@ -200,19 +202,7 @@
       backdrop-filter: blur(20px);
       border: 1px solid var(--border);
       border-radius: var(--radius);
-      scrollbar-width: thin;
-      scrollbar-color: var(--accent) transparent;
       box-shadow: 0 0 40px rgba(0, 0, 0, 0.5);
-    }
-    .identity-panel::-webkit-scrollbar {
-      width: 4px;
-    }
-    .identity-panel::-webkit-scrollbar-track {
-      background: transparent;
-    }
-    .identity-panel::-webkit-scrollbar-thumb {
-      background: var(--accent);
-      border-radius: 2px;
     }
 
     /* --- 4. TARTALOM (MAIN) --- */
@@ -610,7 +600,7 @@
 
     /* Typography & Misc */
     h1 {
-      font-family: 'Outfit', sans-serif;
+      font-family: 'Inter', sans-serif;
       font-weight: 800;
       font-size: 2.7rem;
       line-height: 1;
@@ -678,7 +668,7 @@
       gap: 2rem;
     }
     .interest-item h3 {
-      font-family: 'Outfit', sans-serif;
+      font-family: 'Inter', sans-serif;
       font-size: 1.3rem;
       font-weight: 700;
       color: #fff;
@@ -869,47 +859,92 @@
       min-width: 0 !important;
     }
 
-    /* Print */
+    /* Print Stylesheet - Professional CV Print */
     @media print {
+      * {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
       body {
-        background-color: #fff !important;
+        background: #fff !important;
         color: #000 !important;
+        font-size: 11pt !important;
+        line-height: 1.4 !important;
+      }
+      .layout-wrapper {
+        display: block !important;
+        max-width: 100% !important;
+        padding: 0 !important;
+        gap: 0 !important;
+      }
+      .identity-panel {
+        position: relative !important;
+        top: 0 !important;
+        background: #fff !important;
+        border: none !important;
+        box-shadow: none !important;
+        padding: 0 0 1rem 0 !important;
+        margin-bottom: 1rem !important;
+        border-bottom: 2px solid #333 !important;
+      }
+      .data-panel {
+        padding: 0 !important;
       }
       .identity-panel,
       .project-card,
       .skill-box,
+      .skill-chip,
       .modal-content {
         background: #fff !important;
-        border: 1px solid #ddd !important;
+        border-color: #ccc !important;
         box-shadow: none !important;
         color: #000 !important;
       }
-      h1,
-      h2,
-      h3,
-      .role-title,
-      .xp-role {
+      h1, h2, h3, .role-title, .xp-role, .xp-company {
         color: #000 !important;
       }
-      .noise-overlay,
-      .bg-orb,
-      .lang-switch,
-      button,
-      .dl-btn,
-      .prj-actions {
+      h1 { font-size: 24pt !important; }
+      h2 { font-size: 14pt !important; page-break-after: avoid !important; }
+      h3 { font-size: 12pt !important; }
+      .role-title { font-size: 12pt !important; color: #333 !important; }
+      p, li, .skill-chip { font-size: 10pt !important; }
+      .skill-chip {
+        border: 1px solid #999 !important;
+        padding: 2px 8px !important;
+        margin: 2px !important;
+      }
+      /* Hide decorative elements */
+      .noise-overlay, .bg-orb, .lang-switch, .theme-toggle,
+      .dl-btn, .prj-actions, .terminal-intro, .scroll-progress,
+      .cursor-glow, .floating-icons, .back-to-top, .skip-link,
+      .status-indicator, .glitch-overlay, .card-shine,
+      .social-btn svg, .github-stats-card, .profile-image-container {
         display: none !important;
       }
-      a::after {
+      /* Show URLs for links */
+      a[href^="http"]::after {
         content: ' (' attr(href) ')';
-        font-size: 0.8em;
-        color: #555;
+        font-size: 8pt;
+        color: #666;
+        word-break: break-all;
       }
-      .senior-scope-table thead {
-        background: #333 !important;
+      a[href^="mailto"]::after {
+        content: ' (' attr(href) ')';
+        font-size: 8pt;
+        color: #666;
       }
-      .senior-scope-table td:first-child {
-        color: #333 !important;
+      /* Page breaks */
+      section { page-break-inside: avoid; }
+      .xp-item { page-break-inside: avoid; }
+      .project-card { page-break-inside: avoid; }
+      /* Table styling */
+      .senior-scope-table { border-collapse: collapse !important; }
+      .senior-scope-table th, .senior-scope-table td {
+        border: 1px solid #ccc !important;
+        padding: 4px 8px !important;
       }
+      .senior-scope-table thead { background: #eee !important; }
+      .senior-scope-table td:first-child { color: #333 !important; }
     }
 
     /* --- ACCESSIBILITY: Skip Link --- */
@@ -1218,51 +1253,35 @@
 
     /* GitHub Stats Card */
     .github-stats-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 1rem;
       margin-top: 1.5rem;
+      border-radius: 12px;
+      overflow: hidden;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .github-stats-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 20px rgba(112, 0, 255, 0.2);
     }
     .github-stats-card a {
-      text-decoration: none;
-      color: inherit;
       display: block;
     }
-    .github-stats-header {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      margin-bottom: 0.8rem;
-      font-size: 0.75rem;
-      color: var(--dim);
-      text-transform: uppercase;
-      letter-spacing: 1px;
+    .github-stats-card img {
+      display: block;
     }
-    .github-stats-header svg {
-      width: 16px;
-      height: 16px;
-      fill: currentColor;
+
+    /* Focus Indicators for Keyboard Navigation */
+    a:focus-visible,
+    button:focus-visible,
+    input:focus-visible,
+    [tabindex]:focus-visible {
+      outline: 2px solid var(--secondary);
+      outline-offset: 3px;
     }
-    .github-stats-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0.8rem;
-    }
-    .github-stat {
-      text-align: center;
-    }
-    .github-stat-value {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 1.3rem;
-      color: var(--secondary);
-      font-weight: 700;
-    }
-    .github-stat-label {
-      font-size: 0.7rem;
-      color: var(--dim);
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
+    .social-btn:focus-visible,
+    .dl-btn:focus-visible {
+      outline: 2px solid var(--secondary);
+      outline-offset: 3px;
+      box-shadow: 0 0 15px rgba(0, 243, 255, 0.4);
     }
 
     /* Role Title Wrapper */
@@ -1748,25 +1767,17 @@ assign t_scope_domain = "Domain" %} {% assign t_scope_capability =
       {% if cv.contact.github %}
       <div class="github-stats-card">
         <a href="{{ cv.contact.github }}" target="_blank" rel="noopener">
-          <div class="github-stats-header">
-            <svg viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
-            GitHub
-          </div>
-          <div class="github-stats-grid">
-            <div class="github-stat">
-              <div class="github-stat-value" id="github-repos">50+</div>
-              <div class="github-stat-label">Repos</div>
-            </div>
-            <div class="github-stat">
-              <div class="github-stat-value" id="github-contributions">2024</div>
-              <div class="github-stat-label">Since</div>
-            </div>
-          </div>
+          <img
+            src="https://github-readme-stats.vercel.app/api?username=APorkolab&show_icons=true&hide_title=true&hide_border=true&bg_color=0a0a0c&text_color=b0b0c0&icon_color=7000ff&title_color=00f3ff&include_all_commits=true&count_private=true&custom_title=GitHub"
+            alt="GitHub Stats"
+            loading="lazy"
+            style="width: 100%; border-radius: 8px;"
+          />
         </a>
       </div>
       {% endif %}
 
-      <div>
+      <div style="margin-top: 1.5rem;">
         {% assign pdf_url = cv.downloads[lang] %} {% unless pdf_url %} {%
         assign pdf_url = cv.downloads['en'] %} {% endunless %} {% if pdf_url
         %}
