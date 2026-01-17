@@ -1,0 +1,36 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(cat:*)",
+      "Bash(git -C /Users/aporkolab/porkolab-cv-site log --oneline -20)",
+      "Bash(git -C /Users/aporkolab/porkolab-cv-site log 272cc44 -1 --stat)",
+      "Bash(git -C /Users/aporkolab/porkolab-cv-site log 272cc44 -1 --format=fuller)",
+      "Bash(git -C /Users/aporkolab/porkolab-cv-site log --all --grep=\"pdf\\|PDF\" --oneline)",
+      "Bash(git -C /Users/aporkolab/porkolab-cv-site log 126de7c -1 --stat)",
+      "Bash(find:*)",
+      "Bash(git -C /Users/aporkolab/porkolab-cv-site remote:*)",
+      "Bash(git -C /Users/aporkolab/porkolab-cv-site log --all --oneline)",
+      "Bash(git -C /Users/aporkolab/porkolab-cv-site show:*)",
+      "Bash(git -C /Users/aporkolab/porkolab-cv-site config:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)",
+      "Bash(git pull:*)",
+      "Bash(git stash:*)",
+      "Bash(git rebase:*)",
+      "Bash(npx lighthouse:*)",
+      "Bash(ls:*)",
+      "Bash(node -e:*)",
+      "Bash(curl:*)",
+      "Bash(bundle exec jekyll build:*)",
+      "Bash(python3:*)",
+      "Bash(pip3 install:*)",
+      "Bash(npm install:*)",
+      "Bash(wrangler deploy:*)",
+      "Bash(CLOUDFLARE_API_TOKEN=\"FJmIOdGeV_ru9ZQydKxfP1sgKmDV6UVunzpuLLR0\" wrangler deploy:*)",
+      "Bash(CLOUDFLARE_EMAIL=\"adam.porkolab@gmail.com\" CLOUDFLARE_API_KEY=\"b5ed0f9e2f38fb1ff5b204947f57c29cf42d5\" wrangler deploy:*)",
+      "Bash(git rm:*)",
+      "Bash(git filter-branch:*)"
+    ]
+  }
+}
