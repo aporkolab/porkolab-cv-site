@@ -2,9 +2,8 @@ name: Update GitHub Stats
 
 on:
   schedule:
-    # Naponta egyszer, reggel 6-kor (UTC)
     - cron: '0 6 * * *'
-  workflow_dispatch: # Kézi futtatás is lehetséges
+  workflow_dispatch:
 
 jobs:
   update-stats:
@@ -17,32 +16,77 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GH_STATS_TOKEN }}
         run: |
-          # GraphQL query a contribution adatokhoz
           CURRENT_YEAR=$(date +%Y)
           LAST_YEAR=$((CURRENT_YEAR - 1))
 
-          # Lekérdezzük a contribution calendar adatokat
+          echo "Fetching stats for $LAST_YEAR and $CURRENT_YEAR..."
+
+          # GraphQL query
+          QUERY='query($login: String!, $from: DateTime!, $to: DateTime!) {
+            user(login: $login) {
+              repositories(first: 100, ownerAffiliations: OWNER) {
+                totalCount
+                nodes { isPrivate }
+              }
+              contributionsCollection(from: $from, to: $to) {
+                totalCommitContributions
+                restrictedContributionsCount
+                contributionCalendar {
+                  totalContributions
+                  weeks {
+                    contributionDays {
+                      contributionCount
+                      date
+                    }
+                  }
+                }
+              }
+            }
+          }'
+
+          # Variables
+          VARIABLES=$(cat <<EOF
+          {
+            "login": "APorkolab",
+            "from": "${LAST_YEAR}-01-01T00:00:00Z",
+            "to": "${CURRENT_YEAR}-12-31T23:59:59Z"
+          }
+          EOF
+          )
+
+          # Make request
           RESPONSE=$(curl -s -H "Authorization: bearer $GH_TOKEN" \
             -H "Content-Type: application/json" \
             -X POST https://api.github.com/graphql \
-            -d '{
-              "query": "query { user(login: \"APorkolab\") { contributionsCollection(from: \"'$LAST_YEAR'-01-01T00:00:00Z\", to: \"'$CURRENT_YEAR'-12-31T23:59:59Z\") { contributionCalendar { totalContributions weeks { contributionDays { contributionCount date } } } } repositories(first: 100, ownerAffiliations: OWNER) { totalCount nodes { isPrivate } } } }"
-            }')
+            -d "$(jq -n --arg query "$QUERY" --argjson variables "$VARIABLES" '{query: $query, variables: $variables}')")
 
-          # Kinyerjük az adatokat
+          echo "API Response:"
+          echo "$RESPONSE" | jq '.'
+
+          # Check for errors
+          if echo "$RESPONSE" | jq -e '.errors' > /dev/null 2>&1; then
+            echo "GraphQL errors detected!"
+            echo "$RESPONSE" | jq '.errors'
+            exit 1
+          fi
+
+          # Extract data
           TOTAL_REPOS=$(echo "$RESPONSE" | jq '.data.user.repositories.totalCount // 0')
-          PUBLIC_REPOS=$(echo "$RESPONSE" | jq '[.data.user.repositories.nodes[] | select(.isPrivate == false)] | length')
+          PUBLIC_REPOS=$(echo "$RESPONSE" | jq '[.data.user.repositories.nodes // [] | .[] | select(.isPrivate == false)] | length')
 
-          # Contribution számok év szerint
+          # Count contributions by year
           CONTRIBUTIONS_LAST=$(echo "$RESPONSE" | jq --arg year "$LAST_YEAR" '
-            [.data.user.contributionsCollection.contributionCalendar.weeks[].contributionDays[] |
+            [.data.user.contributionsCollection.contributionCalendar.weeks // [] | .[] | .contributionDays // [] | .[] |
              select(.date | startswith($year)) | .contributionCount] | add // 0')
 
           CONTRIBUTIONS_THIS=$(echo "$RESPONSE" | jq --arg year "$CURRENT_YEAR" '
-            [.data.user.contributionsCollection.contributionCalendar.weeks[].contributionDays[] |
+            [.data.user.contributionsCollection.contributionCalendar.weeks // [] | .[] | .contributionDays // [] | .[] |
              select(.date | startswith($year)) | .contributionCount] | add // 0')
 
-          # JSON fájl létrehozása
+          echo "Results: Public=$PUBLIC_REPOS, Total=$TOTAL_REPOS, Last=$CONTRIBUTIONS_LAST, This=$CONTRIBUTIONS_THIS"
+
+          # Create JSON file
+          mkdir -p assets/data
           cat > assets/data/github-stats.json << EOF
           {
             "publicRepos": $PUBLIC_REPOS,
@@ -55,7 +99,7 @@ jobs:
           }
           EOF
 
-          echo "Stats updated:"
+          echo "Generated github-stats.json:"
           cat assets/data/github-stats.json
 
       - name: Commit and push if changed
