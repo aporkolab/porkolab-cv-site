@@ -606,7 +606,6 @@
       color: var(--secondary);
       text-transform: uppercase;
       letter-spacing: 1px;
-      margin-bottom: 1rem;
     }
     h2 {
       font-size: 1.2rem;
@@ -660,8 +659,9 @@
       gap: 2rem;
     }
     .interest-item h3 {
-      font-family: 'Space Grotesk';
+      font-family: 'Outfit', sans-serif;
       font-size: 1.3rem;
+      font-weight: 700;
       color: #fff;
       margin: 0 0 0.5rem 0;
       text-transform: uppercase;
@@ -1071,6 +1071,26 @@
       0%, 50% { opacity: 1; }
       51%, 100% { opacity: 0; }
     }
+    .terminal-skip {
+      position: absolute;
+      bottom: 30px;
+      right: 30px;
+      background: transparent;
+      border: 1px solid var(--dim);
+      color: var(--dim);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.85rem;
+      padding: 8px 16px;
+      cursor: pointer;
+      transition: all 0.3s;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .terminal-skip:hover {
+      border-color: var(--secondary);
+      color: var(--secondary);
+      background: rgba(0, 243, 255, 0.1);
+    }
 
     /* Scroll Progress Indicator */
     .scroll-progress {
@@ -1241,21 +1261,54 @@
       z-index: 10;
     }
 
-    /* Typewriter Title */
-    .typewriter-container {
-      display: inline-block;
-      overflow: hidden;
+    /* Role Title Wrapper */
+    .role-title-wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+      margin-bottom: 1rem;
     }
-    .typewriter-text {
+
+    /* Typewriter Line Animation */
+    .typewriter-line {
       display: inline-block;
       overflow: hidden;
       white-space: nowrap;
       border-right: 3px solid var(--secondary);
-      animation: typewriter 2s steps(30) forwards, blink-caret 0.75s step-end infinite;
       width: 0;
+      animation: typing-line 1.2s steps(30, end) forwards, blink-caret 0.75s step-end infinite;
     }
-    @keyframes typewriter {
+    .typewriter-line:last-child {
+      border-right: 3px solid var(--secondary);
+    }
+    @keyframes typing-line {
+      from { width: 0; }
       to { width: 100%; }
+    }
+
+    /* Only show cursor on the line being typed */
+    .typewriter-line:not(:last-child) {
+      animation: typing-line 1.2s steps(30, end) forwards, hide-caret 0s 1.2s forwards;
+    }
+    @keyframes hide-caret {
+      to { border-right-color: transparent; }
+    }
+
+    /* Responsive typewriter */
+    @media (max-width: 600px) {
+      .role-title {
+        font-size: 1rem;
+      }
+      .typewriter-line {
+        white-space: normal;
+        width: auto !important;
+        border-right: none;
+        animation: fadeSlideIn 0.8s ease-out forwards;
+      }
+      @keyframes fadeSlideIn {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
     }
 
     /* Parallax Orbs */
@@ -1371,6 +1424,7 @@
 <!-- Terminal Loading Intro -->
 <div class="terminal-intro" id="terminalIntro">
   <div class="terminal-text" id="terminalText"></div>
+  <button class="terminal-skip" id="terminalSkip" onclick="skipIntro()">SKIP [ESC]</button>
 </div>
 
 <!-- Scroll Progress Indicator -->
@@ -1516,8 +1570,12 @@ assign t_scope_domain = "Domain" %} {% assign t_scope_capability =
           {% if lang == 'hu' %}Elérhető munkára{% elsif lang == 'de' %}Verfügbar{% else %}Available for work{% endif %}
         </div>
 
-        <div class="role-title typewriter-container">
-          <span class="typewriter-text">{{ cv.title[lang] }}</span>
+        <div class="role-title-wrapper">
+          {% assign title_parts = cv.title[lang] | split: " — " %}
+          <div class="role-title typewriter-line" style="animation-delay: 0s;">{{ title_parts[0] }}</div>
+          {% if title_parts[1] %}
+          <div class="role-title typewriter-line" style="animation-delay: 1.5s;">{{ title_parts[1] }}</div>
+          {% endif %}
         </div>
         <h1 class="glitch-text" data-text="{{ cv.name[lang] }}">{{ cv.name[lang] }}</h1>
         <p style="color: var(--dim); margin-top: 1.5rem; line-height: 1.6">
@@ -1620,6 +1678,22 @@ assign t_scope_domain = "Domain" %} {% assign t_scope_capability =
         </a>
         {% endif %}
       </div>
+
+      <!-- GitHub Contribution Badge -->
+      {% if cv.contact.github %}
+      <div class="github-badge" style="margin-top: 1.5rem;">
+        <a href="{{ cv.contact.github }}" target="_blank" rel="noopener" aria-label="GitHub Activity">
+          <img
+            src="https://ghchart.rshah.org/7000ff/APorkolab"
+            alt="GitHub Contribution Chart"
+            loading="lazy"
+            style="width: 100%; border-radius: 4px; opacity: 0.85; transition: opacity 0.3s;"
+            onmouseover="this.style.opacity='1'"
+            onmouseout="this.style.opacity='0.85'"
+          />
+        </a>
+      </div>
+      {% endif %}
 
       <div>
         {% assign pdf_url = cv.downloads[lang] %} {% unless pdf_url %} {%
@@ -2322,13 +2396,30 @@ setTimeout(() => h?.remove(), 1000);
      ============================================ */
 
   /* --- 9. TERMINAL INTRO ANIMATION --- */
+
+  // Global skip function for terminal intro
+  function skipIntro() {
+    const intro = document.getElementById('terminalIntro');
+    if (intro) {
+      intro.classList.add('hidden');
+      localStorage.setItem('introSeen', 'true');
+    }
+  }
+
+  // ESC key to skip intro
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      skipIntro();
+    }
+  });
+
   (function initTerminalIntro() {
     const intro = document.getElementById('terminalIntro');
     const textContainer = document.getElementById('terminalText');
     if (!intro || !textContainer) return;
 
-    // Skip if already seen in this session
-    if (sessionStorage.getItem('introSeen')) {
+    // Skip if already seen (persisted in localStorage)
+    if (localStorage.getItem('introSeen')) {
       intro.classList.add('hidden');
       return;
     }
@@ -2349,7 +2440,7 @@ setTimeout(() => h?.remove(), 1000);
       if (lineIndex >= lines.length) {
         setTimeout(() => {
           intro.classList.add('hidden');
-          sessionStorage.setItem('introSeen', 'true');
+          localStorage.setItem('introSeen', 'true');
         }, 500);
         return;
       }
