@@ -16,4 +16,4 @@ Thumbs.db
 *.swp
 *.bak
 *.orig
-*.rej
+*.rej.claude/
