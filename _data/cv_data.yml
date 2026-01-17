@@ -11,9 +11,8 @@ contact:
   usesSite: https://adamporkolab.com/uses
   website: https://aporkolab.com
 downloads:
-  # Worker URL - deploy cloudflare-worker/cv-api.js and set this URL
-  # After deploying: https://cv-api.YOUR-SUBDOMAIN.workers.dev
-  worker_url: ''
+  # Cloudflare Worker for dynamic CV downloads (always returns latest)
+  worker_url: 'https://cv-api.aporkolab.workers.dev'
   # Fallback URLs (used if worker not configured)
   base_url: 'https://pub-c677684c572248f4ae32cfb9fc6b6972.r2.dev'
   de: 'https://pub-c677684c572248f4ae32cfb9fc6b6972.r2.dev/cv_public_de_default_20260109_152512.pdf'
