@@ -10,6 +10,15 @@
           content="Senior Full-Stack Engineer (Java/Spring & Angular) with a PhD in Linguistics. Specialist in system architecture, legacy stabilization, and clean code."
   />
 
+  <!-- Canonical URL for SEO -->
+  <link rel="canonical" href="{{ site.url }}{{ page.url | replace: 'index.html', '' }}" />
+
+  <!-- Hreflang for multilingual SEO -->
+  <link rel="alternate" hreflang="en" href="{{ site.url }}/" />
+  <link rel="alternate" hreflang="hu" href="{{ site.url }}/hu/" />
+  <link rel="alternate" hreflang="de" href="{{ site.url }}/de/" />
+  <link rel="alternate" hreflang="x-default" href="{{ site.url }}/" />
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="preconnect" href="https://cdn.jsdelivr.net" />
