@@ -1953,7 +1953,7 @@ assign t_scope_domain = "Domain" %} {% assign t_scope_capability =
         {% assign pdf_url = cv.downloads[lang] %} {% unless pdf_url %} {%
         assign pdf_url = cv.downloads['en'] %} {% endunless %} {% if pdf_url
         %}
-        <a href="{{ pdf_url }}" class="dl-btn" target="_blank"
+        <a href="{{ pdf_url }}" class="dl-btn" id="cv-download-btn" target="_blank" data-lang="{{ lang }}" data-base-url="{{ cv.downloads.base_url }}"
         >{{ t_dl }}</a
         >
         <div
@@ -2971,6 +2971,35 @@ setTimeout(() => h?.remove(), 1000);
         const currentYear = new Date().getFullYear();
         if (labelLastEl) labelLastEl.textContent = currentYear - 1;
         if (labelThisEl) labelThisEl.textContent = currentYear;
+      });
+  })();
+
+  /* --- 20b. DYNAMIC CV DOWNLOAD (R2 Bucket) --- */
+  (function initDynamicCVDownload() {
+    const downloadBtn = document.getElementById('cv-download-btn');
+    if (!downloadBtn) return;
+
+    const lang = downloadBtn.dataset.lang || 'en';
+    const baseUrl = downloadBtn.dataset.baseUrl;
+    if (!baseUrl) return;
+
+    // Try to fetch manifest.json for latest CV URLs
+    fetch(baseUrl + '/manifest.json')
+      .then(res => {
+        if (!res.ok) throw new Error('No manifest');
+        return res.json();
+      })
+      .then(manifest => {
+        // manifest.json format: { "en": "filename.pdf", "hu": "filename.pdf", "de": "filename.pdf" }
+        const latestFile = manifest[lang] || manifest['en'];
+        if (latestFile) {
+          downloadBtn.href = baseUrl + '/' + latestFile;
+          console.log('%c📄 CV URL updated from manifest', 'color: #00f3ff;');
+        }
+      })
+      .catch(() => {
+        // Manifest not found - use fallback URL from cv_data.yml (already set in href)
+        console.log('%c📄 Using fallback CV URL', 'color: #7000ff;');
       });
   })();
 
