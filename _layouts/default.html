@@ -2957,10 +2957,6 @@ setTimeout(() => h?.remove(), 1000);
 
   /* --- 20. GITHUB STATS FETCHER --- */
   (function fetchGitHubStats() {
-    const username = 'APorkolab';
-    const currentYear = new Date().getFullYear();
-    const lastYear = currentYear - 1;
-
     const publicReposEl = document.getElementById('gh-public-repos');
     const totalReposEl = document.getElementById('gh-total-repos');
     const pushesLastEl = document.getElementById('gh-pushes-last');
@@ -2968,64 +2964,23 @@ setTimeout(() => h?.remove(), 1000);
     const labelLastEl = document.getElementById('gh-label-last');
     const labelThisEl = document.getElementById('gh-label-this');
 
-    // Update labels with actual years
-    if (labelLastEl) labelLastEl.textContent = lastYear;
-    if (labelThisEl) labelThisEl.textContent = currentYear;
-
-    // Fetch user data for repo counts
-    fetch(`https://api.github.com/users/${username}`)
+    // Fetch pre-generated stats from JSON (updated daily by GitHub Actions)
+    fetch('/assets/data/github-stats.json')
       .then(res => res.json())
-      .then(data => {
-        if (publicReposEl) publicReposEl.textContent = data.public_repos || '--';
-        // Total repos = public + private (owned_private_repos if available)
-        const total = data.public_repos + (data.owned_private_repos || 0);
-        if (totalReposEl) totalReposEl.textContent = total > data.public_repos ? total : (data.public_repos + '+');
+      .then(stats => {
+        if (publicReposEl) publicReposEl.textContent = stats.publicRepos || '--';
+        if (totalReposEl) totalReposEl.textContent = stats.totalRepos || '--';
+        if (pushesLastEl) pushesLastEl.textContent = stats.contributionsLastYear || '--';
+        if (pushesThisEl) pushesThisEl.textContent = stats.contributionsThisYear || '--';
+        if (labelLastEl) labelLastEl.textContent = stats.lastYear;
+        if (labelThisEl) labelThisEl.textContent = stats.currentYear;
       })
       .catch(() => {
-        if (publicReposEl) publicReposEl.textContent = '--';
-        if (totalReposEl) totalReposEl.textContent = '--';
+        // Fallback: use current year calculations
+        const currentYear = new Date().getFullYear();
+        if (labelLastEl) labelLastEl.textContent = currentYear - 1;
+        if (labelThisEl) labelThisEl.textContent = currentYear;
       });
-
-    // Fetch events to count push activity (last 90 days available via API)
-    async function fetchAllEvents() {
-      let allEvents = [];
-      let page = 1;
-      const maxPages = 10;
-
-      while (page <= maxPages) {
-        try {
-          const res = await fetch(`https://api.github.com/users/${username}/events?per_page=100&page=${page}`);
-          const events = await res.json();
-          if (!events.length || events.length === 0) break;
-          allEvents = allEvents.concat(events);
-          if (events.length < 100) break;
-          page++;
-        } catch (e) {
-          break;
-        }
-      }
-
-      // Count commits by year
-      let countLast = 0;
-      let countThis = 0;
-
-      allEvents.forEach(event => {
-        if (event.type === 'PushEvent') {
-          const year = new Date(event.created_at).getFullYear();
-          const commits = event.payload?.commits?.length || 1;
-          if (year === lastYear) countLast += commits;
-          if (year === currentYear) countThis += commits;
-        }
-      });
-
-      if (pushesLastEl) pushesLastEl.textContent = countLast > 0 ? countLast : '--';
-      if (pushesThisEl) pushesThisEl.textContent = countThis > 0 ? countThis : '--';
-    }
-
-    fetchAllEvents().catch(() => {
-      if (pushesLastEl) pushesLastEl.textContent = '--';
-      if (pushesThisEl) pushesThisEl.textContent = '--';
-    });
   })();
 
   /* --- 21. PWA SERVICE WORKER REGISTRATION --- */
