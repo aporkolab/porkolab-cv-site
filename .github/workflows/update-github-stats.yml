@@ -21,8 +21,6 @@ jobs:
 
           echo "Fetching stats for $LAST_YEAR and $CURRENT_YEAR..."
 
-          # Simple REST API calls instead of GraphQL
-
           # Get user info
           USER_DATA=$(curl -s -H "Authorization: token $GH_TOKEN" \
             "https://api.github.com/users/APorkolab")
@@ -44,31 +42,26 @@ jobs:
             "https://api.github.com/users/APorkolab/events?per_page=100")
 
           # Count push events by year
-          CONTRIBUTIONS_LAST=$(echo "$EVENTS" | jq --arg year "$LAST_YEAR" '
-            [.[] | select(.type == "PushEvent") |
-             select(.created_at | startswith($year)) |
-             .payload.commits | length] | add // 0')
+          CONTRIBUTIONS_LAST=$(echo "$EVENTS" | jq --arg year "$LAST_YEAR" \
+            '[.[] | select(.type == "PushEvent") | select(.created_at | startswith($year)) | .payload.commits | length] | add // 0')
 
-          CONTRIBUTIONS_THIS=$(echo "$EVENTS" | jq --arg year "$CURRENT_YEAR" '
-            [.[] | select(.type == "PushEvent") |
-             select(.created_at | startswith($year)) |
-             .payload.commits | length] | add // 0')
+          CONTRIBUTIONS_THIS=$(echo "$EVENTS" | jq --arg year "$CURRENT_YEAR" \
+            '[.[] | select(.type == "PushEvent") | select(.created_at | startswith($year)) | .payload.commits | length] | add // 0')
 
           echo "Results: Public=$PUBLIC_REPOS, Total=$TOTAL_REPOS, Last=$CONTRIBUTIONS_LAST, This=$CONTRIBUTIONS_THIS"
 
-          # Create JSON file
+          # Create JSON file using jq
           mkdir -p assets/data
-          cat > assets/data/github-stats.json << ENDJSON
-{
-  "publicRepos": $PUBLIC_REPOS,
-  "totalRepos": $TOTAL_REPOS,
-  "contributionsLastYear": $CONTRIBUTIONS_LAST,
-  "contributionsThisYear": $CONTRIBUTIONS_THIS,
-  "lastYear": $LAST_YEAR,
-  "currentYear": $CURRENT_YEAR,
-  "updatedAt": "$(date -u +%Y-%m-%dT%H:%M:%SZ)"
-}
-ENDJSON
+          jq -n \
+            --argjson public "$PUBLIC_REPOS" \
+            --argjson total "$TOTAL_REPOS" \
+            --argjson last "$CONTRIBUTIONS_LAST" \
+            --argjson this "$CONTRIBUTIONS_THIS" \
+            --argjson lastYear "$LAST_YEAR" \
+            --argjson currentYear "$CURRENT_YEAR" \
+            --arg updatedAt "$(date -u +%Y-%m-%dT%H:%M:%SZ)" \
+            '{publicRepos: $public, totalRepos: $total, contributionsLastYear: $last, contributionsThisYear: $this, lastYear: $lastYear, currentYear: $currentYear, updatedAt: $updatedAt}' \
+            > assets/data/github-stats.json
 
           echo "Generated github-stats.json:"
           cat assets/data/github-stats.json
