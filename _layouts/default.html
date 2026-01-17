@@ -1420,6 +1420,11 @@
       justify-content: space-between;
       gap: 0.5rem;
     }
+    .github-stats-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.5rem;
+    }
     .github-stat-item {
       text-align: center;
       flex: 1;
@@ -1941,18 +1946,22 @@ assign t_scope_domain = "Domain" %} {% assign t_scope_capability =
             <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
             <span>APorkolab</span>
           </div>
-          <div class="github-stats-row">
+          <div class="github-stats-grid">
             <div class="github-stat-item">
-              <span class="github-stat-num" id="gh-repos">--</span>
-              <span class="github-stat-label">Repos</span>
+              <span class="github-stat-num" id="gh-public-repos">--</span>
+              <span class="github-stat-label">Public</span>
             </div>
             <div class="github-stat-item">
-              <span class="github-stat-num" id="gh-followers">--</span>
-              <span class="github-stat-label">Followers</span>
+              <span class="github-stat-num" id="gh-total-repos">--</span>
+              <span class="github-stat-label">Total</span>
             </div>
             <div class="github-stat-item">
-              <span class="github-stat-num" id="gh-years">--</span>
-              <span class="github-stat-label">Years</span>
+              <span class="github-stat-num" id="gh-pushes-2025">--</span>
+              <span class="github-stat-label">2025</span>
+            </div>
+            <div class="github-stat-item">
+              <span class="github-stat-num" id="gh-pushes-2026">--</span>
+              <span class="github-stat-label">2026</span>
             </div>
           </div>
         </a>
@@ -2949,35 +2958,66 @@ setTimeout(() => h?.remove(), 1000);
   /* --- 20. GITHUB STATS FETCHER --- */
   (function fetchGitHubStats() {
     const username = 'APorkolab';
+    const publicReposEl = document.getElementById('gh-public-repos');
+    const totalReposEl = document.getElementById('gh-total-repos');
+    const pushes2025El = document.getElementById('gh-pushes-2025');
+    const pushes2026El = document.getElementById('gh-pushes-2026');
 
-    // Fetch user data (repos, followers, account age)
+    // Fetch user data for repo counts
     fetch(`https://api.github.com/users/${username}`)
       .then(res => res.json())
       .then(data => {
-        const reposEl = document.getElementById('gh-repos');
-        const followersEl = document.getElementById('gh-followers');
-        const yearsEl = document.getElementById('gh-years');
-
-        if (reposEl) reposEl.textContent = data.public_repos || '50+';
-        if (followersEl) followersEl.textContent = data.followers || '10+';
-
-        // Calculate years on GitHub
-        if (yearsEl && data.created_at) {
-          const createdYear = new Date(data.created_at).getFullYear();
-          const currentYear = new Date().getFullYear();
-          const years = currentYear - createdYear;
-          yearsEl.textContent = years > 0 ? years + '+' : '1';
-        }
+        if (publicReposEl) publicReposEl.textContent = data.public_repos || '--';
+        // Total repos = public + private (owned_private_repos if available, else estimate)
+        const total = data.public_repos + (data.owned_private_repos || 0);
+        if (totalReposEl) totalReposEl.textContent = total > data.public_repos ? total : (data.public_repos + '+');
       })
       .catch(() => {
-        // Fallback values on error
-        const reposEl = document.getElementById('gh-repos');
-        const followersEl = document.getElementById('gh-followers');
-        const yearsEl = document.getElementById('gh-years');
-        if (reposEl) reposEl.textContent = '50+';
-        if (followersEl) followersEl.textContent = '10+';
-        if (yearsEl) yearsEl.textContent = '5+';
+        if (publicReposEl) publicReposEl.textContent = '--';
+        if (totalReposEl) totalReposEl.textContent = '--';
       });
+
+    // Fetch events to count push activity (last 90 days available via API)
+    // We'll fetch multiple pages to get more data
+    async function fetchAllEvents() {
+      let allEvents = [];
+      let page = 1;
+      const maxPages = 10; // API allows max 10 pages of 30 events each
+
+      while (page <= maxPages) {
+        try {
+          const res = await fetch(`https://api.github.com/users/${username}/events?per_page=100&page=${page}`);
+          const events = await res.json();
+          if (!events.length || events.length === 0) break;
+          allEvents = allEvents.concat(events);
+          if (events.length < 100) break;
+          page++;
+        } catch (e) {
+          break;
+        }
+      }
+
+      // Count PushEvents by year (commits, not just push events)
+      let count2025 = 0;
+      let count2026 = 0;
+
+      allEvents.forEach(event => {
+        if (event.type === 'PushEvent') {
+          const year = new Date(event.created_at).getFullYear();
+          const commits = event.payload?.commits?.length || 1;
+          if (year === 2025) count2025 += commits;
+          if (year === 2026) count2026 += commits;
+        }
+      });
+
+      if (pushes2025El) pushes2025El.textContent = count2025 > 0 ? count2025 : '--';
+      if (pushes2026El) pushes2026El.textContent = count2026 > 0 ? count2026 : '--';
+    }
+
+    fetchAllEvents().catch(() => {
+      if (pushes2025El) pushes2025El.textContent = '--';
+      if (pushes2026El) pushes2026El.textContent = '--';
+    });
   })();
 
   /* --- 21. PWA SERVICE WORKER REGISTRATION --- */
