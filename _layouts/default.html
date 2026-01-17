@@ -1956,12 +1956,12 @@ assign t_scope_domain = "Domain" %} {% assign t_scope_capability =
               <span class="github-stat-label">Total</span>
             </div>
             <div class="github-stat-item">
-              <span class="github-stat-num" id="gh-pushes-2025">--</span>
-              <span class="github-stat-label">2025</span>
+              <span class="github-stat-num" id="gh-pushes-last">--</span>
+              <span class="github-stat-label" id="gh-label-last">Tavaly</span>
             </div>
             <div class="github-stat-item">
-              <span class="github-stat-num" id="gh-pushes-2026">--</span>
-              <span class="github-stat-label">2026</span>
+              <span class="github-stat-num" id="gh-pushes-this">--</span>
+              <span class="github-stat-label" id="gh-label-this">Idén</span>
             </div>
           </div>
         </a>
@@ -2958,17 +2958,26 @@ setTimeout(() => h?.remove(), 1000);
   /* --- 20. GITHUB STATS FETCHER --- */
   (function fetchGitHubStats() {
     const username = 'APorkolab';
+    const currentYear = new Date().getFullYear();
+    const lastYear = currentYear - 1;
+
     const publicReposEl = document.getElementById('gh-public-repos');
     const totalReposEl = document.getElementById('gh-total-repos');
-    const pushes2025El = document.getElementById('gh-pushes-2025');
-    const pushes2026El = document.getElementById('gh-pushes-2026');
+    const pushesLastEl = document.getElementById('gh-pushes-last');
+    const pushesThisEl = document.getElementById('gh-pushes-this');
+    const labelLastEl = document.getElementById('gh-label-last');
+    const labelThisEl = document.getElementById('gh-label-this');
+
+    // Update labels with actual years
+    if (labelLastEl) labelLastEl.textContent = lastYear;
+    if (labelThisEl) labelThisEl.textContent = currentYear;
 
     // Fetch user data for repo counts
     fetch(`https://api.github.com/users/${username}`)
       .then(res => res.json())
       .then(data => {
         if (publicReposEl) publicReposEl.textContent = data.public_repos || '--';
-        // Total repos = public + private (owned_private_repos if available, else estimate)
+        // Total repos = public + private (owned_private_repos if available)
         const total = data.public_repos + (data.owned_private_repos || 0);
         if (totalReposEl) totalReposEl.textContent = total > data.public_repos ? total : (data.public_repos + '+');
       })
@@ -2978,11 +2987,10 @@ setTimeout(() => h?.remove(), 1000);
       });
 
     // Fetch events to count push activity (last 90 days available via API)
-    // We'll fetch multiple pages to get more data
     async function fetchAllEvents() {
       let allEvents = [];
       let page = 1;
-      const maxPages = 10; // API allows max 10 pages of 30 events each
+      const maxPages = 10;
 
       while (page <= maxPages) {
         try {
@@ -2997,26 +3005,26 @@ setTimeout(() => h?.remove(), 1000);
         }
       }
 
-      // Count PushEvents by year (commits, not just push events)
-      let count2025 = 0;
-      let count2026 = 0;
+      // Count commits by year
+      let countLast = 0;
+      let countThis = 0;
 
       allEvents.forEach(event => {
         if (event.type === 'PushEvent') {
           const year = new Date(event.created_at).getFullYear();
           const commits = event.payload?.commits?.length || 1;
-          if (year === 2025) count2025 += commits;
-          if (year === 2026) count2026 += commits;
+          if (year === lastYear) countLast += commits;
+          if (year === currentYear) countThis += commits;
         }
       });
 
-      if (pushes2025El) pushes2025El.textContent = count2025 > 0 ? count2025 : '--';
-      if (pushes2026El) pushes2026El.textContent = count2026 > 0 ? count2026 : '--';
+      if (pushesLastEl) pushesLastEl.textContent = countLast > 0 ? countLast : '--';
+      if (pushesThisEl) pushesThisEl.textContent = countThis > 0 ? countThis : '--';
     }
 
     fetchAllEvents().catch(() => {
-      if (pushes2025El) pushes2025El.textContent = '--';
-      if (pushes2026El) pushes2026El.textContent = '--';
+      if (pushesLastEl) pushesLastEl.textContent = '--';
+      if (pushesThisEl) pushesThisEl.textContent = '--';
     });
   })();
 
