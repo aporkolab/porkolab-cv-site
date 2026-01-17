@@ -19,6 +19,13 @@
   <link rel="alternate" hreflang="de" href="{{ site.url }}/de/" />
   <link rel="alternate" hreflang="x-default" href="{{ site.url }}/" />
 
+  <!-- PWA Manifest -->
+  <link rel="manifest" href="/manifest.json" />
+  <meta name="theme-color" content="#0a0a0c" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <link rel="apple-touch-icon" href="/assets/img/icon-192.svg" />
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="preconnect" href="https://cdn.jsdelivr.net" />
@@ -146,6 +153,10 @@
       padding: 0;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     @media (prefers-reduced-motion: reduce) {
       * {
         transition: none !important;
@@ -179,7 +190,8 @@
     .identity-panel {
       position: sticky;
       top: 2rem;
-      height: fit-content;
+      max-height: calc(100vh - 4rem);
+      overflow-y: auto;
       display: flex;
       flex-direction: column;
       justify-content: flex-start;
@@ -188,12 +200,19 @@
       backdrop-filter: blur(20px);
       border: 1px solid var(--border);
       border-radius: var(--radius);
-      scrollbar-width: none;
-      -ms-overflow-style: none;
-      box-shadow: 0 0 40px rgba(0, 0, 0, 0.5); /* Mélység hozzáadása */
+      scrollbar-width: thin;
+      scrollbar-color: var(--accent) transparent;
+      box-shadow: 0 0 40px rgba(0, 0, 0, 0.5);
     }
     .identity-panel::-webkit-scrollbar {
-      display: none;
+      width: 4px;
+    }
+    .identity-panel::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    .identity-panel::-webkit-scrollbar-thumb {
+      background: var(--accent);
+      border-radius: 2px;
     }
 
     /* --- 4. TARTALOM (MAIN) --- */
@@ -1197,68 +1216,53 @@
       100% { transform: translateY(-100px) rotate(360deg); }
     }
 
-    /* Interactive Skill Bars */
-    .skill-bar-container {
-      margin-bottom: 1rem;
+    /* GitHub Stats Card */
+    .github-stats-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1rem;
+      margin-top: 1.5rem;
     }
-    .skill-bar-label {
+    .github-stats-card a {
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+    .github-stats-header {
       display: flex;
-      justify-content: space-between;
-      margin-bottom: 0.5rem;
-      font-size: 0.9rem;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 0.8rem;
+      font-size: 0.75rem;
+      color: var(--dim);
+      text-transform: uppercase;
+      letter-spacing: 1px;
     }
-    .skill-bar {
-      height: 8px;
-      background: rgba(255, 255, 255, 0.1);
-      border-radius: 4px;
-      overflow: hidden;
-      position: relative;
+    .github-stats-header svg {
+      width: 16px;
+      height: 16px;
+      fill: currentColor;
     }
-    .skill-bar-fill {
-      height: 100%;
-      background: linear-gradient(90deg, var(--accent), var(--secondary));
-      border-radius: 4px;
-      width: 0;
-      transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1);
-      position: relative;
+    .github-stats-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.8rem;
     }
-    .skill-bar-fill::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-      animation: shimmer 2s infinite;
+    .github-stat {
+      text-align: center;
     }
-    @keyframes shimmer {
-      0% { transform: translateX(-100%); }
-      100% { transform: translateX(100%); }
+    .github-stat-value {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 1.3rem;
+      color: var(--secondary);
+      font-weight: 700;
     }
-
-    /* GitHub Contribution Graph Style */
-    .github-graph {
-      display: flex;
-      gap: 3px;
-      flex-wrap: wrap;
-      max-width: 100%;
-      margin: 1rem 0;
-    }
-    .github-cell {
-      width: 12px;
-      height: 12px;
-      border-radius: 2px;
-      background: rgba(255, 255, 255, 0.05);
-      transition: all 0.3s;
-    }
-    .github-cell.level-1 { background: rgba(112, 0, 255, 0.3); }
-    .github-cell.level-2 { background: rgba(112, 0, 255, 0.5); }
-    .github-cell.level-3 { background: rgba(112, 0, 255, 0.7); }
-    .github-cell.level-4 { background: var(--accent); box-shadow: 0 0 5px var(--accent); }
-    .github-cell:hover {
-      transform: scale(1.5);
-      z-index: 10;
+    .github-stat-label {
+      font-size: 0.7rem;
+      color: var(--dim);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
     }
 
     /* Role Title Wrapper */
@@ -1269,26 +1273,21 @@
       margin-bottom: 1rem;
     }
 
-    /* Typewriter Line Animation */
+    /* Typewriter Line Animation - using clip-path for reliable effect */
     .typewriter-line {
-      display: inline-block;
-      overflow: hidden;
+      display: block;
       white-space: nowrap;
       border-right: 3px solid var(--secondary);
-      width: 0;
-      animation: typing-line 1.2s steps(30, end) forwards, blink-caret 0.75s step-end infinite;
+      clip-path: inset(0 100% 0 0);
+      animation: typing-reveal 1.5s steps(40, end) forwards, blink-caret 0.75s step-end infinite;
     }
-    .typewriter-line:last-child {
-      border-right: 3px solid var(--secondary);
-    }
-    @keyframes typing-line {
-      from { width: 0; }
-      to { width: 100%; }
+    @keyframes typing-reveal {
+      to { clip-path: inset(0 0 0 0); }
     }
 
-    /* Only show cursor on the line being typed */
-    .typewriter-line:not(:last-child) {
-      animation: typing-line 1.2s steps(30, end) forwards, hide-caret 0s 1.2s forwards;
+    /* Hide cursor on first line after it finishes */
+    .typewriter-line:first-child {
+      animation: typing-reveal 1.5s steps(40, end) forwards, hide-caret 0s 1.5s forwards, blink-caret 0.75s step-end infinite;
     }
     @keyframes hide-caret {
       to { border-right-color: transparent; }
@@ -1309,6 +1308,65 @@
         from { opacity: 0; transform: translateY(10px); }
         to { opacity: 1; transform: translateY(0); }
       }
+    }
+
+    /* Back to Top Button */
+    .back-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 50px;
+      height: 50px;
+      background: var(--surface-glass);
+      border: 1px solid var(--border);
+      border-radius: 50%;
+      color: var(--secondary);
+      font-size: 1.5rem;
+      cursor: pointer;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(20px);
+      transition: all 0.3s ease;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      backdrop-filter: blur(10px);
+    }
+    .back-to-top.visible {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+    .back-to-top:hover {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #fff;
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(112, 0, 255, 0.4);
+    }
+
+    /* Image Loading Skeleton */
+    .skeleton-loader {
+      background: linear-gradient(90deg, var(--surface) 25%, rgba(255,255,255,0.05) 50%, var(--surface) 75%);
+      background-size: 200% 100%;
+      animation: skeleton-shimmer 1.5s infinite;
+    }
+    @keyframes skeleton-shimmer {
+      0% { background-position: 200% 0; }
+      100% { background-position: -200% 0; }
+    }
+    .profile-image-container.loading .profile-image {
+      opacity: 0;
+    }
+    .profile-image-container.loading::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      background: linear-gradient(90deg, var(--surface) 25%, rgba(255,255,255,0.08) 50%, var(--surface) 75%);
+      background-size: 200% 100%;
+      animation: skeleton-shimmer 1.5s infinite;
     }
 
     /* Parallax Orbs */
@@ -1439,6 +1497,13 @@
 <div class="noise-overlay"></div>
 <div class="bg-orb orb-1 parallax-orb" data-speed="0.02"></div>
 <div class="bg-orb orb-2 parallax-orb" data-speed="0.03"></div>
+
+<!-- Back to Top Button -->
+<button class="back-to-top" id="backToTop" aria-label="Back to top">
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+    <path d="M18 15l-6-6-6 6"/>
+  </svg>
+</button>
 
 {% assign current_lang = page.lang | default: "en" %}
 <div
@@ -1679,18 +1744,24 @@ assign t_scope_domain = "Domain" %} {% assign t_scope_capability =
         {% endif %}
       </div>
 
-      <!-- GitHub Contribution Badge -->
+      <!-- GitHub Stats Card -->
       {% if cv.contact.github %}
-      <div class="github-badge" style="margin-top: 1.5rem;">
-        <a href="{{ cv.contact.github }}" target="_blank" rel="noopener" aria-label="GitHub Activity">
-          <img
-            src="https://ghchart.rshah.org/7000ff/APorkolab"
-            alt="GitHub Contribution Chart"
-            loading="lazy"
-            style="width: 100%; border-radius: 4px; opacity: 0.85; transition: opacity 0.3s;"
-            onmouseover="this.style.opacity='1'"
-            onmouseout="this.style.opacity='0.85'"
-          />
+      <div class="github-stats-card">
+        <a href="{{ cv.contact.github }}" target="_blank" rel="noopener">
+          <div class="github-stats-header">
+            <svg viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+            GitHub
+          </div>
+          <div class="github-stats-grid">
+            <div class="github-stat">
+              <div class="github-stat-value" id="github-repos">50+</div>
+              <div class="github-stat-label">Repos</div>
+            </div>
+            <div class="github-stat">
+              <div class="github-stat-value" id="github-contributions">2024</div>
+              <div class="github-stat-label">Since</div>
+            </div>
+          </div>
         </a>
       </div>
       {% endif %}
@@ -2125,6 +2196,12 @@ assign t_scope_domain = "Domain" %} {% assign t_scope_capability =
 </div>
 
 <script>
+  /* --- 0. SCROLL TO TOP ON PAGE LOAD --- */
+  if ('scrollRestoration' in history) {
+    history.scrollRestoration = 'manual';
+  }
+  window.scrollTo(0, 0);
+
   /* --- 1. MERMAID LAZY LOADER (PERFORMANCE FIX) --- */
   let mermaidLoaded = false;
 
@@ -2479,6 +2556,44 @@ setTimeout(() => h?.remove(), 1000);
     });
   })();
 
+  /* --- 10.5 BACK TO TOP BUTTON --- */
+  (function initBackToTop() {
+    const btn = document.getElementById('backToTop');
+    if (!btn) return;
+
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 500) {
+        btn.classList.add('visible');
+      } else {
+        btn.classList.remove('visible');
+      }
+    });
+
+    btn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  })();
+
+  /* --- 10.6 IMAGE SKELETON LOADER --- */
+  (function initImageSkeleton() {
+    const profileContainer = document.querySelector('.profile-image-container');
+    const profileImg = document.querySelector('.profile-image');
+    if (!profileContainer || !profileImg) return;
+
+    profileContainer.classList.add('loading');
+
+    if (profileImg.complete) {
+      profileContainer.classList.remove('loading');
+    } else {
+      profileImg.addEventListener('load', () => {
+        profileContainer.classList.remove('loading');
+      });
+      profileImg.addEventListener('error', () => {
+        profileContainer.classList.remove('loading');
+      });
+    }
+  })();
+
   /* --- 11. MOUSE CURSOR GLOW --- */
   (function initCursorGlow() {
     const glow = document.getElementById('cursorGlow');
@@ -2637,6 +2752,19 @@ setTimeout(() => h?.remove(), 1000);
 
   console.log('%c🚀 Portfolio loaded successfully!', 'color: #00f3ff; font-size: 16px; font-weight: bold;');
   console.log('%cBuilt with passion by Ádám Porkoláb', 'color: #7000ff; font-size: 12px;');
+
+  /* --- 20. PWA SERVICE WORKER REGISTRATION --- */
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('/sw.js')
+        .then((registration) => {
+          console.log('%c📱 PWA ready - Service Worker registered', 'color: #00f3ff; font-size: 12px;');
+        })
+        .catch((error) => {
+          console.log('Service Worker registration failed:', error);
+        });
+    });
+  }
 </script>
 <div
         id="cmdk-hint"
