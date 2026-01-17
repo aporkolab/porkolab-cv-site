@@ -1466,40 +1466,27 @@
       margin-bottom: 1rem;
     }
 
-    /* Typewriter Line Animation - using clip-path for reliable effect */
-    .typewriter-line {
+    /* Role title animation - clean slide in */
+    .role-title-line {
       display: block;
-      white-space: nowrap;
-      border-right: 3px solid var(--secondary);
-      clip-path: inset(0 100% 0 0);
-      animation: typing-reveal 1.5s steps(40, end) forwards, blink-caret 0.75s step-end infinite;
+      opacity: 0;
+      transform: translateX(-20px);
+      animation: slideInTitle 0.6s ease-out forwards;
     }
-    @keyframes typing-reveal {
-      to { clip-path: inset(0 0 0 0); }
+    .role-title-line:nth-child(2) {
+      animation-delay: 0.3s;
     }
-
-    /* Hide cursor on first line after it finishes */
-    .typewriter-line:first-child {
-      animation: typing-reveal 1.5s steps(40, end) forwards, hide-caret 0s 1.5s forwards, blink-caret 0.75s step-end infinite;
-    }
-    @keyframes hide-caret {
-      to { border-right-color: transparent; }
+    @keyframes slideInTitle {
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
     }
 
-    /* Responsive typewriter */
+    /* Responsive */
     @media (max-width: 600px) {
       .role-title {
-        font-size: 1rem;
-      }
-      .typewriter-line {
-        white-space: normal;
-        width: auto !important;
-        border-right: none;
-        animation: fadeSlideIn 0.8s ease-out forwards;
-      }
-      @keyframes fadeSlideIn {
-        from { opacity: 0; transform: translateY(10px); }
-        to { opacity: 1; transform: translateY(0); }
+        font-size: 0.9rem;
       }
     }
 
@@ -1831,9 +1818,9 @@ assign t_scope_domain = "Domain" %} {% assign t_scope_capability =
 
         <div class="role-title-wrapper">
           {% assign title_parts = cv.title[lang] | split: " — " %}
-          <div class="role-title typewriter-line" style="animation-delay: 0s;">{{ title_parts[0] }}</div>
+          <div class="role-title role-title-line">{{ title_parts[0] }}</div>
           {% if title_parts[1] %}
-          <div class="role-title typewriter-line" style="animation-delay: 1.5s;">{{ title_parts[1] }}</div>
+          <div class="role-title role-title-line">{{ title_parts[1] }}</div>
           {% endif %}
         </div>
         <h1 class="glitch-text" data-text="{{ cv.name[lang] }}">{{ cv.name[lang] }}</h1>
