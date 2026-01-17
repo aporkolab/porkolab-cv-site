@@ -11,7 +11,10 @@ contact:
   usesSite: https://adamporkolab.com/uses
   website: https://aporkolab.com
 downloads:
-  # These are fallback URLs - the site will try to fetch latest from manifest.json first
+  # Worker URL - deploy cloudflare-worker/cv-api.js and set this URL
+  # After deploying: https://cv-api.YOUR-SUBDOMAIN.workers.dev
+  worker_url: ''
+  # Fallback URLs (used if worker not configured)
   base_url: 'https://pub-c677684c572248f4ae32cfb9fc6b6972.r2.dev'
   de: 'https://pub-c677684c572248f4ae32cfb9fc6b6972.r2.dev/cv_public_de_default_20260109_152512.pdf'
   en: 'https://pub-c677684c572248f4ae32cfb9fc6b6972.r2.dev/cv_public_en_default_20260109_152458.pdf'
