@@ -1,0 +1,13 @@
+name = "cv-api"
+main = "cv-api.js"
+compatibility_date = "2024-01-01"
+
+# Bind to your R2 bucket
+[[r2_buckets]]
+binding = "CV_BUCKET"
+bucket_name = "porkolab-cv"
+
+# Optional: Custom domain (set up in Cloudflare dashboard)
+# routes = [
+#   { pattern = "cv-api.adamporkolab.com", custom_domain = true }
+# ]
