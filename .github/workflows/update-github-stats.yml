@@ -21,83 +21,54 @@ jobs:
 
           echo "Fetching stats for $LAST_YEAR and $CURRENT_YEAR..."
 
-          # GraphQL query
-          QUERY='query($login: String!, $from: DateTime!, $to: DateTime!) {
-            user(login: $login) {
-              repositories(first: 100, ownerAffiliations: OWNER) {
-                totalCount
-                nodes { isPrivate }
-              }
-              contributionsCollection(from: $from, to: $to) {
-                totalCommitContributions
-                restrictedContributionsCount
-                contributionCalendar {
-                  totalContributions
-                  weeks {
-                    contributionDays {
-                      contributionCount
-                      date
-                    }
-                  }
-                }
-              }
-            }
-          }'
+          # Simple REST API calls instead of GraphQL
 
-          # Variables
-          VARIABLES=$(cat <<EOF
-          {
-            "login": "APorkolab",
-            "from": "${LAST_YEAR}-01-01T00:00:00Z",
-            "to": "${CURRENT_YEAR}-12-31T23:59:59Z"
-          }
-          EOF
-          )
+          # Get user info
+          USER_DATA=$(curl -s -H "Authorization: token $GH_TOKEN" \
+            "https://api.github.com/users/APorkolab")
 
-          # Make request
-          RESPONSE=$(curl -s -H "Authorization: bearer $GH_TOKEN" \
-            -H "Content-Type: application/json" \
-            -X POST https://api.github.com/graphql \
-            -d "$(jq -n --arg query "$QUERY" --argjson variables "$VARIABLES" '{query: $query, variables: $variables}')")
+          echo "User data received"
 
-          echo "API Response:"
-          echo "$RESPONSE" | jq '.'
+          PUBLIC_REPOS=$(echo "$USER_DATA" | jq '.public_repos // 0')
+          TOTAL_REPOS=$(echo "$USER_DATA" | jq '.public_repos + (.total_private_repos // 0)')
 
-          # Check for errors
-          if echo "$RESPONSE" | jq -e '.errors' > /dev/null 2>&1; then
-            echo "GraphQL errors detected!"
-            echo "$RESPONSE" | jq '.errors'
-            exit 1
-          fi
+          # Get all repos to count
+          REPOS_DATA=$(curl -s -H "Authorization: token $GH_TOKEN" \
+            "https://api.github.com/users/APorkolab/repos?per_page=100&type=all")
 
-          # Extract data
-          TOTAL_REPOS=$(echo "$RESPONSE" | jq '.data.user.repositories.totalCount // 0')
-          PUBLIC_REPOS=$(echo "$RESPONSE" | jq '[.data.user.repositories.nodes // [] | .[] | select(.isPrivate == false)] | length')
+          REPO_COUNT=$(echo "$REPOS_DATA" | jq 'length')
+          echo "Found $REPO_COUNT repos"
 
-          # Count contributions by year
-          CONTRIBUTIONS_LAST=$(echo "$RESPONSE" | jq --arg year "$LAST_YEAR" '
-            [.data.user.contributionsCollection.contributionCalendar.weeks // [] | .[] | .contributionDays // [] | .[] |
-             select(.date | startswith($year)) | .contributionCount] | add // 0')
+          # Get events for contribution counting
+          EVENTS=$(curl -s -H "Authorization: token $GH_TOKEN" \
+            "https://api.github.com/users/APorkolab/events?per_page=100")
 
-          CONTRIBUTIONS_THIS=$(echo "$RESPONSE" | jq --arg year "$CURRENT_YEAR" '
-            [.data.user.contributionsCollection.contributionCalendar.weeks // [] | .[] | .contributionDays // [] | .[] |
-             select(.date | startswith($year)) | .contributionCount] | add // 0')
+          # Count push events by year
+          CONTRIBUTIONS_LAST=$(echo "$EVENTS" | jq --arg year "$LAST_YEAR" '
+            [.[] | select(.type == "PushEvent") |
+             select(.created_at | startswith($year)) |
+             .payload.commits | length] | add // 0')
+
+          CONTRIBUTIONS_THIS=$(echo "$EVENTS" | jq --arg year "$CURRENT_YEAR" '
+            [.[] | select(.type == "PushEvent") |
+             select(.created_at | startswith($year)) |
+             .payload.commits | length] | add // 0')
 
           echo "Results: Public=$PUBLIC_REPOS, Total=$TOTAL_REPOS, Last=$CONTRIBUTIONS_LAST, This=$CONTRIBUTIONS_THIS"
 
           # Create JSON file
           mkdir -p assets/data
-          cat > assets/data/github-stats.json << EOF
-          {
-            "publicRepos": $PUBLIC_REPOS,
-            "totalRepos": $TOTAL_REPOS,
-            "contributionsLastYear": $CONTRIBUTIONS_LAST,
-            "contributionsThisYear": $CONTRIBUTIONS_THIS,
-            "lastYear": $LAST_YEAR,
-            "currentYear": $CURRENT_YEAR,
-            "updatedAt": "$(date -u +%Y-%m-%dT%H:%M:%SZ)"
-          }
-          EOF
+          cat > assets/data/github-stats.json << ENDJSON
+{
+  "publicRepos": $PUBLIC_REPOS,
+  "totalRepos": $TOTAL_REPOS,
+  "contributionsLastYear": $CONTRIBUTIONS_LAST,
+  "contributionsThisYear": $CONTRIBUTIONS_THIS,
+  "lastYear": $LAST_YEAR,
+  "currentYear": $CURRENT_YEAR,
+  "updatedAt": "$(date -u +%Y-%m-%dT%H:%M:%SZ)"
+}
+ENDJSON
 
           echo "Generated github-stats.json:"
           cat assets/data/github-stats.json
