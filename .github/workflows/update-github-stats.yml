@@ -42,12 +42,11 @@ jobs:
           echo "Last year response:"
           echo "$LAST_YEAR_RESPONSE" | jq '.'
 
-          # Extract data
-          TOTAL_REPOS=$(echo "$THIS_YEAR_RESPONSE" | jq '.data.user.repositories.totalCount // 0')
-
-          # Get public repos via REST API (more reliable)
-          USER_DATA=$(curl -s -H "Authorization: token $GH_TOKEN" "https://api.github.com/users/APorkolab")
+          # Get repo counts via authenticated REST API (shows private repos too)
+          USER_DATA=$(curl -s -H "Authorization: token $GH_TOKEN" "https://api.github.com/user")
           PUBLIC_REPOS=$(echo "$USER_DATA" | jq '.public_repos // 0')
+          PRIVATE_REPOS=$(echo "$USER_DATA" | jq '.total_private_repos // 0')
+          TOTAL_REPOS=$((PUBLIC_REPOS + PRIVATE_REPOS))
 
           # Get contributions (totalContributions includes commits, issues, PRs, reviews)
           CONTRIBUTIONS_THIS=$(echo "$THIS_YEAR_RESPONSE" | jq '.data.user.contributionsCollection.contributionCalendar.totalContributions // 0')
