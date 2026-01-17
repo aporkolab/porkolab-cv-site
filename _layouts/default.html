@@ -1005,15 +1005,374 @@
     .metric-value {
       animation: countUp 0.5s ease-out forwards;
     }
+
+    /* --- WORLD-CLASS FEATURES --- */
+
+    /* Terminal Loading Intro */
+    .terminal-intro {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: var(--bg);
+      z-index: 99999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      transition: opacity 0.5s, visibility 0.5s;
+    }
+    .terminal-intro.hidden {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+    .terminal-text {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 1.2rem;
+      color: var(--secondary);
+      text-align: left;
+      max-width: 600px;
+    }
+    .terminal-line {
+      opacity: 0;
+      animation: terminalFade 0.3s forwards;
+    }
+    .terminal-line::before {
+      content: '> ';
+      color: var(--accent);
+    }
+    @keyframes terminalFade {
+      to { opacity: 1; }
+    }
+    .terminal-cursor {
+      display: inline-block;
+      width: 10px;
+      height: 20px;
+      background: var(--secondary);
+      animation: blink 1s infinite;
+      vertical-align: middle;
+      margin-left: 5px;
+    }
+    @keyframes blink {
+      0%, 50% { opacity: 1; }
+      51%, 100% { opacity: 0; }
+    }
+
+    /* Scroll Progress Indicator */
+    .scroll-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent), var(--secondary));
+      z-index: 10000;
+      width: 0%;
+      transition: width 0.1s;
+      box-shadow: 0 0 10px var(--accent);
+    }
+
+    /* 3D Tilt Effect on Cards */
+    .tilt-card {
+      transform-style: preserve-3d;
+      transform: perspective(1000px);
+    }
+    .tilt-card .card-content {
+      transform: translateZ(30px);
+    }
+
+    /* Glitch Effect on Name */
+    .glitch-text {
+      position: relative;
+    }
+    .glitch-text:hover {
+      animation: glitch 0.3s infinite;
+    }
+    .glitch-text::before,
+    .glitch-text::after {
+      content: attr(data-text);
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+    }
+    .glitch-text:hover::before {
+      opacity: 0.8;
+      color: var(--secondary);
+      animation: glitch-1 0.2s infinite;
+      clip-path: polygon(0 0, 100% 0, 100% 45%, 0 45%);
+      transform: translate(-2px, -2px);
+    }
+    .glitch-text:hover::after {
+      opacity: 0.8;
+      color: var(--accent);
+      animation: glitch-2 0.2s infinite;
+      clip-path: polygon(0 55%, 100% 55%, 100% 100%, 0 100%);
+      transform: translate(2px, 2px);
+    }
+    @keyframes glitch {
+      0%, 100% { transform: translate(0); }
+      20% { transform: translate(-2px, 2px); }
+      40% { transform: translate(-2px, -2px); }
+      60% { transform: translate(2px, 2px); }
+      80% { transform: translate(2px, -2px); }
+    }
+    @keyframes glitch-1 {
+      0%, 100% { transform: translate(-2px, -2px); }
+      50% { transform: translate(2px, 2px); }
+    }
+    @keyframes glitch-2 {
+      0%, 100% { transform: translate(2px, 2px); }
+      50% { transform: translate(-2px, -2px); }
+    }
+
+    /* Mouse Cursor Glow */
+    .cursor-glow {
+      position: fixed;
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(112, 0, 255, 0.15) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 9998;
+      transform: translate(-50%, -50%);
+      transition: opacity 0.3s;
+      mix-blend-mode: screen;
+    }
+
+    /* Floating Tech Icons */
+    .floating-icons {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: -1;
+      overflow: hidden;
+    }
+    .floating-icon {
+      position: absolute;
+      font-size: 2rem;
+      opacity: 0.03;
+      animation: floatIcon 20s infinite linear;
+    }
+    @keyframes floatIcon {
+      0% { transform: translateY(100vh) rotate(0deg); }
+      100% { transform: translateY(-100px) rotate(360deg); }
+    }
+
+    /* Interactive Skill Bars */
+    .skill-bar-container {
+      margin-bottom: 1rem;
+    }
+    .skill-bar-label {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 0.5rem;
+      font-size: 0.9rem;
+    }
+    .skill-bar {
+      height: 8px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 4px;
+      overflow: hidden;
+      position: relative;
+    }
+    .skill-bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--accent), var(--secondary));
+      border-radius: 4px;
+      width: 0;
+      transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+    }
+    .skill-bar-fill::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+      animation: shimmer 2s infinite;
+    }
+    @keyframes shimmer {
+      0% { transform: translateX(-100%); }
+      100% { transform: translateX(100%); }
+    }
+
+    /* GitHub Contribution Graph Style */
+    .github-graph {
+      display: flex;
+      gap: 3px;
+      flex-wrap: wrap;
+      max-width: 100%;
+      margin: 1rem 0;
+    }
+    .github-cell {
+      width: 12px;
+      height: 12px;
+      border-radius: 2px;
+      background: rgba(255, 255, 255, 0.05);
+      transition: all 0.3s;
+    }
+    .github-cell.level-1 { background: rgba(112, 0, 255, 0.3); }
+    .github-cell.level-2 { background: rgba(112, 0, 255, 0.5); }
+    .github-cell.level-3 { background: rgba(112, 0, 255, 0.7); }
+    .github-cell.level-4 { background: var(--accent); box-shadow: 0 0 5px var(--accent); }
+    .github-cell:hover {
+      transform: scale(1.5);
+      z-index: 10;
+    }
+
+    /* Typewriter Title */
+    .typewriter-container {
+      display: inline-block;
+      overflow: hidden;
+    }
+    .typewriter-text {
+      display: inline-block;
+      overflow: hidden;
+      white-space: nowrap;
+      border-right: 3px solid var(--secondary);
+      animation: typewriter 2s steps(30) forwards, blink-caret 0.75s step-end infinite;
+      width: 0;
+    }
+    @keyframes typewriter {
+      to { width: 100%; }
+    }
+
+    /* Parallax Orbs */
+    .parallax-orb {
+      transition: transform 0.1s ease-out;
+    }
+
+    /* Card Shine Effect */
+    .card-shine {
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 50%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+      transform: skewX(-20deg);
+      transition: left 0.5s;
+    }
+    .project-card:hover .card-shine {
+      left: 150%;
+    }
+
+    /* Magnetic Button Effect */
+    .magnetic-btn {
+      transition: transform 0.2s ease-out;
+    }
+
+    /* Staggered Animation for Lists */
+    .stagger-item {
+      opacity: 0;
+      transform: translateX(-20px);
+      animation: staggerIn 0.5s forwards;
+    }
+    @keyframes staggerIn {
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    /* Neon Text Glow */
+    .neon-glow {
+      text-shadow:
+        0 0 5px var(--secondary),
+        0 0 10px var(--secondary),
+        0 0 20px var(--secondary),
+        0 0 40px var(--accent);
+    }
+
+    /* Pulse Ring Animation */
+    .pulse-ring {
+      position: relative;
+    }
+    .pulse-ring::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 100%;
+      height: 100%;
+      border: 2px solid var(--accent);
+      border-radius: inherit;
+      animation: pulseRing 2s infinite;
+      pointer-events: none;
+    }
+    @keyframes pulseRing {
+      0% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+      100% { transform: translate(-50%, -50%) scale(1.5); opacity: 0; }
+    }
+
+    /* Status Indicator (Online/Available) */
+    .status-indicator {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 12px;
+      background: rgba(0, 255, 100, 0.1);
+      border: 1px solid rgba(0, 255, 100, 0.3);
+      border-radius: 20px;
+      font-size: 0.75rem;
+      color: #00ff64;
+      margin-bottom: 1rem;
+    }
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      background: #00ff64;
+      border-radius: 50%;
+      animation: statusPulse 2s infinite;
+    }
+    @keyframes statusPulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(1.2); }
+    }
+
+    /* Reveal Animation */
+    .reveal-up {
+      opacity: 0;
+      transform: translateY(50px);
+      transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .reveal-up.revealed {
+      opacity: 1;
+      transform: translateY(0);
+    }
   </style>
 </head>
 <body>
 <!-- Skip Link for Accessibility -->
 <a href="#main-content" class="skip-link">Skip to main content</a>
 
+<!-- Terminal Loading Intro -->
+<div class="terminal-intro" id="terminalIntro">
+  <div class="terminal-text" id="terminalText"></div>
+</div>
+
+<!-- Scroll Progress Indicator -->
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<!-- Mouse Cursor Glow -->
+<div class="cursor-glow" id="cursorGlow"></div>
+
+<!-- Floating Tech Icons Background -->
+<div class="floating-icons" id="floatingIcons"></div>
+
 <div class="noise-overlay"></div>
-<div class="bg-orb orb-1"></div>
-<div class="bg-orb orb-2"></div>
+<div class="bg-orb orb-1 parallax-orb" data-speed="0.02"></div>
+<div class="bg-orb orb-2 parallax-orb" data-speed="0.03"></div>
 
 {% assign current_lang = page.lang | default: "en" %}
 <div
@@ -1139,8 +1498,16 @@ assign t_scope_domain = "Domain" %} {% assign t_scope_capability =
       </div>
 
       <div>
-        <div class="role-title">{{ cv.title[lang] }}</div>
-        <h1>{{ cv.name[lang] }}</h1>
+        <!-- Status Indicator -->
+        <div class="status-indicator">
+          <span class="status-dot"></span>
+          {% if lang == 'hu' %}Elérhető munkára{% elsif lang == 'de' %}Verfügbar{% else %}Available for work{% endif %}
+        </div>
+
+        <div class="role-title typewriter-container">
+          <span class="typewriter-text">{{ cv.title[lang] }}</span>
+        </div>
+        <h1 class="glitch-text" data-text="{{ cv.name[lang] }}">{{ cv.name[lang] }}</h1>
         <p style="color: var(--dim); margin-top: 1.5rem; line-height: 1.6">
           {{ cv.summary[lang] }}
         </p>
@@ -1392,7 +1759,8 @@ assign t_scope_domain = "Domain" %} {% assign t_scope_capability =
 
       <div class="project-grid-container">
         {% for project in projects %}
-        <div class="project-card">
+        <div class="project-card tilt-card" data-tilt>
+          <div class="card-shine"></div>
           <div class="card-content">
             <h3
                     style="color: #fff; margin-bottom: 0.5rem; font-size: 1.2rem"
@@ -1936,6 +2304,236 @@ setTimeout(() => h?.remove(), 1000);
     section.classList.add('fade-in-section');
     fadeInObserver.observe(section);
   });
+
+  /* ============================================
+     WORLD-CLASS FEATURES
+     ============================================ */
+
+  /* --- 9. TERMINAL INTRO ANIMATION --- */
+  (function initTerminalIntro() {
+    const intro = document.getElementById('terminalIntro');
+    const textContainer = document.getElementById('terminalText');
+    if (!intro || !textContainer) return;
+
+    // Skip if already seen in this session
+    if (sessionStorage.getItem('introSeen')) {
+      intro.classList.add('hidden');
+      return;
+    }
+
+    const lines = [
+      'Initializing portfolio...',
+      'Loading experience data...',
+      'Compiling skill matrix...',
+      'Rendering projects...',
+      'System ready.'
+    ];
+
+    let lineIndex = 0;
+    let charIndex = 0;
+    let currentLine = '';
+
+    function typeNextChar() {
+      if (lineIndex >= lines.length) {
+        setTimeout(() => {
+          intro.classList.add('hidden');
+          sessionStorage.setItem('introSeen', 'true');
+        }, 500);
+        return;
+      }
+
+      if (charIndex === 0) {
+        currentLine = document.createElement('div');
+        currentLine.className = 'terminal-line';
+        currentLine.style.animationDelay = `${lineIndex * 0.1}s`;
+        textContainer.appendChild(currentLine);
+      }
+
+      if (charIndex < lines[lineIndex].length) {
+        currentLine.textContent = lines[lineIndex].substring(0, charIndex + 1);
+        charIndex++;
+        setTimeout(typeNextChar, 30 + Math.random() * 30);
+      } else {
+        charIndex = 0;
+        lineIndex++;
+        setTimeout(typeNextChar, 200);
+      }
+    }
+
+    setTimeout(typeNextChar, 500);
+  })();
+
+  /* --- 10. SCROLL PROGRESS INDICATOR --- */
+  (function initScrollProgress() {
+    const progressBar = document.getElementById('scrollProgress');
+    if (!progressBar) return;
+
+    window.addEventListener('scroll', () => {
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = (scrollTop / docHeight) * 100;
+      progressBar.style.width = progress + '%';
+    });
+  })();
+
+  /* --- 11. MOUSE CURSOR GLOW --- */
+  (function initCursorGlow() {
+    const glow = document.getElementById('cursorGlow');
+    if (!glow || window.innerWidth < 768) return; // Disable on mobile
+
+    let mouseX = 0, mouseY = 0;
+    let glowX = 0, glowY = 0;
+
+    document.addEventListener('mousemove', (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+    });
+
+    function animateGlow() {
+      glowX += (mouseX - glowX) * 0.1;
+      glowY += (mouseY - glowY) * 0.1;
+      glow.style.left = glowX + 'px';
+      glow.style.top = glowY + 'px';
+      requestAnimationFrame(animateGlow);
+    }
+    animateGlow();
+  })();
+
+  /* --- 12. FLOATING TECH ICONS --- */
+  (function initFloatingIcons() {
+    const container = document.getElementById('floatingIcons');
+    if (!container || window.innerWidth < 768) return;
+
+    const icons = ['☕', '⚛', '🔷', '📦', '🐳', '⚡', '🔥', '💾', '🌐', '⌨️'];
+
+    for (let i = 0; i < 15; i++) {
+      const icon = document.createElement('span');
+      icon.className = 'floating-icon';
+      icon.textContent = icons[Math.floor(Math.random() * icons.length)];
+      icon.style.left = Math.random() * 100 + '%';
+      icon.style.animationDuration = (15 + Math.random() * 20) + 's';
+      icon.style.animationDelay = Math.random() * 20 + 's';
+      container.appendChild(icon);
+    }
+  })();
+
+  /* --- 13. 3D TILT EFFECT ON CARDS --- */
+  (function initTiltEffect() {
+    document.querySelectorAll('[data-tilt]').forEach(card => {
+      card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+        const rotateX = (y - centerY) / 20;
+        const rotateY = (centerX - x) / 20;
+
+        card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+      });
+
+      card.addEventListener('mouseleave', () => {
+        card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale3d(1, 1, 1)';
+      });
+    });
+  })();
+
+  /* --- 14. PARALLAX ORBS --- */
+  (function initParallaxOrbs() {
+    const orbs = document.querySelectorAll('.parallax-orb');
+    if (orbs.length === 0) return;
+
+    window.addEventListener('mousemove', (e) => {
+      const x = e.clientX / window.innerWidth;
+      const y = e.clientY / window.innerHeight;
+
+      orbs.forEach(orb => {
+        const speed = parseFloat(orb.dataset.speed) || 0.02;
+        const moveX = (x - 0.5) * 100 * speed;
+        const moveY = (y - 0.5) * 100 * speed;
+        orb.style.transform = `translate(${moveX}px, ${moveY}px)`;
+      });
+    });
+  })();
+
+  /* --- 15. STAGGERED LIST ANIMATIONS --- */
+  (function initStaggeredAnimations() {
+    document.querySelectorAll('.xp-item').forEach((item, index) => {
+      item.classList.add('stagger-item');
+      item.style.animationDelay = `${index * 0.1}s`;
+    });
+  })();
+
+  /* --- 16. MAGNETIC BUTTON EFFECT --- */
+  (function initMagneticButtons() {
+    document.querySelectorAll('.dl-btn, .social-btn').forEach(btn => {
+      btn.classList.add('magnetic-btn');
+
+      btn.addEventListener('mousemove', (e) => {
+        const rect = btn.getBoundingClientRect();
+        const x = e.clientX - rect.left - rect.width / 2;
+        const y = e.clientY - rect.top - rect.height / 2;
+        btn.style.transform = `translate(${x * 0.2}px, ${y * 0.2}px)`;
+      });
+
+      btn.addEventListener('mouseleave', () => {
+        btn.style.transform = 'translate(0, 0)';
+      });
+    });
+  })();
+
+  /* --- 17. SMOOTH SCROLL --- */
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+
+  /* --- 18. REVEAL ON SCROLL --- */
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('revealed');
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.xp-item, .project-card, .skill-box, .metric-card').forEach(el => {
+    el.classList.add('reveal-up');
+    revealObserver.observe(el);
+  });
+
+  /* --- 19. KONAMI CODE EASTER EGG --- */
+  (function initKonamiCode() {
+    const konamiCode = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
+    let konamiIndex = 0;
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === konamiCode[konamiIndex]) {
+        konamiIndex++;
+        if (konamiIndex === konamiCode.length) {
+          document.body.style.animation = 'rainbow 2s linear infinite';
+          const style = document.createElement('style');
+          style.textContent = '@keyframes rainbow { 0% { filter: hue-rotate(0deg); } 100% { filter: hue-rotate(360deg); } }';
+          document.head.appendChild(style);
+          setTimeout(() => {
+            document.body.style.animation = '';
+            style.remove();
+          }, 5000);
+          konamiIndex = 0;
+        }
+      } else {
+        konamiIndex = 0;
+      }
+    });
+  })();
+
+  console.log('%c🚀 Portfolio loaded successfully!', 'color: #00f3ff; font-size: 16px; font-weight: bold;');
+  console.log('%cBuilt with passion by Ádám Porkoláb', 'color: #7000ff; font-size: 12px;');
 </script>
 <div
         id="cmdk-hint"
