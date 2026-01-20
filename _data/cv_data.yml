@@ -11,13 +11,9 @@ contact:
   usesSite: https://adamporkolab.com/uses
   website: https://aporkolab.com
 downloads:
-  # Cloudflare Worker for dynamic CV downloads (always returns latest)
-  worker_url: 'https://cv-api.aporkolab.workers.dev'
-  # Fallback URLs (used if worker not configured)
-  base_url: 'https://pub-c677684c572248f4ae32cfb9fc6b6972.r2.dev'
-  de: 'https://pub-c677684c572248f4ae32cfb9fc6b6972.r2.dev/cv_public_de_default_20260109_152512.pdf'
-  en: 'https://pub-c677684c572248f4ae32cfb9fc6b6972.r2.dev/cv_public_en_default_20260109_152458.pdf'
-  hu: 'https://pub-c677684c572248f4ae32cfb9fc6b6972.r2.dev/cv_public_hu_default_20260109_152506.pdf'
+  de: ''
+  en: ''
+  hu: ''
 education:
 - degree:
     de: Dr. phil. in Linguistik (Summa Cum Laude)
@@ -41,10 +37,7 @@ education:
     en: 'Intensive training: Java Backend, Frontend Development, Computer Science
       fundamentals.'
     hu: 'Intenzív képzés: Java backend, frontend fejlesztés, számítástechnikai alapok.'
-  institution:
-    de: Training 360 / StudiCore / OKTÁV
-    en: Training 360 / StudiCore / OKTÁV
-    hu: Training 360 / StudiCore / OKTÁV
+  institution: Training 360 / StudiCore / OKTÁV
   year: 2019 – 2022
 - degree:
     de: BA & MA in Ungarisch- und Geschichtslehramt (Mit Auszeichnung)
