@@ -56,17 +56,23 @@ experience:
 - company: Deutsche Telekom
   details:
     de:
+    - Entwicklung eines Rechnungsverarbeitungssystems für 13 EU-Länder mit länderspezifischen
+      Steuerregeln und Validierungen.
     - Implementierung resilienter Microservices mittels Saga- und Outbox-Pattern für
       Hochverfügbarkeit.
     - Refactoring von Legacy-Monolithen in wartbare, domain-getriebene Module.
     - Asynchrone Zusammenarbeit mit internationalen Teams zur Stabilisierung kritischer
       Produktionsabläufe.
     en:
+    - Built invoice processing system handling 13 EU countries with country-specific
+      tax rules and validations.
     - Implemented resilient microservices using Saga and Outbox patterns for high-availability.
     - Refactored legacy monoliths into maintainable, domain-driven modules.
     - Collaborated async with international teams to stabilize critical production
       flows.
     hu:
+    - Számlázási rendszer fejlesztése 13 EU-s országra, országspecifikus adószabályokkal
+      és validációkkal.
     - Mikroszolgáltatások fejlesztése hibatűrő mintákkal (Saga, Outbox).
     - Régi, monolitikus kód szétbontása kisebb, jobban karbantartható modulokra.
     - Nemzetközi csapattal dolgoztam, főként írásos egyeztetéssel.
@@ -368,8 +374,9 @@ skills:
     hu: Döntések dokumentálása (ADR), szakmai blog
 summary:
   de: 'Senior Full Stack Engineer für wartbare Enterprise-Anwendungen mit Java/Spring
-    Boot und Angular. 5 Jahre in Enterprise-Umgebungen. Promotion in Linguistik —
-    strukturelle Analyse angewandt auf verteilte Systeme und Datenmodellierung.
+    Boot und Angular. 2+ Jahre in Enterprise-Umgebungen, 5+ Jahre in professioneller
+    Softwareentwicklung. Promotion in Linguistik — strukturelle Analyse angewandt
+    auf verteilte Systeme und Datenmodellierung.
 
     Spezialisiert auf die Stabilisierung von Legacy-Systemen, Implementierung von
     Resilienz-Mustern (Saga, Outbox) und Entwicklung vorhersagbarer Frontends. Fokus:
@@ -382,9 +389,9 @@ summary:
 
     '
   en: 'Senior Full Stack Engineer building maintainable enterprise applications with
-    Java/Spring Boot and Angular. 5 years in enterprise environments. PhD in Linguistics
-    — trained in structural analysis, which I apply to distributed system design and
-    data modeling.
+    Java/Spring Boot and Angular. 2+ years in enterprise environments, 5+ years in
+    professional software development. PhD in Linguistics — trained in structural
+    analysis, which I apply to distributed system design and data modeling.
 
     I specialize in stabilizing legacy systems, implementing resilience patterns (Saga,
     Outbox), and building predictable, testable frontends. Strong focus on end-to-end
@@ -395,9 +402,9 @@ summary:
     engineering thinking rather than live coding.
 
     '
-  hu: 'Full stack fejlesztő, 5 év tapasztalattal nagyvállalati Java/Spring Boot és
-    Angular projekteken. Nyelvészeti PhD-m során megtanultam rendszerekben gondolkodni
-    — ezt használom az adatmodellezésben és a komplex üzleti logika felépítésében.
+  hu: 'Full stack fejlesztő, 2+ év tapasztalattal nagyvállalati környezetben, 5+ év
+    professzionális szoftverfejlesztésben. Nyelvészeti PhD-m során megtanultam rendszerekben
+    gondolkodni — ezt használom az adatmodellezésben és a komplex üzleti logika felépítésében.
 
     Erősségem a meglévő, rosszul dokumentált kódbázisok rendberakása és a hibatűrő
     megoldások kialakítása. Szeretek egy feladatot végigvinni az adatbázistól a felhasználói
