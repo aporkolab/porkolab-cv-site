@@ -11,9 +11,11 @@ contact:
   usesSite: https://adamporkolab.com/uses
   website: https://aporkolab.com
 downloads:
-  de: ''
-  en: ''
-  hu: ''
+  worker_url: 'https://cv-api.aporkolab.workers.dev'
+  base_url: 'https://pub-c677684c572248f4ae32cfb9fc6b6972.r2.dev'
+  de: 'https://cv-api.aporkolab.workers.dev/latest/de'
+  en: 'https://cv-api.aporkolab.workers.dev/latest/en'
+  hu: 'https://cv-api.aporkolab.workers.dev/latest/hu'
 education:
 - degree:
     de: Dr. phil. in Linguistik (Summa Cum Laude)
