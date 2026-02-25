@@ -321,6 +321,9 @@ skills:
   - de: Verteilte Systeme & Event-Driven Architecture
     en: Distributed Systems & Event-Driven Architecture
     hu: Elosztott rendszerek, eseményalapú felépítés
+  - de: IBM MQ & Messaging-Patterns
+    en: IBM MQ & Messaging Patterns
+    hu: IBM MQ & üzenetkezelési minták
   - de: Resilience Patterns (Circuit Breaker, Retry, DLQ, Outbox)
     en: Resilience Patterns (Circuit Breaker, Retry, DLQ, Outbox)
     hu: Reziliencia minták (Circuit Breaker, Retry, DLQ, Outbox)
