@@ -11,11 +11,9 @@ contact:
   usesSite: https://adamporkolab.com/uses
   website: https://aporkolab.com
 downloads:
-  worker_url: 'https://cv-api.aporkolab.workers.dev'
-  base_url: 'https://pub-c677684c572248f4ae32cfb9fc6b6972.r2.dev'
-  de: 'https://cv-api.aporkolab.workers.dev/latest/de'
-  en: 'https://cv-api.aporkolab.workers.dev/latest/en'
-  hu: 'https://cv-api.aporkolab.workers.dev/latest/hu'
+  de: ''
+  en: ''
+  hu: ''
 education:
 - degree:
     de: Dr. phil. in Linguistik (Summa Cum Laude)
@@ -90,15 +88,16 @@ experience:
 - company: Games for Business
   details:
     de:
-    - Design und Entwicklung skalierbarer Gamified-Learning-Plattformen mit PHP (Laminas)
-      und JavaScript.
+    - Design und Entwicklung skalierbarer Gamified-Learning-Plattformen mit Java und
+      JavaScript, ergänzt durch PHP-Integration (Laminas).
     - Implementierung von CI/CD-Pipelines und Optimierung der Datenbankabfragen.
     en:
-    - Designed and delivered scalable gamified learning platforms using PHP (Laminas)
-      and JavaScript.
+    - Designed and delivered scalable gamified learning platforms using Java and JavaScript,
+      with additional PHP (Laminas) integration.
     - Implemented CI/CD pipelines and optimized database query performance.
     hu:
-    - Játékosított oktatási platformok fejlesztése PHP-ban (Laminas) és JavaScript-ben.
+    - Játékosított oktatási platformok fejlesztése Java és JavaScript nyelven, kiegészítő
+      PHP (Laminas) integrációval.
     - Automatikus build/deploy folyamatok javítása, lassú adatbázis-lekérdezések gyorsítása.
   location:
     de: Pécs, Ungarn
@@ -106,22 +105,25 @@ experience:
     hu: Pécs, Magyarország
   period: '2023'
   role:
-    de: Full Stack Developer (PHP / JavaScript / Agile)
-    en: Full Stack Developer (PHP / JavaScript / Agile)
-    hu: Full Stack Fejlesztő (PHP / JavaScript / Agile)
+    de: Full Stack Developer (Java / JavaScript / Agile)
+    en: Full Stack Developer (Java / JavaScript / Agile)
+    hu: Full Stack Fejlesztő (Java / JavaScript / Agile)
 - company:
     de: Polizeipräsidium Komitat Baranya
     en: Baranya County Police Headquarters
     hu: Baranya Megyei Rendőr-főkapitányság
   details:
     de:
-    - Entwicklung interner Tools und Skripte (PHP) mit erfahrenem Kollegen.
+    - Entwicklung interner Tools und Automatisierungsskripte (Java, PHP) mit erfahrenem
+      Kollegen.
     - Wartung der Infrastruktur in einer Hochsicherheits-Behördenumgebung.
     en:
-    - Developed internal tools and scripts (PHP) alongside a senior colleague.
+    - Developed internal tools and automation scripts (Java, PHP) alongside a senior
+      colleague.
     - Maintained infrastructure in a high-security public sector environment.
     hu:
-    - Belső toolok és scriptek fejlesztése (PHP) tapasztalt kolléga mellett.
+    - Belső toolok és automatizálási scriptek fejlesztése (Java, PHP) tapasztalt kolléga
+      mellett.
     - Infrastruktúra karbantartása fokozott biztonsági környezetben.
   location:
     de: Pécs, Ungarn
@@ -270,9 +272,9 @@ senior_scope:
     en: Full Stack Ownership
     hu: Teljes stack átlátása
 - capability:
-    de: Event-Driven Patterns, Kafka, Resilience (Retry/Circuit Breaker/DLQ)
-    en: Event-driven patterns, Kafka, resilience (retry/circuit breaker/DLQ)
-    hu: Eseményalapú minták, Kafka, hibatűrés (retry, circuit breaker, DLQ)
+    de: Event-Driven Patterns, IBM MQ, Resilience (Retry/Circuit Breaker/DLQ)
+    en: Event-driven patterns, IBM MQ, resilience (retry/circuit breaker/DLQ)
+    hu: Eseményalapú minták, IBM MQ, hibatűrés (retry, circuit breaker, DLQ)
   domain:
     de: Verteilte Systeme
     en: Distributed Systems
