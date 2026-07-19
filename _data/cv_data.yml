@@ -1,11 +1,11 @@
 === RENDER START ===
-=== TYPST CMD === ['typst', 'compile', 'build/cv_public_en_default_20260712_070001.typ', 'build/cv_public_en_default_20260712_070001.pdf']
+=== TYPST CMD === ['typst', 'compile', 'build/cv_public_en_default_20260719_070001.typ', 'build/cv_public_en_default_20260719_070001.pdf']
 DEBUG: Uploading to r2:porkolab-cv
 === RENDER START ===
-=== TYPST CMD === ['typst', 'compile', 'build/cv_public_hu_default_20260712_070008.typ', 'build/cv_public_hu_default_20260712_070008.pdf']
+=== TYPST CMD === ['typst', 'compile', 'build/cv_public_hu_default_20260719_070008.typ', 'build/cv_public_hu_default_20260719_070008.pdf']
 DEBUG: Uploading to r2:porkolab-cv
 === RENDER START ===
-=== TYPST CMD === ['typst', 'compile', 'build/cv_public_de_default_20260712_070014.typ', 'build/cv_public_de_default_20260712_070014.pdf']
+=== TYPST CMD === ['typst', 'compile', 'build/cv_public_de_default_20260719_070015.typ', 'build/cv_public_de_default_20260719_070015.pdf']
 DEBUG: Uploading to r2:porkolab-cv
 contact:
   authorWebsite: https://www.adamporkolab.com
@@ -20,9 +20,9 @@ contact:
   usesSite: https://adamporkolab.com/uses
   website: https://aporkolab.com
 downloads:
-  de: https://pub-c677684c572248f4ae32cfb9fc6b6972.r2.dev/cv_public_de_default_20260712_070014.pdf
-  en: https://pub-c677684c572248f4ae32cfb9fc6b6972.r2.dev/cv_public_en_default_20260712_070001.pdf
-  hu: https://pub-c677684c572248f4ae32cfb9fc6b6972.r2.dev/cv_public_hu_default_20260712_070008.pdf
+  de: https://pub-c677684c572248f4ae32cfb9fc6b6972.r2.dev/cv_public_de_default_20260719_070015.pdf
+  en: https://pub-c677684c572248f4ae32cfb9fc6b6972.r2.dev/cv_public_en_default_20260719_070001.pdf
+  hu: https://pub-c677684c572248f4ae32cfb9fc6b6972.r2.dev/cv_public_hu_default_20260719_070008.pdf
 education:
 - degree:
     de: Dr. phil. in Linguistik (Summa Cum Laude)
