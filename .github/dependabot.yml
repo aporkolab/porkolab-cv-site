@@ -1,0 +1,17 @@
+version: 2
+updates:
+  # Without this the action versions silently drift until GitHub deprecates the
+  # Node runtime they declare and the build starts emitting warnings.
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: monthly
+    groups:
+      actions:
+        patterns:
+          - '*'
+
+  - package-ecosystem: bundler
+    directory: /
+    schedule:
+      interval: monthly
