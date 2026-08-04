@@ -4,8 +4,8 @@
   "description": "Senior Full-Stack Engineer portfolio and CV",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#030304",
-  "theme_color": "#0a0a0c",
+  "background_color": "#050508",
+  "theme_color": "#050508",
   "orientation": "portrait-primary",
   "icons": [
     {

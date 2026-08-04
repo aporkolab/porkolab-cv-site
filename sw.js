@@ -1,5 +1,8 @@
-const CACHE_NAME = 'porkolab-cv-v1';
-const OFFLINE_URL = '/offline.html';
+/*
+ * Bump CACHE_NAME on every layout change: the activate handler drops every other
+ * cache, which is what forces returning visitors off the previous HTML.
+ */
+const CACHE_NAME = 'porkolab-cv-v2';
 
 const PRECACHE_ASSETS = [
   '/',
@@ -9,72 +12,65 @@ const PRECACHE_ASSETS = [
   '/manifest.json'
 ];
 
-// Install event - cache essential assets
 self.addEventListener('install', (event) => {
   event.waitUntil(
-    caches.open(CACHE_NAME).then((cache) => {
-      return cache.addAll(PRECACHE_ASSETS);
-    })
+    caches.open(CACHE_NAME).then((cache) => cache.addAll(PRECACHE_ASSETS))
   );
   self.skipWaiting();
 });
 
-// Activate event - clean up old caches
 self.addEventListener('activate', (event) => {
   event.waitUntil(
-    caches.keys().then((cacheNames) => {
-      return Promise.all(
-        cacheNames
-          .filter((name) => name !== CACHE_NAME)
-          .map((name) => caches.delete(name))
-      );
-    })
+    caches.keys().then((names) =>
+      Promise.all(names.filter((n) => n !== CACHE_NAME).map((n) => caches.delete(n)))
+    )
   );
   self.clients.claim();
 });
 
-// Fetch event - serve from cache, fallback to network
 self.addEventListener('fetch', (event) => {
-  // Skip non-GET requests
-  if (event.request.method !== 'GET') return;
+  const request = event.request;
 
-  // Skip external requests
-  if (!event.request.url.startsWith(self.location.origin)) return;
+  if (request.method !== 'GET') return;
+  if (!request.url.startsWith(self.location.origin)) return;
 
-  event.respondWith(
-    caches.match(event.request).then((cachedResponse) => {
-      if (cachedResponse) {
-        // Return cached version and update cache in background
-        event.waitUntil(
-          fetch(event.request).then((response) => {
-            if (response.ok) {
-              caches.open(CACHE_NAME).then((cache) => {
-                cache.put(event.request, response);
-              });
-            }
-          }).catch(() => {})
-        );
-        return cachedResponse;
-      }
-
-      // Not in cache, fetch from network
-      return fetch(event.request)
+  // Navigations go to the network first. The CV data is regenerated daily, so a
+  // cache-first page would always show visitors yesterday's content.
+  if (request.mode === 'navigate') {
+    event.respondWith(
+      fetch(request)
         .then((response) => {
-          // Cache successful responses
           if (response.ok) {
-            const responseClone = response.clone();
-            caches.open(CACHE_NAME).then((cache) => {
-              cache.put(event.request, responseClone);
-            });
+            const copy = response.clone();
+            caches.open(CACHE_NAME).then((cache) => cache.put(request, copy));
           }
           return response;
         })
-        .catch(() => {
-          // Return offline page for navigation requests
-          if (event.request.mode === 'navigate') {
-            return caches.match(OFFLINE_URL);
+        .catch(() =>
+          caches.match(request).then((cached) => cached || caches.match('/'))
+        )
+    );
+    return;
+  }
+
+  // Everything else: serve from cache, refresh in the background.
+  event.respondWith(
+    caches.match(request).then((cached) => {
+      const network = fetch(request)
+        .then((response) => {
+          if (response.ok) {
+            const copy = response.clone();
+            caches.open(CACHE_NAME).then((cache) => cache.put(request, copy));
           }
-        });
+          return response;
+        })
+        .catch(() => cached);
+
+      if (cached) {
+        event.waitUntil(network.catch(() => {}));
+        return cached;
+      }
+      return network;
     })
   );
 });
