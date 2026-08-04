@@ -1701,6 +1701,15 @@
   {% assign nav_labels = 'Scope,Experience,Skills,Work,Education,Languages' | split: ',' %}
 {% endif %}
 
+{% comment %}
+  Localized scalars. The generator flips individual fields between a plain string
+  and a {de,en,hu} map without warning, so everything goes through
+  localized -> en -> raw. See the note above the experience loop.
+{% endcomment %}
+{% assign cv_name = cv.name[lang] | default: cv.name.en | default: cv.name %}
+{% assign cv_title = cv.title[lang] | default: cv.title.en | default: cv.title %}
+{% assign cv_summary = cv.summary[lang] | default: cv.summary.en | default: cv.summary %}
+
 {% comment %} Prefer the localized headings shipped in cv_data when present {% endcomment %}
 {% assign h_scope = cv.headings.senior_scope[lang] | default: t_scope %}
 {% assign h_exp = cv.headings.experience[lang] | default: t_exp %}
@@ -1728,7 +1737,7 @@
   <div class="shell">
     <a class="brand" href="{% if lang == 'hu' %}/hu/{% elsif lang == 'de' %}/de/{% else %}/{% endif %}">
       <span class="brand-mark" aria-hidden="true">ÁP</span>
-      <span class="brand-name">{{ cv.name[lang] }}</span>
+      <span class="brand-name">{{ cv_name }}</span>
     </a>
 
     <nav class="section-nav" id="sectionNav" aria-label="{% if lang == 'hu' %}Szakaszok{% elsif lang == 'de' %}Abschnitte{% else %}Sections{% endif %}">
@@ -1770,15 +1779,15 @@
         <div class="hero-main">
           <span class="status-chip"><span class="status-dot" aria-hidden="true"></span>{{ t_avail }}</span>
 
-          {% assign title_parts = cv.title[lang] | split: ' — ' %}
+          {% assign title_parts = cv_title | split: ' — ' %}
           <p class="hero-role">
             {{ title_parts[0] }}{% if title_parts[1] %} <span>/</span> {{ title_parts[1] }}{% endif %}
           </p>
 
-          <h1>{{ cv.name[lang] }}</h1>
+          <h1>{{ cv_name }}</h1>
 
           <div class="hero-summary">
-            {% assign summary_paras = cv.summary[lang] | strip | split: '
+            {% assign summary_paras = cv_summary | strip | split: '
 ' %}
             {% for para in summary_paras %}{% assign para_text = para | strip %}{% if para_text != '' %}<p>{{ para_text }}</p>{% endif %}{% endfor %}
           </div>
@@ -1810,7 +1819,7 @@
 
         <aside class="hero-aside">
           <div class="portrait">
-            <img src="/assets/img/adam-portrait.webp" alt="{{ cv.name[lang] }}" width="248" height="248" fetchpriority="high" />
+            <img src="/assets/img/adam-portrait.webp" alt="{{ cv_name }}" width="248" height="248" fetchpriority="high" />
           </div>
 
           <div class="link-row">
@@ -1909,9 +1918,9 @@
         <div class="scope-item">
           <div class="scope-domain">
             <span class="scope-num">{{ forloop.index | prepend: '0' | slice: -2, 2 }}</span>
-            {{ item.domain[lang] }}
+            {{ item.domain[lang] | default: item.domain.en | default: item.domain }}
           </div>
-          <p class="scope-capability">{{ item.capability[lang] }}</p>
+          <p class="scope-capability">{{ item.capability[lang] | default: item.capability.en | default: item.capability }}</p>
         </div>
         {% endfor %}
       </div>
@@ -1931,15 +1940,25 @@
       </div>
       <div class="timeline">
         {% for exp in cv.experience %}
+        {% comment %}
+          The generator emits these fields as EITHER a plain string OR a {de,en,hu}
+          map, and flips between the two per entry — `period` became a map only for
+          the current role. Always resolve through localized -> en -> the raw value,
+          otherwise Liquid prints the Ruby hash literal.
+        {% endcomment %}
+        {% assign exp_role = exp.role[lang] | default: exp.role.en | default: exp.role %}
+        {% assign exp_period = exp.period[lang] | default: exp.period.en | default: exp.period %}
+        {% assign exp_company = exp.company[lang] | default: exp.company.en | default: exp.company %}
+        {% assign exp_loc = exp.location[lang] | default: exp.location.en | default: exp.location %}
+        {% assign exp_details = exp.details[lang] | default: exp.details.en %}
         <article class="tl-item">
           <div class="tl-head">
-            <h3 class="tl-role">{{ exp.role[lang] }}</h3>
-            <span class="tl-period">{{ exp.period }}</span>
+            <h3 class="tl-role">{{ exp_role }}</h3>
+            <span class="tl-period">{{ exp_period }}</span>
           </div>
-          {% assign exp_loc = exp.location[lang] %}
-          <div class="tl-company">{{ exp.company[lang] | default: exp.company }}{% if exp_loc %} · {{ exp_loc }}{% endif %}</div>
+          <div class="tl-company">{{ exp_company }}{% if exp_loc %} · {{ exp_loc }}{% endif %}</div>
           <ul class="tl-list">
-            {% for item in exp.details[lang] %}
+            {% for item in exp_details %}
             <li>{{ item }}</li>
             {% endfor %}
           </ul>
@@ -1997,13 +2016,14 @@
       <div class="work-grid" id="workGrid">
         {% for project in projects %}
         {% assign stack_str = project.stack | join: ' ' %}
-        <article class="work-card" data-search="{{ project.name | append: ' ' | append: stack_str | append: ' ' | append: project.description[lang] | downcase | strip | escape }}">
+        {% assign project_desc = project.description[lang] | default: project.description.en | default: project.description %}
+        <article class="work-card" data-search="{{ project.name | append: ' ' | append: stack_str | append: ' ' | append: project_desc | downcase | strip | escape }}">
           <div class="work-card-head">
             <h3 class="work-name">{{ project.name }}</h3>
             <span class="work-id">{{ forloop.index | prepend: '0' | slice: -2, 2 }}</span>
           </div>
 
-          <p class="work-desc">{{ project.description[lang] | default: project.description.en }}</p>
+          <p class="work-desc">{{ project_desc }}</p>
 
           <div class="work-stack">
             {% for t in project.stack %}
@@ -2080,9 +2100,13 @@
         <div>
           {% for edu in cv.education %}
           <div class="edu-item">
-            <div class="edu-degree">{{ edu.degree[lang] }}</div>
-            <div class="edu-meta">{{ edu.institution[lang] | default: edu.institution }} · {{ edu.year }}</div>
-            <p class="edu-detail">{{ edu.details[lang] }}</p>
+            {% assign edu_degree = edu.degree[lang] | default: edu.degree.en | default: edu.degree %}
+            {% assign edu_inst = edu.institution[lang] | default: edu.institution.en | default: edu.institution %}
+            {% assign edu_year = edu.year[lang] | default: edu.year.en | default: edu.year %}
+            {% assign edu_detail = edu.details[lang] | default: edu.details.en | default: edu.details %}
+            <div class="edu-degree">{{ edu_degree }}</div>
+            <div class="edu-meta">{{ edu_inst }} · {{ edu_year }}</div>
+            <p class="edu-detail">{{ edu_detail }}</p>
           </div>
           {% endfor %}
         </div>
@@ -2126,7 +2150,7 @@
           <div class="sub-label">{{ h_langs }}</div>
           <div class="lang-list">
             {% for lan in cv.languages %}
-            {% assign lname = lan.name[lang] %}
+            {% assign lname = lan.name[lang] | default: lan.name.en | default: lan.name %}
             {% assign lparts = lname | split: ' (' %}
             <div class="lang-row">
               <span>{{ lparts[0] }}</span>
@@ -2142,8 +2166,8 @@
           <div class="sub-label">{{ h_int }}</div>
           {% for int in cv.interests %}
           <div class="interest-item">
-            <h3>{{ int.name[lang] }}</h3>
-            <p>{{ int.description[lang] }}</p>
+            <h3>{{ int.name[lang] | default: int.name.en | default: int.name }}</h3>
+            <p>{{ int.description[lang] | default: int.description.en | default: int.description }}</p>
           </div>
           {% endfor %}
         </div>
@@ -2179,7 +2203,7 @@
     </div>
 
     <div class="footer-meta">
-      <span>© {{ site.time | date: '%Y' }} {{ cv.name[lang] }}</span>
+      <span>© {{ site.time | date: '%Y' }} {{ cv_name }}</span>
       <nav class="footer-links" aria-label="Footer">
         {% if cv.contact.github %}<a href="{{ cv.contact.github }}" target="_blank" rel="noopener">GitHub</a>{% endif %}
         {% if cv.contact.medium %}<a href="{{ cv.contact.medium }}" target="_blank" rel="noopener">Medium</a>{% endif %}
