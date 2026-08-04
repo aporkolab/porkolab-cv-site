@@ -11,9 +11,9 @@ contact:
   usesSite: https://adamporkolab.com/uses
   website: https://aporkolab.com
 downloads:
-  de: https://pub-c677684c572248f4ae32cfb9fc6b6972.r2.dev/cv_public_de_default_20260802_070014.pdf
-  en: https://pub-c677684c572248f4ae32cfb9fc6b6972.r2.dev/cv_public_en_default_20260802_070002.pdf
-  hu: https://pub-c677684c572248f4ae32cfb9fc6b6972.r2.dev/cv_public_hu_default_20260802_070008.pdf
+  de: https://pub-c677684c572248f4ae32cfb9fc6b6972.r2.dev/cv_public_de_default_20260804_115704.pdf
+  en: https://pub-c677684c572248f4ae32cfb9fc6b6972.r2.dev/cv_public_en_default_20260804_115652.pdf
+  hu: https://pub-c677684c572248f4ae32cfb9fc6b6972.r2.dev/cv_public_hu_default_20260804_115658.pdf
 education:
 - degree:
     de: Dr. phil. in Linguistik (Summa Cum Laude)
@@ -53,6 +53,41 @@ education:
     hu: Pécsi Tudományegyetem (PTE)
   year: 2007 – 2012
 experience:
+- company:
+    de: Számlázz.hu (KBOSS.hu Kft. — ein Visma-Unternehmen)
+    en: Számlázz.hu (KBOSS.hu Kft. — a Visma company)
+    hu: Számlázz.hu (KBOSS.hu Kft. — Visma-csoport)
+  details:
+    de:
+    - Entwicklung und Wartung der Kernservices der größten Online-Rechnungsplattform
+      Ungarns — Marktführer im KMU-Segment, hohes Transaktionsvolumen.
+    - Implementierung regulatorischer und steuerlicher Validierungslogik gemäß ungarischen
+      Rechnungs- und Meldevorschriften.
+    - Entwicklung von Integrationen und APIs für Partner- und Buchhaltungssysteme.
+    en:
+    - Developing and maintaining core services of the largest online invoicing platform
+      in Hungary — market leader in the SME segment, high transaction volume.
+    - Implementing regulatory and tax validation logic against Hungarian invoicing
+      and reporting requirements.
+    - Building integrations and APIs for partner and accounting systems.
+    hu:
+    - Magyarország legnagyobb online számlázó platformjának core szolgáltatásai —
+      piacvezető a KKV-szegmensben, nagy tranzakciószám.
+    - Jogszabályi és adóügyi validációk implementálása a magyar számlázási és adatszolgáltatási
+      előírásokhoz.
+    - Integrációk és API-k fejlesztése partner- és könyvelőrendszerekhez.
+  location:
+    de: Ungarn (Remote)
+    en: Hungary (Remote)
+    hu: Magyarország (Távmunka)
+  period:
+    de: 2026 – heute
+    en: 2026 – present
+    hu: 2026 – jelenleg
+  role:
+    de: Senior Full Stack Developer (Java / Spring / Angular)
+    en: Senior Full Stack Developer (Java / Spring / Angular)
+    hu: Senior Full Stack Fejlesztő (Java / Spring / Angular)
 - company: Deutsche Telekom
   details:
     de:
@@ -80,7 +115,7 @@ experience:
     de: Remote (DE/HU)
     en: Remote (DE/HU)
     hu: Távmunka (DE/HU)
-  period: 2024 – present
+  period: 2024 – 2025
   role:
     de: Full Stack Developer (Java / Spring / Angular)
     en: Full Stack Developer (Java / Spring / Angular)
@@ -409,9 +444,10 @@ summary:
     engineering thinking rather than live coding.
 
     '
-  hu: 'Full stack fejlesztő, 2+ év tapasztalattal nagyvállalati környezetben, 5+ év
-    professzionális szoftverfejlesztésben. Nyelvészeti PhD-m során megtanultam rendszerekben
-    gondolkodni — ezt használom az adatmodellezésben és a komplex üzleti logika felépítésében.
+  hu: 'Senior full stack fejlesztő, 2+ év tapasztalattal nagyvállalati környezetben,
+    5+ év professzionális szoftverfejlesztésben. Nyelvészeti PhD-m során megtanultam
+    rendszerekben gondolkodni — ezt használom az adatmodellezésben és a komplex üzleti
+    logika felépítésében.
 
     Erősségem a meglévő, rosszul dokumentált kódbázisok rendberakása és a hibatűrő
     megoldások kialakítása. Szeretek egy feladatot végigvinni az adatbázistól a felhasználói
