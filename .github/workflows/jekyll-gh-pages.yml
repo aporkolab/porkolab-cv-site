@@ -28,6 +28,11 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v7
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.4'
+          bundler-cache: true
       - name: Setup Pages
         uses: actions/configure-pages@v6
       - name: Validate _data YAML (strip generator debug preamble)
@@ -47,10 +52,15 @@ jobs:
                 nil
               end
               src = File.read(path)
-              unless parse(src) && src.lines.first !~ NOISE
+              unless parse(src)
                 lines = src.lines
                 limit = [lines.size - 1, 50].min
-                cut = (1..limit).find { |n| lines[n] !~ NOISE && parse(lines[n..].join) }
+                # Every discarded line must itself look like generator noise. Without
+                # that check any syntax error in the first 50 lines would amputate the
+                # document down to whatever suffix happens to parse, and ship it.
+                cut = (1..limit).find { |n|
+                  lines[0...n].all? { |l| l.match?(NOISE) } && !lines[n].match?(NOISE) && parse(lines[n..].join)
+                }
                 unless cut
                   warn "::error file=#{path}::Invalid YAML and no recognizable debug preamble in the first #{limit} lines"
                   exit 1
@@ -60,22 +70,27 @@ jobs:
               end
             ' "$f" || exit 1
           done
+      # Built from this repo's Gemfile (Jekyll 4.x), not GitHub's frozen
+      # github-pages bundle, which is stuck on Jekyll 3.10.
       - name: Build with Jekyll
-        uses: actions/jekyll-build-pages@v1
-        with:
-          source: ./
-          destination: ./_site
+        run: bundle exec jekyll build --destination ./_site
+        env:
+          JEKYLL_ENV: production
       - name: Check for unresolved localized fields
         run: |
           # The CV generator flips individual fields between a plain string and a
           # {de,en,hu} map. When the layout renders such a field directly, Liquid
-          # prints the Ruby hash literal ({"de"=>"…"}) straight into the page.
-          # That is invisible to the build, so fail here instead of shipping it.
-          if grep -rIl '"=>' _site --include='*.html' > /tmp/leaks.txt 2>/dev/null && [ -s /tmp/leaks.txt ]; then
+          # prints the Ruby hash literal straight into the page. That is invisible to
+          # the build, so fail here instead of shipping it.
+          # The pattern has to stay agnostic about two things: Ruby 3.4 changed
+          # Hash#inspect to put spaces around the rocket ({"de" => "…"} vs {"de"=>"…"}),
+          # and a field passed through `| escape` arrives as {&quot;de&quot; =&gt; …}.
+          LEAK_PAT='(&quot;|")[a-z]{2}(&quot;|")[[:space:]]*(=>|=&gt;)'
+          if grep -rIlE "$LEAK_PAT" _site --include='*.html' > /tmp/leaks.txt 2>/dev/null && [ -s /tmp/leaks.txt ]; then
             echo "::error::Unresolved localized field rendered as a Ruby hash literal."
             while read -r f; do
               echo "--- $f"
-              grep -o '{"[a-z]\{2\}"=>[^}]\{0,120\}}' "$f" | sort -u | head -5
+              grep -oE "$LEAK_PAT"'[^}]{0,120}' "$f" | sort -u | head -5
             done < /tmp/leaks.txt
             echo "Fix: render the field as \`x[lang] | default: x.en | default: x\` in _layouts/default.html"
             exit 1

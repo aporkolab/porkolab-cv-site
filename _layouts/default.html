@@ -1950,7 +1950,7 @@
         {% assign exp_period = exp.period[lang] | default: exp.period.en | default: exp.period %}
         {% assign exp_company = exp.company[lang] | default: exp.company.en | default: exp.company %}
         {% assign exp_loc = exp.location[lang] | default: exp.location.en | default: exp.location %}
-        {% assign exp_details = exp.details[lang] | default: exp.details.en %}
+        {% assign exp_details = exp.details[lang] | default: exp.details.en | default: exp.details %}
         <article class="tl-item">
           <div class="tl-head">
             <h3 class="tl-role">{{ exp_role }}</h3>

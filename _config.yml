@@ -2,8 +2,18 @@ title: 'Adam Porkolab — CV'
 baseurl: '' # rooton fut
 url: 'https://aporkolab.com'
 
-theme: minima
+# No theme and no plugins on purpose: _layouts/default.html is self-contained
+# (inline CSS/JS) and overrides everything a theme would provide. `theme: minima`
+# and the `sass:` block were left over from the github-pages setup — nothing in
+# the repo referenced them and there is not a single .scss file.
 
-sass:
-  style: compressed
-  quiet_deps: true
+plugins:
+  - jekyll-feed # /feed.xml; see the note in the Gemfile
+
+# Jekyll CONCATENATES its own DEFAULT_EXCLUDES (.jekyll-cache, Gemfile, node_modules,
+# vendor/bundle/, …) onto this list, so only site-specific paths belong here.
+exclude:
+  - cloudflare-worker/
+  - lighthouse-report.report.html
+  - lighthouse-report.report.json
+  - lighthouse-report2.json
