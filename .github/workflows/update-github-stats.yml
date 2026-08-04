@@ -3,8 +3,12 @@ name: Update GitHub Stats
 on:
   # Every push, so a deploy never ships yesterday's numbers. The stats come from
   # the GitHub API, not from repo content, so any push is a valid refresh point.
-  # This workflow's own commit uses GITHUB_TOKEN and carries [skip ci], neither of
-  # which re-triggers a run — no loop.
+  # No loop: this workflow's own commit is pushed with GITHUB_TOKEN and carries a
+  # skip-ci marker, and neither of those re-triggers a run.
+  #
+  # Careful when writing commit messages by hand: GitHub scans the WHOLE message,
+  # body included, for that marker. Merely mentioning it in prose skips every
+  # workflow for that commit.
   push:
     branches: ['main']
   schedule:
