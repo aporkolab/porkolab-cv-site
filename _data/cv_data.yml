@@ -1,12 +1,3 @@
-=== RENDER START ===
-=== TYPST CMD === ['typst', 'compile', 'build/cv_public_en_default_20260802_070002.typ', 'build/cv_public_en_default_20260802_070002.pdf']
-DEBUG: Uploading to r2:porkolab-cv
-=== RENDER START ===
-=== TYPST CMD === ['typst', 'compile', 'build/cv_public_hu_default_20260802_070008.typ', 'build/cv_public_hu_default_20260802_070008.pdf']
-DEBUG: Uploading to r2:porkolab-cv
-=== RENDER START ===
-=== TYPST CMD === ['typst', 'compile', 'build/cv_public_de_default_20260802_070014.typ', 'build/cv_public_de_default_20260802_070014.pdf']
-DEBUG: Uploading to r2:porkolab-cv
 contact:
   authorWebsite: https://www.adamporkolab.com
   bento: https://bento.me/adamporkolab

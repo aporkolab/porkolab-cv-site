@@ -30,6 +30,36 @@ jobs:
         uses: actions/checkout@v4
       - name: Setup Pages
         uses: actions/configure-pages@v5
+      - name: Validate _data YAML (strip generator debug preamble)
+        run: |
+          # The external CV generator sometimes leaks its stdout debug output into
+          # _data/*.yml, which kills the whole Pages build. Parse as-is; only if that
+          # fails, drop the leading noise lines until the file parses as a mapping
+          # again. Build-time only, the committed file is untouched.
+          for f in _data/*.yml; do
+            ruby -ryaml -e '
+              NOISE = /\A(?:===|[A-Z][A-Z0-9_]{2,}\s*:|Traceback\b)/
+              path = ARGV[0]
+              def parse(src)
+                doc = YAML.unsafe_load(src)
+                doc.is_a?(Hash) ? doc : nil
+              rescue Psych::SyntaxError
+                nil
+              end
+              src = File.read(path)
+              unless parse(src) && src.lines.first !~ NOISE
+                lines = src.lines
+                limit = [lines.size - 1, 50].min
+                cut = (1..limit).find { |n| lines[n] !~ NOISE && parse(lines[n..].join) }
+                unless cut
+                  warn "::error file=#{path}::Invalid YAML and no recognizable debug preamble in the first #{limit} lines"
+                  exit 1
+                end
+                File.write(path, lines[cut..].join)
+                warn "::warning file=#{path}::Stripped #{cut} non-YAML preamble line(s) written by the CV generator. Fix the generator: it must not write debug output to the stream it redirects into this file."
+              end
+            ' "$f" || exit 1
+          done
       - name: Build with Jekyll
         uses: actions/jekyll-build-pages@v1
         with:
