@@ -1,9 +1,20 @@
 name: Update GitHub Stats
 
 on:
+  # Every push, so a deploy never ships yesterday's numbers. The stats come from
+  # the GitHub API, not from repo content, so any push is a valid refresh point.
+  # This workflow's own commit uses GITHUB_TOKEN and carries [skip ci], neither of
+  # which re-triggers a run — no loop.
+  push:
+    branches: ['main']
   schedule:
     - cron: '0 6 * * *'
   workflow_dispatch:
+
+# Rapid pushes would otherwise race each other on `git push`.
+concurrency:
+  group: github-stats
+  cancel-in-progress: true
 
 permissions:
   contents: write
@@ -89,6 +100,9 @@ jobs:
             echo "changed=false" >> "$GITHUB_OUTPUT"
           else
             git commit -m "Update GitHub stats [skip ci]"
+            # On a push trigger another commit can land while this job runs, so
+            # rebase before pushing instead of failing on a non-fast-forward.
+            git pull --rebase --autostash origin "${GITHUB_REF_NAME}"
             git push
             echo "changed=true" >> "$GITHUB_OUTPUT"
           fi
