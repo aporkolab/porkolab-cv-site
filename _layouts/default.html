@@ -407,8 +407,9 @@
     }
     .section-nav::-webkit-scrollbar { display: none; }
     /* If the labels ever outrun the bar the scrollbar is hidden, so fade the right
-       edge — a silently clipped nav item is worse than an obviously cut one. */
-    .section-nav {
+       edge — a silently clipped nav item is worse than an obviously cut one. The
+       class is set from JS only while the nav actually overflows. */
+    .section-nav.is-scrollable {
       mask-image: linear-gradient(to right, #000 calc(100% - 1.5rem), transparent 100%);
       -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 1.5rem), transparent 100%);
     }
@@ -2291,6 +2292,16 @@
   }
 
   /* ---------- 3. Scroll spy ---------- */
+  var sectionNav = document.getElementById('sectionNav');
+
+  function markNavOverflow() {
+    if (!sectionNav) return;
+    sectionNav.classList.toggle('is-scrollable', sectionNav.scrollWidth > sectionNav.clientWidth + 1);
+  }
+  markNavOverflow();
+  window.addEventListener('resize', markNavOverflow);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(markNavOverflow);
+
   var navLinks = Array.prototype.slice.call(document.querySelectorAll('#sectionNav a'));
   var sections = navLinks
     .map(function (a) { return document.querySelector(a.getAttribute('href')); })
