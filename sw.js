@@ -2,7 +2,7 @@
  * Bump CACHE_NAME on every layout change: the activate handler drops every other
  * cache, which is what forces returning visitors off the previous HTML.
  */
-const CACHE_NAME = 'porkolab-cv-v2';
+const CACHE_NAME = 'porkolab-cv-v3';
 
 const PRECACHE_ASSETS = [
   '/',
