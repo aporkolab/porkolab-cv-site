@@ -17,8 +17,14 @@ permissions:
 
 # Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
 # However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
+# 2026-08-26: a csoport neve "pages" volt. Egy 2026-08-09 07:00-kor indult
+# futas ott QUEUED allapotban ragadt, es 17 napon at fogva tartotta a zarat:
+# minden ujabb telepites moge sorolodott, majd a kovetkezo erkezesekor
+# megszakadt. Emiatt 2026-08-09 ota EGYETLEN sikeres telepites sem volt,
+# az oldal befagyott. A zombi futast API-tokennel lehet leloni; addig uj
+# csoportnev kell, kulonben minden telepites ugyanoda sorolodik.
 concurrency:
-  group: "pages"
+  group: "pages-deploy"
   cancel-in-progress: false
 
 jobs:
