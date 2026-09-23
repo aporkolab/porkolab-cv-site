@@ -713,6 +713,8 @@
       color: var(--fg-subtle);
       text-transform: uppercase;
     }
+    .cta-note a { color: inherit; text-decoration: none; border-bottom: 1px solid var(--border-strong); }
+    .cta-note a:hover, .cta-note a:focus-visible { color: var(--fg); border-bottom-color: var(--tone); }
 
     /* Hero aside: portrait + links + github stats */
     .hero-aside {
@@ -1828,6 +1830,10 @@
   {% assign t_langs = 'Nyelvek' %}
   {% assign t_int = 'Érdeklődés' %}
   {% assign t_dl = 'Önéletrajz letöltése' %}
+  {% assign t_dl_short = 'Önéletrajz · 2 oldal' %}
+  {% assign t_dl_full = 'Teljes önéletrajz' %}
+  {% assign t_len_short = '2 oldal' %}
+  {% assign t_len_full = 'Teljes' %}
   {% assign t_req = 'Hozzáférés kérése' %}
   {% assign t_avail = 'Elérhető munkára' %}
   {% assign t_years = 'Év tapasztalat' %}
@@ -1858,6 +1864,10 @@
   {% assign t_langs = 'Sprachen' %}
   {% assign t_int = 'Interessen' %}
   {% assign t_dl = 'Lebenslauf herunterladen' %}
+  {% assign t_dl_short = 'Lebenslauf · 2 Seiten' %}
+  {% assign t_dl_full = 'Vollständiger Lebenslauf' %}
+  {% assign t_len_short = '2 Seiten' %}
+  {% assign t_len_full = 'Vollständig' %}
   {% assign t_req = 'Zugriff anfragen' %}
   {% assign t_avail = 'Verfügbar für Projekte' %}
   {% assign t_years = 'Jahre Erfahrung' %}
@@ -1888,6 +1898,10 @@
   {% assign t_langs = 'Languages' %}
   {% assign t_int = 'Interests' %}
   {% assign t_dl = 'Download CV' %}
+  {% assign t_dl_short = 'CV · 2 pages' %}
+  {% assign t_dl_full = 'Full CV' %}
+  {% assign t_len_short = '2 pages' %}
+  {% assign t_len_full = 'Full' %}
   {% assign t_req = 'Request access' %}
   {% assign t_avail = 'Available for work' %}
   {% assign t_years = 'Years experience' %}
@@ -2013,17 +2027,29 @@
 
           <div class="hero-cta">
             {% assign pdf_url = cv.downloads[lang] | default: cv.downloads.en %}
-            {% if pdf_url %}
-              <a class="btn-primary" id="cv-download-btn" href="{{ pdf_url }}" target="_blank" rel="noopener"
-                 data-lang="{{ lang }}" data-base-url="{{ cv.downloads.base_url }}" data-worker-url="{{ cv.downloads.worker_url }}">
+            {% comment %} Short 2-page PDFs live in _data/cv_short.yml: the weekly bot rewrites cv_data.yml only. {% endcomment %}
+            {% assign cv_short = site.data.cv_short %}
+            {% assign pdf_short = cv_short[lang] | default: cv_short.en %}
+            {% assign dl_langs = 'en,hu,de' | split: ',' %}
+            {% if pdf_short %}
+              <a class="btn-primary" href="{{ pdf_short }}" target="_blank" rel="noopener">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                   <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/>
                 </svg>
-                {{ t_dl }}
+                {{ t_dl_short }}
               </a>
-            {% elsif cv.contact.email %}
-              <a class="btn-primary" href="mailto:{{ cv.contact.email }}">{{ t_req }}</a>
             {% endif %}
+            {% if pdf_url %}
+              <a class="{% if pdf_short %}btn-secondary{% else %}btn-primary{% endif %}" id="cv-download-btn" href="{{ pdf_url }}" target="_blank" rel="noopener"
+                 data-lang="{{ lang }}" data-base-url="{{ cv.downloads.base_url }}" data-worker-url="{{ cv.downloads.worker_url }}">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="fill: none">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/>
+                </svg>
+                {% if pdf_short %}{{ t_dl_full }}{% else %}{{ t_dl }}{% endif %}
+              </a>
+            {% elsif cv.contact.email %}{% unless pdf_short %}
+              <a class="btn-primary" href="mailto:{{ cv.contact.email }}">{{ t_req }}</a>
+            {% endunless %}{% endif %}
 
             {% if cv.contact.github %}
               <a class="btn-secondary" href="{{ cv.contact.github }}" target="_blank" rel="noopener">
@@ -2032,7 +2058,7 @@
               </a>
             {% endif %}
 
-            {% if pdf_url %}<span class="cta-note">{{ t_secure }} • {{ lang | upcase }} • PDF</span>{% endif %}
+            {% if pdf_url or pdf_short %}<span class="cta-note">{% if pdf_short %}{{ t_len_short }}: {% for l in dl_langs %}{% if cv_short[l] %}<a href="{{ cv_short[l] }}" target="_blank" rel="noopener" hreflang="{{ l }}" aria-label="{{ t_len_short }} PDF {{ l | upcase }}">{{ l | upcase }}</a>{% unless forloop.last %} · {% endunless %}{% endif %}{% endfor %}{% endif %}{% if pdf_short and pdf_url %} &nbsp;/&nbsp; {% endif %}{% if pdf_url %}{{ t_len_full }}: {% for l in dl_langs %}{% if cv.downloads[l] %}<a href="{{ cv.downloads[l] }}" target="_blank" rel="noopener" hreflang="{{ l }}" aria-label="{{ t_len_full }} PDF {{ l | upcase }}">{{ l | upcase }}</a>{% unless forloop.last %} · {% endunless %}{% endif %}{% endfor %}{% endif %} • PDF</span>{% endif %}
           </div>
         </div>
 
@@ -2422,12 +2448,20 @@
         <p>{{ t_cta_text }}</p>
       </div>
       <div class="hero-cta" style="margin-top: 0;">
-        {% if pdf_url %}
-        <a class="btn-primary" href="{{ pdf_url }}" target="_blank" rel="noopener">
+        {% if pdf_short %}
+        <a class="btn-primary" href="{{ pdf_short }}" target="_blank" rel="noopener">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/>
           </svg>
-          {{ t_dl }}
+          {{ t_dl_short }}
+        </a>
+        {% endif %}
+        {% if pdf_url %}
+        <a class="{% if pdf_short %}btn-secondary{% else %}btn-primary{% endif %}" href="{{ pdf_url }}" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="fill: none">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/>
+          </svg>
+          {% if pdf_short %}{{ t_dl_full }}{% else %}{{ t_dl }}{% endif %}
         </a>
         {% endif %}
         {% if cv.contact.email %}
@@ -2482,7 +2516,8 @@
 <!-- Command palette -->
 <div class="cmd-palette" id="cmdPalette" role="dialog" aria-modal="true" aria-label="Command palette">
   <div class="cmd-palette-label">Command palette</div>
-  {% if pdf_url %}<a class="cmd-item" href="{{ pdf_url }}" target="_blank" rel="noopener">{{ t_dl }}</a>{% endif %}
+  {% if pdf_short %}<a class="cmd-item" href="{{ pdf_short }}" target="_blank" rel="noopener">{{ t_dl_short }}</a>{% endif %}
+  {% if pdf_url %}<a class="cmd-item" href="{{ pdf_url }}" target="_blank" rel="noopener">{% if pdf_short %}{{ t_dl_full }}{% else %}{{ t_dl }}{% endif %}</a>{% endif %}
   {% if cv.contact.github %}<a class="cmd-item" href="{{ cv.contact.github }}" target="_blank" rel="noopener">GitHub</a>{% endif %}
   <button class="cmd-item" type="button" data-cmd="raw">RAW data (JSON)</button>
   <button class="cmd-item" type="button" data-cmd="theme">Toggle theme</button>
