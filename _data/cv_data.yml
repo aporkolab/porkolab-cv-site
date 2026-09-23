@@ -1,3 +1,14 @@
+awards:
+- name: Finalist, Writers of the Future Contest
+  year: '2026'
+- name: Highly Commended, erbacce-prize for Poetry
+  year: '2026'
+- name: Reactive Programming with Spring Boot (Training360)
+  year: '2024'
+- name: 'ECL Language Exam: English C1 (written and oral)'
+  year: '2016'
+- name: 'ECL Language Exam: German B2 (written and oral)'
+  year: '2015'
 contact:
   authorWebsite: https://www.adamporkolab.com
   bento: https://links.adamporkolab.com/
@@ -11,55 +22,110 @@ contact:
   usesSite: https://adamporkolab.com/uses
   website: https://aporkolab.com
 downloads:
-  de: https://pub-c677684c572248f4ae32cfb9fc6b6972.r2.dev/cv_public_de_default_20260923_083925.pdf
-  en: https://pub-c677684c572248f4ae32cfb9fc6b6972.r2.dev/cv_public_en_default_20260923_083911.pdf
-  hu: https://pub-c677684c572248f4ae32cfb9fc6b6972.r2.dev/cv_public_hu_default_20260923_083919.pdf
+  de: https://pub-c677684c572248f4ae32cfb9fc6b6972.r2.dev/cv_public_de_default_20260923_130248.pdf
+  en: https://pub-c677684c572248f4ae32cfb9fc6b6972.r2.dev/cv_public_en_default_20260923_130231.pdf
+  hu: https://pub-c677684c572248f4ae32cfb9fc6b6972.r2.dev/cv_public_hu_default_20260923_130240.pdf
 education:
 - degree:
-    de: Dr. phil. in Linguistik (Summa Cum Laude)
-    en: PhD in Linguistics (Summa Cum Laude)
-    hu: Nyelvészet PhD (Summa Cum Laude)
+    de: Dr. phil. in Linguistik (summa cum laude, 96 %)
+    en: PhD in Linguistics (Summa Cum Laude, 96%)
+    hu: Nyelvészet PhD (summa cum laude, 96%)
   details:
-    de: 'Programm Angewandte Linguistik. Dissertation: internetlinguistische Untersuchung
-      der ungarischen Blogosphäre nach Inhaltstyp und Geschlecht der Autoren, als
-      Monografie erschienen (2018).'
-    en: 'Applied Linguistics program. Dissertation: an internet-linguistic study of
-      the Hungarian blogosphere by content type and author gender, published as a
-      monograph (2018).'
-    hu: 'Alkalmazott nyelvészeti program. Disszertáció: a magyar blogoszféra netnyelvészeti
-      vizsgálata tartalomtípusok és nemek alapján, monográfiaként is megjelent (2018).'
+    de: 'Doktorschule für Linguistik, Programm Angewandte Linguistik. Betreuer: Dr.
+      habil. József Horváth. Dissertation: internetlinguistische Untersuchung der
+      ungarischen Blogosphäre nach Inhaltstyp und Geschlecht der Autoren, als Monografie
+      erschienen (2018). Autor oder Mitautor von 15 Aufsätzen, Buchkapiteln und Rezensionen
+      zu Internetlinguistik, Soziolinguistik und KI im Sprachenlernen sowie Mitautor
+      der ungarisch-englischen und englisch-ungarischen Linguistik-Wörterbücher (2021).'
+    en: 'Doctoral School of Linguistics, Applied Linguistics Programme. Supervisor:
+      Dr. habil. József Horváth. Dissertation: an internet-linguistic study of the
+      Hungarian blogosphere by content type and author gender, published as a monograph
+      (2018). Author or co-author of 15 articles, book chapters and reviews in internet
+      linguistics, sociolinguistics and AI in language learning, and of the Hungarian–English
+      and English–Hungarian dictionaries of linguistics (2021).'
+    hu: 'Nyelvtudományi Doktori Iskola, Alkalmazott Nyelvészeti Program. Témavezető:
+      dr. habil. Horváth József. Disszertáció: a magyar blogoszféra netnyelvészeti
+      vizsgálata tartalomtípusok és nemek alapján, monográfiaként is megjelent (2018).
+      15 tanulmány, könyvfejezet és recenzió szerzője vagy társszerzője a netnyelvészet,
+      a szociolingvisztika és a mesterséges intelligencia nyelvtanulási alkalmazása
+      témakörében, valamint a magyar–angol és angol–magyar nyelvészeti szakszótár
+      társszerzője (2021).'
   institution:
     de: Universität Pécs
     en: University of Pécs
     hu: Pécsi Tudományegyetem (PTE)
   year: 2013 – 2018
 - degree:
-    de: Zertifizierungen für Softwaretechnik
-    en: Professional Software Engineering Certifications
-    hu: Szoftverfejlesztői képesítések
+    de: Frontend-Entwickler
+    en: Frontend Developer, Computer Software Engineering
+    hu: Frontend fejlesztő
   details:
-    de: 'Intensivtraining: Java-Backend, Frontend-Entwicklung, Informatik-Grundlagen.'
-    en: 'Intensive training: Java Backend, Frontend Development, Computer Science
-      fundamentals.'
-    hu: 'Intenzív képzés: Java backend, frontend fejlesztés, számítástechnikai alapok.'
-  institution: Training 360 / StudiCore / OKTÁV
-  year: 2019 – 2022
+    de: Note A+ (95 %). IT-Umschulungsprogramm Újratervezés 2.0; Aufnahme unter den
+      besten 5 % von rund 10.000 Bewerbern. Staatlich anerkannte Qualifikationen „Frontend
+      Developer“ und „Full-stack Developer“.
+    en: Grade A+ (95%). Újratervezés 2.0 IT reskilling programme; admitted among the
+      top 5% of about 10,000 applicants. Nationally recognized "Frontend Developer"
+      and "Full-stack Developer" qualifications.
+    hu: 'Eredmény: A+ (95%). Újratervezés 2.0 informatikai átképzési program; a mintegy
+      10 000 jelentkező legjobb 5%-a közé kerültem be. Államilag elismert „Frontend
+      fejlesztő” és „Full-stack fejlesztő” képesítés.'
+  institution: Training360
+  year: 2021 – 2022
 - degree:
-    de: BA Ungarische Sprache und Literatur & MA Lehramt Ungarisch und Geschichte
-    en: BA in Hungarian Language and Literature & MA in Hungarian and History Teaching
-    hu: Magyar BA és magyartanár–történelemtanár MA
+    de: Java-Backend-Entwickler
+    en: Java Backend Developer, Computer Software Engineering
+    hu: Java backend fejlesztő
   details:
-    de: BA 2007–2010 (Schwerpunkt Geschichte); Zweifächer-Lehramtsmaster 2010–2013,
-      mit Auszeichnung abgeschlossen.
-    en: BA 2007–2010 (history specialization); two-subject teacher-training MA 2010–2013,
-      graduated with distinction.
-    hu: BA 2007–2010 (történelem specializáció); kétszakos tanári MA 2010–2013, kitűnő
-      minősítéssel.
+    de: 'Betreuter Java-Backend-Kurs: Java SE, Maven, Git, JPA/Hibernate, Spring,
+      Thymeleaf, MySQL; Clean Code und SOLID-Prinzipien.'
+    en: 'Mentored Java backend course: Java SE, Maven, Git, JPA/Hibernate, Spring,
+      Thymeleaf, MySQL; clean code and SOLID principles.'
+    hu: 'Mentorált Java backend képzés: Java SE, Maven, Git, JPA/Hibernate, Spring,
+      Thymeleaf, MySQL; Clean Code és SOLID elvek.'
+  institution: StudiCore Kft.
+  year: 2020 – 2021
+- degree:
+    de: Staatlich anerkannte Berufsqualifikation (OKJ), Softwareentwicklung
+    en: State-accredited vocational qualification (OKJ), Software Development
+    hu: Szoftverfejlesztő (OKJ)
+  details:
+    de: Staatliche Berufsqualifikation als Softwareentwickler, berufsbegleitend neben
+      der Vollzeit-Lehrtätigkeit.
+    en: National vocational qualification as a software developer, completed alongside
+      full-time teaching.
+    hu: Szoftverfejlesztő OKJ-bizonyítvány, főállású tanítás mellett.
+  institution: OKTÁV Továbbképző Központ Zrt.
+  year: 2019 – 2020
+- degree:
+    de: MA Ungarische Sprache und Literatur, Geschichte (Lehramt)
+    en: MA in Hungarian Language and Literature, History (teacher training)
+    hu: Magyartanár és történelemtanár (MA)
+  details:
+    de: 'Abschluss mit der Höchstnote (kitűnő). Zweifächer-Lehramtsmaster. Masterarbeit:
+      das Thema „Sprache und Gesellschaft“ in Schulbüchern der 12. Klasse.'
+    en: 'Graduated with the highest classification (kitűnő). Two-subject teacher-training
+      MA. Thesis: the "language and society" topic in 12th-grade secondary-school
+      textbooks.'
+    hu: 'Kitűnő minősítésű oklevél. Kétszakos tanári mesterképzés. Szakdolgozat: a
+      „nyelv és társadalom” témakör megjelenése a 12. évfolyamos középiskolai tankönyvekben.'
   institution:
     de: Universität Pécs
     en: University of Pécs
     hu: Pécsi Tudományegyetem (PTE)
-  year: 2007 – 2013
+  year: 2010 – 2013
+- degree:
+    de: BA Ungarische Sprache und Literatur (Schwerpunkt Geschichte)
+    en: BA in Hungarian Language and Literature (History specialization)
+    hu: Magyar BA (történelem specializáció)
+  details:
+    de: Abschluss mit der Note jeles (sehr gut).
+    en: Graduated with the grade jeles (very good).
+    hu: Jeles minősítésű oklevél.
+  institution:
+    de: Universität Pécs
+    en: University of Pécs
+    hu: Pécsi Tudományegyetem (PTE)
+  year: 2007 – 2010
 experience:
 - company:
     de: Számlázz.hu (KBOSS.hu Kft., ein Visma-Unternehmen)
@@ -67,23 +133,30 @@ experience:
     hu: Számlázz.hu (KBOSS.hu Kft., Visma-csoport)
   details:
     de:
-    - Entwicklung und Wartung der Kernservices der größten Online-Rechnungsplattform
-      Ungarns (Marktführer im KMU-Segment, hohes Transaktionsvolumen).
-    - Implementierung regulatorischer und steuerlicher Validierungslogik gemäß ungarischen
-      Rechnungs- und Meldevorschriften.
-    - Entwicklung von Integrationen und APIs für Partner- und Buchhaltungssysteme.
+    - Größte Online-Rechnungsplattform Ungarns
+    - Zentrale Rechnungsdienste mit Java / Spring Boot und Angular, vom API-Design
+      bis zur UI
+    - Steuerliche und regulatorische Validierung nach ungarischen Rechnungs- und Meldevorschriften
+    - APIs und Integrationen für Partner- und Buchhaltungssysteme
+    - Vereinheitlichung des Mailversand-Stacks
+    - Code-Reviews; Architektur- und API-Dokumentation
     en:
-    - Developing and maintaining core services of the largest online invoicing platform
-      in Hungary (market leader in the SME segment, high transaction volume).
-    - Implementing regulatory and tax validation logic against Hungarian invoicing
-      and reporting requirements.
-    - Building integrations and APIs for partner and accounting systems.
+    - Hungary's largest online invoicing platform
+    - Core invoicing services in Java / Spring Boot and Angular, from API design to
+      UI
+    - Tax and regulatory validation against Hungarian invoicing and reporting rules
+    - APIs and integrations for partner and accounting systems
+    - Unified the mail-sending stack
+    - Code reviews; architecture and API documentation
     hu:
-    - Magyarország legnagyobb online számlázó platformjának core szolgáltatásai (piacvezető
-      a KKV-szegmensben, nagy tranzakciószám).
-    - Jogszabályi és adóügyi validációk implementálása a magyar számlázási és adatszolgáltatási
-      előírásokhoz.
-    - Integrációk és API-k fejlesztése partner- és könyvelőrendszerekhez.
+    - Magyarország legnagyobb online számlázó platformja
+    - Core számlázási szolgáltatások Java / Spring Boot és Angular alapon, az API-tervezéstől
+      a felületig
+    - Adóügyi és jogszabályi validáció a magyar számlázási és adatszolgáltatási szabályok
+      szerint
+    - API-k és integrációk partner- és könyvelőrendszerekhez
+    - A levélküldési stack egységesítése
+    - Code review, architektúra- és API-dokumentáció
   location:
     de: Budapest, Ungarn (Hybrid)
     en: Budapest, Hungary (Hybrid)
@@ -96,29 +169,76 @@ experience:
     de: Senior Full Stack Developer (Java / Spring / Angular)
     en: Senior Full Stack Developer (Java / Spring / Angular)
     hu: Senior Full Stack Fejlesztő (Java / Spring / Angular)
+- company:
+    de: Unabhängig
+    en: Independent
+    hu: Független
+  details:
+    de:
+    - 'Kalliope (2026): Reverse Engineering eines ungarischen Versanalyseprogramms
+      aus den 2000ern anhand seiner Delphi-Binärdatei; Engine in Java neu geschrieben
+      und mit dem ursprünglichen Autor als Mitautor veröffentlicht (Spring Boot, Angular,
+      Docker; läuft per TeaVM auch im Browser)'
+    - 'chaos-symphony (2025): ereignisgesteuerte Microservices mit Java 21, Spring
+      Boot und Kafka, mit Saga, Outbox, OpenTelemetry und Fault Injection'
+    - 'NyelvSzó: Such- und Redaktionsplattform für das ungarisch-englische Linguistik-Wörterbuch,
+      das ich mit Tamás Fekete erstellt habe'
+    - Mitwirkung an miserend.hu (PHP, Angular), der Website mit den Messzeiten der
+      katholischen Kirchen Ungarns
+    en:
+    - 'Kalliope (2026): reverse-engineered a 2000s Hungarian verse-scansion program
+      from its Delphi binary, rewrote the engine in Java and published it with the
+      original author as co-author (Spring Boot, Angular, Docker; runs in the browser
+      via TeaVM)'
+    - 'chaos-symphony (2025): event-driven microservices on Java 21, Spring Boot and
+      Kafka, with Saga, Outbox, OpenTelemetry and fault injection'
+    - 'NyelvSzó: search and editing platform for the Hungarian–English dictionary
+      of linguistics I compiled with Tamás Fekete'
+    - Contributor to miserend.hu (PHP, Angular), the Hungarian Catholic Mass-schedule
+      site
+    hu:
+    - 'Kalliopé (2026): egy 2000-es évekbeli magyar verselemző program visszafejtése
+      a Delphi binárisából; a motort Javában újraírtam, és az eredeti szerzővel társszerzőként
+      publikáltuk (Spring Boot, Angular, Docker; TeaVM-mel böngészőben is fut)'
+    - 'chaos-symphony (2025): eseményvezérelt mikroszolgáltatások Java 21, Spring
+      Boot és Kafka alapon, Saga és Outbox mintával, OpenTelemetryvel és hibainjektálással'
+    - 'NyelvSzó: kereső- és szerkesztőfelület a Fekete Tamással összeállított magyar–angol
+      nyelvészeti szakszótárhoz'
+    - Közreműködés a miserend.hu (PHP, Angular), a magyar katolikus miserend-oldal
+      fejlesztésében
+  location:
+    de: Remote
+    en: Remote
+    hu: Távmunka
+  period:
+    de: 2020 – heute
+    en: 2020 – present
+    hu: 2020 – jelenleg
+  role:
+    de: Open-Source- und eigene Projekte
+    en: Open-Source & Independent Projects
+    hu: Nyílt forráskódú és saját projektek
 - company: Deutsche Telekom
   details:
     de:
-    - Entwicklung eines Rechnungsverarbeitungssystems für 13 EU-Länder mit länderspezifischen
-      Steuerregeln und Validierungen.
-    - Implementierung resilienter Microservices mittels Saga- und Outbox-Pattern für
-      Hochverfügbarkeit.
-    - Refactoring von Legacy-Monolithen in wartbare, domain-getriebene Module.
-    - Asynchrone Zusammenarbeit mit deutschen und ungarischen Teams zur Stabilisierung
-      kritischer Produktionsabläufe.
+    - Rechnungsverarbeitungssystem für 13 EU-Länder mit jeweils eigenen Steuerregeln
+      und Validierungen
+    - Microservices mit Saga- und Outbox-Mustern (Java / Spring Boot, Angular)
+    - Refactoring undokumentierter Legacy-Monolithen in domänengetriebene Module
+    - Asynchrone Zusammenarbeit mit deutschen und ungarischen Teams an kritischen
+      Produktionsabläufen
     en:
-    - Built invoice processing system handling 13 EU countries with country-specific
-      tax rules and validations.
-    - Implemented resilient microservices using Saga and Outbox patterns for high-availability.
-    - Refactored legacy monoliths into maintainable, domain-driven modules.
-    - Collaborated async with German and Hungarian teams to stabilize critical production
-      flows.
+    - Invoice-processing system for 13 EU countries, each with its own tax rules and
+      validations
+    - Microservices with Saga and Outbox patterns (Java / Spring Boot, Angular)
+    - Refactored undocumented legacy monoliths into domain-driven modules
+    - Async work with German and Hungarian teams on critical production flows
     hu:
-    - Számlázási rendszer fejlesztése 13 EU-s országra, országspecifikus adószabályokkal
-      és validációkkal.
-    - Mikroszolgáltatások fejlesztése hibatűrő mintákkal (Saga, Outbox).
-    - Régi, monolitikus kód szétbontása kisebb, jobban karbantartható modulokra.
-    - Német és magyar csapatokkal dolgoztam, főként írásos egyeztetéssel.
+    - Számlafeldolgozó rendszer 13 uniós országra, országonként saját adószabályokkal
+      és validációkkal
+    - Mikroszolgáltatások Saga és Outbox mintával (Java / Spring Boot, Angular)
+    - Dokumentálatlan legacy monolitok szétbontása domainalapú modulokra
+    - Aszinkron munka német és magyar csapatokkal kritikus éles folyamatokon
   location:
     de: Pécs, Ungarn (Hybrid)
     en: Pécs, Hungary (Hybrid)
@@ -131,17 +251,23 @@ experience:
 - company: Games for Business
   details:
     de:
-    - Design und Entwicklung skalierbarer Gamified-Learning-Plattformen mit Java und
-      JavaScript, ergänzt durch PHP-Integration (Laminas).
-    - Implementierung von CI/CD-Pipelines und Optimierung der Datenbankabfragen.
+    - Entwicklung gamifizierter Lernplattformen mit Java und JavaScript, mit PHP-Integration
+      (Laminas)
+    - Responsive UI-Komponenten, die auf allen Geräten funktionieren
+    - Verbesserung der Datenbank-Performance und Aufbau von CI/CD-Workflows
+    - Pair Programming und kurze Iterationszyklen in einem agilen Team
     en:
-    - Designed and delivered scalable gamified learning platforms using Java and JavaScript,
-      with additional PHP (Laminas) integration.
-    - Implemented CI/CD pipelines and optimized database query performance.
+    - Developed gamified learning platforms in Java and JavaScript, with PHP (Laminas)
+      integration
+    - Built responsive UI components that work across devices
+    - Improved database performance and set up CI/CD workflows
+    - Pair programming and short iteration cycles in an Agile team
     hu:
-    - Játékosított oktatási platformok fejlesztése Java és JavaScript nyelven, kiegészítő
-      PHP (Laminas) integrációval.
-    - Automatikus build/deploy folyamatok javítása, lassú adatbázis-lekérdezések gyorsítása.
+    - Játékosított tanulási platformok fejlesztése Java és JavaScript nyelven, PHP
+      (Laminas) integrációval
+    - Reszponzív UI-komponensek, amelyek minden eszközön működnek
+    - Adatbázis-teljesítmény javítása, CI/CD workflow-k kialakítása
+    - Páros programozás és rövid iterációk agilis csapatban
   location:
     de: Pécs, Ungarn
     en: Pécs, Hungary
@@ -157,38 +283,47 @@ experience:
     hu: Baranya Megyei Rendőr-főkapitányság
   details:
     de:
-    - Entwicklung interner Tools und Automatisierungsskripte (Java, PHP) mit erfahrenem
-      Kollegen.
-    - Wartung der Infrastruktur in einer Hochsicherheits-Behördenumgebung.
+    - Betrieb von IT-Infrastruktur und Netzwerksicherheit in einer Hochsicherheitsumgebung
+      des öffentlichen Sektors
+    - Entwicklung interner Tools und Automatisierungsskripte (Java, PHP) zusammen
+      mit einem erfahrenen Kollegen
+    - Unterstützung der internen Entwickler bei der Verbesserung eigener Tools und
+      ihrer Performance
     en:
+    - Managed IT infrastructure and network security in a high-security public-sector
+      environment
     - Developed internal tools and automation scripts (Java, PHP) alongside a senior
-      colleague.
-    - Maintained infrastructure in a high-security public sector environment.
+      colleague
+    - Helped the in-house developers improve custom tooling and its performance
     hu:
-    - Belső toolok és automatizálási scriptek fejlesztése (Java, PHP) tapasztalt kolléga
-      mellett.
-    - Infrastruktúra karbantartása fokozott biztonsági környezetben.
+    - IT-infrastruktúra és hálózatbiztonság üzemeltetése fokozott biztonságú közszférás
+      környezetben
+    - Belső eszközök és automatizáló scriptek fejlesztése (Java, PHP) egy tapasztalt
+      kolléga mellett
+    - A házon belüli fejlesztők segítése az egyedi eszközök fejlesztésében és gyorsításában
   location:
     de: Pécs, Ungarn
     en: Pécs, Hungary
     hu: Pécs, Magyarország
   period: 2021 – 2023
   role:
-    de: IT-Spezialist & Entwickler interner Tools
-    en: IT Specialist & Internal Tools Developer
-    hu: IT Specialista & Belső eszközök fejlesztője
+    de: IT-Spezialist
+    en: IT Specialist
+    hu: IT-specialista
 - company: InnoTeq
   details:
     de:
-    - Grundlegende Erfahrung in Enterprise-Java (Spring Boot) und Angular-Architekturen.
-    - Fokus auf objektorientierte Designmuster und Clean-Code-Prinzipien.
+    - Entwicklung mit Java (Spring Boot) und Angular
+    - 'MySQL-basierte Anwendungen unter Anleitung erfahrener Entwickler: objektorientierte
+      Entwurfsmuster, testbarer Code'
     en:
-    - Gained foundational experience in enterprise Java (Spring Boot) and Angular
-      architectures.
-    - Focused on object-oriented design patterns and clean code principles.
+    - Java (Spring Boot) and Angular development
+    - 'Built MySQL-backed applications under senior developers'' mentoring: object-oriented
+      design patterns, testable code'
     hu:
-    - Bevezetés a vállalati Java (Spring Boot) és Angular fejlesztésbe.
-    - OOP tervezési minták és tiszta kód elvek gyakorlati alkalmazása.
+    - Java (Spring Boot) és Angular fejlesztés
+    - 'MySQL-alapú alkalmazások tapasztalt fejlesztők mentorálásával: objektumorientált
+      tervezési minták, tesztelhető kód'
   location:
     de: Pécs, Ungarn
     en: Pécs, Hungary
@@ -204,44 +339,111 @@ experience:
     hu: Pécsi Tudományegyetem (PTE)
   details:
     de:
-    - 'Forschung (2013–2020): eine Monografie und 13 Aufsätze, Buchkapitel und Rezensionen
-      zu Internetlinguistik, Soziolinguistik und Bildung, u. a. im ICAME Journal und
-      in Iskolakultúra.'
-    - Lehrveranstaltungen in Linguistik an der Universität (2013–2016), danach Ungarisch
-      und Geschichte im Schuldienst (2016–2020).
-    - Pflege der Katalogdatenbank der Linguistik-Fachbibliothek (15.000 Bände), Inventur
-      von über 3.000 Bänden, Benutzerhandbuch für die interne Bibliothekssoftware
-      (2008–2009).
+    - Berufsbildende Sekundarschule der Universität Pécs (Sozial- und Gesundheitswesen)
+    - Unterricht in ungarischer Sprache und Literatur sowie Geschichte; Vorbereitung
+      auf das Abitur und Abnahme der Prüfungen
+    - Entwicklung von Lehrplänen, Unterrichtsmaterialien und E-Learning-Inhalten
+    - Leitlinien der Schule zur digitalen Kommunikation für Eltern und Schüler verfasst
+    - Mitautor einer Studie zur Umstellung ungarischer Schulen auf Fernunterricht
+      2020 (Iskolakultúra)
+    - 'Davor: Lehrer für Ungarisch und Geschichte an der Testvérvárosok Terei Általános
+      Iskola, Pécs (2016–2017)'
     en:
-    - 'Research (2013–2020): a monograph and 13 articles, chapters and reviews in
-      internet linguistics, sociolinguistics and education, including ICAME Journal
-      and Iskolakultúra.'
-    - Taught linguistics courses at the university (2013–2016), then Hungarian and
-      history in schools (2016–2020).
-    - Maintained the catalogue database of the 15,000-volume Linguistics Library,
-      inventoried 3,000+ volumes and wrote the user guide for its internal software
-      (2008–2009).
+    - Vocational secondary school of the University of Pécs (social and health care)
+    - Taught Hungarian language and literature and history; prepared students for
+      the matura and examined them
+    - Designed curricula, classroom material and e-learning content
+    - Drafted the school's digital-communication guidelines for parents and students
+    - Co-authored a study on the 2020 switch to remote teaching in Hungarian schools
+      (Iskolakultúra)
+    - 'Before this: Hungarian and history teacher at Testvérvárosok Terei Általános
+      Iskola, Pécs (2016–2017)'
     hu:
-    - 'Kutatás (2013–2020): egy monográfia és 13 tanulmány, könyvfejezet és recenzió
-      netnyelvészetből, szociolingvisztikából és oktatásból, többek közt az ICAME
-      Journalben és az Iskolakultúrában.'
-    - Nyelvészeti kurzusok oktatása az egyetemen (2013–2016), majd magyar- és történelemtanítás
-      iskolákban (2016–2020).
-    - A 15 000 kötetes Nyelvészeti Szakkönyvtár katalógus-adatbázisának vezetése,
-      több mint 3000 kötet leltározása, felhasználói leírás a belső könyvtári szoftverhez
-      (2008–2009).
+    - PTE Szociális és Egészségügyi Technikum és Szakképző Iskola
+    - Magyar nyelv és irodalom, valamint történelem tanítása; érettségire felkészítés
+      és érettségiztetés
+    - Tantervek, tananyagok és e-learning tartalmak kidolgozása
+    - Az iskola digitális kommunikációs irányelveinek megfogalmazása szülők és diákok
+      számára
+    - Társszerzőként tanulmány a magyar iskolák 2020-as digitális átállásáról (Iskolakultúra)
+    - 'Előtte: magyar- és történelemtanár a pécsi Testvérvárosok Terei Általános Iskolában
+      (2016–2017)'
   location:
     de: Pécs, Ungarn
     en: Pécs, Hungary
     hu: Pécs, Magyarország
-  period: 2008 – 2020
+  period: 2017 – 2020
   role:
-    de: Linguist (Forschung, Lehre, Schuldienst)
-    en: Linguist (Research, Lecturing, Teaching)
-    hu: Nyelvész (kutatás, egyetemi oktatás, tanítás)
+    de: Lehrer für Geschichte und Literatur (Sekundarstufe)
+    en: High School Teacher – History & Literature
+    hu: Középiskolai tanár (magyar nyelv és irodalom, történelem)
+- company:
+    de: Universität Pécs
+    en: University of Pécs
+    hu: Pécsi Tudományegyetem (PTE)
+  details:
+    de:
+    - Institut für Linguistik, Philosophische Fakultät
+    - Lehrveranstaltungen zu ungarischer Rechtschreibung, Textverständnis und Kommunikation
+      sowie Seminare zur Genderlinguistik in BA-, MA- und Lehramtsstudiengängen
+    - Als studentischer Ansprechpartner der Doktorschule an der Ablösung der veralteten
+      Website beteiligt; Vertretung der Doktoranden im Doktorandenrat
+    en:
+    - Department of Linguistics, Faculty of Humanities
+    - Taught Hungarian orthography, text comprehension and communication, and gender-linguistics
+      seminars in BA, MA and teacher-training programmes
+    - As the doctoral school's student liaison, helped replace its outdated website
+      and represented PhD students on the Doctoral Council
+    hu:
+    - BTK Nyelvtudományi Tanszék
+    - Helyesírás, szövegértés és kommunikáció, valamint gendernyelvészeti szemináriumok
+      oktatása BA-, MA- és tanárképzésben
+    - A doktori iskola hallgatói kapcsolattartójaként részt vettem az elavult honlap
+      lecserélésében, és képviseltem a doktoranduszokat a Doktori Tanácsban
+  location:
+    de: Pécs, Ungarn
+    en: Pécs, Hungary
+    hu: Pécs, Magyarország
+  period: 2013 – 2016
+  role:
+    de: Lehrbeauftragter (Linguistik)
+    en: University Lecturer (Linguistics)
+    hu: Egyetemi oktató (nyelvészet)
+- company:
+    de: Universität Pécs
+    en: University of Pécs
+    hu: Pécsi Tudományegyetem (PTE)
+  details:
+    de:
+    - Linguistische Fachbibliothek, Philosophische Fakultät
+    - Literaturanfragen der Leser in einem Fachbestand von 15.000 Bänden bearbeitet
+    - Verständliches Benutzerhandbuch für die interne Bibliothekssoftware verfasst
+    - 'Katalogdatenbank aktuell gehalten: Neuerwerbungen und Leserdaten'
+    - Über 3.000 Bände bei den sommerlichen Inventuren erfasst und katalogisiert
+    en:
+    - Linguistics Library, Faculty of Humanities
+    - Answered readers' literature requests across a 15,000-volume specialist collection
+    - Wrote a plain-language user guide for the library's internal software
+    - 'Kept the catalogue database current: new acquisitions and reader records'
+    - Inventoried and catalogued 3,000+ volumes during the summer stocktakes
+    hu:
+    - BTK Nyelvészeti Szakkönyvtár
+    - Olvasói szakirodalmi kérések kiszolgálása egy 15 000 kötetes szakgyűjteményben
+    - Közérthető felhasználói leírás a könyvtár belső szoftveréhez
+    - 'A katalógus-adatbázis naprakészen tartása: új beszerzések és olvasói adatok'
+    - Több mint 3000 kötet leltározása és feldolgozása a nyári nagyleltárak során
+  location:
+    de: Pécs, Ungarn
+    en: Pécs, Hungary
+    hu: Pécs, Magyarország
+  period: 2008 – 2009
+  role:
+    de: Fachbibliothekar (LingBib-Team)
+    en: Specialist Librarian (LingBib team)
+    hu: Szakkönyvtáros (LingBib csoport)
 headings:
   awards:
-    de: Auszeichnungen
+    de: Auszeichnungen & Zertifikate
     en: Awards & Certifications
     hu: Díjak és Tanúsítványok
   education:
@@ -278,10 +480,12 @@ headings:
     hu: Bemutatkozás
 interests:
 - description:
-    de: Erforschung komplexer narrativer Architekturen. International veröffentlicht.
-    en: Exploring complex narrative architectures and futuristic systems. Published
-      internationally.
-    hu: Novellákat írok, külföldi magazinoknak is. Szeretem a jövőbe helyezett történeteket.
+    de: Spekulative Fiktion auf Englisch und Ungarisch, international veröffentlicht;
+      Finalist bei Writers of the Future (2026).
+    en: Speculative fiction in English and Hungarian, published internationally; Writers
+      of the Future finalist (2026).
+    hu: Spekulatív fikciót írok magyarul és angolul, külföldi lapokban is; Writers
+      of the Future-döntős (2026).
   name:
     de: Autor spekulativer Fiktion
     en: Speculative Fiction Author
@@ -319,6 +523,20 @@ public_blacklist:
 - address
 - location
 - linkedin
+publications:
+- title: The Use of Artificial Intelligence in Language Learning (in Hungarian)
+  year: '2023'
+- title: Hungarian–English and English–Hungarian Dictionary of Linguistics
+  year: '2021'
+- title: 'Quarantine Pedagogy in Hungarian Public Education: Early Experiences of
+    the Switch to Digital Teaching (in Hungarian)'
+  year: '2020'
+- title: 'From Arkngthand to Wretched Squalor: Fictional place-names in The Elder
+    Scrolls universe'
+  year: '2019'
+- title: 'Web Diary and Blog Business: An Internet-Linguistic Study of the Hungarian
+    Blogosphere by Content Type and Gender (in Hungarian)'
+  year: '2018'
 senior_scope:
 - capability:
     de: Features eigenständig von Datenbank bis UI umsetzen, Orientierung in unbekannten
@@ -331,9 +549,9 @@ senior_scope:
     en: Full Stack Ownership
     hu: Teljes stack átlátása
 - capability:
-    de: Event-Driven Patterns, IBM MQ, Resilience (Retry/Circuit Breaker/DLQ)
-    en: Event-driven patterns, IBM MQ, resilience (retry/circuit breaker/DLQ)
-    hu: Eseményalapú minták, IBM MQ, hibatűrés (retry, circuit breaker, DLQ)
+    de: Event-Driven Patterns, Kafka und IBM MQ, Resilience (Retry/Circuit Breaker/DLQ)
+    en: Event-driven patterns, Kafka and IBM MQ, resilience (retry/circuit breaker/DLQ)
+    hu: Eseményalapú minták, Kafka és IBM MQ, hibatűrés (retry, circuit breaker, DLQ)
   domain:
     de: Verteilte Systeme
     en: Distributed Systems
@@ -374,15 +592,18 @@ senior_scope:
     hu: Monitorozás
 skills:
   backend:
+  - de: E-Invoicing- und Steuer-Compliance-Systeme
+    en: E-invoicing & Tax-Compliance Systems
+    hu: E-számlázási és adómegfelelési rendszerek
   - de: Java 21 & Spring-Ökosystem (Boot, MVC, Data, Security)
     en: Java 21 & Spring Ecosystem (Boot, MVC, Data, Security)
     hu: Java 21 & Spring ökoszisztéma (Boot, MVC, Data, Security)
   - de: Verteilte Systeme & Event-Driven Architecture
     en: Distributed Systems & Event-Driven Architecture
     hu: Elosztott rendszerek, eseményalapú felépítés
-  - de: IBM MQ & Messaging-Patterns
-    en: IBM MQ & Messaging Patterns
-    hu: IBM MQ & üzenetkezelési minták
+  - de: Apache Kafka, IBM MQ & Messaging-Patterns
+    en: Apache Kafka, IBM MQ & Messaging Patterns
+    hu: Apache Kafka, IBM MQ & üzenetkezelési minták
   - de: Resilience Patterns (Circuit Breaker, Retry, DLQ, Outbox)
     en: Resilience Patterns (Circuit Breaker, Retry, DLQ, Outbox)
     hu: Reziliencia minták (Circuit Breaker, Retry, DLQ, Outbox)
@@ -392,16 +613,19 @@ skills:
   - de: Clean Architecture & Domain-Driven Design
     en: Clean Architecture & Domain-Driven Design
     hu: Clean Architecture & Domain-Driven Design
+  - de: JPA / Hibernate, PostgreSQL, MySQL
+    en: JPA / Hibernate, PostgreSQL, MySQL
+    hu: JPA / Hibernate, PostgreSQL, MySQL
   - de: REST-API-Design & Dokumentation (OpenAPI/Swagger)
     en: REST API Design & Documentation (OpenAPI/Swagger)
     hu: REST API tervezés & dokumentáció (OpenAPI/Swagger)
   devops:
-  - de: Docker & Container-Orchestrierung
-    en: Docker & Container Orchestration
-    hu: Docker, konténerek kezelése
-  - de: CI/CD-Pipeline-Design (GitHub Actions, Jenkins)
-    en: CI/CD Pipeline Design (GitHub Actions, Jenkins)
-    hu: CI/CD pipeline tervezés (GitHub Actions, Jenkins)
+  - de: Docker & Kubernetes
+    en: Docker & Kubernetes
+    hu: Docker, Kubernetes
+  - de: CI/CD-Pipeline-Design (Maven, GitHub Actions, Jenkins)
+    en: CI/CD Pipeline Design (Maven, GitHub Actions, Jenkins)
+    hu: CI/CD pipeline tervezés (Maven, GitHub Actions, Jenkins)
   - de: Google Cloud Platform (GCP)
     en: Google Cloud Platform (GCP)
     hu: Google Cloud Platform (GCP)
@@ -425,12 +649,12 @@ skills:
   - de: Async-First Remote-Zusammenarbeit
     en: Async-First Remote Collaboration
     hu: Távmunka írásos kommunikációval
-  - de: Testcontainers & Integrationstests
-    en: Testcontainers & Integration Testing
-    hu: Testcontainers & integrációs tesztelés
-  - de: Observability & Strukturiertes Logging
-    en: Observability & Structured Logging
-    hu: Monitorozás, strukturált logolás
+  - de: JUnit, Mockito, Testcontainers & Integrationstests
+    en: JUnit, Mockito, Testcontainers & Integration Testing
+    hu: JUnit, Mockito, Testcontainers & integrációs tesztelés
+  - de: Observability (OpenTelemetry) & Strukturiertes Logging
+    en: Observability (OpenTelemetry) & Structured Logging
+    hu: Monitorozás (OpenTelemetry), strukturált logolás
   writing:
   - de: Technische Dokumentation & Wissensarchitektur
     en: Technical Documentation & Knowledge Architecture
@@ -439,49 +663,90 @@ skills:
     en: Architecture Decision Records (ADR) & Tech Blogging
     hu: Döntések dokumentálása (ADR), szakmai blog
 summary:
-  de: 'Senior Full Stack Engineer für wartbare Enterprise-Anwendungen mit Java/Spring
-    Boot und Angular. 2+ Jahre in Enterprise-Umgebungen, 5+ Jahre in professioneller
-    Softwareentwicklung. Promotion in Linguistik; strukturelle Analyse wende ich auf
-    verteilte Systeme und Datenmodellierung an.
+  de: 'Senior Full-Stack-Engineer (Java / Spring Boot / Angular) beim größten Online-Rechnungsanbieter
+    Ungarns, einem Unternehmen der Visma-Gruppe. Ich arbeite an zentralen Rechnungsdiensten:
+    steuerliche und regulatorische Validierung sowie die APIs, die unsere Partner-
+    und Buchhaltungssysteme aufrufen.
 
-    Spezialisiert auf die Stabilisierung von Legacy-Systemen, Implementierung von
-    Resilienz-Mustern (Saga, Outbox) und Entwicklung vorhersagbarer Frontends. Fokus:
-    End-to-End-Ownership von der Datenbankarchitektur bis zur UI, mit dem Ziel langfristiger
-    Wartbarkeit.
+    Davor habe ich zwei Jahre bei der Deutschen Telekom an einem Rechnungsverarbeitungssystem
+    für 13 EU-Länder mit jeweils eigenen Steuerregeln gearbeitet. Ich habe Microservices
+    mit Saga- und Outbox-Mustern gebaut und Legacy-Monolithen in domänengetriebene
+    Module zerlegt. In der Softwareentwicklung seit 2021, in Enterprise-Teams seit
+    2024.
+
+    Ich kam über die Linguistik zum Programmieren (Promotion, summa cum laude), und
+    die Gewohnheit ist geblieben: Ich modelliere die Domäne, bevor ich Code schreibe,
+    und dokumentiere, was andere undokumentiert lassen. Mit einem Kollegen habe ich
+    ein ungarisch-englisches Linguistik-Wörterbuch erstellt und die Software dafür
+    geschrieben. 2026 habe ich Kalliope, ein ungarisches Versanalyseprogramm aus den
+    2000ern, aus seiner Delphi-Binärdatei rekonstruiert, die Engine in Java neu gebaut
+    und mit dem ursprünglichen Autor als Mitautor veröffentlicht. Sie läuft auch im
+    Browser.
+
+    Außerdem schreibe ich spekulative Fiktion auf Englisch und Ungarisch (Finalist
+    bei Writers of the Future, 2026).
 
     Arbeitsstil: Remote-first, async-freundlich, spezifikationsgetrieben. Ich entfalte
     mich am besten bei Take-Home-Aufgaben und tiefgehenden technischen Gesprächen
     statt Live-Coding.
 
     '
-  en: 'Senior Full Stack Engineer building maintainable enterprise applications with
-    Java/Spring Boot and Angular. 2+ years in enterprise environments, 5+ years in
-    professional software development. PhD in Linguistics, trained in structural analysis,
-    which I apply to distributed system design and data modeling.
+  en: 'Senior full-stack engineer (Java / Spring Boot / Angular) at Hungary''s largest
+    online invoicing provider, part of the Visma group. I work on core invoicing services:
+    tax and regulatory validation, and the APIs our partner and accounting systems
+    call.
 
-    I specialize in stabilizing legacy systems, implementing resilience patterns (Saga,
-    Outbox), and building predictable, testable frontends. Strong focus on end-to-end
-    ownership, from database architecture to UI/UX, and on long-term maintainability.
+    Before that I spent two years at Deutsche Telekom on an invoice-processing system
+    covering 13 EU countries, each with its own tax rules. I built microservices with
+    Saga and Outbox patterns and broke legacy monoliths into domain-driven modules.
+    In software since 2021, in enterprise teams since 2024.
+
+    I came to code from linguistics (PhD, summa cum laude), and the habit stayed:
+    I model the domain before I write the code, and I document what others leave undocumented.
+    With a colleague I compiled a Hungarian–English dictionary of linguistics, and
+    I wrote the software that serves it. In 2026 I reverse-engineered Kalliope, a
+    2000s Hungarian verse-scansion program, from its Delphi binary, rebuilt the engine
+    in Java and published it with the original author as co-author. It runs in the
+    browser too.
+
+    I also write speculative fiction in English and Hungarian (Writers of the Future
+    finalist, 2026).
 
     Work style: Remote-first, async-friendly, written-spec-driven. I perform best
     with take-home challenges and in-depth technical discussions that reveal real
     engineering thinking rather than live coding.
 
     '
-  hu: 'Senior full stack fejlesztő, 2+ év tapasztalattal nagyvállalati környezetben,
-    5+ év professzionális szoftverfejlesztésben. Nyelvészeti PhD-m során megtanultam
-    rendszerekben gondolkodni, és ezt használom az adatmodellezésben és a komplex
-    üzleti logika felépítésében.
+  hu: 'Senior full stack fejlesztő vagyok (Java / Spring Boot / Angular) Magyarország
+    legnagyobb online számlázó szolgáltatójánál, amely a Visma-csoport tagja. Core
+    számlázási szolgáltatásokon dolgozom: adóügyi és jogszabályi validáción, valamint
+    azokon az API-kon, amelyeket a partner- és könyvelőrendszerek hívnak.
 
-    Erősségem a meglévő, rosszul dokumentált kódbázisok rendberakása és a hibatűrő
-    megoldások kialakítása. Szeretek egy feladatot végigvinni az adatbázistól a felhasználói
-    felületig.
+    Előtte két évig a Deutsche Telekomnál dolgoztam egy 13 uniós országot kiszolgáló
+    számlafeldolgozó rendszeren, ahol minden országnak saját adószabályai vannak.
+    Saga és Outbox mintájú mikroszolgáltatásokat építettem, és legacy monolitokat
+    bontottam domainalapú modulokra. 2021 óta vagyok a szoftverfejlesztésben, 2024
+    óta nagyvállalati csapatokban.
 
-    Távmunkában dolgozom, írásos egyeztetést preferálok a meetingek helyett. Interjún
-    szívesebben oldok meg házi feladatot, mint live coding feladatokat.
+    A nyelvészet felől jöttem a kódhoz (PhD, summa cum laude), és a szokás megmaradt:
+    előbb modellezem a domaint, csak utána írok kódot, és dokumentálom, amit mások
+    dokumentálatlanul hagynak. Egy kollégámmal magyar–angol nyelvészeti szakszótárt
+    állítottunk össze, a hozzá tartozó szoftvert én írtam. 2026-ban a Delphi binárisából
+    visszafejtettem a Kalliopét, egy 2000-es évekbeli magyar verselemző programot,
+    a motorját Javában újraépítettem, és az eredeti szerzővel társszerzőként publikáltuk.
+    Böngészőben is fut.
+
+    Spekulatív fikciót is írok, magyarul és angolul (Writers of the Future-döntős,
+    2026).
+
+    Távmunkát és írásos egyeztetést preferálok a meetingek helyett. Interjún szívesebben
+    oldok meg házi feladatot, mint live coding feladatot.
 
     '
 title:
-  de: Senior Full Stack Engineer — Java / Spring Boot / Angular
-  en: Senior Full Stack Engineer — Java / Spring Boot / Angular
-  hu: Senior Full Stack Fejlesztő — Java / Spring Boot / Angular
+  de: Senior Full Stack Engineer — Java / Spring Boot / Angular · E-Invoicing- und
+    Steuer-Compliance-Systeme
+  en: Senior Full Stack Engineer — Java / Spring Boot / Angular · E-invoicing & tax-compliance
+    systems
+  hu: Senior Full Stack Fejlesztő — Java / Spring Boot / Angular · E-számlázási és
+    adómegfelelési rendszerek
