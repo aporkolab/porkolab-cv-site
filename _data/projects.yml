@@ -1,4 +1,21 @@
 projects:
+  - id: kalliope
+    name: Kalliopé
+    stack: [Java, Spring Boot, Angular, TeaVM]
+    links:
+      repo: https://github.com/APorkolab/Kalliope
+      demo: https://aporkolab.github.io/Kalliope/
+    mermaid: |
+      graph LR
+        EXE["kalliope.exe (Delphi, 2000s)"] -->|reverse engineering| Engine["Java engine"]
+        Engine --> API["Spring Boot API"]
+        API --> UI["Angular UI"]
+        Engine -->|TeaVM| Browser["Browser build, no backend"]
+    description:
+      en: Hungarian verse-scansion engine rebuilt from a 2000s Delphi binary. Recognizes 56 classical and 20 accentual line types; co-published with the original author under MIT.
+      de: Ungarische Versanalyse-Engine, per Reverse Engineering aus einem Delphi-Binary der 2000er neu gebaut; läuft via TeaVM auch im Browser.
+      hu: Magyar verstani elemző, a 2000-es évekbeli Delphi program binárisából visszafejtve és Javában újraírva; az eredeti szerzővel közösen, MIT licenc alatt.
+
   - id: chaos-symphony
     name: Chaos Symphony
     stack: [Java 21, Microservices, Kafka]
@@ -123,9 +140,9 @@ projects:
         API --> Mongo
         Mongo --> Search
     description:
-      en: Scalable lexical database with tuned aggregation pipelines and millisecond queries.
-      de: Skalierbare lexikalische Datenbank.
-      hu: Skálázható lexikális adatbázis 12 000+ bejegyzéssel.
+      en: Search and editing platform for the Hungarian–English dictionary of linguistics I compiled with Tamás Fekete (12,000+ entries).
+      de: Such- und Redaktionsplattform für das ungarisch-englische Linguistik-Wörterbuch, das ich mit Tamás Fekete verfasst habe (12.000+ Einträge).
+      hu: Kereső- és szerkesztőfelület a Fekete Tamással írt magyar–angol nyelvészeti szakszótárhoz, 12 000+ szócikkel.
 
   - id: convertrix
     name: Convertrix
