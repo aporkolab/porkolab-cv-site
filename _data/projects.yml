@@ -18,7 +18,7 @@ projects:
 
   - id: chaos-symphony
     name: Chaos Symphony
-    stack: [Java 21, Microservices, Kafka]
+    stack: [Java 21, Spring Boot, Kafka, OpenTelemetry]
     links:
       repo: https://github.com/APorkolab/chaos-symphony
     mermaid: |
@@ -28,9 +28,9 @@ projects:
         OrderService -->|Kafka| PaymentService
         PaymentService -->|"Circuit Breaker"| Bank
     description:
-      en: Distributed systems reliability simulator. Event-driven architecture designed to validate microservice resilience patterns.
-      de: Simulator für die Zuverlässigkeit verteilter Systeme.
-      hu: Elosztott rendszerek megbízhatóságát vizsgáló szimulátor.
+      en: "Payment workflows on Java 21, Spring Boot and Kafka: Saga and Outbox, circuit breaker, retry and DLQ, OpenTelemetry tracing and chaos testing."
+      de: "Zahlungs-Workflows mit Java 21, Spring Boot und Kafka: Saga und Outbox, Circuit Breaker, Retry und DLQ, OpenTelemetry-Tracing und Chaos-Tests."
+      hu: "Fizetési folyamatok Java 21, Spring Boot és Kafka alapon: Saga és Outbox, circuit breaker, retry és DLQ, OpenTelemetry-tracing és káosztesztelés."
 
   - id: cziczere
     name: Cziczere
