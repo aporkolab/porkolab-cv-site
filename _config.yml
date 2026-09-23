@@ -2,6 +2,12 @@ title: 'Adam Porkolab — CV'
 baseurl: '' # rooton fut
 url: 'https://aporkolab.com'
 
+# Contact-links hub. SZÁNDÉKOSAN itt, NEM a _data/cv_data.yml-ben: azt a külső CV-
+# generátor birtokolja és hetente felülírja (a `contact.bento` minden auto-update
+# commitban visszaíródik). A bento.me/adamporkolab 2026-09-23-ra halott — nem 404,
+# hanem a linktr.ee főoldalára redirektál, vagyis a látogatót idegen oldalra viszi.
+contact_links_url: 'https://links.adamporkolab.com/'
+
 # No theme and no plugins on purpose: _layouts/default.html is self-contained
 # (inline CSS/JS) and overrides everything a theme would provide. `theme: minima`
 # and the `sass:` block were left over from the github-pages setup — nothing in

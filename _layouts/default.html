@@ -112,7 +112,7 @@
     "sameAs": [
       "{{ site.data.cv_data.contact.github }}",
       "{{ site.data.cv_data.contact.medium }}",
-      "{{ site.data.cv_data.contact.bento }}"
+      "{{ site.contact_links_url | default: site.data.cv_data.contact.bento }}"
     ],
     "alumniOf": {
       "@type": "EducationalOrganization",
@@ -1809,6 +1809,11 @@
 
 <body>
 {% assign cv = site.data.cv_data %}
+{% comment %}
+  Contact-links hub. A _config.yml-beli contact_links_url NYER a cv.contact.bento felett:
+  a cv_data.yml-t a külső CV-generátor hetente felülírja, tehát ott a javítás nem maradna meg.
+{% endcomment %}
+{% assign contact_links = site.contact_links_url | default: cv.contact.bento %}
 {% assign lang = page.lang | default: 'en' %}
 {% assign projects = site.data.projects.projects %}
 
@@ -2066,8 +2071,8 @@
               <svg viewBox="0 0 24 24"><path d="M0 0v24h24v-24h-24zm11.325 18.917c-2.438 0-4.414-2.813-4.414-6.28s1.976-6.274 4.414-6.274 4.414 2.808 4.414 6.274-1.976 6.28-4.414 6.28zm7.621-.556c-1.177 0-2.131-2.56-2.131-5.724s.954-5.717 2.131-5.717 2.131 2.56 2.131 5.717-.954 5.724-2.131 5.724zm3.893-1.691c-.364 0-.66-1.806-.66-4.033s.295-4.027.66-4.027.66 1.806.66 4.027-.295 4.033-.66 4.033z"/></svg>
             </a>
             {% endif %}
-            {% if cv.contact.bento %}
-            <a class="link-chip" data-label="Bento" aria-label="Bento links" href="{{ cv.contact.bento }}" target="_blank" rel="noopener">
+            {% if contact_links %}
+            <a class="link-chip" data-label="{% if lang == 'hu' %}Linkek{% else %}Links{% endif %}" aria-label="{% if lang == 'hu' %}Elérhetőségek{% elsif lang == 'de' %}Kontakt-Links{% else %}Contact links{% endif %}" href="{{ contact_links }}" target="_blank" rel="noopener">
               <svg viewBox="0 0 24 24"><path d="M10 3H4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1zM9 9H5V5h4v4zm11-6h-6a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1zm-1 6h-4V5h4v4zm-9 4H4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-6a1 1 0 0 0-1-1zm-1 6H5v-4h4v4zm8-6c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zm0 6c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z"/></svg>
             </a>
             {% endif %}
@@ -2414,8 +2419,8 @@
         {% endif %}
         {% if cv.contact.email %}
         <a class="btn-secondary" href="mailto:{{ cv.contact.email }}">{{ cv.contact.email }}</a>
-        {% elsif cv.contact.bento %}
-        <a class="btn-secondary" href="{{ cv.contact.bento }}" target="_blank" rel="noopener">{% if lang == 'hu' %}Elérhetőségek{% elsif lang == 'de' %}Kontakt{% else %}Contact links{% endif %}</a>
+        {% elsif contact_links %}
+        <a class="btn-secondary" href="{{ contact_links }}" target="_blank" rel="noopener">{% if lang == 'hu' %}Elérhetőségek{% elsif lang == 'de' %}Kontakt{% else %}Contact links{% endif %}</a>
         {% endif %}
       </div>
     </div>
