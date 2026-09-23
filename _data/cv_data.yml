@@ -22,9 +22,9 @@ contact:
   usesSite: https://adamporkolab.com/uses
   website: https://aporkolab.com
 downloads:
-  de: https://pub-c677684c572248f4ae32cfb9fc6b6972.r2.dev/cv_public_de_default_20260923_131223.pdf
-  en: https://pub-c677684c572248f4ae32cfb9fc6b6972.r2.dev/cv_public_en_default_20260923_131211.pdf
-  hu: https://pub-c677684c572248f4ae32cfb9fc6b6972.r2.dev/cv_public_hu_default_20260923_131217.pdf
+  de: https://pub-c677684c572248f4ae32cfb9fc6b6972.r2.dev/cv_public_de_default_20260923_133525.pdf
+  en: https://pub-c677684c572248f4ae32cfb9fc6b6972.r2.dev/cv_public_en_default_20260923_133509.pdf
+  hu: https://pub-c677684c572248f4ae32cfb9fc6b6972.r2.dev/cv_public_hu_default_20260923_133517.pdf
 education:
 - degree:
     de: Dr. phil. in Linguistik (summa cum laude, 96 %)
@@ -169,6 +169,7 @@ experience:
     de: Senior Full Stack Developer (Java / Spring / Angular)
     en: Senior Full Stack Developer (Java / Spring / Angular)
     hu: Senior Full Stack Fejlesztő (Java / Spring / Angular)
+  short_bullets: 6
 - company:
     de: Unabhängig
     en: Independent
@@ -218,6 +219,7 @@ experience:
     de: Open-Source- und eigene Projekte
     en: Open-Source & Independent Projects
     hu: Nyílt forráskódú és saját projektek
+  short_bullets: 3
 - company: Deutsche Telekom
   details:
     de:
@@ -248,6 +250,7 @@ experience:
     de: Full Stack Developer (Java / Spring / Angular)
     en: Full Stack Developer (Java / Spring / Angular)
     hu: Full Stack Fejlesztő (Java / Spring / Angular)
+  short_bullets: 4
 - company: Games for Business
   details:
     de:
@@ -277,6 +280,7 @@ experience:
     de: Full Stack Developer (Java / JavaScript / Agile)
     en: Full Stack Developer (Java / JavaScript / Agile)
     hu: Full Stack Fejlesztő (Java / JavaScript / Agile)
+  short_bullets: 4
 - company:
     de: Polizeipräsidium Komitat Baranya
     en: Baranya County Police Headquarters
@@ -310,6 +314,7 @@ experience:
     de: IT-Spezialist
     en: IT Specialist
     hu: IT-specialista
+  short_bullets: 3
 - company: InnoTeq
   details:
     de:
@@ -333,6 +338,7 @@ experience:
     de: Softwareentwickler-Praktikant (Java/Spring)
     en: Software Development Intern (Java/Spring)
     hu: Szoftverfejlesztő gyakornok (Java/Spring)
+  short_bullets: 2
 - company:
     de: Universität Pécs
     en: University of Pécs
@@ -377,6 +383,7 @@ experience:
     de: Lehrer für Geschichte und Literatur (Sekundarstufe)
     en: High School Teacher – History & Literature
     hu: Középiskolai tanár (magyar nyelv és irodalom, történelem)
+  short_bullets: 0
 - company:
     de: Universität Pécs
     en: University of Pécs
@@ -409,6 +416,7 @@ experience:
     de: Lehrbeauftragter (Linguistik)
     en: University Lecturer (Linguistics)
     hu: Egyetemi oktató (nyelvészet)
+  short_bullets: 0
 - company:
     de: Universität Pécs
     en: University of Pécs
@@ -441,6 +449,7 @@ experience:
     de: Fachbibliothekar (LingBib-Team)
     en: Specialist Librarian (LingBib team)
     hu: Szakkönyvtáros (LingBib csoport)
+  short_bullets: 0
 headings:
   awards:
     de: Auszeichnungen & Zertifikate
@@ -526,7 +535,8 @@ public_blacklist:
 publications:
 - title: The Use of Artificial Intelligence in Language Learning (in Hungarian)
   year: '2023'
-- title: Hungarian–English and English–Hungarian Dictionary of Linguistics
+- title: Hungarian–English and English–Hungarian Dictionary of Linguistics (Magyar–angol
+    és angol–magyar nyelvészeti szakszótár)
   year: '2021'
 - title: 'Quarantine Pedagogy in Hungarian Public Education: Early Experiences of
     the Switch to Digital Teaching (in Hungarian)'
