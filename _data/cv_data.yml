@@ -1,15 +1,6 @@
-=== RENDER START ===
-=== TYPST CMD === ['typst', 'compile', 'build/cv_public_en_default_20260920_070002.typ', 'build/cv_public_en_default_20260920_070002.pdf']
-DEBUG: Uploading to r2:porkolab-cv
-=== RENDER START ===
-=== TYPST CMD === ['typst', 'compile', 'build/cv_public_hu_default_20260920_070008.typ', 'build/cv_public_hu_default_20260920_070008.pdf']
-DEBUG: Uploading to r2:porkolab-cv
-=== RENDER START ===
-=== TYPST CMD === ['typst', 'compile', 'build/cv_public_de_default_20260920_070013.typ', 'build/cv_public_de_default_20260920_070013.pdf']
-DEBUG: Uploading to r2:porkolab-cv
 contact:
   authorWebsite: https://www.adamporkolab.com
-  bento: https://bento.me/adamporkolab
+  bento: https://links.adamporkolab.com/
   digitalGarden: https://aporkolab.com/silicon
   email: null
   github: https://github.com/APorkolab
@@ -20,18 +11,23 @@ contact:
   usesSite: https://adamporkolab.com/uses
   website: https://aporkolab.com
 downloads:
-  de: https://pub-c677684c572248f4ae32cfb9fc6b6972.r2.dev/cv_public_de_default_20260920_070013.pdf
-  en: https://pub-c677684c572248f4ae32cfb9fc6b6972.r2.dev/cv_public_en_default_20260920_070002.pdf
-  hu: https://pub-c677684c572248f4ae32cfb9fc6b6972.r2.dev/cv_public_hu_default_20260920_070008.pdf
+  de: https://pub-c677684c572248f4ae32cfb9fc6b6972.r2.dev/cv_public_de_default_20260923_083925.pdf
+  en: https://pub-c677684c572248f4ae32cfb9fc6b6972.r2.dev/cv_public_en_default_20260923_083911.pdf
+  hu: https://pub-c677684c572248f4ae32cfb9fc6b6972.r2.dev/cv_public_hu_default_20260923_083919.pdf
 education:
 - degree:
     de: Dr. phil. in Linguistik (Summa Cum Laude)
     en: PhD in Linguistics (Summa Cum Laude)
     hu: Nyelvészet PhD (Summa Cum Laude)
   details:
-    de: Strukturanalyse und kognitive Systeme. Fokus auf systematische Mustererkennung.
-    en: Structural analysis and cognitive systems. Focus on systematic pattern recognition.
-    hu: Strukturális analízis és kognitív rendszerek. Fókuszban a szisztematikus mintafelismerés.
+    de: 'Programm Angewandte Linguistik. Dissertation: internetlinguistische Untersuchung
+      der ungarischen Blogosphäre nach Inhaltstyp und Geschlecht der Autoren, als
+      Monografie erschienen (2018).'
+    en: 'Applied Linguistics program. Dissertation: an internet-linguistic study of
+      the Hungarian blogosphere by content type and author gender, published as a
+      monograph (2018).'
+    hu: 'Alkalmazott nyelvészeti program. Disszertáció: a magyar blogoszféra netnyelvészeti
+      vizsgálata tartalomtípusok és nemek alapján, monográfiaként is megjelent (2018).'
   institution:
     de: Universität Pécs
     en: University of Pécs
@@ -49,39 +45,42 @@ education:
   institution: Training 360 / StudiCore / OKTÁV
   year: 2019 – 2022
 - degree:
-    de: BA & MA in Ungarisch- und Geschichtslehramt (Mit Auszeichnung)
-    en: BA & MA in Hungarian and History Teaching (with Distinction)
-    hu: Magyartanár és Történelemtanár BA és MA (Kitűnő minősítéssel)
+    de: BA Ungarische Sprache und Literatur & MA Lehramt Ungarisch und Geschichte
+    en: BA in Hungarian Language and Literature & MA in Hungarian and History Teaching
+    hu: Magyar BA és magyartanár–történelemtanár MA
   details:
-    de: Doppeltes Lehramtsstudium, mit Auszeichnung abgeschlossen.
-    en: Dual major program, completed with distinction.
-    hu: Kettős tanári szak, kitűnő minősítéssel.
+    de: BA 2007–2010 (Schwerpunkt Geschichte); Zweifächer-Lehramtsmaster 2010–2013,
+      mit Auszeichnung abgeschlossen.
+    en: BA 2007–2010 (history specialization); two-subject teacher-training MA 2010–2013,
+      graduated with distinction.
+    hu: BA 2007–2010 (történelem specializáció); kétszakos tanári MA 2010–2013, kitűnő
+      minősítéssel.
   institution:
     de: Universität Pécs
     en: University of Pécs
     hu: Pécsi Tudományegyetem (PTE)
-  year: 2007 – 2012
+  year: 2007 – 2013
 experience:
 - company:
-    de: Számlázz.hu (KBOSS.hu Kft. — ein Visma-Unternehmen)
-    en: Számlázz.hu (KBOSS.hu Kft. — a Visma company)
-    hu: Számlázz.hu (KBOSS.hu Kft. — Visma-csoport)
+    de: Számlázz.hu (KBOSS.hu Kft., ein Visma-Unternehmen)
+    en: Számlázz.hu (KBOSS.hu Kft., a Visma company)
+    hu: Számlázz.hu (KBOSS.hu Kft., Visma-csoport)
   details:
     de:
     - Entwicklung und Wartung der Kernservices der größten Online-Rechnungsplattform
-      Ungarns — Marktführer im KMU-Segment, hohes Transaktionsvolumen.
+      Ungarns (Marktführer im KMU-Segment, hohes Transaktionsvolumen).
     - Implementierung regulatorischer und steuerlicher Validierungslogik gemäß ungarischen
       Rechnungs- und Meldevorschriften.
     - Entwicklung von Integrationen und APIs für Partner- und Buchhaltungssysteme.
     en:
     - Developing and maintaining core services of the largest online invoicing platform
-      in Hungary — market leader in the SME segment, high transaction volume.
+      in Hungary (market leader in the SME segment, high transaction volume).
     - Implementing regulatory and tax validation logic against Hungarian invoicing
       and reporting requirements.
     - Building integrations and APIs for partner and accounting systems.
     hu:
-    - Magyarország legnagyobb online számlázó platformjának core szolgáltatásai —
-      piacvezető a KKV-szegmensben, nagy tranzakciószám.
+    - Magyarország legnagyobb online számlázó platformjának core szolgáltatásai (piacvezető
+      a KKV-szegmensben, nagy tranzakciószám).
     - Jogszabályi és adóügyi validációk implementálása a magyar számlázási és adatszolgáltatási
       előírásokhoz.
     - Integrációk és API-k fejlesztése partner- és könyvelőrendszerekhez.
@@ -105,25 +104,25 @@ experience:
     - Implementierung resilienter Microservices mittels Saga- und Outbox-Pattern für
       Hochverfügbarkeit.
     - Refactoring von Legacy-Monolithen in wartbare, domain-getriebene Module.
-    - Asynchrone Zusammenarbeit mit internationalen Teams zur Stabilisierung kritischer
-      Produktionsabläufe.
+    - Asynchrone Zusammenarbeit mit deutschen und ungarischen Teams zur Stabilisierung
+      kritischer Produktionsabläufe.
     en:
     - Built invoice processing system handling 13 EU countries with country-specific
       tax rules and validations.
     - Implemented resilient microservices using Saga and Outbox patterns for high-availability.
     - Refactored legacy monoliths into maintainable, domain-driven modules.
-    - Collaborated async with international teams to stabilize critical production
+    - Collaborated async with German and Hungarian teams to stabilize critical production
       flows.
     hu:
     - Számlázási rendszer fejlesztése 13 EU-s országra, országspecifikus adószabályokkal
       és validációkkal.
     - Mikroszolgáltatások fejlesztése hibatűrő mintákkal (Saga, Outbox).
     - Régi, monolitikus kód szétbontása kisebb, jobban karbantartható modulokra.
-    - Nemzetközi csapattal dolgoztam, főként írásos egyeztetéssel.
+    - Német és magyar csapatokkal dolgoztam, főként írásos egyeztetéssel.
   location:
-    de: Remote (DE/HU)
-    en: Remote (DE/HU)
-    hu: Távmunka (DE/HU)
+    de: Pécs, Ungarn (Hybrid)
+    en: Pécs, Hungary (Hybrid)
+    hu: Pécs, Magyarország (Hybrid)
   period: 2024 – 2025
   role:
     de: Full Stack Developer (Java / Spring / Angular)
@@ -205,25 +204,41 @@ experience:
     hu: Pécsi Tudományegyetem (PTE)
   details:
     de:
-    - Design von Metadaten-Schemata und strukturierten Datensätzen für groß angelegte
-      Analysen.
-    - Verwaltung von Forschungsarchiven und Automatisierung von Datenverarbeitungsabläufen.
+    - 'Forschung (2013–2020): eine Monografie und 13 Aufsätze, Buchkapitel und Rezensionen
+      zu Internetlinguistik, Soziolinguistik und Bildung, u. a. im ICAME Journal und
+      in Iskolakultúra.'
+    - Lehrveranstaltungen in Linguistik an der Universität (2013–2016), danach Ungarisch
+      und Geschichte im Schuldienst (2016–2020).
+    - Pflege der Katalogdatenbank der Linguistik-Fachbibliothek (15.000 Bände), Inventur
+      von über 3.000 Bänden, Benutzerhandbuch für die interne Bibliothekssoftware
+      (2008–2009).
     en:
-    - Designed metadata schemas and structured datasets for large-scale linguistic
-      analysis.
-    - Managed research archives and automated data processing workflows.
+    - 'Research (2013–2020): a monograph and 13 articles, chapters and reviews in
+      internet linguistics, sociolinguistics and education, including ICAME Journal
+      and Iskolakultúra.'
+    - Taught linguistics courses at the university (2013–2016), then Hungarian and
+      history in schools (2016–2020).
+    - Maintained the catalogue database of the 15,000-volume Linguistics Library,
+      inventoried 3,000+ volumes and wrote the user guide for its internal software
+      (2008–2009).
     hu:
-    - Nyelvészeti adatbázisok struktúrájának megtervezése és karbantartása.
-    - Kutatási anyagok rendszerezése, adatfeldolgozás scriptelése.
+    - 'Kutatás (2013–2020): egy monográfia és 13 tanulmány, könyvfejezet és recenzió
+      netnyelvészetből, szociolingvisztikából és oktatásból, többek közt az ICAME
+      Journalben és az Iskolakultúrában.'
+    - Nyelvészeti kurzusok oktatása az egyetemen (2013–2016), majd magyar- és történelemtanítás
+      iskolákban (2016–2020).
+    - A 15 000 kötetes Nyelvészeti Szakkönyvtár katalógus-adatbázisának vezetése,
+      több mint 3000 kötet leltározása, felhasználói leírás a belső könyvtári szoftverhez
+      (2008–2009).
   location:
     de: Pécs, Ungarn
     en: Pécs, Hungary
     hu: Pécs, Magyarország
-  period: 2007 – 2020
+  period: 2008 – 2020
   role:
-    de: Forscher & Datenmanager
-    en: Researcher & Data Manager
-    hu: Kutató & Adatmenedzser
+    de: Linguist (Forschung, Lehre, Schuldienst)
+    en: Linguist (Research, Lecturing, Teaching)
+    hu: Nyelvész (kutatás, egyetemi oktatás, tanítás)
 headings:
   awards:
     de: Auszeichnungen
@@ -426,12 +441,12 @@ skills:
 summary:
   de: 'Senior Full Stack Engineer für wartbare Enterprise-Anwendungen mit Java/Spring
     Boot und Angular. 2+ Jahre in Enterprise-Umgebungen, 5+ Jahre in professioneller
-    Softwareentwicklung. Promotion in Linguistik — strukturelle Analyse angewandt
-    auf verteilte Systeme und Datenmodellierung.
+    Softwareentwicklung. Promotion in Linguistik; strukturelle Analyse wende ich auf
+    verteilte Systeme und Datenmodellierung an.
 
     Spezialisiert auf die Stabilisierung von Legacy-Systemen, Implementierung von
     Resilienz-Mustern (Saga, Outbox) und Entwicklung vorhersagbarer Frontends. Fokus:
-    End-to-End-Ownership — von Datenbankarchitektur bis UI, mit Ziel der langfristigen
+    End-to-End-Ownership von der Datenbankarchitektur bis zur UI, mit dem Ziel langfristiger
     Wartbarkeit.
 
     Arbeitsstil: Remote-first, async-freundlich, spezifikationsgetrieben. Ich entfalte
@@ -441,12 +456,12 @@ summary:
     '
   en: 'Senior Full Stack Engineer building maintainable enterprise applications with
     Java/Spring Boot and Angular. 2+ years in enterprise environments, 5+ years in
-    professional software development. PhD in Linguistics — trained in structural
-    analysis, which I apply to distributed system design and data modeling.
+    professional software development. PhD in Linguistics, trained in structural analysis,
+    which I apply to distributed system design and data modeling.
 
     I specialize in stabilizing legacy systems, implementing resilience patterns (Saga,
     Outbox), and building predictable, testable frontends. Strong focus on end-to-end
-    ownership: from database architecture to UI/UX, ensuring long-term maintainability.
+    ownership, from database architecture to UI/UX, and on long-term maintainability.
 
     Work style: Remote-first, async-friendly, written-spec-driven. I perform best
     with take-home challenges and in-depth technical discussions that reveal real
@@ -455,8 +470,8 @@ summary:
     '
   hu: 'Senior full stack fejlesztő, 2+ év tapasztalattal nagyvállalati környezetben,
     5+ év professzionális szoftverfejlesztésben. Nyelvészeti PhD-m során megtanultam
-    rendszerekben gondolkodni — ezt használom az adatmodellezésben és a komplex üzleti
-    logika felépítésében.
+    rendszerekben gondolkodni, és ezt használom az adatmodellezésben és a komplex
+    üzleti logika felépítésében.
 
     Erősségem a meglévő, rosszul dokumentált kódbázisok rendberakása és a hibatűrő
     megoldások kialakítása. Szeretek egy feladatot végigvinni az adatbázistól a felhasználói
