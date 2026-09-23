@@ -22,9 +22,9 @@ contact:
   usesSite: https://adamporkolab.com/uses
   website: https://aporkolab.com
 downloads:
-  de: https://pub-c677684c572248f4ae32cfb9fc6b6972.r2.dev/cv_public_de_default_20260923_130248.pdf
-  en: https://pub-c677684c572248f4ae32cfb9fc6b6972.r2.dev/cv_public_en_default_20260923_130231.pdf
-  hu: https://pub-c677684c572248f4ae32cfb9fc6b6972.r2.dev/cv_public_hu_default_20260923_130240.pdf
+  de: https://pub-c677684c572248f4ae32cfb9fc6b6972.r2.dev/cv_public_de_default_20260923_130812.pdf
+  en: https://pub-c677684c572248f4ae32cfb9fc6b6972.r2.dev/cv_public_en_default_20260923_130757.pdf
+  hu: https://pub-c677684c572248f4ae32cfb9fc6b6972.r2.dev/cv_public_hu_default_20260923_130805.pdf
 education:
 - degree:
     de: Dr. phil. in Linguistik (summa cum laude, 96 %)
@@ -744,9 +744,9 @@ summary:
 
     '
 title:
-  de: Senior Full Stack Engineer — Java / Spring Boot / Angular · E-Invoicing- und
-    Steuer-Compliance-Systeme
-  en: Senior Full Stack Engineer — Java / Spring Boot / Angular · E-invoicing & tax-compliance
-    systems
-  hu: Senior Full Stack Fejlesztő — Java / Spring Boot / Angular · E-számlázási és
-    adómegfelelési rendszerek
+  de: Senior Full Stack Engineer — Java / Spring Boot / Angular · E-Invoicing & Tax
+    Compliance
+  en: Senior Full Stack Engineer — Java / Spring Boot / Angular · E-invoicing & tax
+    compliance
+  hu: Senior Full Stack Fejlesztő — Java / Spring Boot / Angular · E-számlázás és
+    adómegfelelés
