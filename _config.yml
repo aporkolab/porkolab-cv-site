@@ -2,6 +2,15 @@ title: 'Adam Porkolab — CV'
 baseurl: '' # rooton fut
 url: 'https://aporkolab.com'
 
+# Nyilvanos ELERHETOSEG-JELZES kapcsoloja. false -> eltunik a hero tetejerol a
+# "Available for work" jelveny, es a lablec CTA-jabol kimarad az allaskeresesre utalo
+# tagmondat (a technikai tartalom marad). 2026-09-23-tol false: ez az oldal a contact
+# info es a GitHub-profil felol EGY kattintasra van barmelyik kollegatol, tehat a
+# nyilvanos "keresek allast" jelzes itt kockazat. Ha ujra keresel, az erre valo eszkoz
+# a LinkedIn CSAK RECRUITEREKNEK latszo "Open to Work"-je, nem ez a jelveny -- ezt a
+# kapcsolot csak akkor billentsd true-ra, ha tudatosan NYILVANOSAN is vallalod.
+available_for_work: false
+
 # Contact-links hub. SZÁNDÉKOSAN itt, NEM a _data/cv_data.yml-ben: azt a külső CV-
 # generátor birtokolja és hetente felülírja (a `contact.bento` minden auto-update
 # commitban visszaíródik). A bento.me/adamporkolab 2026-09-23-ra halott — nem 404,
