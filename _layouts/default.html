@@ -1843,6 +1843,7 @@
   {% assign t_secure = 'Biztonságos link' %}
   {% assign t_cta_title = 'Dolgozzunk együtt.' %}
   {% assign t_cta_text = 'Nyitott vagyok senior full stack szerepekre — Java/Spring Boot és Angular, elosztott rendszerek, legacy stabilizáció.' %}
+  {% assign t_cta_text_quiet = 'Java/Spring Boot és Angular, elosztott rendszerek, legacy stabilizáció.' %}
   {% assign t_backtop = 'Vissza a tetejére' %}
   {% assign t_updated = 'Frissítve' %}
   {% assign t_rawclose = 'Bezárás' %}
@@ -1872,6 +1873,7 @@
   {% assign t_secure = 'Sicherer Link' %}
   {% assign t_cta_title = 'Lassen Sie uns zusammenarbeiten.' %}
   {% assign t_cta_text = 'Offen für Senior-Full-Stack-Rollen — Java/Spring Boot und Angular, verteilte Systeme, Legacy-Stabilisierung.' %}
+  {% assign t_cta_text_quiet = 'Java/Spring Boot und Angular, verteilte Systeme, Legacy-Stabilisierung.' %}
   {% assign t_backtop = 'Nach oben' %}
   {% assign t_updated = 'Aktualisiert' %}
   {% assign t_rawclose = 'Schließen' %}
@@ -1901,11 +1903,20 @@
   {% assign t_secure = 'Secure link' %}
   {% assign t_cta_title = "Let's build something solid." %}
   {% assign t_cta_text = 'Open to senior full stack roles — Java/Spring Boot and Angular, distributed systems, legacy stabilization.' %}
+  {% assign t_cta_text_quiet = 'Java/Spring Boot and Angular, distributed systems, legacy stabilization.' %}
   {% assign t_backtop = 'Back to top' %}
   {% assign t_updated = 'Updated' %}
   {% assign t_rawclose = 'Close' %}
   {% assign nav_labels = 'Scope,Experience,Skills,Work,Education,Languages' | split: ',' %}
 {% endif %}
+
+{% comment %}
+  Ha nem hirdetunk elerhetoseget, a CTA-bol kimarad az allaskeresesre utalo tagmondat.
+  A hero-jelvenyt maga a markup rejti el (lasd a status-chip felteteleet).
+{% endcomment %}
+{% unless site.available_for_work %}
+  {% assign t_cta_text = t_cta_text_quiet %}
+{% endunless %}
 
 {% comment %}
   Localized scalars. The generator flips individual fields between a plain string
@@ -1983,7 +1994,9 @@
     <div class="shell">
       <div class="hero-grid">
         <div class="hero-main">
+          {% if site.available_for_work %}
           <span class="status-chip"><span class="status-dot" aria-hidden="true"></span>{{ t_avail }}</span>
+          {% endif %}
 
           {% assign title_parts = cv_title | split: ' — ' %}
           <p class="hero-role">
