@@ -22,9 +22,9 @@ contact:
   usesSite: https://adamporkolab.com/uses
   website: https://aporkolab.com
 downloads:
-  de: https://pub-c677684c572248f4ae32cfb9fc6b6972.r2.dev/cv_public_de_default_20260923_130812.pdf
-  en: https://pub-c677684c572248f4ae32cfb9fc6b6972.r2.dev/cv_public_en_default_20260923_130757.pdf
-  hu: https://pub-c677684c572248f4ae32cfb9fc6b6972.r2.dev/cv_public_hu_default_20260923_130805.pdf
+  de: https://pub-c677684c572248f4ae32cfb9fc6b6972.r2.dev/cv_public_de_default_20260923_131223.pdf
+  en: https://pub-c677684c572248f4ae32cfb9fc6b6972.r2.dev/cv_public_en_default_20260923_131211.pdf
+  hu: https://pub-c677684c572248f4ae32cfb9fc6b6972.r2.dev/cv_public_hu_default_20260923_131217.pdf
 education:
 - degree:
     de: Dr. phil. in Linguistik (summa cum laude, 96 %)
@@ -510,9 +510,9 @@ languages:
     en: English (C1 – Certified)
     hu: Angol (C1 – felsőfokú nyelvvizsga)
 - name:
-    de: Deutsch (B2 – passiv)
-    en: German (B2 – Passive)
-    hu: Német (B2 – passzív)
+    de: Deutsch (B2 – gute Kenntnisse)
+    en: German (B2 – Limited working proficiency)
+    hu: Német (B2 – középfokú nyelvvizsga)
 name:
   de: Dr. Ádám Porkoláb
   en: Ádám Porkoláb, PhD
