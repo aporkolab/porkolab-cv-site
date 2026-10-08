@@ -22,9 +22,9 @@ contact:
   usesSite: https://adamporkolab.com/uses
   website: https://aporkolab.com
 downloads:
-  de: https://pub-c677684c572248f4ae32cfb9fc6b6972.r2.dev/cv_public_de_default_20260923_133525.pdf
-  en: https://pub-c677684c572248f4ae32cfb9fc6b6972.r2.dev/cv_public_en_default_20260923_133509.pdf
-  hu: https://pub-c677684c572248f4ae32cfb9fc6b6972.r2.dev/cv_public_hu_default_20260923_133517.pdf
+  de: https://aporkolab.com/assets/cv/cv_public_de.pdf?v=20261008054943
+  en: https://aporkolab.com/assets/cv/cv_public_en.pdf?v=20261008054943
+  hu: https://aporkolab.com/assets/cv/cv_public_hu.pdf?v=20261008054943
 education:
 - degree:
     de: Dr. phil. in Linguistik (summa cum laude, 96 %)
