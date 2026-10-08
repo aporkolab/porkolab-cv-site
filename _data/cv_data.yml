@@ -133,28 +133,43 @@ experience:
     hu: Számlázz.hu (KBOSS.hu Kft., Visma-csoport)
   details:
     de:
-    - Größte Online-Rechnungsplattform Ungarns
     - Zentrale Rechnungsdienste mit Java / Spring Boot und Angular, vom API-Design
       bis zur UI
     - Steuerliche und regulatorische Validierung nach ungarischen Rechnungs- und Meldevorschriften
     - APIs und Integrationen für Partner- und Buchhaltungssysteme
+    - 'AI Champion, agentenbasierte Entwicklung & Orchestrierung: Aufgaben von der
+      Spezifikation über Entwicklung, Tests und Reviews bis zur Auslieferung; herstellerunabhängige
+      Koordination von Agenten, Werkzeugen und menschlichen Prüfschritten'
+    - 'AI Champion, Prompt & Context Engineering: verantwortlich für gemeinsame, versionierte
+      Instruktionen, Skills und Kontextmuster; Evaluierungsmethoden, Antipatterns
+      und fachliche Unterstützung der Teams'
     - Vereinheitlichung des Mailversand-Stacks
     - Code-Reviews; Architektur- und API-Dokumentation
     en:
-    - Hungary's largest online invoicing platform
     - Core invoicing services in Java / Spring Boot and Angular, from API design to
       UI
     - Tax and regulatory validation against Hungarian invoicing and reporting rules
     - APIs and integrations for partner and accounting systems
+    - 'AI Champion, Agentic Development & Orchestration: remit spans specification,
+      development, testing, review and delivery; vendor-neutral coordination of agents,
+      tools and human checkpoints'
+    - 'AI Champion, Prompt & Context Engineering: responsible for shared, versioned
+      instructions, skills and context patterns; evaluation methods, antipatterns
+      and guidance for teams'
     - Unified the mail-sending stack
     - Code reviews; architecture and API documentation
     hu:
-    - Magyarország legnagyobb online számlázó platformja
     - Core számlázási szolgáltatások Java / Spring Boot és Angular alapon, az API-tervezéstől
       a felületig
     - Adóügyi és jogszabályi validáció a magyar számlázási és adatszolgáltatási szabályok
       szerint
     - API-k és integrációk partner- és könyvelőrendszerekhez
+    - 'AI Champion, agentes fejlesztés és orchestráció: feladatkör a specifikációtól
+      a fejlesztésen, tesztelésen és review-n át a szállításig; agentek, eszközök
+      és emberi kontrollpontok gyártófüggetlen összehangolása'
+    - 'AI Champion, Prompt- és Context Engineering: közös, verziózott instrukciók,
+      skillek és kontextusminták gondozása; értékelési módszerek, antipatternek és
+      a csapatok szakmai támogatása'
     - A levélküldési stack egységesítése
     - Code review, architektúra- és API-dokumentáció
   location:
@@ -166,9 +181,9 @@ experience:
     en: 2026 – present
     hu: 2026 – jelenleg
   role:
-    de: Senior Full Stack Developer (Java / Spring / Angular)
-    en: Senior Full Stack Developer (Java / Spring / Angular)
-    hu: Senior Full Stack Fejlesztő (Java / Spring / Angular)
+    de: Senior Full Stack Developer · AI Champion
+    en: Senior Full Stack Developer · AI Champion
+    hu: Senior Full Stack Fejlesztő · AI Champion
   short_bullets: 6
 - company:
     de: Unabhängig
@@ -656,6 +671,13 @@ skills:
     en: REST API Integration & Error Handling
     hu: REST API integráció & hibakezelés
   methodology:
+  - de: Agentenbasierte Entwicklung & Orchestrierung (Multi-Agent-Workflows, menschliche
+      Prüfung)
+    en: Agentic Development & Orchestration (multi-agent workflows, human review)
+    hu: Agentes fejlesztés és orchestráció (többagentes workflow-k, emberi ellenőrzés)
+  - de: Prompt & Context Engineering (Instruktionen, Skills, Evaluierung)
+    en: Prompt & Context Engineering (instructions, skills, evaluation)
+    hu: Prompt- és Context Engineering (instrukciók, skillek, értékelés)
   - de: Async-First Remote-Zusammenarbeit
     en: Async-First Remote Collaboration
     hu: Távmunka írásos kommunikációval
@@ -677,6 +699,12 @@ summary:
     Ungarns, einem Unternehmen der Visma-Gruppe. Ich arbeite an zentralen Rechnungsdiensten:
     steuerliche und regulatorische Validierung sowie die APIs, die unsere Partner-
     und Buchhaltungssysteme aufrufen.
+
+    Zusätzlich bin ich interner AI Champion für zwei Bereiche: agentenbasierte Entwicklung
+    und Orchestrierung sowie Prompt & Context Engineering. Mein Aufgabenbereich umfasst
+    Agenten-Workflows von der Spezifikation bis zur Auslieferung, die Koordination
+    von Agenten und Werkzeugen mit menschlichen Prüfschritten sowie gemeinsame Instruktionen,
+    Skills und Kontextmuster, die an realen Aufgaben evaluiert werden.
 
     Davor habe ich zwei Jahre bei der Deutschen Telekom an einem Rechnungsverarbeitungssystem
     für 13 EU-Länder mit jeweils eigenen Steuerregeln gearbeitet. Ich habe Microservices
@@ -706,6 +734,11 @@ summary:
     tax and regulatory validation, and the APIs our partner and accounting systems
     call.
 
+    I also serve as an internal AI Champion in two areas: Agentic Development & Orchestration,
+    and Prompt & Context Engineering. My remit covers agent workflows from specification
+    to delivery, coordination across agents and tools with human review, and shared
+    instructions, skills and context patterns evaluated on real tasks.
+
     Before that I spent two years at Deutsche Telekom on an invoice-processing system
     covering 13 EU countries, each with its own tax rules. I built microservices with
     Saga and Outbox patterns and broke legacy monoliths into domain-driven modules.
@@ -732,6 +765,12 @@ summary:
     számlázási szolgáltatásokon dolgozom: adóügyi és jogszabályi validáción, valamint
     azokon az API-kon, amelyeket a partner- és könyvelőrendszerek hívnak.
 
+    Emellett belső AI Champion vagyok két területen: agentes fejlesztés és orchestráció,
+    valamint Prompt- és Context Engineering. A feladatköröm része a specifikációtól
+    a szállításig terjedő agentes workflow-k kialakítása és az agentek, eszközök és
+    emberi kontrollpontok összehangolása. A közös instrukciók, skillek és kontextusminták
+    gondozása és valós feladatokon történő értékelése is hozzám tartozik.
+
     Előtte két évig a Deutsche Telekomnál dolgoztam egy 13 uniós országot kiszolgáló
     számlafeldolgozó rendszeren, ahol minden országnak saját adószabályai vannak.
     Saga és Outbox mintájú mikroszolgáltatásokat építettem, és legacy monolitokat
@@ -754,9 +793,6 @@ summary:
 
     '
 title:
-  de: Senior Full Stack Engineer — Java / Spring Boot / Angular · E-Invoicing & Tax
-    Compliance
-  en: Senior Full Stack Engineer — Java / Spring Boot / Angular · E-invoicing & tax
-    compliance
-  hu: Senior Full Stack Fejlesztő — Java / Spring Boot / Angular · E-számlázás és
-    adómegfelelés
+  de: Senior Full Stack Engineer & AI Champion · Java / Spring Boot / Angular
+  en: Senior Full Stack Engineer & AI Champion · Java / Spring Boot / Angular
+  hu: Senior Full Stack Fejlesztő & AI Champion · Java / Spring Boot / Angular
