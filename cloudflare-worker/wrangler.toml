@@ -1,11 +1,17 @@
 name = "cv-api"
 main = "cv-api.js"
-compatibility_date = "2024-01-01"
+compatibility_date = "2026-10-01"
 
 # Bind to your R2 bucket
 [[r2_buckets]]
 binding = "CV_BUCKET"
 bucket_name = "porkolab-cv"
+
+[vars]
+# Public base URL the /latest/:lang redirect points at (no trailing slash).
+# r2.dev URLs are rate-limited by Cloudflare; switch to the bucket's custom
+# domain once it is confirmed to serve this bucket.
+PUBLIC_BASE_URL = "https://pub-c677684c572248f4ae32cfb9fc6b6972.r2.dev"
 
 # Optional: Custom domain (set up in Cloudflare dashboard)
 # routes = [
