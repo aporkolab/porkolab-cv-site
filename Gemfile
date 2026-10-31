@@ -16,7 +16,7 @@ gem "jekyll", "~> 4.4"
 # declares jekyll-feed as a runtime dependency and Jekyll auto-requires a theme's
 # dependencies (PluginManager#require_theme_deps). With no theme it has to be
 # declared here AND in _config.yml's `plugins:`, or the URL starts 404ing.
-gem "jekyll-feed", "~> 0.17"
+gem "jekyll-feed", "~> 0.18"
 
 group :development do
   # Dropped from Ruby's stdlib in 3.0; `jekyll serve` needs it locally.

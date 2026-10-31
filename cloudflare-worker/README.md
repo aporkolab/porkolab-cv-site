@@ -43,10 +43,28 @@ downloads:
 
 ## Működés
 
-1. A Worker listázza az R2 bucket tartalmát
+1. A Worker lapozva listázza az R2 bucket `cv_public_` prefixű kulcsait (egy hívás max. 1000 kulcsot ad vissza)
 2. Megkeresi a `cv_public_{lang}_default_{date}_{time}.pdf` mintájú fájlokat
 3. Kiválasztja a legfrissebbet (timestamp alapján) nyelvenként
-4. Átirányítja a felhasználót a megfelelő fájlra
+4. Átirányítja a felhasználót a megfelelő fájlra (ismeretlen nyelvnél az angolra)
+
+Csak `GET`, `HEAD` és `OPTIONS` engedélyezett, minden más `405`. Belső hiba esetén
+generikus `500` megy ki, a részlet csak a `wrangler tail` logban látszik.
+
+## Konfiguráció
+
+| Változó (`wrangler.toml` → `[vars]`) | Mire |
+|---|---|
+| `PUBLIC_BASE_URL` | Erre a bázis URL-re irányít a `/latest/:lang` (perjel nélkül). Alapértelmezés a bucket `r2.dev` URL-je |
+
+## Tesztek
+
+```bash
+cd cloudflare-worker
+npm test   # node:test, Node 22+, nincs npm-függőség
+```
+
+A tesztek egy hamis R2 bindinggel futnak, a CI `worker` jobja is ezt hívja.
 
 ## R2 Bucket Binding
 

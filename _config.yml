@@ -29,6 +29,4 @@ plugins:
 # vendor/bundle/, …) onto this list, so only site-specific paths belong here.
 exclude:
   - cloudflare-worker/
-  - lighthouse-report.report.html
-  - lighthouse-report.report.json
-  - lighthouse-report2.json
+  - README.md

@@ -1,0 +1,12 @@
+{
+  "name": "cv-api",
+  "private": true,
+  "type": "module",
+  "description": "Cloudflare Worker that redirects to the latest CV PDF per language in R2",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "test": "node --test"
+  }
+}

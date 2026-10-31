@@ -1,0 +1,52 @@
+# Build check for branches and pull requests. The Pages workflow only runs on
+# main and deploys, so without this a broken branch is first noticed in prod.
+# Never deploys.
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches-ignore: ['main']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  site:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.4'
+          bundler-cache: true
+      - name: Validate _data YAML
+        run: ruby .github/scripts/validate-data-yaml.rb _data/*.yml
+      - name: Build with Jekyll
+        run: bundle exec jekyll build --destination ./_site
+        env:
+          JEKYLL_ENV: production
+      - name: Check for unresolved localized fields
+        run: .github/scripts/check-localized-leaks.sh _site
+
+  worker:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: cloudflare-worker
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+      - name: Set up Node
+        uses: actions/setup-node@v7
+        with:
+          node-version: '24'
+      - name: Test
+        run: npm test

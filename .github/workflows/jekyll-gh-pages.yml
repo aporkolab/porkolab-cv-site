@@ -42,40 +42,7 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v6
       - name: Validate _data YAML (strip generator debug preamble)
-        run: |
-          # The external CV generator sometimes leaks its stdout debug output into
-          # _data/*.yml, which kills the whole Pages build. Parse as-is; only if that
-          # fails, drop the leading noise lines until the file parses as a mapping
-          # again. Build-time only, the committed file is untouched.
-          for f in _data/*.yml; do
-            ruby -ryaml -e '
-              NOISE = /\A(?:===|[A-Z][A-Z0-9_]{2,}\s*:|Traceback\b)/
-              path = ARGV[0]
-              def parse(src)
-                doc = YAML.unsafe_load(src)
-                doc.is_a?(Hash) ? doc : nil
-              rescue Psych::SyntaxError
-                nil
-              end
-              src = File.read(path)
-              unless parse(src)
-                lines = src.lines
-                limit = [lines.size - 1, 50].min
-                # Every discarded line must itself look like generator noise. Without
-                # that check any syntax error in the first 50 lines would amputate the
-                # document down to whatever suffix happens to parse, and ship it.
-                cut = (1..limit).find { |n|
-                  lines[0...n].all? { |l| l.match?(NOISE) } && !lines[n].match?(NOISE) && parse(lines[n..].join)
-                }
-                unless cut
-                  warn "::error file=#{path}::Invalid YAML and no recognizable debug preamble in the first #{limit} lines"
-                  exit 1
-                end
-                File.write(path, lines[cut..].join)
-                warn "::warning file=#{path}::Stripped #{cut} non-YAML preamble line(s) written by the CV generator. Fix the generator: it must not write debug output to the stream it redirects into this file."
-              end
-            ' "$f" || exit 1
-          done
+        run: ruby .github/scripts/validate-data-yaml.rb _data/*.yml
       # Built from this repo's Gemfile (Jekyll 4.x), not GitHub's frozen
       # github-pages bundle, which is stuck on Jekyll 3.10.
       - name: Build with Jekyll
@@ -83,25 +50,7 @@ jobs:
         env:
           JEKYLL_ENV: production
       - name: Check for unresolved localized fields
-        run: |
-          # The CV generator flips individual fields between a plain string and a
-          # {de,en,hu} map. When the layout renders such a field directly, Liquid
-          # prints the Ruby hash literal straight into the page. That is invisible to
-          # the build, so fail here instead of shipping it.
-          # The pattern has to stay agnostic about two things: Ruby 3.4 changed
-          # Hash#inspect to put spaces around the rocket ({"de" => "…"} vs {"de"=>"…"}),
-          # and a field passed through `| escape` arrives as {&quot;de&quot; =&gt; …}.
-          LEAK_PAT='(&quot;|")[a-z]{2}(&quot;|")[[:space:]]*(=>|=&gt;)'
-          if grep -rIlE "$LEAK_PAT" _site --include='*.html' > /tmp/leaks.txt 2>/dev/null && [ -s /tmp/leaks.txt ]; then
-            echo "::error::Unresolved localized field rendered as a Ruby hash literal."
-            while read -r f; do
-              echo "--- $f"
-              grep -oE "$LEAK_PAT"'[^}]{0,120}' "$f" | sort -u | head -5
-            done < /tmp/leaks.txt
-            echo "Fix: render the field as \`x[lang] | default: x.en | default: x\` in _layouts/default.html"
-            exit 1
-          fi
-          echo "No unresolved localized fields."
+        run: .github/scripts/check-localized-leaks.sh _site
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v5
 
