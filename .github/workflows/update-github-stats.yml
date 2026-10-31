@@ -64,6 +64,20 @@ jobs:
           PRIVATE_REPOS=$(echo "$USER_DATA" | jq '.total_private_repos // 0')
           TOTAL_REPOS=$((PUBLIC_REPOS + PRIVATE_REPOS))
 
+          # Refuse to publish zeros. Every value below falls back to 0, so an expired
+          # token or an API hiccup would otherwise overwrite the live stats with zeros
+          # and deploy them. Failing keeps yesterday's numbers on the site.
+          for resp in "$THIS_YEAR_RESPONSE" "$LAST_YEAR_RESPONSE"; do
+            if ! echo "$resp" | jq -e '(.errors | not) and .data.user.contributionsCollection != null' > /dev/null; then
+              echo "::error::GraphQL request failed; not updating stats."
+              exit 1
+            fi
+          done
+          if ! echo "$USER_DATA" | jq -e '.public_repos | type == "number"' > /dev/null; then
+            echo "::error::REST /user request failed (check GH_STATS_TOKEN); not updating stats."
+            exit 1
+          fi
+
           # Get contributions (totalContributions includes commits, issues, PRs, reviews)
           CONTRIBUTIONS_THIS=$(echo "$THIS_YEAR_RESPONSE" | jq '.data.user.contributionsCollection.contributionCalendar.totalContributions // 0')
           CONTRIBUTIONS_LAST=$(echo "$LAST_YEAR_RESPONSE" | jq '.data.user.contributionsCollection.contributionCalendar.totalContributions // 0')
